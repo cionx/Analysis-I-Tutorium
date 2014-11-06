@@ -1,0 +1,364 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage{xltxtra}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+
+\setromanfont[Mapping=tex-text]{Linux Libertine O}
+% \setsansfont[Mapping=tex-text]{DejaVu Sans}
+% \setmonofont[Mapping=tex-text]{DejaVu Sans Mono}
+
+\newcounter{propositions}
+\newtheorem{prop}[propositions]{Proposition}
+\newtheorem{lem}[propositions]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem*{defi}{Definition}
+\newtheorem*{bem}{Bemerkung}
+\newtheorem*{bems}{Bemerkungen}
+
+\DeclareMathOperator{\im}{im}
+
+\DeclareMathOperator{\id}{id}
+
+
+
+\title{Grundelegende Begriffe zur Kardinalität einer Menge}
+\author{Jendrik Stelzner}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+
+
+
+
+\section{Notation}
+Für eine Menge $X$ und ein Objekt $x$ schreiben wir $x \in X$, wenn $x$ ein Element von $X$ ist, und $x \notin X$, wenn $x$ kein Element von $X$ ist.
+
+Schreiben wir $f \colon X \to Y$, so meinen wir damit, dass $X$ und $Y$ Mengen sind und $f$ eine Funktion von $X$ nach $Y$. Mit
+\[
+ f_1, \dotsc, f_n \colon X \to Y
+\]
+meinen wir, dass
+\begin{align*}
+     f_1 \colon &X \to Y, \\
+     f_2 \colon &X \to Y, \\
+                &\vdots \\
+ f_{n-1} \colon &X \to Y \text{ und} \\
+     f_n \colon &X \to Y.
+\end{align*}
+Die Begriffe \emph{Funktion} und \emph{Abbildung} nutzen wir synonym.
+
+Für $f \colon X \to Y$ und eine Teilmenge $T \subseteq X$ ist
+\[
+ f(T)
+ \coloneqq \{f(t) \mid t \in T\}
+\]
+das \emph{Bild von $T$ unter $f$}. Offenbar gilt
+\[
+ f(T) = \{y \in Y \mid \text{es existiert $t \in T$ mit $f(t) = y$}\}.
+\]
+Als Sonderfall ist $\im f \coloneqq f(X)$ das Bild von $f$.
+
+Sind $f \colon X \to Y$ und $g \colon Y \to Z$ Funktionen, so ist ihre \emph{Komposition} definiert als die Funktion $g \circ f \colon X \to Z$ mit
+\[
+ g \circ f \colon X \to Z, x \mapsto g(f(x)),
+\]
+d.h.\ für alle $x \in X$ ist $(g \circ f)(x) = g(f(x))$. Statt von \emph{Komposition} spricht man auch von \emph{Verkettung} oder \emph{Verknüpfung}.
+
+\begin{bem}
+ Es mag zunächst seltsam erscheinen, dass bei der Komposition $g \circ f$ zuerst $f$ und dann $g$ angewandt wird. Diese Konvention hat jedoch denn Vorteil, dass in der Gleichung $(g \circ f)(x) = g(f(x))$ die Funktionen nicht vertauscht werden müssen.
+\end{bem}
+
+\begin{lem}
+ Sind $f \colon A \to B$, $g \colon B \to C$ und $h \colon C \to D$ Funktionen, so ist
+ \[
+  f \circ (g \circ h) = (f \circ g) \circ h,
+ \]
+ d.h.\ die Komposition von Funktionen ist assoziativ.
+\end{lem}
+\begin{proof}
+ Für alle $a \in A$ ist
+ \begin{align*}
+  (f \circ (g \circ h))(a)
+  &= f((g \circ h)(a))
+  = f(g(h(a))) \\
+  &= (f \circ g)(h(a))
+  = ((f \circ g) \circ h)(a).
+  \qedhere
+ \end{align*}
+\end{proof}
+
+\begin{defi}
+ Für eine Menge $X$ heißt die Abbildung
+ \[
+  \id_X \colon X \to X, x \mapsto x
+ \]
+ die \emph{Identitätsfunktion von $X$}.
+\end{defi}
+
+Man bemerke, dass für eine Abbildung $f \colon X \to Y$ sowohl $f \circ \id_X = f$ als auch $\id_Y \circ f = f$.
+
+
+
+
+
+\section{Surjektiv, Injektiv und Bijektiv}
+
+\begin{defi}
+ Eine Abbildung $f \colon X \to Y$ heißt
+ \begin{itemize}
+  \item
+   \emph{surjektiv}, falls es für alle $y \in Y$ ein $x \in X$ mit $f(x) = y$ gibt.
+  \item
+   \emph{injektiv}, falls für alle $x, x' \in X$ mit $x \neq x'$ auch $f(x) \neq f(x')$.
+  \item
+   \emph{bijektiv}, falls $f$ surjektiv und injektiv ist.
+ \end{itemize}
+\end{defi}
+
+Offenbar ist $f \colon X \to Y$ genau dann surjektiv, wenn $f(X) = Y$, genau dann injektiv wenn
+\[
+ f(x) = f(x') \Rightarrow x = x' \quad \text{für alle }x, x' \in X,
+\]
+und genau dann bijektiv, wenn es für jedes $y \in Y$ ein eindeutiges $x \in X$ mit $f(x) = y$ gibt.
+
+\begin{lem}
+ Es seien $f \colon X \to Y$ und $g \colon Y \to Z$ Abbildungen.
+ \begin{enumerate}[label=\arabic*), leftmargin=*]
+  \item
+   Sind $f$ und $g$ surjektiv, so ist auch $g \circ f$ surjektiv.
+  \item
+   Sind $f$ und $g$ injektiv, so ist auch $g \circ f$ injektiv.
+  \item
+   Sind $f$ und $g$ bijektiv, so ist auch $g \circ f$ bijektiv.
+  \item
+   Ist $f$ surjektiv und $g$ nicht injektiv, so ist auch $g \circ f$ nicht injektiv.
+  \item
+   Ist $g \circ f$ surjektiv, so ist auch $g$ surjektiv.
+  \item
+   Ist $g \circ f$ injektiv, so ist auch $f$ injektiv.
+ \end{enumerate}
+\end{lem}
+\begin{proof}
+ \begin{enumerate}[label=\arabic*), leftmargin=*]
+  \item
+   Sei $z \in Z$ beliebig aber fest. Da $g$ surjektiv ist gibt es $y \in Y$ mit $g(y) = z$. Da $f$ surjektiv ist gibt es $x \in X$ mit $f(x) = y$. Also ist
+   \[
+    (g \circ f)(x) = g(f(x)) = g(y) = z.
+   \]
+   Aus der Beliebigkeit von $z$ folgt, dass $g \circ f$ surjektiv ist.
+  \item
+   Es seien $x, x' \in X$ mit $(g \circ f)(x) = (g \circ f)(x')$, d.h.\ $g(f(x)) = g(f(x'))$. Aus der Injektivität von $g$ folgt, dass $f(x) = f(x')$. Aus der Injektivität von $f$ folgt damit, dass $x = x'$. Da $(g \circ f)(x) = (g \circ f)(x') \Rightarrow x = x'$ für alle $x, x' \in X$ ist $g \circ f$ injektiv.
+  \item
+   Da $f$ und $g$ bijektiv sind, sind $f$ und $g$ beide injektiv und beide surjektiv, nach den bisherigen Beobachtungen also $g \circ f$ sowohl injektiv als auch surjektiv, also bijektiv.
+  \item
+   Da $g$ nicht injektiv ist, gibt es $y, y' \in Y$ mit $g(y) = g(y')$ und $y \neq y'$. Da $f$ surjektiv ist, gibt es $x, x' \in X$ mit $f(x) = y$ und $f(x') = y'$. Da $y \neq y'$ muss auch $x \neq x'$. Da $x \neq x'$ und
+   \[
+    (g \circ f)(x) = g(f(x)) = g(y) = g(y') = g(f(x')) = (g \circ f)(x')
+   \]
+   ist $g \circ f$ nicht injektiv.
+  \item
+   Sei $z \in Z$ beliebig aber fest. Da $g \circ f$ surjektiv ist gibt es $x \in X$ mit $(g \circ f)(x) = z$, also $g(f(x)) = z$. Daher ist $y \coloneqq f(x) \in Y$ mit $g(y) = z$. Wegen der Beliebigkeit von $z$ zeigt dies, dass $g$ surjektiv ist.
+  \item
+   Seien $x, x' \in X$ mit $f(x) = f(x')$. Dann ist auch
+   \[
+    (g \circ f)(x) = g(f(x)) = g(f(x')) = (g \circ f)(x').
+   \]
+   Aus der Injektivität von $g \circ f$ folgt damit, dass $x = x'$. Da $f(x) = f(x') \Rightarrow x = x'$ für alle $x, x' \in X$ ist $f$ injektiv.
+  \qedhere
+ \end{enumerate}
+\end{proof}
+
+
+
+Wir wollen nun eine weitere Charakterisierung von Injektivität, Surjektivität und Bijektivität einer Abbildung betrachten
+
+\begin{defi}
+ Sind $f \colon X \to Y$ und $g \colon Y \to X$ Abbildungen, so sagen wir, dass
+ \begin{itemize}
+  \item
+   $g$ ein \emph{Linksinverses} zu $f$ ist, falls $g \circ f = \id_X$.
+  \item
+   $g$ ein \emph{Rechtsinverses} zu $f$ ist, falls $f \circ g = \id_Y$.
+  \item
+   $g$ ein \emph{(beidseitiges) Inverses} zu $f$ ist, falls $g \circ f = \id_X$ und $f \circ g = \id_Y$, d.h.\ falls $g$ sowohl ein Links- als auch ein Rechtsinverses zu $f$ ist.
+ \end{itemize}
+\end{defi}
+
+\begin{bems}
+ \begin{enumerate}[label=\alph*),leftmargin=*]
+  \item
+   Es ist klar, $g \colon Y \to X$ genau dann ein Links- bzw. Rechtsinverses zu $f \colon X \to Y$ ist, wenn $f$ ein Rechts- bzw. Linksinverses zu $g$ ist. (Man beachte die Vertauschung der Rollen.) Ist $g$ ein (beidseitiges) Inverses zu $f$, so ist auch $f$ ein Inverses zu $g$.
+  \item
+   Rechts- und Linksinverse sind im Allgemeinen nicht eindeutig: Betrachten wir etwa die Funktion
+   \[
+    \iota \colon \{1, 2\} \to \{1, 2, 3\}, x \mapsto x
+   \]
+   so ist für jedes $n \in \{1, 2\}$ die Abbildung $p_n \colon \{1, 2, 3\} \to \{1, 2\}$ mit $p_n(1) \coloneqq 1$, $p_n(2) \coloneqq 2$ und $p_n(3) \coloneqq n$ ein Linksinverses zu $\iota$.
+   
+   Für $p \coloneqq p_2$, d.h.\ $p(1) = 1$ und $p(2) = p(3) = 2$, ist andererseits für jedes $n \in \{2, 3\}$ die Abbildung $\iota_n \colon \{1, 2\} \to \{1, 2, 3\}$ mit $\iota_n(1) \coloneqq 1$ und $\iota_n(2) \coloneqq n$ ein Rechtsinverses zu $p$. (Man beachte, dass $\iota = \iota_2$ und die Tatsache, dass $p = p_2$ ein Linksinverses zu $\iota$ ist, sich darin widerspiegelt, dass $\iota = \iota_2$ ein Rechtsinverses zu $p$ ist.
+ \end{enumerate}
+\end{bems}
+
+\begin{lem}
+ \begin{enumerate}[label=\arabic*), leftmargin=*]
+  \item
+   Besitzt $f \colon X \to Y$ sowohl ein Linksinverses $g \colon Y \to X$ als auch ein Rechtsinverses $h \colon Y \to X$, so gilt bereits $g = h$.
+  \item
+   Beidseitige Inverse sind eindeutig, d.h.\ ist $f \colon X \to Y$ und sind $g, g' \colon X \to Y$ beidseitige Inverse von $f$, so ist bereits $g = g'$.
+ \end{enumerate}
+\end{lem}
+\begin{proof}
+ \begin{enumerate}[label=\arabic*), leftmargin=*]
+  \item
+   Es ist
+   \[
+    g
+    = g \circ \id_Y
+    = g \circ (f \circ h)
+    = (g \circ f) \circ h
+    = \id_X \circ h
+    = h.
+   \]
+  \item
+   Da $g$ und $g'$ beidseitige Inverse von $f$ sind, ist insbesondere $g$ ein Linksinverses von $f$ und $g'$ ein Rechtsinverses von $f$. Daher ist $g = g'$ nach den bisherigen Ergebnissen.
+ \end{enumerate}
+\end{proof}
+
+\begin{bem}
+ Ist $g \colon Y \to X$ das eindeutige Inverse zu $f \colon X \to Y$, so schreibt man $f^{-1}$ statt $g$.
+\end{bem}
+
+Wir wollen nun einen Zusammenhang zwischen Surjektivität, Injektivität und Bijektivität und der Invertierbarkeit einer Abbildung herstellen.
+
+\begin{prop}
+ Seien $X$ und $Y$ Mengen, sowie $f \colon X \to Y$ eine Abbildung.
+ \begin{enumerate}[label=\arabic*),leftmargin=*]
+  \item
+   $f$ ist genau dann injektiv, wenn es eine Abbildung $g \colon Y \to X$ gibt, so dass
+   \[
+    g \circ f = \id_X,
+   \]
+   d.h.\ wenn $f$ ein Linksinverses besitzt.
+  \item
+   $f$ ist genau dann surjektiv, wenn es eine Abbildung $g \colon Y \to X$ gibt, so dass
+   \[
+    f \circ g = \id_Y,
+   \]
+   d.h.\ wenn $f$ ein Rechtsinverses besitzt.
+  \item
+   $f$ ist genau dann bijektiv, wenn es eine Abbildung $g \colon Y \to X$ gibt, so dass
+   \[
+    g \circ f = \id_X \quad \text{und} \quad f \circ g = \id_Y,
+   \]
+   d.h.\ wenn $f$ ein beidseitiges Inverses besitzt.
+ \end{enumerate}
+\end{prop}
+
+\begin{proof}
+ Wir schließen zunächst die Fälle $X = \emptyset$ und $Y = \emptyset$ aus, da diese Fälle trivial sind. (Da dann $X = Y = \emptyset$ sein muss und daher $f = \id_\emptyset$.)
+ \begin{enumerate}[label=\arabic*),leftmargin=*]
+  \item
+   Angenommen $f$ ist injektiv. Sei $x_0 \in X$ ein beliebiges Element. Für $y \in Y$ gibt es zwei mögliche Fälle: Ist $y \in \im f$, so gibt es ein $x \in X$ mit $f(x) = y$. Dieses $x$ ist wegen der Injektivität von $f$ eindeutig. In diesem Fall definieren wir $g(y) \coloneqq x$. Ist hingegen $y \notin \im f$, so setzen wir $g(y) \coloneqq x_0$.
+   
+   Für die resultierende Abbildung $g \colon Y \to X$ haben wir $g \circ f = \id_X$: Für jedes $x \in X$ ist $f(x) \in \im f$ und für das eindeutige $x' \in X$ mit $f(x') = f(x)$, also $g(f(x)) = x'$, ist offenbar $x' = x$. Also ist $g$ ein Linksinverses zu $f$.
+   
+   Besitzt andererseits $f$ ein Linksinverses $g \colon Y \to X$, so ist $g \circ f = \id_X$ injektiv, also bereits $f$ injektiv.
+   
+  \item
+   Angenommen $f$ ist surjektiv. Dann gibt es für jedes $y \in Y$ ein $x \in X$ mit $f(x) = y$. Wir wählen für jedes $y \in Y$ ein $x \in X$ mit $f(x) = y$ und setzen $g(y) \coloneqq x$. (Hier nutzen wir das Auswahlaxiom.) Per Definition von $g$ ist $f(g(y)) = y$ für jedes $y \in Y$. Also ist $f \circ g = \id_Y$ und somit $g$ ein Rechtsinverses zu $f$.
+   
+   Besitzt andererseits $f$ ein Rechtsinverses $g$, so ist $f \circ g = \id_Y$ surjektiv, und somit auch $f$ surjektiv.
+  \item
+   Ist $f \colon X \to Y$ bijektiv, so gibt es für jedes $x \in X$ ein eindeutiges $y \in Y$ mit $f(x) = y$. Wir definieren $g(y)$ als das eindeutiges $x \in X$ mit $f(x) = y$. Per Definition von $g$ ist $f(g(y)) = y$ für alle $y \in Y$, und somit $f \circ g = \id_Y$.
+  \qedhere
+ \end{enumerate}
+\end{proof}
+
+\begin{bem}
+ Dass es sich bei der zweiten Aussage tatsächlich um eine Äquivalenz handelt, hängt von Auswahlaxiom ab. Das Auswahlaxiom ist äquivalent dazu, dass jede surjektive Abbildung ein Rechtsinverses besitzt.
+\end{bem}
+
+Damit haben wir nun die folgenden Resultate: Injektionen sind genau die Funktionen, die ein Linksinverses besitzen, Surjektionen sind genau die Funktionen, die ein Rechtsinverses besitzen, und Bijektionen sind genau die Funktionen, die beidseitige Inverse besitzen. Dass eine Abbildung genau dann bijektiv ist, wenn sie sowohl surjektiv als auch injektiv ist, korrespondiert dazu, dass eine Funktion genau dann ein beidseitiges Inverses besitzt, wenn sie sowohl ein Rechtsinverses als auch ein Linksinverses besitzt.
+
+
+\begin{lem}
+ Sei $f \colon X \to Y$ eine Bijektion. Dann ist auch $f^{-1} \colon Y \to X$ eine Bijektion.
+\end{lem}
+\begin{proof}
+ Da $f^{-1}$ das beidseitige Inverse zu $f$ ist, ist auch $f$ das beidseitige Inverse zu $f^{-1}$, also $f^{-1}$ bijektiv.
+\end{proof}
+
+
+
+
+
+
+\section{Kardinalität}
+
+Wir wollen uns nun dem Begriff der \emph{Kardinalität einer Menge} zuwenden; statt von der Kardinalität spricht man auch von der \emph{Mächtigkeit einer Menge}. Grob gesagt wollen wir untersuchen, inwiefern es Sinn ergibt, von der \emph{Anzahl der Elemente einer Menge} zu sprechen.
+
+Zur Motivation der Definition wollen wir ??? betrachten: Wir haben wir einen Raum mit $m$ Stühlen, und $n$ Personen, die sich hinsetzen möchten. Dann gilt:
+\begin{itemize}
+ \item
+  Es ist genau dann $m \geq n$, wenn sich jede Person auf einen eigenen Stuhl setzen kann.
+ \item
+  Es ist genau dann $m \leq n$, wenn jeder Stuhl besetzt seien wird.
+ \item
+  Es ist genau dann $m = n$, wenn sich jede Person auf ihren eigenen Stuhl setzen kann, und anschließend kein Stuhl mehr frei ist.
+\end{itemize}
+
+Bezeichnet $S$ die Menge der Stühle und $P$ die Menge der Personen, so ergibt sich die folgende Übersetzung:
+\begin{itemize}
+ \item
+  Es ist genau dann $m \geq n$, wenn es eine Injektion $P \to S$ gibt.
+ \item
+  Es ist genau dann $m \leq n$, wenn es eine Surjektion $P \to S$ gibt.
+ \item
+  Es ist genau dann $m = n$, wenn es eine Bijektion $P \to S$ gibt.
+\end{itemize}
+
+\begin{defi}
+ Seien $X$ und $Y$ Mengen. Wir sagen, dass $X$ und $Y$ gleichmächtig ist, wenn es eine Bijektion $f \colon X \to Y$ gibt. Wir schreiben $|X| = |Y|$.
+\end{defi}
+
+\begin{prop}
+ Seien $A$, $X$, $Y$, und $Z$ Mengen.
+ \begin{enumerate}[label=\arabic*), leftmargin=*]
+  \item
+   Es ist $|A| = |A|$.
+  \item
+   Ist $|X| = |Y|$ und $|Y| = |Z|$, so ist auch $|X| = |Z|$.
+ \end{enumerate}
+\end{prop}
+\begin{proof}
+ \begin{enumerate}[label=\arabic*), leftmargin=*]
+  \item
+   Die Abbildung $\id_A \colon A \to A$ ist eine Bijektion. Also ist $|A| = |A|$.
+  \item
+   Da $|X| = |Y|$ gibt es eine Bijektion $f \colon X \to Y$. Da $|Y| = |Z|$ gibt es eine Bijektion $g \colon Y \to Z$. Da $f$ und $g$ Bijektionen sind, ist auch $g \circ f \colon X \to Z$ eine Bijektion. Also ist $|X| = |Z|$.
+ \end{enumerate}
+
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\end{document}

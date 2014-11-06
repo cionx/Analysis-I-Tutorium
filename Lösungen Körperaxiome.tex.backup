@@ -1,0 +1,234 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage{xltxtra}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{enumitem}
+
+\setromanfont[Mapping=tex-text]{Linux Libertine O}
+% \setsansfont[Mapping=tex-text]{DejaVu Sans}
+% \setmonofont[Mapping=tex-text]{DejaVu Sans Mono}
+
+\newcommand{\R}{\mathbb{R}}
+
+\title{}
+\author{Jendrik Stelzner}
+\date{\today}
+
+\begin{document}
+ Gegeben sind die folgenden Körperaxiome der reellen Zahlen:
+ \begin{enumerate}[label=(K\arabic*)]
+  \item
+   Je zwei Elementen $a, b \in \R$ ist ein eindeutiges Element $a + b$ zugeordnet, das \emph{Summe von $a$ und $b$} heißt.
+  \item
+   Für $a, b, c \in \R$ gilt das \emph{Assoziativgesetz}
+   \[
+    (a + b) + c = a + (b + c).
+   \]
+  \item\label{existenz additiv neutral}
+   Es gibt ein Element $0 \in \R$, so dass für alle $a \in \R$ gilt
+   \[
+    a + 0 = a.
+   \]
+  \item\label{existenz additiv invers}
+   Zu $a \in \R$ gibt es $x \in \R$ mit $a + x = 0$.
+  \item
+   Für $a, b \in \R$ gilt das \emph{Kommutativgesetz}
+   \[
+    a + b = b + a.
+   \]
+  \item
+   Je zwei Elementen $a, b \in \R$ wird eine eindeutiges Element $a \cdot b$ zugeordnet, das \emph{Produkt von $a$ und $b$} heißt.
+  \item
+   Für $a, b, c \in \R$ gilt das \emph{Assoziativgesetz}
+   \[
+    (a \cdot b) \cdot c = a \cdot (b \cdot c).
+   \]
+  \item\label{existenz multiplikativ neutral}
+   Es gibt ein Element $1 \in \R \setminus \{0\}$, so dass für alle $a \in \R$ gilt
+   \[
+    a \cdot 1 = a.
+   \]
+  \item\label{existenz multiplikativ invers}
+   Zu $a \in \R \setminus \{0\}$ gibt es $x \in \R$ mit $a \cdot x = 1$.
+  \item
+   Für $a, b \in \R$ gilt das \emph{Kommutativgesetz}
+   \[
+    a \cdot b = b \cdot a.
+   \]
+  \item
+   Für $a, b, c \in \R$ gilt das \emph{Distributivgesetz}
+   \[
+    (a + b) \cdot c = a \cdot c + b \cdot c.
+   \]
+ \end{enumerate}
+ 
+ Aus diesen Axiomen lassen sich weitere Eigenschaft der Addition und Multiplikation folgern, ohne diese explizit fordern zu müssen. Dabei laufen die Beweise für die Aussagen über die Addition und die Aussagen über die Multiplikation häufig sehr ähnlich, das die entsprechenden Körperraxiome entsprechend symmetrisch sind.
+ 
+ \begin{enumerate}
+  \item
+   Das additiv neutrale Element aus \ref{existenz additiv neutral} ist eindeutig: Sind $0, 0' \in \R$, so dass für alle $a \in \R$
+   \[
+    a + 0 = a \quad \text{und} \quad a + 0' = a,
+   \]
+   so ist $0 = 0'$.
+   \begin{proof}
+    Indem wir die Fälle $a = 0$ und $a = 0'$ betrachten, erhalten wir, dass
+    \[
+     0' + 0 = 0' \quad \text{und} \quad 0 + 0' = 0.
+    \]
+    Da die Addition kommutativ ist, ist $0' + 0 = 0 + 0'$ und somit
+    \[
+     0' = 0' + 0 = 0 + 0' = 0.
+     \qedhere
+    \]
+   \end{proof}
+  \item
+   Das multiplikativ neutrale Element aus \ref{existenz multiplikativ neutral} ist eindeutig: Sind $1, 1' \in \R$, so dass für alle $a \in \R$
+   \[
+    a \cdot 1 = a \quad \text{und} \quad a \cdot 1' = a,
+   \]
+   so ist $1 = 1'$.
+   \begin{proof}
+    Analog zum vorherigen Beweis erhalten wir durch Betrachtung der Fälle $a = 1$ und $a = 1'$, dass
+    \[
+     1' \cdot 1 = 1' \quad \text{und} 1 \cdot 1' = 1,
+    \]
+    und somit wegen der Kommutativität der Multiplikation, dass
+    \[
+     1 = 1 \cdot 1' = 1' \cdot 1 = 1'.
+     \qedhere
+    \]
+   \end{proof}
+  \item
+   Das additiv inverse Element aus \ref{existenz additiv invers} ist eindeutig: Sind $a, x, x' \in \R$, so dass
+   \[
+    a + x = 0 \quad \text{und} \quad a + x' = 0,
+   \]
+   so ist $x = x'$.
+   \begin{proof}
+    Es ist
+    \begin{align*}
+     x
+     &= x + 0
+     = x + (a + x')
+     = (x + a) + x' \\
+     &= (a + x) + x'
+     = 0 + x'
+     = x' + 0
+     = x'.
+    \qedhere
+    \end{align*}
+   \end{proof}
+   Für das eindeutige additiv inverse Element zu $a \in \R$ schreibt man $-a$.
+  \item
+   Das multiplikativ inverse Element aus \ref{existenz multiplikativ invers} ist eindeutig: Ist $a \in \R \setminus \{0\}$, und sind $x, x' \in \R$, so dass
+   \[
+    a \cdot x = 1 \quad \text{und} \quad a \cdot x' = 1,
+   \]
+   so ist $x = x'$.
+   \begin{proof}
+    Es ist
+    \begin{align*}
+     x
+     = x \cdot 1
+     = x \cdot (a \cdot x')
+     = (x \cdot a) \cdot x'
+     = (a \cdot x) \cdot x'
+     = 1 \cdot x'
+     = x' \cdot 1
+     = x'.
+    \end{align*}
+   \end{proof}
+   Für das eindeutige multiplikativ inverse Element zu $a \in \R \setminus \{0\}$ schreibt man $a^{-1}$.
+ \end{enumerate}
+ 
+ Mithilfe der Eindeutigkeit des additiven und multiplikativen Inversen kann man nun auch leicht diverse Gleichheiten für diese zeigen:
+ 
+ \begin{enumerate}[resume]
+  \item
+   Für $a \in \R$ gilt $-(-a) = a$.
+   \begin{proof}
+    Da $-a$ das additiv inverse Element zu $a$ ist, gilt
+    \[
+     a + (-a) = 0,
+    \]
+    wegen der Kommutativität der Addition also auch
+    \[
+     (-a) + a = 0.
+    \]
+    Nun ist $-(-a)$ das eindeutige Element, so dass
+    \[
+     (-a) + (-(-a)) = 0.
+    \]
+    Wegen der Eindeutigkeit des Inversen ist also $-(-a) = a$.
+   \end{proof}
+  \item
+   Für $a \in \R \setminus \{0\}$ gilt $(a^{-1})^{-1} = a$.
+   \begin{proof}
+    Da $a^{-1}$ das multiplikativ inverse Element zu $a$ ist, gilt
+    \[
+     a \cdot a^{-1} = 1,
+    \]
+    wegen der Kommutativität der Multiplikation also auch
+    \[
+     a^{-1} \cdot a = 1.
+    \]
+    Es ist $(a^{-1})^{1-}$ das eindeutige Element, so dass
+    \[
+     a^{-1} \cdot \left(a^{-1}\right)^{-1} = 1.
+    \]
+    Wegen der Eindeutigkeit des Inversen erhalten wir $(a^{-1})^{-1} = a$.
+   \end{proof}
+  \item
+   Für $a, b \in \R$ ist $-(a + b) = (-a) + (-b)$.
+   \begin{proof}
+    Durch die Assoziativität und Kommutativität der Addition erhalten wir, dass
+    \[
+     (a+b) + ((-a) + (-b)) = (a + (-a)) + (b + (-b)) = 0 + 0 = 0.
+    \]
+    Nach der Eindeutigkeit des additiven Inversen muss daher $(-a) + (-b) = -(a + b)$.
+   \end{proof}
+ \end{enumerate}
+ Die letzte Aussage hat (natürlich) auch ein entsprechendes Analogon für die Multiplikation. Hier gilt es jedoch aufzupassen:
+ \begin{enumerate}[resume]
+  \item
+   Für alle $a \in \R$ ist $a \cdot 0 = 0$.
+   \begin{proof}
+    Mithilfe des Distributivgesetzes erhalten wir, dass
+    \[
+     a \cdot 0 = a \cdot (0 + 0) = (a \cdot 0) + (a \cdot 0).
+    \]
+    Addition mit $-(a \cdot 0)$ auf beiden Seiten ergibt, dass
+    \begin{align*}
+     0
+     &= (a \cdot 0) + (-(a \cdot 0))
+     = ((a \cdot 0) + (a \cdot 0)) + (-(a \cdot 0)) \\
+     &= (a \cdot 0) + ((a \cdot 0) + (-(a \cdot 0)))
+     = (a \cdot 0) + 0
+     = a \cdot 0.
+    \end{align*}
+   \end{proof}
+  \item
+   Sind $a, b \in \R \setminus \{0\}$, also $a, b \neq 0$, so ist auch $a \cdot b \neq 0$.
+   \begin{proof}
+    Angenommen, es ist $a \cdot b = 0$.
+   \end{proof}
+  \item
+   Für $a, b \in \R \setminus \{0\}$ ist $(a \cdot b)^{-1} = a^{-1} \cdot b^{-1}$.
+   \begin{proof}
+    Durch die Assoziativität und Kommutativität der Multiplikation erhalten wir, dass
+    \[
+     (a \cdot b) \cdot \left(a^{-1} \cdot b^{-1}\right)
+     = \left(a \cdot a^{-1}\right) \cdot \left(b \cdot b^{-1}\right)
+     = 1 \cdot 1
+     = 1.
+    \]
+    Zusammen mit der Eindeutigkeit des multiplikativen Inversen ergibt sich damit, dass \mbox{$(a \cdot b)^{-1} = a^{-1} \cdot b^{-1}$}.
+   \end{proof}
+ \end{enumerate}
+\end{document}
