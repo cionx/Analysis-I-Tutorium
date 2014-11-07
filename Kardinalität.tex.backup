@@ -23,6 +23,11 @@
 \newtheorem*{bem}{Bemerkung}
 \newtheorem*{bems}{Bemerkungen}
 
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+
 \DeclareMathOperator{\im}{im}
 
 \DeclareMathOperator{\id}{id}
@@ -311,9 +316,9 @@ Damit haben wir nun die folgenden Resultate: Injektionen sind genau die Funktion
 
 \section{Kardinalität}
 
-Wir wollen uns nun dem Begriff der \emph{Kardinalität einer Menge} zuwenden; statt von der Kardinalität spricht man auch von der \emph{Mächtigkeit einer Menge}. Grob gesagt wollen wir untersuchen, inwiefern es Sinn ergibt, von der \emph{Anzahl der Elemente einer Menge} zu sprechen.
+Wir wollen uns nun dem Begriff der \emph{Kardinalität einer Menge} zuwenden; statt von der Kardinalität spricht man auch von der \emph{Mächtigkeit einer Menge}. Grob gesagt wollen wir untersuchen, inwiefern es Sinn ergibt, von der Anzahl der Elemente einer Menge zu sprechen.
 
-Zur Motivation der Definition wollen wir ??? betrachten: Wir haben wir einen Raum mit $m$ Stühlen, und $n$ Personen, die sich hinsetzen möchten. Dann gilt:
+Zur Motivation betrachten wir das folgende Beispiel: Wir betrachten eine Gruppe von $n$ Personen, die sich hinsetzen möchten. Hierfür stehen $m$ Stühle zur Verfügung. Dann gilt:
 \begin{itemize}
  \item
   Es ist genau dann $m \geq n$, wenn sich jede Person auf einen eigenen Stuhl setzen kann.
@@ -333,15 +338,41 @@ Bezeichnet $S$ die Menge der Stühle und $P$ die Menge der Personen, so ergibt s
   Es ist genau dann $m = n$, wenn es eine Bijektion $P \to S$ gibt.
 \end{itemize}
 
+
+
+\subsection{Gleichmächtigkeit}
+
 \begin{defi}
- Seien $X$ und $Y$ Mengen. Wir sagen, dass $X$ und $Y$ gleichmächtig ist, wenn es eine Bijektion $f \colon X \to Y$ gibt. Wir schreiben $|X| = |Y|$.
+ Eine Menge $X$ heißt \emph{endlich}, falls es für ein natürliche Zahl $n \in \N$ eine Bijektion $\varphi \colon X \to \{1, \dotsc, n\}$ gibt. Wir nennen dann $|X| \coloneqq n$ die \emph{Mächtigkeit} von $X$.
 \end{defi}
+
+Die Mächtigkeit einer endlichen Menge ist also einfach die Anzahl ihrer Elemente. Diese Definition ist allerdings ein wenig problematisch: Ist $X$ eine endliche Menge und sind $n, m \in \N$ natürliche Zahlen, so dass es Bijektionen $\varphi \colon X \to \{1, \dotsc, n\}$ und $\psi \colon X \to \{1, \dotsc, m\}$, gibt, so müssen wir sicherstellen, dass $n = m$, damit die Mächtigkeit von $X$ wohldefiniert ist. Dies ergibt sich aus dem folgenden Lemma:
+
+\begin{lem}
+ Seien $n, m \in \N$, so dass es eine Bijektion $f \colon \{1, \dotsc, n\} \to \{1, \dotsc, m\}$ gibt. Dann ist $n = m$.
+\end{lem}
+
+Einen formalen mathematischen Beweis dieser Aussage möchten wir hier nicht geben, und uns stattdessen auf die Anschauung des Lesers verlassen. Die Wohldefiniertheit der Mächtigkeit einer endlichen Menge ergibt sich wie folgt aus dem Lemma: Da $\varphi \colon X \to \{1, \dotsc, n\}$ eine Bijektion ist, ist auch $\varphi^{-1} \colon \{1, \dotsc, n\} \to X$ eine Bijektion. Daher ist auch die Verknüpfung
+\[
+ \psi \circ \varphi^{-1} \colon \{1, \dotsc, n\} \to \{1, \dotsc, m\}
+\]
+eine Bijektion, und nach dem Lemma ist daher $n = m$.
+
+Für zwei endliche Mengen $X$ und $Y$ können wir nun feststellen, ob $X$ und $Y$ gleich viele Elemente enthalten, ohne diese „zählen“ zu müssen: $X$ und $Y$ sind nämlich genau dann gleichmächtig, wenn es eine Bijektion zwischen den beiden gibt.
+
+\begin{defi}
+ Seien $X$ und $Y$ Mengen. Wir sagen, dass $X$ und $Y$ gleichmächtig ist, wenn es eine Bijektion $X \to Y$ gibt. Wir schreiben dann $|X| = |Y|$. Wir schreiben $|X| \neq |Y|$, wenn nicht $|X| = |Y|$, d.h.\ wenn es keine Bijektion $X \to Y$ gibt.
+\end{defi}
+
+Diese Definition liefert einige intuitive Eigenschaften.
 
 \begin{prop}
  Seien $A$, $X$, $Y$, und $Z$ Mengen.
  \begin{enumerate}[label=\arabic*), leftmargin=*]
   \item
    Es ist $|A| = |A|$.
+  \item
+   Ist $|X| = |Y|$, so ist auch $|Y| = |X|$.
   \item
    Ist $|X| = |Y|$ und $|Y| = |Z|$, so ist auch $|X| = |Z|$.
  \end{enumerate}
@@ -350,11 +381,39 @@ Bezeichnet $S$ die Menge der Stühle und $P$ die Menge der Personen, so ergibt s
  \begin{enumerate}[label=\arabic*), leftmargin=*]
   \item
    Die Abbildung $\id_A \colon A \to A$ ist eine Bijektion. Also ist $|A| = |A|$.
+   
+  \item
+   Da $|X| = |Y|$ gibt es eine Bijektion $\varphi \colon X \to Y$. Da auch $\varphi^{-1} \colon Y \to X$ eine Bijektion ist, ist auch $|Y| = |X|$.
+   
   \item
    Da $|X| = |Y|$ gibt es eine Bijektion $f \colon X \to Y$. Da $|Y| = |Z|$ gibt es eine Bijektion $g \colon Y \to Z$. Da $f$ und $g$ Bijektionen sind, ist auch $g \circ f \colon X \to Z$ eine Bijektion. Also ist $|X| = |Z|$.
+   \qedhere
+ \end{enumerate}
+\end{proof}
+
+
+
+\subsection{Vergleich von Mächtigkeiten}
+
+Damit können wir nun für beliebige Mengen $A$ und $B$ sagen, ob $A$ und $B$ gleichviele Element enthalten. Im Allgemeinen möchten wir allerdings nicht nur wissen, ob $A$ und $B$ gleich viele Elemente enthalten, sondern auch, ob $A$ mehr oder weniger Mengen als $B$ enthält. In Anbetracht des vorherigen motivierenden Beispieles definieren wir daher:
+
+\begin{defi}
+ Seien $X$ und $Y$ Mengen. Wir schreiben, dass $|X| \leq |Y|$, wenn es eine Injektion $X \to Y$ gibt. Wir schreiben, dass $|X| \geq |Y|$, wenn es eine Surjektion $X \to Y$ gibt. Wir schreiben $|X| < |Y|$, bzw.\ $|X| > |Y|$, wenn $|X| \leq |Y|$, bzw.\ $|X| \geq |Y|$, und $|X| \neq |Y|$.
+\end{defi}
+
+\begin{prop}
+ Seien $X$, $Y$ und $Z$ Mengen.
+ \begin{enumerate}[label=\arabic*), leftmargin=*]
+  \item 
  \end{enumerate}
 
-\end{proof}
+  \item
+   Ist $|X| = |Y|$ so ist auch $|X| \leq |Y|$.
+ \end{enumerate
+\end{prop}
+
+
+
 
 
 
