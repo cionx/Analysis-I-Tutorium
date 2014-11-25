@@ -1,7 +1,7 @@
 \documentclass[a4paper,10pt]{article}
 %\documentclass[a4paper,10pt]{scrartcl}
 
-\usepackage{mystyle}
+\usepackage{../mystyle}
 
 \setromanfont[Mapping=tex-text]{Linux Libertine O}
 % \setsansfont[Mapping=tex-text]{DejaVu Sans}
@@ -9,7 +9,7 @@
 
 \title{Grenzwerte und Konvergenz}
 \author{Jendrik Stelzner}
-\date{}
+\date{\today}
 
 \begin{document}
 \maketitle
@@ -346,6 +346,29 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
      &\leq |b| |a - a_n| + c |b - b_n|.
     \end{aligned}
    \end{equation}
+   Wir unterscheiden nun zwischen zwei Fällen: Ist $b = 0$, so ist nach \eqref{eqn: Ungleichung Produkt}
+   \[
+    |a b - a_n b_n| \leq c |b - b_n|
+   \]
+   Da $b_n \to b$ für $n \to \infty$ gibt es ein $N \in \N$ mit $|b - b_n| < \varepsilon/c$ für alle $n \geq N$. Es ist daher für alle $n \geq \N$
+   \[
+    |a b - a_n b_n| \leq c |b - b_n| < c \frac{\varepsilon}{c} = \varepsilon.
+   \]
+   Ist andererseits $b \neq 0$, und somit auch $|b| \neq 0$, so gibt es wegen $a_n \to a$ für $n \to \infty$ ein $n_1 \in \N$ mit $|a - a_n| < \varepsilon/(2|b|)$ für $n \geq n_1$, und wegen $b_n \to b$ für $n \to \infty$ ein $n_2 \in \N$ mit $|b - b_n| < \varepsilon/(2c)$ für alle $n \geq n_2$. Für $N \coloneqq \max \{n_1, n_2\}$ ist dann für alle $n \geq N$
+   \[
+    |a b - a_n b_n|
+    \leq |b| |a - a_n| + c |b - b_n|
+    < |b| \frac{\varepsilon}{2|b|} + c \frac{\varepsilon}{2c}
+    = \varepsilon.
+   \]
+   In beiden Fällen folgt aus der Beliebigkeit von $\varepsilon > 0$, dass $(a_n b_n)$ konvergiert und $\lim_{n \to \infty} (a_n \cdot b_n) = a \cdot b$.
+  \item
+   
+  \item
+   Aus den vorherigen Aussagen folgt, dass $1/b_n \to 1/b$ für $n \to \infty$ und damit auch
+   \[
+    \frac{a_n}{b_n} = a_n \cdot \frac{1}{b_n} \to a \cdot \frac{1}{b} = \frac{a}{b}.
+   \]
  \end{enumerate}
 \end{proof}
 
