@@ -1,0 +1,359 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage{mystyle}
+
+\setromanfont[Mapping=tex-text]{Linux Libertine O}
+% \setsansfont[Mapping=tex-text]{DejaVu Sans}
+% \setmonofont[Mapping=tex-text]{DejaVu Sans Mono}
+
+\title{Grenzwerte und Konvergenz}
+\author{Jendrik Stelzner}
+\date{}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+
+
+
+
+\section{Vorbereitungen}
+
+
+\begin{defi}
+ Eine Teilmenge $A \subseteq \R$ heißt \emph{nach oben beschränkt}, falls es ein $s \in \R$ gibt, so dass $a \leq s$ für alle $a \in A$; $s$ heißt dann eine obere Schranke von $A$. $A$ heißt \emph{nach oben unbeschränkt}, falls $A$ nicht nach oben beschränkt ist.
+ 
+ $A$ heißt \emph{nach unten beschränkt}, falls es ein $t \in \R$ gibt, so dass $t \leq a$ für alle $a \in A$; $t$ heißt dann untere Schranke von $A$. $A$ heißt \emph{nach unten unbeschränkt}, falls $A$ nicht nach unten beschränkt ist.
+ 
+ $A$ heißt \emph{beschränkt}, falls $A$ sowohl nach oben als auch nach unten beschränkt ist.
+\end{defi}
+
+
+\begin{bsp}
+ \begin{enumerate}
+  \item
+   $N \subseteq \R$ ist nach unten beschränkt und nach oben unbeschränkt.
+  \item
+   $\Z \subseteq \R$ ist nach unten und oben unbeschränkt.
+  \item
+   Das Einheitsintervall $[0,1] \subseteq \R$ ist beschränkt.
+  \item
+   Jede endliche Menge $X \subseteq \R$ ist beschränkt.
+  \item
+   Ist $B \subseteq \R$ nach unten, bzw.\ oben beschränkt, so ist $A \subseteq \R$ ebenfalls nach unten, bzw.\ oben beschränkt. Ist $B$ nach unten, bzw.\ oben unbeschränkt, so ist auch $A$ nach unten, bzw.\ oben unbeschränkt.
+  \item
+   Eine Teilmenge $A \subseteq \R$ ist genau dann nach unten, bzw.\ oben beschränkt, falls die Teilmenge
+   \[
+    -A = \{-a \mid a \in A\} \subseteq \R
+   \]
+   nach oben, bzw.\ unten beschränkt ist.
+ \end{enumerate}
+\end{bsp}
+
+
+\begin{bem}
+ Eine Teilmenge $A \subseteq \R$ ist genau dann beschränkt, falls es ein $R > 0$ gibt, so dass $|a| \leq R$ für alle $a \in A$.
+\end{bem}
+\begin{proof}
+ Gibt es ein solches $R$, so ist $-R \leq a \leq R$ für alle $a \in A$ und somit ist $A$ sowohl nach oben als auch nach unten beschränkt, also beschränkt.
+ 
+ Ist $A$ beschränkt, so gibt $s, t \in \R$, so dass $t \leq a \leq s$ für alle $a \in A$. Für $R \coloneqq \max\{|s|, |t|\}$ ist dann $|a| \leq R$ für alle $a \in A$.
+\end{proof}
+
+
+\begin{defi}
+ Es sei $A \subseteq \R$ eine Teilmenge und $s \in \R$. $s$ heißt \emph{Supremum von $A$}, falls $s$ eine kleinste obere Schranke von $A$ ist, d.h. falls
+ \begin{enumerate}
+  \item
+   $s$ ist eine obere Schranke von $A$, und
+  \item
+   für jede obere Schranke $t$ von $A$ ist $s \leq t$.
+ \end{enumerate}
+ $s$ heißt \emph{Infimum von $A$}, falls $s$ eine größte untere Schranke von $A$ ist, d.h. falls
+ \begin{enumerate}
+  \item
+   $s$ ist eine untere Schranke von $A$, und
+  \item
+   für jede untere Schranke $t$ von $A$ ist $t \leq s$.
+ \end{enumerate}
+\end{defi}
+
+
+\begin{bem}
+ Existiert ein Supremum, bzw.\ Infimum einer Teilmenge $A \subseteq \R$, so ist dieses eindeutig, d.h. sind $s,t \in \R$ Suprema, bzw.\ Infima von $A$, so ist $s = t$. Falls das Supremum von $A$ existiert, so schreiben wir hierfür $\sup A$. Für das Infimum schreiben wir $\inf A$, sofern dieses existiert.
+\end{bem}
+\begin{proof}
+ Es seien $s$ und $t$ Suprema von $A$. Da $s$ ein Supremum von $A$ und $t$ eine obere Schranke von $A$ ist, ist $s \leq t$. Durch Vertauschen der Rollen ergibt sich, dass auch $t \leq s$. Daher ist $s = t$.
+ 
+ Sind $s$ und $t$ Infima von $A$, so ergibt sich $s = t$ analog.
+\end{proof}
+
+
+Ist $A \subseteq \R$ nicht nach oben beschränkt, so besitzt $A$ keine obere Schranke und somit auch kein Supremum. Wie sich herausstellt, ist diese Bedingung für Teilmengen von $\R$ schon hinreichend:
+
+
+\begin{prop}
+ Es sei $A \subseteq \R$ eine Teilmenge.
+ \begin{enumerate}
+  \item
+   Ist $A$ nach oben beschränkt, so existiert $\sup A$.
+  \item
+   Ist $A$ nach unten beschränkt, so existiert $\inf A$.
+ \end{enumerate}
+\end{prop}
+
+
+Wir wollen diese Proposition hier nicht beweisen, da der Beweis von der konkreten Konstruktion der reellen Zahlen abhängt.
+
+
+\begin{lem}[Charakterisierung von $\sup$ und $\inf$]
+ Es sei $A \subseteq \R$ eine nach oben beschränkte Teilmenge.
+ \begin{enumerate}
+  \item
+   Für eine obere Schranke $s$ von $A$ ist $s = \sup A$ genau dann, wenn es für alle $\varepsilon > 0$ ein $a \in A$ mit $s-\varepsilon < a \leq s$ gibt.
+  \item
+   Für eine untere Schranke $s$ von $A$ ist $s = \inf A$ genau dann, wenn es für alle $\varepsilon > 0$ ein $a \in A$ mit $s \leq a < s + \varepsilon$ gibt.
+ \end{enumerate}
+\end{lem}
+\begin{proof}
+ \begin{enumerate}
+  \item
+   Angenommen es ist $s = \sup A$. Es sei $\varepsilon > 0$ beliebig aber fest. Da $s$ die kleinste obere Schranke von $A$ ist, ist $s-\varepsilon$ keine obere Schranke von $A$. Es gibt also $a \in A$ mit $s-\varepsilon < a$. Da $s$ eine obere Schranke von $A$ ist, ist auch $a \leq s$. Zusammen ist daher $s-\varepsilon < a \leq s$. Aus der Beliebigkeit von $\varepsilon > 0$ folgt die Implikation.
+   
+   Angenommen es ist $s \neq \sup A$. Dann gibt es eine kleinere obere Schranke $t < s$ von $A$. Für $\varepsilon \coloneqq (s-t)/2 > 0$ ist dann für alle $a \in A$
+   \[
+    a \leq t < t + \varepsilon = s - \varepsilon.
+   \]
+   Es gibt dann kein $a \in A$ mit $s-\varepsilon < a \leq s$.
+  \item
+   Der Beweis läuft analog zum vorherigen.
+ \end{enumerate}
+
+\end{proof}
+
+
+
+
+
+\section{Grenzwerte}
+Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um Folgen auf $\R$.
+
+
+\begin{defi}
+ Eine Folge $(x_n)_{n \in \N}$ heißt nach oben beschränkt, bzw.\ nach unten beschränkt, bzw.\ beschränkt, falls die Punktmenge $\{x_n \mid n \in \N\}$ nach oben beschränkt, bzw.\ nach unten beschränkt, bzw.\ beschränkt ist.
+\end{defi}
+
+
+\begin{defi}
+ Es sei $(x_n)_{n \in \N}$ eine Folge auf $\R$ und $x \in \R$. \emph{$(x_n)$ konvergiert gegen $x$}, falls es für alle $\varepsilon > 0$ ein $N \in \N$ gibt, so dass $|x_n-x| < \varepsilon$ für alle $n \geq N$. Wir schreiben dann $\lim_{n \to \infty} x_n = x$, bzw.\ $x_n \to x$ für $n \to \infty$.
+ 
+ Wir sagen, dass die Folge $(x_n)$ \emph{konvergent} ist, falls es ein $x \in \R$ gibt, so dass $x_n \to x$ für $n \to \infty$. $x$ heißt dann der \emph{Grenzwert} der Folge $(x_n)$.
+\end{defi}
+
+
+\begin{prop}
+ Der Grenzwert einer konvergenten Folge ist eindeutig, d.h. ist $(x_n)_{n \in \N}$ eine konvergente Folge und sind $x, x' \in \R$ mit $x_n \to x$ und $x_n \to x'$ für $n \to \infty$, so ist $x = x'$.
+\end{prop}
+\begin{proof}
+ Angenommen es ist $x \neq x'$. Dann ist $\varepsilon \coloneqq |x-x'| > 0$. Da $x_n \to x$ gibt es $n_1 \in \N$, so dass $|x_n - x| < \varepsilon/3$ für alle $n \geq n_1$. Da $x_n \to x'$ gibt es $n_2 \in \N$, so dass $|x_n - x'| < \varepsilon/3$ für alle $n \geq n_2$. Für $N \coloneqq \max \{n_1, n_2\}$ ist dann für alle $n \geq N$ sowohl $|x_n - x| < \varepsilon/3$ als auch $|x_n - x'| < \varepsilon/3$. Daher ist nach der Dreiecksungleichung
+ \[
+  |x - x'|
+  = |(x_N - x') - (x_N - x)|
+  \leq |x_N - x'| + |x_N - x|
+  < \frac{\varepsilon}{3} + \frac{\varepsilon}{3}
+  = \frac{2}{3} \varepsilon,
+ \]
+ im Widerspruch zu $\varepsilon = |x - x'| > 0$.
+\end{proof}
+
+
+\begin{bsp}
+ \begin{enumerate}
+  \item
+   Wir haben $\lim_{n \to \infty} 1/n = 0$: Es sei $\varepsilon > 0$ beliebig aber fest. Nach Archimedes gibt es ein $N \in \N$, $N \geq 1$ mit $N > 1/\varepsilon$. Für alle $n \geq N$ ist dann $\varepsilon > 1/n$ und damit
+   \[
+    0 \leq \frac{1}{n} \leq \varepsilon \quad \text{für alle $n \geq N$}.,
+   \]
+   also $|0 - 1/n| < \varepsilon$. Dass $\lim_{n \to \infty} 1/n = 0$ folgt daher aus der Beliebigkeit von $\varepsilon > 0$.
+  \item
+   Die konstante Folge $(c)_{n \in \N}$ konvergiert gegen $c$.
+  \item
+   Es ist $\lim_{n \to \infty} n^{1/n} = 1$. Zum Beweis hiervon sei $\varepsilon > 0$ beliebig aber fest. Es sei $N \in \N$ mit $N \geq 2$ und $N \geq 1 + 2/\varepsilon^2$. Für alle $n \geq N$ ist dann $(n-1)\varepsilon^2/2 \geq 1$ und somit
+   \begin{align*}
+    (1+\varepsilon)^n
+    &= \sum_{k=0}^n \binom{n}{k} \varepsilon^k
+    = 1 + n \varepsilon + \frac{n(n-1)}{2}\varepsilon^2 + \dotso \\
+    &> 1 + \frac{n(n-1)}{2}\varepsilon^2
+    = 1 + n \frac{(n-1)\varepsilon^2}{2}
+    \geq 1 + n
+    > n.
+   \end{align*}
+  Daher ist für alle $n \geq N$
+  \[
+   1 \leq n^{1/n} < 1 + \varepsilon
+  \]
+  und somit $|1 - n^{1/n}| < \varepsilon$. Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $n^{1/n} \to 1$ für $n \to \infty$.
+ \end{enumerate}
+\end{bsp}
+
+
+
+
+
+\subsection{Konvergenz und Ordnung}
+
+
+\begin{lem}
+ Sei $(x_n)_{n \in \N}$ eine konvergente Folge. Dann ist $(x_n)$ beschränkt, d.h. es gibt $R > 0$, so dass $|x_n| < R$ für alle $n \in \N$.
+\end{lem}
+\begin{proof}
+ Es sei $x \coloneqq \lim_{n \to \infty} x_n$. Da $x_n \to x$ für $n \to \infty$ gibt es ein $N \in \N$ mit $|x_n - x| < 1$ für alle $n \geq N$. Es ist dann nach der Dreiecksungleichung für alle $n \geq N$
+ \[
+  |x_n|
+  = |x + x_n - x|
+  \leq |x| + |x_n - x|
+  < |x| + 1.
+ \]
+ Für
+ \[
+  R \coloneqq \max \{|x_0|, |x_1|, \dotsc, |x_{N-1}|, |x| + 1\}
+ \]
+ ist daher $|x_n| \leq R$ für alle $n \in \N$.
+\end{proof}
+
+
+\begin{lem}
+ Es seien $(a_n)_{n \in \N}$ und $(b_n)_{n \in \N}$ konvergente Folgen mit $a_n \leq b_n$ für alle $n \in \N$. Dann ist auch $\lim_{n \to \infty} a_n \leq \lim_{n \to \infty} b_n$.
+\end{lem}
+\begin{proof}
+ Es sei $a \coloneqq \lim_{n \to \infty} a_n$ und $b \coloneqq \lim_{n \to \infty} b_n$. Angenommen, es ist $b < a$. Dann ist $\varepsilon \coloneqq |a-b| = a-b > 0$. Da $a_n \to a$ für $n \to \infty$ gibt es $n_1 \in \N$ mit $|a_n - a| < \varepsilon/3$ für alle $n \geq n_1$. Da $b_n \to b$ für $n \to \infty$ gibt es $n_2 \in \N$ mit $|b_n - b| < \varepsilon/3$ für alle $n \geq n_2$. Für $N = \max \{n_1, n_2\}$ ist dann
+ \[
+  b_N < b + \frac{\varepsilon}{3} < b + \frac{2\varepsilon}{3} = a - \frac{\varepsilon}{3} < a_N,
+ \]
+ im Widerspruch zu $a_n \leq b_n$.
+\end{proof}
+
+
+\begin{lem}[Sandwich-Lemma]
+ Es seien $(a_n)_{n \in \N}$, $(b_n)_{n \in \N}$ und $(c_n)_{n \in \N}$ Folgen mit $a_n \leq b_n \leq c_n$ für alle $n \in \N$. Konvergieren die beiden äußeren Folgen $(a_n)$ und $(c_n)$ und gilt $\lim_{n \to \infty} a_n = \lim_{n \to \infty} c_n$, so konvergiert auch $(b_n)$ und es gilt
+ \[
+  \lim_{n \to \infty} a_n = \lim_{n \to \infty} b_n = \lim_{n \to \infty} c_n.
+ \]
+\end{lem}
+\begin{proof}
+ Wir setzen $x \coloneqq \lim_{n \to \infty} a_n = \lim_{n \to \infty} c_n$. Es sei $\varepsilon > 0$ beliebig aber fest. Da $a_n \to x$ für $n \to \infty$ gibt es $n_1 \in \N$ mit $|a_n - x| < \varepsilon$ für alle $n \geq n_1$. Da $c_n \to x$ für $n \to \infty$ gibt es $n_2 \in \N$ mit $|c_n - x| < \varepsilon$ für alle $n \geq n_2$. Für $N \coloneqq \max \{n_1, n_2\}$ ist daher für alle $n \geq N$
+ \[
+  x-\varepsilon < a_n \leq b_n \leq c_n < x+\varepsilon,
+ \]
+ also $|x - b_n| < \varepsilon$ für alle $n \geq N$. Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $\lim_{n \to \infty} b_n = x$.
+\end{proof}
+
+
+\begin{prop}[Bolzano-Weierstraß]
+ Es sei $(x_n)_{n \in \N}$ eine beschränkte monotone Folge. Dann konvergiert $(x_n)$.
+\end{prop}
+\begin{proof}
+ Wir betrachten den Fall, dass $(x_n)$ monoton steigend ist. Da $(x_n)$ nach oben beschränkt ist existiert $x \coloneqq \sup_{n \in \N} x_n$. Wir wollen zeigen, dass $x_n \to x$ für $n \to \infty$.
+ 
+ Es sei $\varepsilon > 0$ beliebig aber fest. Aus der Charakterisierung des Supremums wissen wir, dass es $N \in \N$ mit $x - \varepsilon < x_N \leq x$. Wegen der Monotonie von $(x_n)$ erhalten wir, dass $x - \varepsilon < x_n$ für alle $n \in \N$, und dass $x_n \leq x$ für alle $n \geq N$ folgt direkt aus der Definition von $x$. Es ist also
+ \[
+  x - \varepsilon < x_n \leq x \quad \text{für alle $n \geq N$},
+ \]
+ und somit insbesondere $|x - x_n| < \varepsilon$ für alle $n \geq N$. Wegen der Beliebigkeit von $\varepsilon > 0$ folgt, dass $\lim_{n \to \infty} x_n = x$.
+ 
+ Der Fall, dass $(x_n)$ monoton fallend ist, läuft analog.
+\end{proof}
+
+
+
+
+
+\subsection{Konvergenz und Rechenoperationen}
+
+
+\begin{prop}
+ Es seien $(a_n)_{n \in \N}$ und $(b_n)_{n \in \N}$ konvergente Folgen mit Grenzwerten $a \coloneqq \lim_{n \to \infty} a_n$ und $b \coloneqq \lim_{n \to \infty} b_n$.
+ \begin{enumerate}
+  \item
+   Die Folge $(a_n + b_n)_{n \in \N}$ ist ebenfalls konvergent und
+   \[
+    \lim_{n \to \infty} (a_n + b_n)
+    = a + b
+    = \left(\lim_{n \to \infty} a_n\right) + \left(\lim_{n \to \infty} b_n\right).
+   \]
+  \item
+   Für alle $c \in \R$ ist die Folge $(c a_n)_{n \in \N}$ konvergent und
+   \[
+    \lim_{n \to \infty} (c a_n)
+    = c a
+    = c \lim_{n \to \infty} a_n.
+   \]
+  \item
+   Die Folge $(a_n \cdot b_n)_{n \in \N}$ ist ebenfalls konvergiert und
+   \[
+    \lim_{n \to \infty} (a_n \cdot b_n)
+    = a \cdot b
+    = \left(\lim_{n \to \infty} a_n\right) \cdot \left(\lim_{n \to \infty} b_n\right).
+   \]
+  \item
+   Ist $a_n \neq 0$ für alle $n \in \N$ und $a \neq 0$, so konvergiert auch die Folge $(1/a_n)_{n \in \N}$ und es ist
+   \[
+    \lim_{n \to \infty} \frac{1}{a_n}
+    = \frac{1}{a}
+    = \frac{1}{\lim_{n \to \infty} a_n}
+   \]
+  \item
+   Ist $b_n \neq 0$ für alle $n \in \N$ und $b \neq 0$, so ist auch $(a_n/b_n)_{n \in \N}$ konvergent und
+   \[
+    \lim_{n \to \infty} \frac{a_n}{b_n}
+    = \frac{a}{b}
+    = \frac{\lim_{n \to \infty} a_n}{\lim_{n \to \infty} b_n}.
+   \]
+ \end{enumerate}
+\end{prop}
+\begin{proof}
+ \begin{enumerate}
+  \item
+   Es sei $\varepsilon > 0$ beliebig aber fest. Da $a_n \to a$ für $n \to \infty$ gibt es $n_1 \in \N$ mit $|a - a_n| < \varepsilon/2$ für alle $n \geq n_1$. Da $b_n \to b$ für $n \to \infty$ gibt es $n_2 \in \N$ mit $|b - b_n| < \varepsilon/2$ für alle $n \geq n_2$. Für $N \coloneqq \max \{n_1, n_2\}$ ist dann für alle $n \geq N$
+   \begin{align*}
+    |(a + b) - (a_n + b_n)|
+    &= |(a - a_n) + (b - b_n)| \\
+    &\leq |a - a_n| + |b - b_n|
+    < \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
+    = \varepsilon.
+   \end{align*}
+   Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $\lim_{n \to \infty} (a_n + b_n) = a + b$.
+  \item
+   Für $c = 0$ ist die Aussage klar. Ansonsten sei $\varepsilon > 0$ beliebig aber fest. Da $a_n \to a$ für $n \to \infty$ gibt es $N \in \N$ mit $|a - a_n| < \varepsilon/|c|$ für alle $n \geq N$. Es ist dann für alle $n \geq N$
+   \[
+    |ca - ca_n|
+    = |c| |a - a_n|
+    < |c| \frac{\varepsilon}{|c|}
+    = \varepsilon.
+   \]
+   Aus der Beliebigkeit von $\varepsilon > 0$ folgt damit, dass $\lim_{n \to \infty} (ca_n) = ca$.
+  \item
+   Es sei $\varepsilon > 0$ beliebig aber fest. Da $(a_n)$ konvergiert, ist $(a_n)$ insbesondere beschränkt. Es gibt also ein $c > 0$ mit $|a_n| < c$ für alle $n \in \N$. Wir bemerken zunächst, dass für alle $n \in \N$
+   \begin{equation}\label{eqn: Ungleichung Produkt}
+    \begin{aligned}
+     |a b - a_n b_n|
+     &= |a b - a_n b + a_n b - a_n b_n| \\
+     &\leq |a b - a_n b| + |a_n b - a_n b_n| \\
+     &= |a - a_n| |b| + |a_n| |b - b_n| \\
+     &\leq |b| |a - a_n| + c |b - b_n|.
+    \end{aligned}
+   \end{equation}
+ \end{enumerate}
+\end{proof}
+
+
+
+
+
+
+
+
+\end{document}
