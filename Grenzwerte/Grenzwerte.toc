@@ -1,5 +1,13 @@
 \select@language {ngerman}
-\contentsline {section}{\numberline {1}Vorbereitungen}{1}
-\contentsline {section}{\numberline {2}Grenzwerte}{3}
-\contentsline {subsection}{\numberline {2.1}Konvergenz und Ordnung}{4}
-\contentsline {subsection}{\numberline {2.2}Konvergenz und Rechenoperationen}{5}
+\contentsline {section}{\numberline {1}Supremum und Infimum}{1}
+\contentsline {subsection}{\numberline {1.1}Supremum und Infimum auf $\mathbb {R}$}{1}
+\contentsline {subsection}{\numberline {1.2}Verallgemeinerung}{3}
+\contentsline {section}{\numberline {2}Grenzwerte}{4}
+\contentsline {subsection}{\numberline {2.1}Konvergenz und Ordnung}{5}
+\contentsline {subsection}{\numberline {2.2}Konvergenz und Rechenoperationen}{6}
+\contentsline {subsection}{\numberline {2.3}Uneigentliche Grenzwerte}{8}
+\contentsline {section}{\numberline {3}Alternative Definitionen von Konvergenz}{8}
+\contentsline {subsection}{\numberline {3.1}Limsup und Liminf}{8}
+\contentsline {subsection}{\numberline {3.2}Cauchy-Folgen}{9}
+\contentsline {subsection}{\numberline {3.3}Äquivalente Definitionen}{9}
+\contentsline {section}{\numberline {4}Metrische Räume}{10}

@@ -20,7 +20,11 @@
 
 
 
-\section{Vorbereitungen}
+\section{Supremum und Infimum}
+
+
+
+\subsection{Supremum und Infimum auf $\R$}
 
 
 \begin{defi}
@@ -92,11 +96,11 @@
 \end{proof}
 
 
-Ist $A \subseteq \R$ nicht nach oben beschränkt, so besitzt $A$ keine obere Schranke und somit auch kein Supremum. Wie sich herausstellt, ist diese Bedingung für Teilmengen von $\R$ schon hinreichend:
+Ist $A \subseteq \R$ nicht nach oben beschränkt, so besitzt $A$ keine obere Schranke und somit auch kein Supremum. Wie sich herausstellt, ist diese Bedingung für nicht-leere Teilmengen von $\R$ schon hinreichend:
 
 
 \begin{prop}
- Es sei $A \subseteq \R$ eine Teilmenge.
+ Es sei $A \subseteq \R$ eine nicht-leere Teilmenge.
  \begin{enumerate}
   \item
    Ist $A$ nach oben beschränkt, so existiert $\sup A$.
@@ -131,8 +135,43 @@ Wir wollen diese Proposition hier nicht beweisen, da der Beweis von der konkrete
   \item
    Der Beweis läuft analog zum vorherigen.
  \end{enumerate}
-
 \end{proof}
+
+
+Auch für Teilmengen von $\R$, die nicht beschränkt sind, lassen sich Supremum und Infimum definieren.
+
+
+\begin{defi}\label{defi: Uneigentliche Konvergenz}
+ Es sei $A \subseteq \R$ nach oben beschränkt. Ist $A$ nach oben unbeschränkt, so setzen wir $\sup A \coloneq \infty$. Ist $A$ nach unten unbeschränkt, so setzen wir $\inf A \coloneqq -\infty$.
+ 
+ Für die leere Menge setzen wir $\sup \emptyset = -\infty$ und $\inf \emptyset = \infty$.
+\end{defi}
+
+
+
+\subsection{Verallgemeinerung}
+Die Ideen des Supremums und Infimums lassen sich leicht auf geordnete Mengen verallgemeinern. Dabei verstehen wir unter einer geordneten Mengen eine Menge $X$ zusammen mit einer Ordnungsrelation $\leq$, die die folgenden Bedingungen erfüllt:
+\begin{enumerate}
+ \item
+  Für alle $x \in X$ ist $x \leq x$. (Reflexivität)
+ \item
+  Für $x,y \in X$ mit $x \leq y$ und $y \leq x$ ist bereits $x = y$. (Anti-Symmetrie)
+ \item
+  Für $x,y,z \in X$ mit $x \leq y$ und $y \leq z$ ist auch $x \leq z$.
+\end{enumerate}
+
+Auf einer geordneten Menge lassen sich dann Beschränktheit von Teilmengen, Schranken für Teilmengen und damit auch die Begriffe des Supremums und Infimums verallgemeinern, indem man in den entsprechenden obigen Definitionen $\R$ durch $X$ ersetzt.
+
+Mithilfe dieser Verallgemeinerung lässt sich auch Definition \ref{defi: Uneigentliche Konvergenz} anders verstehen: Die Menge $X \coloneqq \R \cup \{-\infty, \infty\}$ ist eine geordnete Menge, indem man die Ordnung von $\R$ um
+\begin{itemize}
+ \item
+  $x \leq \infty$ für alle $x \in \R$,
+ \item
+  $-\infty \leq x$ für alle $x \in \R$,
+ \item
+  $-\infty \leq \infty$
+\end{itemize}
+ergänzt. Supremum und Infimum nach \ref{defi: Uneigentliche Konvergenz} entsprechen dann dem Supremum und Infimum auf $X$.
 
 
 
@@ -196,6 +235,8 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
    1 \leq n^{1/n} < 1 + \varepsilon
   \]
   und somit $|1 - n^{1/n}| < \varepsilon$. Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $n^{1/n} \to 1$ für $n \to \infty$.
+ \item
+  Die Folgen $((-1)^n)_{n \in \N}$ und $(n)_{n \in \N}$ konvergieren nicht.
  \end{enumerate}
 \end{bsp}
 
@@ -372,9 +413,22 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
     |b_n|
     \geq |b| - |b - b_n|
     \geq |b| - \frac{|b|}{2}
-    = \frac{|b|}{2}.
+    = \frac{|b|}{2},
    \]
-
+   und damit auch
+   \begin{equation}\label{eqn: Konvergenz Kehrwert}
+    \left| \frac{1}{b} - \frac{1}{b_n} \right|
+    = \left| \frac{b_n - b}{b b_n} \right|
+    = \frac{|b - b_n|}{|b| |b_n|}
+    \leq \frac{2 |b - b_n|}{|b|^2}.
+   \end{equation}
+   Es sei nun $\varepsilon > 0$ beliebig aber fest. Da $b_n \to b$ für $n \to \infty$ gibt es auch ein $n_2 \in \N$ mit $|b - b_n| < \varepsilon|b|^2/2$ für alle $n \geq n_2$. Zusammen mit \eqref{eqn: Konvergenz Kehrwert} ergibt sich für $N \coloneqq \max \{n_1, n_2\}$, dass für alle $n \geq N$
+   \[
+    \left|\frac{1}{b} - \frac{1}{b_n}\right|
+    \leq \frac{2 |b - b_n|}{|b|^2}
+    < \varepsilon.
+   \]
+   Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $\lim_{n \to \infty} 1/b_n = 1/b$.
   \item
    Aus den vorherigen Aussagen folgt, dass $1/b_n \to 1/b$ für $n \to \infty$ und damit auch
    \[
@@ -382,6 +436,265 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
    \]
  \end{enumerate}
 \end{proof}
+
+
+\begin{bsp}
+ \begin{enumerate}
+  \item
+   Wir wollen die Konvergenz der Folge $(a_n)_{n \in \N}$ mit
+   \[
+    a_n \coloneqq \frac{n^2 + 3n + 5}{6n^2 + n + 1}
+   \]
+   untersuchen. Erweitern des Bruches mit $1/n^2$ ergibt, dass für alle $n \geq 1$
+   \[
+    a_n
+    = \frac{n^2 + 3n + 5}{6n^2 + n + 1}
+    = \frac{1 + \frac{3}{n} + \frac{5}{n^2}}{6 + \frac{1}{n} + \frac{1}{n^2}}.
+   \]
+   Aus $\lim_{n \to \infty} 1/n = 0$ ergibt sich aus der obigen Proposition, dass auch $3/n \to 0$, $5/n^2 \to 0$ and $1/n^2 \to 0$ für $n \to \infty$. Also ist $1 + 3/n + 5/n^2 \to 1$ und $6 + 1/n + 1/n^2 \to 6$ für $n \to \infty$. Daher folgt nach der Proposition
+   \[
+    \lim_{n \to \infty} a_n = \frac{1}{6}.
+   \]
+  \item
+   Für alle $0 \leq q < 1$ ist die Folge $(q^n)_{n \in \N}$ monoton fallend, da $q^{n+1} = q \cdot q^n \leq q^n$ und nach unten beschränkt (durch $0$), und somit konvergent. Für den Grenzwert $x = \lim_{n \to \infty} q^n$ folgt aus der Linearität des Grenzwertes
+   \[
+    x = \lim_{n \to \infty} q^n = \lim_{n \to \infty} q^{n+1} = q \lim_{n \to \infty} q^n = q x,
+   \]
+   also $(1-q)x = 0$, und wegen $q \neq 1$ somit $x = 0$. Allgemeiner gilt für alle $q \in \R$ mit $|q| < 1$, dass
+   \[
+    -|q|^n \leq q^n \leq |q|^n,
+   \]
+   und da wegen der Linearität des Grenzwertes auch $-|q|^n \to 0$ für $n \to \infty$ folgt aus dem Sandwich-Lemma, dass $q^n \to 0$ für $n \to \infty$.
+ \end{enumerate}
+\end{bsp}
+
+
+
+\subsection{Uneigentliche Grenzwerte}
+Nur weil eine Folge nicht konvergiert, bedeutet dies noch nicht, dass für $n \to \infty$ kein „vernünftiges“ Verhalten aufweist.
+
+
+\begin{defi}
+ Eine Folge $(x_n)_{n \in \N}$ konvergiert gegen $\infty$, falls es für jedes $R > 0$ ein $N \in \N$ gibt, so dass $a_n > R$ für alle $n \geq N$. Wir schreiben dann $\lim_{n \to \infty} x_n = \infty$ oder $x_n \to \infty$ für $n \to \infty$.
+ 
+ $(x_n)$ konvergiert gegen $-\infty$, falls es für jedes $R > 0$ ein $N \in \N$ gibt mit $a_n < -R$ für alle $n \geq N$. Wir schreiben dann $\lim_{n \to \infty} x_n = -\infty$ oder $x_n \to -\infty$ für $n \to \infty$.
+ 
+ Ist $x_n \to \infty$ oder $x_n \to -\infty$ für $n \to \infty$, so sagen wir, dass die Folge $(x_n)$ \emph{uneigentlich konvergent} ist.
+\end{defi}
+
+
+Unter Verwendung von uneigentlichen Grenzwerten ergibt sich, dass jede monotone Folge konvergiert:
+
+Ist $(x_n)_{n \in \N}$ eine monoton steigende Folge, so gibt es zwei Fälle: Ist die Folge nach oben beschränkt, so konvergiert sie eigentlich nach Bolzano-Weierstraß. Ist sie nicht nach oben beschränkt, so gibt es für alle $R > 0$ ein $N \in \N$ mit $x_N > R$, und aus der Monotonie der Folge folgt, dass $x_n > R$ für alle $n \geq N$, weshalb in diesem Fall $x_n \to \infty$ für $n \to \infty$.
+
+Analog ergibt sich, dass auch jede monoton fallende Folge entweder eigentlich konvergiert, oder uneigentlich gegen $-\infty$ konvergiert.
+
+
+
+
+
+\section{Alternative Definitionen von Konvergenz}
+
+
+
+\subsection{Limsup und Liminf}
+Einer der Probleme mit dem Begriff des Grenzwertes ist, dass nicht jede Folge eigentlich oder uneigentlich konvergiert, etwa die Folge $((-1)^n)_{n \in \N}$.
+
+
+\begin{defi}
+ Sei $(x_n)_{n \in \N}$ eine Folge. Die Folge $(\sup_{k \geq n} x_k)_{n \in \N}$ ist monoton fallend und daher (eventuell uneigentlich) konvergent. Wir definieren
+ \[
+  \limsup_{n \to \infty} x_n \coloneqq \lim_{n \to \infty} \sup_{k \geq n} x_k.
+ \]
+ Analog definieren wir
+ \[
+  \liminf_{n \to \infty} x_n \coloneqq \lim_{n \to \infty} \inf_{k \geq n} x_k.
+ \]
+\end{defi}
+
+
+
+\subsection{Cauchy-Folgen}
+
+
+\begin{defi}
+ Eine Folge $(x_n)_{n \in \N}$ heißt eine \emph{Cauchy-Folge}, falls es für alle $\varepsilon > 0$ ein $N \in \N$ gibt, so dass $|x_n - x_{n'}| < \varepsilon$ für alle $n, n' \geq N$.
+\end{defi}
+
+
+\begin{lem}
+ Ist eine Folge $(x_n)_{n \in \N}$ konvergent, so ist $(x_n)$ eine Cauchy-Folge.
+\end{lem}
+\begin{proof}
+ Es sei $x \coloneqq \lim_{n \to \infty} x_n$. Sei $\varepsilon > 0$. Da $x_n \to x$ für $n \to \infty$ gibt es $N \in \N$ mit $|x - x_n| < \varepsilon/2$ für alle $n \geq N$. Dann ist für alle $n, n' \geq N$ auch
+ \[
+  |x_n - x_{n'}|
+  = |(x - x_{n'}) - (x - x_n)|
+  \leq |x - x_{n'}| + |x - x_n|
+  < \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
+  = \varepsilon.
+ \]
+ Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $(x_n)$ eine Cauchy-Folge ist.
+\end{proof}
+
+
+Es stellt sich heraus, dass auf $\R$ der Begriff der Cauchy-Folge schon äquivalent zu dem einer konvergenten Folge ist.
+
+
+
+\subsection{Äquivalente Definitionen}
+
+\begin{prop}
+ Für eine Folge $(x_n)_{n \in \N}$ sind äquivalent:
+ \begin{enumerate}
+  \item\label{enum: konvergent}
+   $(x_n)$ konvergiert.
+  \item\label{enum: Cauchy}
+   $(x_n)$ ist eine Cauchy-Folge.
+  \item\label{enum: limsup = liminf}
+   $\liminf_{n \to \infty} x_n = \limsup_{n \to \infty} x_n$.
+ \end{enumerate}
+ Es gilt dann
+ \[
+  \liminf_{n \to \infty} x_n = \limsup_{n \to \infty} x_n = \lim_{n \to \infty} x_n.
+ \]
+\end{prop}
+\begin{proof}
+ (\ref{enum: konvergent} $\Rightarrow$ \ref{enum: Cauchy}) Dies wurde bereits gezeigt.
+ 
+ (\ref{enum: Cauchy} $\Rightarrow$ \ref{enum: limsup = liminf}) Sei $\varepsilon > 0$ beliebig aber fest. Da $(x_n)$ eine Cauchy-Folge ist, gibt es ein $N \in \N$, so dass $|x_n - x_{n'}| < \varepsilon/2$ für alle $n, n' \geq N$. Für $a \coloneqq x_N$ ist daher
+ \[
+  |x_n - a| < \varepsilon/2 \quad \text{für alle $n \geq N$}.
+ \]
+ Da damit $x_n < a + \varepsilon/2$ für alle $n \geq N$ ist
+ \[
+  \sup_{k \geq n} x_k \leq a + \varepsilon/2 \quad \text{für alle $n \geq N$},
+ \]
+ und somit auch $\limsup_{n \to \infty} x_n = \lim_{n \to \infty} \sup_{k \geq n} \leq a + \varepsilon$. Analog ergibt sich, dass auch $a-\varepsilon/2 \leq \liminf_{n \to \infty} x_n$. Es ist also
+ \[
+  a - \frac{\varepsilon}{2}
+  \leq \liminf_{n \to \infty} x_n
+  \leq \limsup_{n \to \infty} x_n
+  \leq a + \frac{\varepsilon}{2}
+ \]
+ und somit
+ \[
+  0
+  \leq \limsup_{n \to \infty} x_n - \limsup_{n \to \infty} x_n
+  \leq \left(a + \frac{\varepsilon}{2}\right) - \left(a - \frac{\varepsilon}{2}\right)
+  = \varepsilon.
+ \]
+ Aus der Beliebigkeit von $\varepsilon > 0$ ergibt sich, dass $\limsup_{n \to \infty} x_n - \liminf_{n \to \infty} x_n = 0$, also $\limsup_{n \to \infty} x_n = \liminf_{n \to \infty} x_n$.
+ 
+ (\ref{enum: limsup = liminf} $\Rightarrow$ \ref{enum: konvergent}) Wir definieren die Folgen $(g_n)_{n \in \N}$ und $(h_n)_{n \in \N}$ durch
+ \[
+  g_n \coloneqq \inf_{k \geq n} x_k \quad \text{und} \quad h_n \coloneqq \sup_{k \geq n} x_k.
+ \]
+ Per Definition von $(g_n)$ und $(h_n)$ ist $g_n \leq x_n \leq h_n$ für alle $n \in \N$, und nach der Definition des $\liminf$, bzw. $\limsup$ ist
+ \[
+ \lim_{n \to \infty} g_n = \liminf_{n \to \infty} x_n = \limsup_{n \to \infty} h_n = \lim_{n \to \infty} h_n.
+ \]
+ Nach dem Sandwich-Lemma ist auch $(x_n)$ konvergent und $\lim_{n \to \infty} x_n$ stimmt mit den obigen Ausdrücken überein.
+\end{proof}
+
+
+
+
+
+\section{Metrische Räume}
+Wir wollen hier noch kurz eine Möglichkeit vorstellen, den Begriff der Konvergenz zu verallgemeinern. Hierfür wollen wir Räume betrachten, in denen man Abstände messen kann, sogenannte metrische Räume.
+
+
+\begin{defi}
+ Sei $X$ eine Menge. Eine \emph{Metrik auf $X$} ist eine Funktion $d \colon X \times X \to \R$, die die folgenden Bedingungen erfüllt:
+ \begin{enumerate}
+  \item
+   Für alle $x,y \in X$ ist $d(x,y) \geq 0$.
+  \item
+   Für alle $x,y \in X$ ist $d(x,y) = 0$ genau dann wenn $x = y$.
+  \item
+   Für alle $x,y \in X$ ist $d(x,y) = d(y,x)$ (Symmetrie).
+  \item
+   Für alle $x,y,z \in X$ gilt die Dreiecksungleichung
+   \[
+    d(x,z) \leq d(x,y) + d(y,z).
+   \]
+ \end{enumerate}
+ 
+ Ein \emph{metrischer Raum} ist ein Paar $(X,d)$ bestehend aus einer Menge $X$ und einer Metrik $d$ auf $X$.
+\end{defi}
+
+
+\begin{bem}
+ Die erste der vier Bedingungen muss eigentlich nicht gefordert werden, da sie aus den anderen dreien folgt: Für alle $x,y \in X$ ist nämlich
+ \[
+  0 = d(x,x) \leq d(x,y) + d(y,x) = 2 d(x,y)
+ \]
+ und somit $0 \leq d(x,y)$.
+\end{bem}
+
+
+\begin{bsp}
+ \begin{enumerate}
+  \item
+   Die Abbildung $d(x,y) = |x-y|$ definiert eine Metrik auf $\R$, die man als die \emph{Standardmetrik auf $\R$} bezeichnet.
+  \item
+   Allgemein definiert die Abbildung $d(x,y) = \|x-y\|$ eine Metrik auf $\R^n$, die man als die \emph{Standardmetrik auf $\R^n$} bezeichnet.
+  \item
+   Für eine beliebige Menge $X$ definiert die Abbildung
+   \[
+    d \colon X \times X \to \R,
+    d(x,y) =
+    \begin{cases}
+     1 & \text{falls $x = y$}, \\
+     0 & \text{falls $x \neq y$},
+    \end{cases}
+   \]
+   eine Metrik auf $X$, die sogenannte \emph{diskrete Metrik}. (Die Dreiecksungleichung ergibt sich durch Fallunterscheidung.)
+  \item
+   Ist $(X,d)$ ein metrischer Raum und $Y \subseteq X$, so lässt sich die Metrik $d$ auf $Y$ einschränken zu
+   \[
+    d' \colon Y \times Y \to \R, d'(x,y) = d(x,y).
+   \]
+   Dann ist auch $(Y,d')$ ein metrischer Raum und ein \emph{Unterraum} von $(X,d)$.
+  \item
+   Sind $(X_1, d_1)$ und $(X_2, d_2)$ metrische Räume, so ist die Abbildung
+   \begin{gather*}
+    d \colon (X_1 \times X_2) \times (X_1 \times X_2) \to \R, \\
+    d((x_1, y_1), (x_2, y_2)) = d_1(x_1, x_2) + d_2(y_1, y_2)
+   \end{gather*}
+   eine Metrik auf $X_1 \times X_2$.
+ \end{enumerate}
+\end{bsp}
+
+
+Auf einem metrischen Raum kann man nun von der Konvergenz von Folgen sprechen:
+
+
+\begin{defi}
+ Sei $(X,d)$ ein metrischer Raum, $(x_n)_{n \in \N}$ eine Folge auf $X$ und $x \in X$. Wir sagen, dass $x_n$ gegen $x$ konvergiert, falls es für alle $\varepsilon > 0$ ein $N \in \N$ gibt, so dass $d(x, x_n) < \varepsilon$ für alle $n \geq N$. Wir schreiben dann $\lim_{n \to \infty} x_n = x$ oder $x_n \to x$ für $n \to \infty$.
+\end{defi}
+
+
+Die Konvergenz auf $\R$, wie wir sie bisher untersucht haben, entspricht unter dieser Definition genau der Konvergenz auf $(\R,d)$, wobei $d$ die Standardmetrik auf $\R$ ist.
+
+
+Viele der Eigenschaften konvergenter Folgen, die wir bisher kennengelernt haben, lassen sich auch auf metrische Räume übertragen. So sind etwa Grenzwerte in metrischen Räumen eindeutig. Man mache sich jedoch bewusst, dass metrische Räume nicht mit zusätzlicher Struktur wie Ordnungsrelationen oder binären Operationen wie Addition oder Multiplikation versehen seien müssen. Daher ergeben  Konstruktionen wie „die Summe zweier Folgen” in allgemeinen metrischen Räumen keinen Sinn.
+
+
+Zum Schluss wollen wir noch den Begriff der Cauchy-Folge in metrischen Räumen thematisieren. Der Begriff der Cauchy-Folge lässt sich ohne Probleme auf metrische Räume verallgemeinern.
+
+
+\begin{defi}
+ Sei $(X,d)$ ein metrischer Raum und $(x_n)_{n \in \N}$ eine Folge auf $X$. $(x_n)$ heißt \emph{Cauchy-Folge}, falls es für alle $\varepsilon > 0$ ein $N \in \N$ gibt, so dass $d(x_n, x_{n'}) < \varepsilon$ für alle $n, n' \geq N$.
+\end{defi}
+
+
+Wie bereits zuvor ergibt sich, dass jede konvergente Folge auch eine Cauchy-Folge ist.
+
+
+
+
 
 
 
