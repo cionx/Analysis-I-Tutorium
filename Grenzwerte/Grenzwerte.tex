@@ -28,9 +28,9 @@
 
 
 \begin{defi}
- Eine Teilmenge $A \subseteq \R$ heißt \emph{nach oben beschränkt}, falls es ein $s \in \R$ gibt, so dass $a \leq s$ für alle $a \in A$; $s$ heißt dann eine obere Schranke von $A$. $A$ heißt \emph{nach oben unbeschränkt}, falls $A$ nicht nach oben beschränkt ist.
+ Eine Teilmenge $A \subseteq \R$ heißt \emph{nach oben beschränkt}, falls es ein $s \in \R$ gibt, so dass $a \leq s$ für alle $a \in A$; $s$ heißt dann \emph{obere Schranke von $A$}. $A$ heißt \emph{nach oben unbeschränkt}, falls $A$ nicht nach oben beschränkt ist.
  
- $A$ heißt \emph{nach unten beschränkt}, falls es ein $t \in \R$ gibt, so dass $t \leq a$ für alle $a \in A$; $t$ heißt dann untere Schranke von $A$. $A$ heißt \emph{nach unten unbeschränkt}, falls $A$ nicht nach unten beschränkt ist.
+ $A$ heißt \emph{nach unten beschränkt}, falls es ein $t \in \R$ gibt, so dass $t \leq a$ für alle $a \in A$; $t$ heißt dann \emph{untere Schranke von $A$}. $A$ heißt \emph{nach unten unbeschränkt}, falls $A$ nicht nach unten beschränkt ist.
  
  $A$ heißt \emph{beschränkt}, falls $A$ sowohl nach oben als auch nach unten beschränkt ist.
 \end{defi}
@@ -41,13 +41,13 @@
   \item
    $N \subseteq \R$ ist nach unten beschränkt und nach oben unbeschränkt.
   \item
-   $\Z \subseteq \R$ ist nach unten und oben unbeschränkt.
+   $\Z \subseteq \R$ ist nach unten und nach oben unbeschränkt.
   \item
    Das Einheitsintervall $[0,1] \subseteq \R$ ist beschränkt.
   \item
    Jede endliche Menge $X \subseteq \R$ ist beschränkt.
   \item
-   Ist $B \subseteq \R$ nach unten, bzw.\ oben beschränkt, so ist $A \subseteq \R$ ebenfalls nach unten, bzw.\ oben beschränkt. Ist $B$ nach unten, bzw.\ oben unbeschränkt, so ist auch $A$ nach unten, bzw.\ oben unbeschränkt.
+   Ist $B \subseteq \R$ nach unten, bzw.\ oben beschränkt, so ist $A \subseteq B$ ebenfalls nach unten, bzw.\ oben beschränkt. Ist $A$ nach unten, bzw.\ oben unbeschränkt, so ist auch $B$ nach unten, bzw.\ oben unbeschränkt.
   \item
    Eine Teilmenge $A \subseteq \R$ ist genau dann nach unten, bzw.\ oben beschränkt, falls die Teilmenge
    \[
@@ -59,12 +59,12 @@
 
 
 \begin{bem}
- Eine Teilmenge $A \subseteq \R$ ist genau dann beschränkt, falls es ein $R > 0$ gibt, so dass $|a| \leq R$ für alle $a \in A$.
+ Eine Teilmenge $A \subseteq \R$ ist genau dann beschränkt, falls es ein $R \geq 0$ gibt, so dass $|a| \leq R$ für alle $a \in A$.
 \end{bem}
 \begin{proof}
  Gibt es ein solches $R$, so ist $-R \leq a \leq R$ für alle $a \in A$ und somit ist $A$ sowohl nach oben als auch nach unten beschränkt, also beschränkt.
  
- Ist $A$ beschränkt, so gibt $s, t \in \R$, so dass $t \leq a \leq s$ für alle $a \in A$. Für $R \coloneqq \max\{|s|, |t|\}$ ist dann $|a| \leq R$ für alle $a \in A$.
+ Ist $A$ beschränkt, so gibt $s, t \in \R$, so dass $s \leq a \leq t$ für alle $a \in A$. Für den Radius $R \coloneqq \max\{|s|, |t|\}$ ist dann $|a| \leq R$ für alle $a \in A$.
 \end{proof}
 
 
@@ -114,7 +114,7 @@ Wir wollen diese Proposition hier nicht beweisen, da der Beweis von der konkrete
 
 
 \begin{lem}[Charakterisierung von $\sup$ und $\inf$]
- Es sei $A \subseteq \R$ eine nach oben beschränkte Teilmenge.
+ Es sei $A \subseteq \R$.
  \begin{enumerate}
   \item
    Für eine obere Schranke $s$ von $A$ ist $s = \sup A$ genau dann, wenn es für alle $\varepsilon > 0$ ein $a \in A$ mit $s-\varepsilon < a \leq s$ gibt.
@@ -127,13 +127,14 @@ Wir wollen diese Proposition hier nicht beweisen, da der Beweis von der konkrete
   \item
    Angenommen es ist $s = \sup A$. Es sei $\varepsilon > 0$ beliebig aber fest. Da $s$ die kleinste obere Schranke von $A$ ist, ist $s-\varepsilon$ keine obere Schranke von $A$. Es gibt also $a \in A$ mit $s-\varepsilon < a$. Da $s$ eine obere Schranke von $A$ ist, ist auch $a \leq s$. Zusammen ist daher $s-\varepsilon < a \leq s$. Aus der Beliebigkeit von $\varepsilon > 0$ folgt die Implikation.
    
-   Angenommen es ist $s \neq \sup A$. Dann gibt es eine kleinere obere Schranke $t < s$ von $A$. Für $\varepsilon \coloneqq (s-t)/2 > 0$ ist dann für alle $a \in A$
+   Angenommen es ist $s \neq \sup A$. Dann gibt es eine kleinere obere Schranke $t < s$ von $A$. Für $\varepsilon \coloneqq s-t > 0$ ist dann für alle $a \in A$
    \[
-    a \leq t < t + \varepsilon = s - \varepsilon.
+    a \leq t = s-\varepsilon.
    \]
    Es gibt dann kein $a \in A$ mit $s-\varepsilon < a \leq s$.
   \item
    Der Beweis läuft analog zum vorherigen.
+  \qedhere
  \end{enumerate}
 \end{proof}
 
@@ -142,7 +143,7 @@ Auch für Teilmengen von $\R$, die nicht beschränkt sind, lassen sich Supremum 
 
 
 \begin{defi}\label{defi: Uneigentliche Konvergenz}
- Es sei $A \subseteq \R$ nach oben beschränkt. Ist $A$ nach oben unbeschränkt, so setzen wir $\sup A \coloneq \infty$. Ist $A$ nach unten unbeschränkt, so setzen wir $\inf A \coloneqq -\infty$.
+ Es sei $A \subseteq \R$. Ist $A$ nach oben unbeschränkt, so setzen wir $\sup A \coloneqq \infty$. Ist $A$ nach unten unbeschränkt, so setzen wir $\inf A \coloneqq -\infty$.
  
  Für die leere Menge setzen wir $\sup \emptyset = -\infty$ und $\inf \emptyset = \infty$.
 \end{defi}
@@ -150,14 +151,14 @@ Auch für Teilmengen von $\R$, die nicht beschränkt sind, lassen sich Supremum 
 
 
 \subsection{Verallgemeinerung}
-Die Ideen des Supremums und Infimums lassen sich leicht auf geordnete Mengen verallgemeinern. Dabei verstehen wir unter einer geordneten Mengen eine Menge $X$ zusammen mit einer Ordnungsrelation $\leq$, die die folgenden Bedingungen erfüllt:
+Die Ideen des Supremums und Infimums lassen sich leicht auf eine beliebige geordnet Menge verallgemeinern. Dabei verstehen wir unter einer geordneten Mengen eine Menge $X$ zusammen mit einer Ordnungsrelation $\leq$, die die folgenden Bedingungen erfüllt:
 \begin{enumerate}
  \item
   Für alle $x \in X$ ist $x \leq x$. (Reflexivität)
  \item
   Für $x,y \in X$ mit $x \leq y$ und $y \leq x$ ist bereits $x = y$. (Anti-Symmetrie)
  \item
-  Für $x,y,z \in X$ mit $x \leq y$ und $y \leq z$ ist auch $x \leq z$.
+  Für $x,y,z \in X$ mit $x \leq y$ und $y \leq z$ ist auch $x \leq z$. (Transitivität)
 \end{enumerate}
 
 Auf einer geordneten Menge lassen sich dann Beschränktheit von Teilmengen, Schranken für Teilmengen und damit auch die Begriffe des Supremums und Infimums verallgemeinern, indem man in den entsprechenden obigen Definitionen $\R$ durch $X$ ersetzt.
@@ -171,14 +172,14 @@ Mithilfe dieser Verallgemeinerung lässt sich auch Definition \ref{defi: Uneigen
  \item
   $-\infty \leq \infty$
 \end{itemize}
-ergänzt. Supremum und Infimum nach \ref{defi: Uneigentliche Konvergenz} entsprechen dann dem Supremum und Infimum auf $X$.
+erweitert. Supremum und Infimum nach \ref{defi: Uneigentliche Konvergenz} entsprechen dann dem Supremum und Infimum auf $X$.
 
 
 
 
 
 \section{Grenzwerte}
-Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um Folgen auf $\R$.
+Im Folgenden handelt es sich bei allen Folgen um Folgen auf $\R$.
 
 
 \begin{defi}
@@ -186,10 +187,13 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
 \end{defi}
 
 
-\begin{defi}
+Es ist also eine Folge $(x_n)_{n \in \N}$ genau dann nach oben beschränkt, wenn es $C \in \R$ gibt, so dass $x_n \leq C$ für alle $n \in \N$. Ähnliches gilt für Beschränkheit nach unten und Beschränktheit.
+
+
+\begin{defi}\label{defi: Definition Konvergenz}
  Es sei $(x_n)_{n \in \N}$ eine Folge auf $\R$ und $x \in \R$. \emph{$(x_n)$ konvergiert gegen $x$}, falls es für alle $\varepsilon > 0$ ein $N \in \N$ gibt, so dass $|x_n-x| < \varepsilon$ für alle $n \geq N$. Wir schreiben dann $\lim_{n \to \infty} x_n = x$, bzw.\ $x_n \to x$ für $n \to \infty$.
  
- Wir sagen, dass die Folge $(x_n)$ \emph{konvergent} ist, falls es ein $x \in \R$ gibt, so dass $x_n \to x$ für $n \to \infty$. $x$ heißt dann der \emph{Grenzwert} der Folge $(x_n)$.
+ Wir sagen, dass die Folge $(x_n)$ \emph{konvergent} ist, falls es ein $x \in \R$ gibt, so dass $x_n \to x$ für $n \to \infty$. $x$ heißt dann der \emph{Grenzwert} der Folge $(x_n)$. Konvergiert $(x_n)$ nicht, so heißt die Folge \emph{divergent}.
 \end{defi}
 
 
@@ -199,7 +203,8 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
 \begin{proof}
  Angenommen es ist $x \neq x'$. Dann ist $\varepsilon \coloneqq |x-x'| > 0$. Da $x_n \to x$ gibt es $n_1 \in \N$, so dass $|x_n - x| < \varepsilon/3$ für alle $n \geq n_1$. Da $x_n \to x'$ gibt es $n_2 \in \N$, so dass $|x_n - x'| < \varepsilon/3$ für alle $n \geq n_2$. Für $N \coloneqq \max \{n_1, n_2\}$ ist dann für alle $n \geq N$ sowohl $|x_n - x| < \varepsilon/3$ als auch $|x_n - x'| < \varepsilon/3$. Daher ist nach der Dreiecksungleichung
  \[
-  |x - x'|
+  \varepsilon
+  = |x - x'|
   = |(x_N - x') - (x_N - x)|
   \leq |x_N - x'| + |x_N - x|
   < \frac{\varepsilon}{3} + \frac{\varepsilon}{3}
@@ -212,15 +217,15 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
 \begin{bsp}
  \begin{enumerate}
   \item
-   Wir haben $\lim_{n \to \infty} 1/n = 0$: Es sei $\varepsilon > 0$ beliebig aber fest. Nach Archimedes gibt es ein $N \in \N$, $N \geq 1$ mit $N > 1/\varepsilon$. Für alle $n \geq N$ ist dann $\varepsilon > 1/n$ und damit
+   Wir haben $\lim_{n \to \infty} 1/n = 0$: Es sei $\varepsilon > 0$ beliebig aber fest. Nach Archimedes gibt es ein $N \in \N$, $N \geq 1$ mit $N > 1/\varepsilon$, also $\varepsilon > 1/N$. Für alle $n \geq N$ ist dann $\varepsilon > 1/n$ und damit
    \[
     0 \leq \frac{1}{n} \leq \varepsilon \quad \text{für alle $n \geq N$}.,
    \]
    also $|0 - 1/n| < \varepsilon$. Dass $\lim_{n \to \infty} 1/n = 0$ folgt daher aus der Beliebigkeit von $\varepsilon > 0$.
   \item
-   Die konstante Folge $(c)_{n \in \N}$ konvergiert gegen $c$.
+   Für jedes $c \in \R$ konvergiert die konstante Folge $(c)_{n \in \N}$ gegen $c$.
   \item
-   Es ist $\lim_{n \to \infty} n^{1/n} = 1$. Zum Beweis hiervon sei $\varepsilon > 0$ beliebig aber fest. Es sei $N \in \N$ mit $N \geq 2$ und $N \geq 1 + 2/\varepsilon^2$. Für alle $n \geq N$ ist dann $(n-1)\varepsilon^2/2 \geq 1$ und somit
+   Es ist $\lim_{n \to \infty} n^{1/n} = 1$. Zum Beweis hiervon sei $\varepsilon > 0$ beliebig aber fest. Es sei $N \in \N$ mit $N \geq 2$ und $N \geq 1 + 2/\varepsilon^2$, also $(N-1)\varepsilon^2/2 \geq 1$. Für alle $n \geq N$ ist dann $(n-1)\varepsilon^2/2 \geq 1$ und somit
    \begin{align*}
     (1+\varepsilon)^n
     &= \sum_{k=0}^n \binom{n}{k} \varepsilon^k
@@ -230,15 +235,29 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
     \geq 1 + n
     > n.
    \end{align*}
-  Daher ist für alle $n \geq N$
-  \[
-   1 \leq n^{1/n} < 1 + \varepsilon
-  \]
-  und somit $|1 - n^{1/n}| < \varepsilon$. Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $n^{1/n} \to 1$ für $n \to \infty$.
- \item
-  Die Folgen $((-1)^n)_{n \in \N}$ und $(n)_{n \in \N}$ konvergieren nicht.
+   Für alle $n \geq N$ ist deshalb
+   \begin{gather*}
+    1 \leq n < (1+\varepsilon)^n
+   \shortintertext{und daher}
+    1 \leq n^{1/n} < 1 + \varepsilon,
+   \end{gather*}
+   also $|1 - n^{1/n}| < \varepsilon$. Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $n^{1/n} \to 1$ für $n \to \infty$.
+  \item
+   Die Folgen $((-1)^n)_{n \in \N}$ und $(n)_{n \in \N}$ konvergieren nicht.
  \end{enumerate}
 \end{bsp}
+
+
+\begin{bem}
+ Eine Folge $(x_n)_{n \in \N}$ konvergiert genau dann gegen $x \in \R$, falls die Folge der Abstände $(|x-x_n|)_{n \in \N}$ gegen $0$ konvergiert.
+\end{bem}
+\begin{proof}
+ Für alle $n \in \N$ ist
+ \[
+  ||x - x_n| - 0| = |x - x_n|.
+ \]
+ Für $n \in \N$ ist also genau dann $||x-x_n|-0| < \varepsilon$, wenn $|x - x_n| < \varepsilon$. Damit folgt die Aussage direkt.
+\end{proof}
 
 
 
@@ -248,7 +267,7 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
 
 
 \begin{lem}
- Sei $(x_n)_{n \in \N}$ eine konvergente Folge. Dann ist $(x_n)$ beschränkt, d.h. es gibt $R > 0$, so dass $|x_n| < R$ für alle $n \in \N$.
+ Sei $(x_n)_{n \in \N}$ eine konvergente Folge. Dann ist $(x_n)$ beschränkt, d.h. es gibt $R \geq 0$, so dass $|x_n| \leq R$ für alle $n \in \N$.
 \end{lem}
 \begin{proof}
  Es sei $x \coloneqq \lim_{n \to \infty} x_n$. Da $x_n \to x$ für $n \to \infty$ gibt es ein $N \in \N$ mit $|x_n - x| < 1$ für alle $n \geq N$. Es ist dann nach der Dreiecksungleichung für alle $n \geq N$
@@ -266,11 +285,11 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
 \end{proof}
 
 
-\begin{lem}
- Es seien $(a_n)_{n \in \N}$ und $(b_n)_{n \in \N}$ konvergente Folgen mit $a_n \leq b_n$ für alle $n \in \N$. Dann ist auch $\lim_{n \to \infty} a_n \leq \lim_{n \to \infty} b_n$.
+\begin{lem}\label{lem: Konvergenz erhält Monotonie}
+ Es seien $(a_n)_{n \in \N}$ und $(b_n)_{n \in \N}$ zwei konvergente Folgen mit $a_n \leq b_n$ für alle $n \in \N$. Dann ist auch $\lim_{n \to \infty} a_n \leq \lim_{n \to \infty} b_n$.
 \end{lem}
 \begin{proof}
- Es sei $a \coloneqq \lim_{n \to \infty} a_n$ und $b \coloneqq \lim_{n \to \infty} b_n$. Angenommen, es ist $b < a$. Dann ist $\varepsilon \coloneqq |a-b| = a-b > 0$. Da $a_n \to a$ für $n \to \infty$ gibt es $n_1 \in \N$ mit $|a_n - a| < \varepsilon/3$ für alle $n \geq n_1$. Da $b_n \to b$ für $n \to \infty$ gibt es $n_2 \in \N$ mit $|b_n - b| < \varepsilon/3$ für alle $n \geq n_2$. Für $N = \max \{n_1, n_2\}$ ist dann
+ Es sei $a \coloneqq \lim_{n \to \infty} a_n$ und $b \coloneqq \lim_{n \to \infty} b_n$. Angenommen, es ist $b < a$. Dann ist $\varepsilon \coloneqq a-b > 0$. Da $a_n \to a$ für $n \to \infty$ gibt es $n_1 \in \N$ mit $|a_n - a| < \varepsilon/3$ für alle $n \geq n_1$. Da $b_n \to b$ für $n \to \infty$ gibt es $n_2 \in \N$ mit $|b_n - b| < \varepsilon/3$ für alle $n \geq n_2$. Für $N = \max \{n_1, n_2\}$ ist dann
  \[
   b_N < b + \frac{\varepsilon}{3} < b + \frac{2\varepsilon}{3} = a - \frac{\varepsilon}{3} < a_N,
  \]
@@ -299,7 +318,7 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
 \begin{proof}
  Wir betrachten den Fall, dass $(x_n)$ monoton steigend ist. Da $(x_n)$ nach oben beschränkt ist existiert $x \coloneqq \sup_{n \in \N} x_n$. Wir wollen zeigen, dass $x_n \to x$ für $n \to \infty$.
  
- Es sei $\varepsilon > 0$ beliebig aber fest. Aus der Charakterisierung des Supremums wissen wir, dass es $N \in \N$ mit $x - \varepsilon < x_N \leq x$. Wegen der Monotonie von $(x_n)$ erhalten wir, dass $x - \varepsilon < x_n$ für alle $n \in \N$, und dass $x_n \leq x$ für alle $n \geq N$ folgt direkt aus der Definition von $x$. Es ist also
+ Es sei $\varepsilon > 0$ beliebig aber fest. Aus der Charakterisierung des Supremums wissen wir, dass es $N \in \N$ mit $x - \varepsilon < x_N \leq x$ gibt. Wegen der Monotonie von $(x_n)$ erhalten wir, dass $x - \varepsilon < x_n$ für alle $n \in \N$, und nach der Definition von $x$ ist auch $x_n \leq x$ für alle $n \geq N$. Es ist also
  \[
   x - \varepsilon < x_n \leq x \quad \text{für alle $n \geq N$},
  \]
@@ -310,13 +329,11 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
 
 
 
-
-
 \subsection{Konvergenz und Rechenoperationen}
 
 
 \begin{prop}
- Es seien $(a_n)_{n \in \N}$ und $(b_n)_{n \in \N}$ konvergente Folgen mit Grenzwerten $a \coloneqq \lim_{n \to \infty} a_n$ und $b \coloneqq \lim_{n \to \infty} b_n$.
+ Es seien $(a_n)_{n \in \N}$ und $(b_n)_{n \in \N}$ zwei konvergente Folgen mit Grenzwerten $a \coloneqq \lim_{n \to \infty} a_n$ und $b \coloneqq \lim_{n \to \infty} b_n$.
  \begin{enumerate}
   \item
    Die Folge $(a_n + b_n)_{n \in \N}$ ist ebenfalls konvergent und
@@ -333,7 +350,7 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
     = c \lim_{n \to \infty} a_n.
    \]
   \item
-   Die Folge $(a_n \cdot b_n)_{n \in \N}$ ist ebenfalls konvergiert und
+   Die Folge $(a_n \cdot b_n)_{n \in \N}$ ist ebenfalls konvergent und
    \[
     \lim_{n \to \infty} (a_n \cdot b_n)
     = a \cdot b
@@ -377,7 +394,7 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
    \]
    Aus der Beliebigkeit von $\varepsilon > 0$ folgt damit, dass $\lim_{n \to \infty} (ca_n) = ca$.
   \item
-   Es sei $\varepsilon > 0$ beliebig aber fest. Da $(a_n)$ konvergiert, ist $(a_n)$ insbesondere beschränkt. Es gibt also ein $c > 0$ mit $|a_n| < c$ für alle $n \in \N$. Wir bemerken zunächst, dass für alle $n \in \N$
+   Es sei $\varepsilon > 0$ beliebig aber fest. Da $(a_n)$ konvergiert, ist $(a_n)$ insbesondere beschränkt. Es gibt also ein $c > 0$ mit $|a_n| \leq c$ für alle $n \in \N$. Wir bemerken zunächst, dass für alle $n \in \N$
    \begin{equation}\label{eqn: Ungleichung Produkt}
     \begin{aligned}
      |a b - a_n b_n|
@@ -432,8 +449,10 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
   \item
    Aus den vorherigen Aussagen folgt, dass $1/b_n \to 1/b$ für $n \to \infty$ und damit auch
    \[
-    \frac{a_n}{b_n} = a_n \cdot \frac{1}{b_n} \to a \cdot \frac{1}{b} = \frac{a}{b}.
+    \frac{a_n}{b_n} = a_n \cdot \frac{1}{b_n} \to a \cdot \frac{1}{b} = \frac{a}{b}
    \]
+   für $n \to \infty$.
+  \qedhere
  \end{enumerate}
 \end{proof}
 
@@ -451,7 +470,7 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
     = \frac{n^2 + 3n + 5}{6n^2 + n + 1}
     = \frac{1 + \frac{3}{n} + \frac{5}{n^2}}{6 + \frac{1}{n} + \frac{1}{n^2}}.
    \]
-   Aus $\lim_{n \to \infty} 1/n = 0$ ergibt sich aus der obigen Proposition, dass auch $3/n \to 0$, $5/n^2 \to 0$ and $1/n^2 \to 0$ für $n \to \infty$. Also ist $1 + 3/n + 5/n^2 \to 1$ und $6 + 1/n + 1/n^2 \to 6$ für $n \to \infty$. Daher folgt nach der Proposition
+   Zusammen mit $\lim_{n \to \infty} 1/n = 0$ ergibt sich aus der obigen Proposition, dass auch $3/n \to 0$, $5/n^2 \to 0$ and $1/n^2 \to 0$ für $n \to \infty$. Also gilt nach der Proposition $1 + 3/n + 5/n^2 \to 1$ und $6 + 1/n + 1/n^2 \to 6$ für $n \to \infty$. Daher folgt unter erneuter Anwendung der Proposition
    \[
     \lim_{n \to \infty} a_n = \frac{1}{6}.
    \]
@@ -464,9 +483,36 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
    \[
     -|q|^n \leq q^n \leq |q|^n,
    \]
-   und da wegen der Linearität des Grenzwertes auch $-|q|^n \to 0$ für $n \to \infty$ folgt aus dem Sandwich-Lemma, dass $q^n \to 0$ für $n \to \infty$.
+   und da wegen der Linearität des Grenzwertes auch $-|q|^n \to 0$ für $n \to \infty$ können aus dem Sandwich-Lemma folgern, dass $q^n \to 0$ für $n \to \infty$.
  \end{enumerate}
 \end{bsp}
+
+
+\begin{bem}
+ Die Proposition zeigt insbesondere, dass die Menge der konvergenten Folgen
+ \[
+  \mathcal{S} \coloneqq \{f \colon \N \to \R \mid \text{$(f_n)_{n \in \N}$ konvergiert}\}
+ \]
+ unter punktweiser Addition und Skalarmultiplikation, d.h.
+ \[
+  (a_n)_{n \in \N} + (b_n)_{n \in \N} = (a_n + b_n)_{n \in \N}
+  \quad
+  \text{und}
+  \quad
+  \lambda \cdot (a_n)_{n \in \N} = (\lambda a_n)_{n \in \N}
+ \]
+ für alle $(a_n)_{n \in \N}, (b_n)_{n \in \N} \in \mathcal{S}$ und $\lambda \in \R$, einen $\R$-Vektorraum bildet, und dass die Abbildung
+ \[
+  \lim \colon \mathcal{S} \to \R, (x_n)_{n \in \N} \mapsto \lim_{n \to \infty} x_n
+ \]
+ $\R$-linear ist. Inbesondere bilden die Menge der Nullfolgen
+ \[
+  \mathcal{N}
+  \coloneqq \left\{ f \colon \N \to \R \,\middle|\, \lim_{n \to \infty} f_n = 0 \right\}
+  \subseteq \mathcal{S}
+ \]
+ einen Untervektorraum, da $\mathcal{N} = \ker \lim$.
+\end{bem}
 
 
 
@@ -475,19 +521,45 @@ Nur weil eine Folge nicht konvergiert, bedeutet dies noch nicht, dass für $n \t
 
 
 \begin{defi}
- Eine Folge $(x_n)_{n \in \N}$ konvergiert gegen $\infty$, falls es für jedes $R > 0$ ein $N \in \N$ gibt, so dass $a_n > R$ für alle $n \geq N$. Wir schreiben dann $\lim_{n \to \infty} x_n = \infty$ oder $x_n \to \infty$ für $n \to \infty$.
+ Eine Folge $(x_n)_{n \in \N}$ \emph{konvergiert gegen $\infty$} oder \emph{divergiert bestimmt gegen $\infty$}, falls es für jedes $R > 0$ ein $N \in \N$ gibt, so dass $a_n > R$ für alle $n \geq N$. Wir schreiben dann $\lim_{n \to \infty} x_n = \infty$ oder $x_n \to \infty$ für $n \to \infty$.
  
- $(x_n)$ konvergiert gegen $-\infty$, falls es für jedes $R > 0$ ein $N \in \N$ gibt mit $a_n < -R$ für alle $n \geq N$. Wir schreiben dann $\lim_{n \to \infty} x_n = -\infty$ oder $x_n \to -\infty$ für $n \to \infty$.
+ $(x_n)$ \emph{konvergiert gegen $-\infty$} oder \emph{divergiert bestimmt gegen $-\infty$}, falls es für jedes $R < 0$ ein $N \in \N$ gibt, so dass $a_n < R$ für alle $n \geq N$. Wir schreiben dann $\lim_{n \to \infty} x_n = -\infty$ oder $x_n \to -\infty$ für $n \to \infty$.
  
  Ist $x_n \to \infty$ oder $x_n \to -\infty$ für $n \to \infty$, so sagen wir, dass die Folge $(x_n)$ \emph{uneigentlich konvergent} ist.
 \end{defi}
 
 
-Unter Verwendung von uneigentlichen Grenzwerten ergibt sich, dass jede monotone Folge konvergiert:
+Unter der zusätzlichen Verwendung von uneigentlichen Grenzwerten ergibt sich, dass jede monotone Folge konvergiert:
 
-Ist $(x_n)_{n \in \N}$ eine monoton steigende Folge, so gibt es zwei Fälle: Ist die Folge nach oben beschränkt, so konvergiert sie eigentlich nach Bolzano-Weierstraß. Ist sie nicht nach oben beschränkt, so gibt es für alle $R > 0$ ein $N \in \N$ mit $x_N > R$, und aus der Monotonie der Folge folgt, dass $x_n > R$ für alle $n \geq N$, weshalb in diesem Fall $x_n \to \infty$ für $n \to \infty$.
+Ist $(x_n)_{n \in \N}$ eine monoton steigende Folge, so gibt es zwei mögliche Fälle: Ist die Folge nach oben beschränkt, so konvergiert sie eigentlich nach Bolzano-Weierstraß. Ist sie nicht nach oben beschränkt, so gibt es für alle $R > 0$ ein $N \in \N$ mit $x_N > R$, und aus der Monotonie der Folge folgt, dass $x_n > R$ für alle $n \geq N$, weshalb in diesem Fall $x_n \to \infty$ für $n \to \infty$.
 
 Analog ergibt sich, dass auch jede monoton fallende Folge entweder eigentlich konvergiert, oder uneigentlich gegen $-\infty$ konvergiert.
+
+
+Sprechen wir von einer konvergenten Folge, so meinen wir damit, sofern nicht anders gesagt, eine \emph{eigentlich konvergente Folge}, d.h. eine Folge, die im Sinne von Definition \ref{defi: Definition Konvergenz} konvergiert.
+
+
+\begin{lem}
+ Es seien $(a_n)_{n \in \N}$ und $(b_n)_{n \in \N}$ Folgen mit $a_n \leq b_n$ für alle $n \in \N$. Ist $\lim_{n \to \infty} a_n = \infty$, so ist auch $\lim_{n \to \infty} b_n = \infty$; ist $\lim_{n \to \infty} b_n = -\infty$, so ist auch $\lim_{n \to \infty} a_n = -\infty$.
+\end{lem}
+\begin{proof}
+ Es sei $\lim_{n \to \infty} a_n = \infty$. Es sei $R > 0$ beliebig aber fest. Da $\lim_{n \to \infty} a_n = \infty$ gibt es $N \in \N$ mit $a_n > R$ für alle $n \geq N$. Damit ist dann auch $b_n > R$ für alle $n \in \N$, und wegen der Beliebigkeit von $R > 0$ somit $\lim_{n \to \infty} b_n = \infty$.
+ 
+ Analog ergibt sich auch die zweite Aussage.
+\end{proof}
+
+
+Inbesondere ergibt sich durch das Lemma, dass das Sandwich-Lemma auch mit uneigentlicher Konvergenz verträglich ist, und sich Lemma \ref{lem: Konvergenz erhält Monotonie} auch auf uneigentlich konvergente Folgen erweitern lässt.
+
+
+\begin{lem}
+ Es sei $(a_n)_{n \in \N}$ mit $a_n \neq 0$ für alle $n \in \N$ und $\lim_{n \to \infty} a_n = \infty$ oder $\lim_{n \to \infty} a_n = -\infty$. Dann ist $\lim_{n \to \infty} 1/a_n = 0$.
+\end{lem}
+\begin{proof}
+ Sei $\varepsilon > 0$ beliebig aber fest. Ist $\lim_{n \to \infty} a_n = \infty$ gibt es $N \in \N$ mit $a_n > 1/\varepsilon$ für alle $n \geq N$. Es ist dann $0 < 1/a_n < \varepsilon$ für alle $n \geq N$. Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $\lim_{n \to \infty} 1/a_n = 0$.
+ 
+ Der Fall $\lim_{n \to \infty} a_n = -\infty$ läuft analog.
+\end{proof}
 
 
 
@@ -502,15 +574,60 @@ Einer der Probleme mit dem Begriff des Grenzwertes ist, dass nicht jede Folge ei
 
 
 \begin{defi}
- Sei $(x_n)_{n \in \N}$ eine Folge. Die Folge $(\sup_{k \geq n} x_k)_{n \in \N}$ ist monoton fallend und daher (eventuell uneigentlich) konvergent. Wir definieren
+ Sei $(x_n)_{n \in \N}$ eine Folge. Die Folge $(\sup_{k \geq n} x_k)_{n \in \N}$ ist monoton fallend und daher (eventuell uneigentlich) konvergent. Wir definieren den \emph{Limes superior} der Folge $(x_n)$ als
  \[
   \limsup_{n \to \infty} x_n \coloneqq \lim_{n \to \infty} \sup_{k \geq n} x_k.
  \]
- Analog definieren wir
+ Analog definieren wir den \emph{Limes inferior} der Folge $(x_n)$ als
  \[
   \liminf_{n \to \infty} x_n \coloneqq \lim_{n \to \infty} \inf_{k \geq n} x_k.
  \]
+ Dabei wollen wir $\lim_{n \to \infty} \infty = \infty$ und $\lim_{n \to \infty} -\infty = -\infty$ verstehen.
 \end{defi}
+
+
+\begin{bem}
+ Da man auch die uneigentlichen Grenzwerte $\infty$ und $-\infty$ zulässt existieren $\limsup$ und $\liminf$ immer. Dies ist ein großer Vorteil gegenüber dem Limes.
+\end{bem}
+
+
+\begin{lem}
+ Für jede Folge $(x_n)_{n \in \N}$ ist $\liminf_{n \to \infty} x_n \leq \limsup_{n \to \infty} x_n$.
+\end{lem}
+\begin{proof}
+ Für alle $n \in \N$ ist $\inf_{k \geq n} a_k \leq a_n \leq \sup_{k \geq n} a_k$, und somit auch
+ \[
+  \liminf_{n \to \infty} a_n
+  = \lim_{n \to \infty} \inf_{k \geq n} x_k
+  \leq \lim_{n \to \infty} \sup_{k \geq n} x_k
+  = \limsup_{n \to \infty} x_k.
+  \qedhere
+ \]
+\end{proof}
+
+
+\begin{lem}
+ Es sei $(x_n)_{n \in \N}$ eine Folge. Es ist genau dann $\lim_{n \to \infty} x_n = \infty$, wenn $\liminf_{n \to \infty} x_n = \limsup_{n \to \infty} x_n = \infty$, und genau dann $\lim_{n \to \infty} x_n = -\infty$, wenn $\liminf_{n \to \infty x_n} = -\infty$.
+\end{lem}
+\begin{proof}
+ Wir zeigen nur die erste Äquivalenz, der Beweis der zweiten läuft analog.
+ 
+ Wir nehmen zunächst an, dass $\lim_{n \to \infty} x_n = \infty$. Sei $R > 0$ beliebig aber fest. Da $\lim_{n \to \infty}$ gibt es ein $N \in \N$ mit $x_n > R$ für alle $n \geq N$. Es ist dann $\inf_{k \geq n} x_k \geq R$ für alle $n \geq N$, und somit
+ \[
+  \liminf_{n \to \infty} x_n = \lim_{n \to \infty} \sup_{k \geq n} x_k \geq R.
+ \]
+ Aus der Beliebigkeit von $R > 0$ folgt, dass $\liminf_{n \to \infty} x_n = \infty$. Da $\limsup_{n \to \infty} x_n \geq \liminf_{n \to \infty} x_n$ ist auch $\limsup_{n \to \infty} x_n$.
+ 
+ Wir nehmen nun an, dass $\liminf_{n \to \infty} x_n = \limsup_{n \to \infty} x_n = \infty$ (da immer $\limsup_{n \to \infty} x_n \geq \liminf_{n \to \infty} x_n$ ist dies bereits äquivalent zu $\liminf_{n \to \infty} x_n = \infty$). Es sei $R > 0$ beliebig aber fest. Da $\liminf_{n \to \infty} x_n = \lim_{n \to \infty} \inf_{k \geq n} x_k$ gibt es wegen $\liminf_{n \to \infty} x_n = \infty$ nach der Definition des uneigentlichen Grenzwertes ein $N \in \N$ mit $\inf_{k \geq n} x_k > R$ für alle $n \geq N$. Insbesondere ist
+ \[
+  x_n \geq \inf_{k \geq x_n} x_k > R
+ \]
+ für alle $n \geq N$. Wegen der Beliebigkeit von $R > 0$ zeigt dies, dass \mbox{$\lim_{n \to \infty} x_n = \infty$}.
+\end{proof}
+
+
+
+
 
 
 
@@ -522,11 +639,17 @@ Einer der Probleme mit dem Begriff des Grenzwertes ist, dass nicht jede Folge ei
 \end{defi}
 
 
+Vorstellungsmäßig bedeutet dies, dass man den Durchmesser der Punktmenge $\{x_k \mid k \geq N\}$ beliebig klein machen kann, indem man $N$ groß genug wählt. Insbesondere divergiert eine Cauchy-Folge nicht gegen $\infty$ oder $-\infty$, und springt auch nicht durch die Gegend. Daher können wir erwarten, dass Cauchy-Folgen ein schönes Konvergenzverhalten aufweisen.
+
+
+Zum Zusammenhang von Cauchy-Folgen und Konvergenz stellen wir zunächst das Folgende fest:
+
+
 \begin{lem}
- Ist eine Folge $(x_n)_{n \in \N}$ konvergent, so ist $(x_n)$ eine Cauchy-Folge.
+ Jede konvergente Folge ist auch eine Cauchy-Folge.
 \end{lem}
 \begin{proof}
- Es sei $x \coloneqq \lim_{n \to \infty} x_n$. Sei $\varepsilon > 0$. Da $x_n \to x$ für $n \to \infty$ gibt es $N \in \N$ mit $|x - x_n| < \varepsilon/2$ für alle $n \geq N$. Dann ist für alle $n, n' \geq N$ auch
+ Es sei $(x_n)_{n \in \N}$ ein konvergente Folge und $x \coloneqq \lim_{n \to \infty} x_n$. Sei $\varepsilon > 0$. Da $x_n \to x$ für $n \to \infty$ gibt es $N \in \N$ mit $|x - x_n| < \varepsilon/2$ für alle $n \geq N$. Dann ist für alle $n, n' \geq N$ auch
  \[
   |x_n - x_{n'}|
   = |(x - x_{n'}) - (x - x_n)|
@@ -552,7 +675,7 @@ Es stellt sich heraus, dass auf $\R$ der Begriff der Cauchy-Folge schon äquival
   \item\label{enum: Cauchy}
    $(x_n)$ ist eine Cauchy-Folge.
   \item\label{enum: limsup = liminf}
-   $\liminf_{n \to \infty} x_n = \limsup_{n \to \infty} x_n$.
+   $-\infty < \liminf_{n \to \infty} x_n = \limsup_{n \to \infty} x_n < \infty$.
  \end{enumerate}
  Es gilt dann
  \[
@@ -575,9 +698,9 @@ Es stellt sich heraus, dass auf $\R$ der Begriff der Cauchy-Folge schon äquival
   a - \frac{\varepsilon}{2}
   \leq \liminf_{n \to \infty} x_n
   \leq \limsup_{n \to \infty} x_n
-  \leq a + \frac{\varepsilon}{2}
+  \leq a + \frac{\varepsilon}{2}.
  \]
- und somit
+ Inbesondere ist $-\infty < \liminf_{n \to \infty} x_n$ und $\limsup_{n \to \infty} x_n < \infty$, d.h. $\liminf_{n \to \infty} x_n$ und $\limsup_{n \to \infty} x_n$ sind reell. Somit ergibt sich weiter, dass
  \[
   0
   \leq \limsup_{n \to \infty} x_n - \limsup_{n \to \infty} x_n
@@ -592,10 +715,66 @@ Es stellt sich heraus, dass auf $\R$ der Begriff der Cauchy-Folge schon äquival
  \]
  Per Definition von $(g_n)$ und $(h_n)$ ist $g_n \leq x_n \leq h_n$ für alle $n \in \N$, und nach der Definition des $\liminf$, bzw. $\limsup$ ist
  \[
- \lim_{n \to \infty} g_n = \liminf_{n \to \infty} x_n = \limsup_{n \to \infty} h_n = \lim_{n \to \infty} h_n.
+ \lim_{n \to \infty} g_n = \liminf_{n \to \infty} x_n = \limsup_{n \to \infty} x_n = \lim_{n \to \infty} h_n.
  \]
- Nach dem Sandwich-Lemma ist auch $(x_n)$ konvergent und $\lim_{n \to \infty} x_n$ stimmt mit den obigen Ausdrücken überein.
+ Nach dem Sandwich-Lemma ist daher auch $(x_n)$ konvergent und $\lim_{n \to \infty} x_n$ stimmt mit den obigen Ausdrücken überein.
 \end{proof}
+
+
+
+
+
+\section{Beispiele und Tricks}
+
+Für die Folge $(a_n)_{n \in \N}$ mit $a_n \coloneqq \sqrt{n + 2} - \sqrt{n + 1}$ für alle $n \geq \N$ ist
+\begin{align*}
+ a_n
+ &= \sqrt{n + 2} - \sqrt{n + 1}
+ = \frac{(\sqrt{n+2}-\sqrt{n+1})(\sqrt{n+2}+\sqrt{n+1})}{\sqrt{n+2}+\sqrt{n+1}} \\
+ &= \frac{(n+2)-(n+1)}{\sqrt{n+2}+\sqrt{n+1}}
+ = \frac{1}{\sqrt{n+2}+\sqrt{n+1}}
+ \to 0
+\end{align*}
+für $n \to \infty$.
+
+
+Für die Folge $(b_n)_{n \in \N}$ mit
+\[
+ b_n \coloneqq \frac{3n^2-6n+7}{2n^2+3n+8}
+\]
+für alle $n \in \N$ ist für alle $n \geq 1$
+\[
+ b_n
+ = \frac{3n^2-6n+7}{2n^2+3n+8}
+ = \frac{3-\frac{6}{n}+\frac{7}{n^2}}{2+\frac{3}{n}+\frac{8}{n^2}}
+ \to \frac{3}{2}
+\]
+für $n \to \infty$.
+
+
+Für $c > 0$ ist $\lim_{n \to \infty} c^{1/n} = 1$. Nach Archimedes gibt es $n_1 \in \N$ mit $c \leq n_1$ und $n_2 \in \N$ mit $1/n_2 \leq c$. Für $N \coloneqq \max \{n_1, n_2\}$ gilt dann für alle $n \geq N$, dass
+\[
+ \frac{1}{n} \leq c \leq n,
+\]
+und somit auch
+\[
+ \frac{1}{n^{1/n}} \leq c^{1/n} \leq n^{1/n}.
+\]
+Da $\lim_{n \to \infty} n^{1/n} = 1$ folgt die Aussage aus dem Sandwich-Lemma.
+
+
+
+Seien $x_1, \dotsc, x_r \geq 0$. Dann ist
+\[
+ \lim_{n \to \infty} \left( x_1^n + \dotsb + x_r^n \right)^{1/n} = \max_{i=1,\dotsc,r} x_i.
+\]
+Für $x \coloneqq \max_{i=1,\dotsc,r} x_i$ ist für alle $n \geq 1$
+\begin{gather*}
+ (x_1^n + \dotsb + x_r^n)^{1/n} \leq (r x^n)^{1/n} = r^{1/n} x
+\shortintertext{und}
+ (x_1^n + \dotsb + x_r^n)^{1/n} \geq (x^n)^{1/n} = x.
+\end{gather*}
+Da $\lim_{n \to \infty} r^{1/n} = 1$ folgt die Aussage aus dem Sandwich-Lemma.
 
 
 
@@ -609,9 +788,7 @@ Wir wollen hier noch kurz eine Möglichkeit vorstellen, den Begriff der Konverge
  Sei $X$ eine Menge. Eine \emph{Metrik auf $X$} ist eine Funktion $d \colon X \times X \to \R$, die die folgenden Bedingungen erfüllt:
  \begin{enumerate}
   \item
-   Für alle $x,y \in X$ ist $d(x,y) \geq 0$.
-  \item
-   Für alle $x,y \in X$ ist $d(x,y) = 0$ genau dann wenn $x = y$.
+   Für alle $x,y \in X$ ist $d(x,y) \geq 0$ und es gilt $d(x,y) = 0$ genau dann wenn $x = y$. (Positive Definitheit)
   \item
    Für alle $x,y \in X$ ist $d(x,y) = d(y,x)$ (Symmetrie).
   \item
@@ -626,7 +803,7 @@ Wir wollen hier noch kurz eine Möglichkeit vorstellen, den Begriff der Konverge
 
 
 \begin{bem}
- Die erste der vier Bedingungen muss eigentlich nicht gefordert werden, da sie aus den anderen dreien folgt: Für alle $x,y \in X$ ist nämlich
+ Die Forderung, dass $d(x,y) \geq 0$ kann auch weggelassen werden, da sie aus den anderen dreien folgt. Für alle $x,y \in X$ ist dann nämlich
  \[
   0 = d(x,x) \leq d(x,y) + d(y,x) = 2 d(x,y)
  \]
@@ -641,7 +818,7 @@ Wir wollen hier noch kurz eine Möglichkeit vorstellen, den Begriff der Konverge
   \item
    Allgemein definiert die Abbildung $d(x,y) = \|x-y\|$ eine Metrik auf $\R^n$, die man als die \emph{Standardmetrik auf $\R^n$} bezeichnet.
   \item
-   Für eine beliebige Menge $X$ definiert die Abbildung
+   Für eine beliebige Menge $X$ wird durch
    \[
     d \colon X \times X \to \R,
     d(x,y) =
@@ -650,13 +827,13 @@ Wir wollen hier noch kurz eine Möglichkeit vorstellen, den Begriff der Konverge
      0 & \text{falls $x \neq y$},
     \end{cases}
    \]
-   eine Metrik auf $X$, die sogenannte \emph{diskrete Metrik}. (Die Dreiecksungleichung ergibt sich durch Fallunterscheidung.)
+   eine Metrik auf $X$ definiert, die sogenannte \emph{diskrete Metrik}. (Die Dreiecksungleichung ergibt sich durch Fallunterscheidung.)
   \item
-   Ist $(X,d)$ ein metrischer Raum und $Y \subseteq X$, so lässt sich die Metrik $d$ auf $Y$ einschränken zu
+   Ist $(X,d)$ ein metrischer Raum und $Y \subseteq X$, so lässt sich die Metrik $d$ auf $Y$ zu
    \[
-    d' \colon Y \times Y \to \R, d'(x,y) = d(x,y).
+    d_Y \colon Y \times Y \to \R, d_Y(x,y) = d(x,y).
    \]
-   Dann ist auch $(Y,d')$ ein metrischer Raum und ein \emph{Unterraum} von $(X,d)$.
+   einschränken. Dann ist auch $(Y,d_Y)$ ein metrischer Raum und ein \emph{Unterraum} von $(X,d)$.
   \item
    Sind $(X_1, d_1)$ und $(X_2, d_2)$ metrische Räume, so ist die Abbildung
    \begin{gather*}
@@ -688,14 +865,14 @@ Zum Schluss wollen wir noch den Begriff der Cauchy-Folge in metrischen Räumen t
  Sei $(X,d)$ ein metrischer Raum und $(x_n)_{n \in \N}$ eine Folge auf $X$. $(x_n)$ heißt \emph{Cauchy-Folge}, falls es für alle $\varepsilon > 0$ ein $N \in \N$ gibt, so dass $d(x_n, x_{n'}) < \varepsilon$ für alle $n, n' \geq N$.
 \end{defi}
 
-Wie bereits zuvor ergibt sich, dass jede konvergente Folge auch eine Cauchy-Folge ist. Es stellt sich jedoch heraus, dass in metrischen Räumen Cauchy-Folgen nicht unbedingt konvergieren.
+Wie bereits zuvor ergibt sich, dass jede konvergente Folge auch eine Cauchy-Folge ist. Es stellt sich jedoch heraus, dass es auch metrische Räume gibt, in denen nicht alle Cauchy-Folgen konvergieren.
 
 Als einfaches Gegenbeispiele betrachte man $\Q \subseteq \R$. Es sei $d$ die Standardmetrik auf $\R$ und $d_\Q$ die Einschränkung von $d$ auf $\Q$, d.h. $d_\Q(x,y) = d(x,y) = |x-y|$ für alle $x,y \in \Q$.
 
-Es existiert nun eine Folge $(x_n)_{n \in \N}$ rationaler Zahlen, so dass in $(\R, d)$ die Konvergenz $x_n \to \sqrt{2}$ für $n \to \infty$ gilt. In $(\R, d)$ handelt es sich deshalb bei $(x_n)$ um eine Cauchy-Folge. Da $d_\Q$ die Einschränkung von $d$ auf $\Q$ ist, ist deshalb $(x_n)$ auch in $(\Q,d_\Q)$ eine Cauchy-Folge. In $(\Q,d_\Q)$ konvergiert die Folge $(x_n)$ jedoch nicht, da $\sqrt{2} \notin \Q$. (Würde die Folge $(x_n)$ in $(\Q, d_\Q)$ gegen eine rationale Zahlen $q \in \Q$ konvergieren, so würde sie auch in $(\R, d)$ gegen $q$ konvergieren, was wegen $\sqrt{2} \neq q$ im Widerspruch zur Eindeutigkeit von Grenzwerten steht.)
+Es existiert nun eine Folge $(x_n)_{n \in \N}$ rationaler Zahlen, so dass in $(\R, d)$ die Konvergenz $x_n \to \sqrt{2}$ für $n \to \infty$ gilt. In $(\R, d)$ handelt es sich deshalb bei $(x_n)$ um eine Cauchy-Folge. Da $d_\Q$ die Einschränkung von $d$ auf $\Q$ ist, ist $(x_n)$ auch in $(\Q,d_\Q)$ eine Cauchy-Folge. In $(\Q,d_\Q)$ konvergiert die Folge $(x_n)$ jedoch nicht, da $\sqrt{2} \notin \Q$. (Würde die Folge $(x_n)$ in $(\Q, d_\Q)$ gegen eine rationale Zahlen $q \in \Q$ konvergieren, so würde sie auch in $(\R, d)$ gegen $q$ konvergieren, was wegen $\sqrt{2} \neq q$ im Widerspruch zur Eindeutigkeit von Grenzwerten steht.)
 
 
-Metrische Räume, in den alle Cauchy-Folgen konvergieren, sind also 
+Dies motiviert nun die folgende Definition:
 
 
 \begin{defi}
@@ -703,7 +880,7 @@ Metrische Räume, in den alle Cauchy-Folgen konvergieren, sind also
 \end{defi}
 
 \begin{bsp}
- Wie wir bereits wissen ist $\R$ (mit der Standardmetrik) vollständig. Daraus kann man folgern, dass auch $\R^n$ mit der Standardmetrik vollständig ist.
+ Wie wir bereits wissen ist $\R$ (mit der Standardmetrik) vollständig. Daraus kann man auch folgern, dass auch $\R^n$ mit der Standardmetrik vollständig ist.
 \end{bsp}
 
 
