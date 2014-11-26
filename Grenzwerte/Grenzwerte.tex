@@ -363,7 +363,31 @@ Im Folgenden handelt es sich, sofern nicht anders angegeben, bei allen Folgen um
    \]
    In beiden Fällen folgt aus der Beliebigkeit von $\varepsilon > 0$, dass $(a_n b_n)$ konvergiert und $\lim_{n \to \infty} (a_n \cdot b_n) = a \cdot b$.
   \item
-   
+   Da $b_n \to b$ für $n \to \infty$ und $|b| > 0$ gibt es $n_1 \in \N$ mit $|b - b_n| < |b|/2$ für alle $n \geq n_1$. Da für alle $n \in \N$
+   \[
+    |b| = |b - b_n + b_n| \leq |b - b_n| + |b_n| \Rightarrow |b_n| \geq |b| - |b - b_n|
+   \]
+   ist dann für alle $n \geq n_1$
+   \[
+    |b_n|
+    \geq |b| - |b - b_n|
+    \geq |b| - \frac{|b|}{2}
+    = \frac{|b|}{2},
+   \]
+   und damit auch
+   \begin{equation}\label{eqn: Konvergenz Kehrwert}
+    \left| \frac{1}{b} - \frac{1}{b_n} \right|
+    = \left| \frac{b_n - b}{b b_n} \right|
+    = \frac{|b - b_n|}{|b| |b_n|}
+    \leq \frac{2 |b - b_n|}{|b|^2}.
+   \end{equation}
+   Es sei nun $\varepsilon > 0$ beliebig aber fest. Da $b_n \to b$ für $n \to \infty$ gibt es auch ein $n_2 \in \N$ mit $|b - b_n| < \varepsilon|b|^2/2$ für alle $n \geq n_2$. Zusammen mit \eqref{eqn: Konvergenz Kehrwert} ergibt sich für $N \coloneqq \max \{n_1, n_2\}$, dass für alle $n \geq N$
+   \[
+    \left|\frac{1}{b} - \frac{1}{b_n}\right|
+    \leq \frac{2 |b - b_n|}{|b|^2}
+    < \varepsilon.
+   \]
+   Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $\lim_{n \to \infty} 1/b_n = 1/b$.
   \item
    Aus den vorherigen Aussagen folgt, dass $1/b_n \to 1/b$ für $n \to \infty$ und damit auch
    \[
