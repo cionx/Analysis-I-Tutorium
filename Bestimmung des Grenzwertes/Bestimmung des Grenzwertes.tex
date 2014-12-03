@@ -14,4 +14,39 @@
 \begin{document}
 \maketitle
 
+Auf dem achten Übungsblatt wurde sollte gezeigt werden, dass die Folge $(a_n)_{n \in \N}$ mit
+\begin{align*}
+ a_0 &\coloneqq 0 \\
+ a_1 &\coloneqq 1 \\
+ a_{n+2} &\coloneqq \frac{a_n + a_{n+1}}{2}
+\end{align*}
+konvergiert. Wir wollen uns nun damit beschäftigen, den entsprechenden Grenzwert zu ermitteln. Hierfür zeigen wir zunächst noch einmal, dass die Folge $(a_n)$ konvergiert.
+
+\begin{proof}
+ Für alle $n \geq 1$ ist
+ \[
+  |a_{n+1}-a_n|
+  = \left| \frac{a_{n-1} + a_n}{2} - a_n \right|
+  = \left| \frac{a_{n-1} - a_n}{2} \right|
+  = \frac{1}{2} |a_n-a_{n-1}|.
+ \]
+ Durch wiederholten Anwenden dieser Gleichung ergibt sich mit $|a_1 - a_0| = 1$, dass für alle $n \in \N$
+ \[
+  |a_{n+1} - a_n| = \frac{1}{2^n}|a_1 - a_0| = \frac{1}{2^n}.
+ \]
+ Für alle $N' \in \N$ und $m, m' \geq N'$, wobei o.B.d.A. $m \geq m'$, gilt daher
+ \begin{align*}
+  |a_m - a_{m'}|
+  &\leq |a_m - a_{m-1}| + |a_{m-1} - a_{m-2}| + \dotsb + |a_{m'+1} - a_{m'}| \\
+  &= \frac{1}{2^{m-1}} + \frac{1}{2^{m-2}} + \dotsb + \frac{1}{2^{m'}}
+  = \frac{1}{2^{m'}} \sum_{k=0}^{m-1-m'} \frac{1}{2^k} \\
+  &\leq \frac{1}{2^{N'}} \sum_{k=0}^\infty \frac{1}{2^k}
+  = \frac{1}{2^{N'}} \cdot 2
+  = \frac{1}{2^{N'-1}}.
+ \end{align*}
+ Für beliebiges aber festes $\varepsilon > 0$ und $N \in \N$ mit $1/(2^{N-1}) < \varepsilon$ gilt daher für alle $m, m' \geq N$, dass $|a_m - a_{m'}| < \varepsilon$. Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $(a_n)$ eine Cauchy-Folge ist. Also ist $(a_n)$ konvergent.
+\end{proof}
+
+
+
 \end{document}
