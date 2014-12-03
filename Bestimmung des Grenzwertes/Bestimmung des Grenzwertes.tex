@@ -14,6 +14,15 @@
 \begin{document}
 \maketitle
 
+\tableofcontents
+
+
+
+
+
+\section{Das Problem}
+
+
 Auf dem achten Übungsblatt wurde sollte gezeigt werden, dass die Folge $(a_n)_{n \in \N}$ mit
 \begin{align*}
  a_0 &\coloneqq 0 \\
@@ -21,6 +30,7 @@ Auf dem achten Übungsblatt wurde sollte gezeigt werden, dass die Folge $(a_n)_{
  a_{n+2} &\coloneqq \frac{a_n + a_{n+1}}{2}
 \end{align*}
 konvergiert. Wir wollen uns nun damit beschäftigen, den entsprechenden Grenzwert zu ermitteln. Hierfür zeigen wir zunächst noch einmal, dass die Folge $(a_n)$ konvergiert.
+
 
 \begin{proof}
  Für alle $n \geq 1$ ist
@@ -46,6 +56,64 @@ konvergiert. Wir wollen uns nun damit beschäftigen, den entsprechenden Grenzwer
  \end{align*}
  Für beliebiges aber festes $\varepsilon > 0$ und $N \in \N$ mit $1/(2^{N-1}) < \varepsilon$ gilt daher für alle $m, m' \geq N$, dass $|a_m - a_{m'}| < \varepsilon$. Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $(a_n)$ eine Cauchy-Folge ist. Also ist $(a_n)$ konvergent.
 \end{proof}
+
+
+Komplett analog kann man für beliebiges Startwerte $x,y \in \R$ zeigen, dass die Folge $(b_n)_{n \in \N}$ mit
+\begin{align*}
+ b_0 &\coloneqq x \\
+ b_1 &\coloneqq y \\
+ b_{n+2} &\coloneqq \frac{b_n + b_{n+1}}{2}
+\end{align*}
+konvergiert. Die Änderung des Beweises überlassen wir den Lesern als (einfache) Übung.
+
+
+Wir wollen uns nun der Bestimmung des Grenzwertes $a \coloneqq \lim_{n \to \infty} a_n$ zuwenden. Ein erster naiver Ansatz ist der folgende: Ist $(c_n)_{n \in \N}$ eine konvergent Folge, die durch Startwerte $c_0$, \dots, $c_l$ und Rekursionsformel
+\[
+ c_{n+1+l} = \varphi(c_n, \dotsc, c_{n+l})
+\]
+gegeben ist, und ist $\varphi$ schön genug, um mit Grenzwerten zu vertauschen (etwa stetig) so sollte sich durch Anwenden des Grenzwertes auf die obige Rekursionsforme ergeben, dass für den Grenzwert $c \coloneqq \lim_{n \to \infty} c_n$ die Gleichung
+\begin{align*}
+ c
+ &= \lim_{n \to \infty} c_n
+ = \lim_{n \to \infty} c_{n+1+l}
+ = \lim_{n \to \infty} \varphi(c_n, \dotsc, c_{n+l}) \\
+ &= \varphi\left(\lim_{n \to \infty} c_n, \dotsc, \lim_{n \to \infty} c_{n+l}\right)
+ = \varphi(c, \dotsc, c),
+\end{align*}
+wodurch sich die Bestimmung von $c$ auf ein Fixpunktproblem zurückführen lässt. Im Falle der Folge $(a_n)$ erhalten wir so allerdings nur, dass
+\[
+ a
+ = \lim_{n \to \infty} a_n
+ = \lim_{n \to \infty} a_{n+2}
+ = \lim_{n \to \infty} \frac{a_n + a_{n+1}}{2}
+ = \frac{a + a}{2}
+ = a,
+\]
+was uns offenbar nicht weiterhilft.
+
+
+Im Folgenden werden wir verschiedene Methoden darstellen, den Grenzwert von $(a_n)$ zu bestimmen. Inhaltlich werden wir jeweils eine kurze Motivation der Lösung und die unterliegende Beweisidee darstellen, und diese Idee dann zu einem formalen Beweis ausbauen. Die genauen Details der Rechenschritte dem Leser als Übung, wir werden jedoch auch (mögliche) Lösungen angeben.
+
+
+
+
+
+\section{Skalierung}
+Als erstes wollen wir einen geometrisch motivierten Beweis angeben. Zur Motivation betrachten wir die ersten vier Folgenglieder
+\[
+ a_0 = 0, a_1 = 1, a_2 = \frac{1}{2}, a_3 = \frac{3}{4}.
+\]
+
+
+
+
+
+
+
+
+\section{Lösungen}
+
+
 
 
 
