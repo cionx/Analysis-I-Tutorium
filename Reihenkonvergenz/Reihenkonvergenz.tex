@@ -18,6 +18,39 @@
 
 
 
+\section{Vorbereitung}
+
+
+Wir werden einige grundlegende Eigenschaften über die Konvergenz von Folgen nutzen, die bisher nicht gezeigt wurden. Wir überlassen die entsprechenden Beweise den geneigten Lesern als Übung.
+
+
+\begin{ExerciseList}
+ \Exercise
+  Konvergiert die Folge $(a_n)_{n \in \N}$, so konvergiert auch die Folge der Beträge $(|a_n|)_{n \in \N}$ und es gilt
+  \[
+   \lim_{n \to \infty} |a_n| = \left| \lim_{n \to \infty} a_n \right|.
+  \]
+ \Answer
+  Sei $a \coloneqq \lim_{n \to \infty} a_n$ und $\varepsilon > 0$ beliebig aber fest. Dann gibt es ein $N \in \N$ mit $|a - a_n| < \varepsilon$ für alle $n \geq N$. Für alle $n \geq N$ gilt nach der umgekehrten Dreiecksungleichung
+  \[
+   ||a| - |a_n|| \leq |a - a_n| < \varepsilon.
+  \]
+  Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $|a_n| \to |a|$ für $n \to \infty$.
+  
+ \Exercise
+  Für eine Folge $(a_n)_{n \in \N}$ und $C \in \R$ gilt: Es gibt genau dann $y < C$ und $N \in \N$ mit $a_n \leq y$ für alle $n \geq N$, falls $\limsup_{n \to \infty} a_n < C$.
+ \Answer
+  Gibt es solche $y$ und $N$, so ist $\sup_{k \geq N} a_k \leq y$ und somit
+  \[
+   \limsup_{n \to \infty} a_n
+   = \inf_{n \in \N} \sup_{k \geq n} a_k
+   \leq \sup_{k \geq N} a_k
+   \leq y
+   < 1.
+  \]
+  
+  Sei andererseits $x \coloneqq \limsup_{n \to \infty} a_n < 1$. Da $\limsup_{n \to \infty} a_n = \inf_{n \in \N} \sup_{k \geq N} a_k$ gibt es wegen der $\varepsilon$-Charakterisierung des Infimums für alle $\varepsilon > 0$ ein $N' \in \N$ mit $\sup_{k \geq N'} a_k < x + \varepsilon$. 
+\end{ExerciseList}
 
 
 \section{Definition}
@@ -28,7 +61,7 @@
  \[
   s_n \coloneqq \sum_{k=0}^n a_k
  \]
- definiert; $s_n$ heißt die \emph{$n$-te Partialsumme} (der Folge $(a_n)$). Diese Folge der Partialsummen bezeichnet man als \emph{Reihe} und schreibt man als $\sum_{k=0}^\infty a_k$. Konvergiert die Reihe $\sum_{k=0}^\infty a_k$, d.h. konvergiert die Folge der Partialsummen $(s_n)$, so bezeichnet man den Grenzwert $\lim_{n \to \infty} s_n = \lim_{n \to \infty} \sum_{k=0}^n a_k$ ebenfalls als $\sum_{k=0}^\infty a_k$ und nennt dies den \emph{Wert der Reihe}.
+ definiert; $s_n$ heißt die \emph{$n$-te Partialsumme} (der Folge $(a_n)$). Diese Folge der Partialsummen bezeichnet man als \emph{Reihe} und schreibt man als $\sum_{k=0}^\infty a_k$. Konvergiert die Reihe $\sum_{k=0}^\infty a_k$, d.h. konvergiert die Folge der Partialsummen $(s_n)$, so bezeichnet man den Grenzwert $\lim_{n \to \infty} s_n = \lim_{n \to \infty} \sum_{k=0}^n a_k$ ebenfalls als $\sum_{k=0}^\infty a_k$ und nennt dies den \emph{Wert der Reihe}. Die Folge $(a_n)$ heißt dann summierbar.
  
  Für $N \in \N$ ist die Reihe $\sum_{k=N}^\infty a_k$ als die Reihe $\sum_{k=0}^\infty a_{k+N}$ definiert.  
 \end{defi}
@@ -51,11 +84,12 @@
 \end{bem}
 
 
+
 Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge der Partialsummen $(\sum_{k=0}^n a_k)_{n \in \N}$ als auch der Grenzwert dieser Folge bezeichnet. Soll also gezeigt werden, dass die Reihe $\sum_{k=0}^\infty a_k$ konvergiert, so ist damit gemeint, dass die Folge der Partialsummen $(\sum_{k=0}^n a_k)_{n \in \N}$ konvergieren soll. Soll der Wert der Reihe $\sum_{k=0}^\infty a_k$ bestimmt werden, so soll der Grenzwert $\lim_{n \to \infty} \sum_{k=0}^n a_k$ ermittelt werden.
 
 
 \begin{defi}
- Eine Reihe $\sum_{k=0}^\infty a_k$ heißt \emph{absolut konvergent}, wenn die Reihe der Beträge $\sum_{k=0}^\infty |a_k|$ konvergiert.
+ Eine Reihe $\sum_{k=0}^\infty a_k$ heißt \emph{absolut konvergent}, wenn die Reihe der Beträge $\sum_{k=0}^\infty |a_k|$ konvergiert. Die Folge $(a_n)$ heißt dann absolut summierbar.
 \end{defi}
 
 
@@ -69,7 +103,7 @@ Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge 
 
 \section{Grundlegende Eigenschaften}
 
-\begin{lem}
+\begin{lem}\label{lem: Reihe bedeutet Nullfolge}
  Konvergiert für eine Folge $(a_n)_{n \in \N}$ die Reihe $\sum_{k=0}^n a_k$, so ist $(a_n)$ eine Nullfolge, d.h. $\lim_{n \to \infty} a_n = 0$.
 \end{lem}
 \begin{proof}
@@ -115,6 +149,28 @@ Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge 
 \end{proof}
 
 
+\begin{kor}
+ Die Menge der summierbaren Folgen
+ \[
+  \Sigma \coloneqq \{ (a_n)_{n \in \N} \mid \text{$(a_n)$ ist summierbar}\}
+ \]
+ bildet unter punktweiser Addition und Skalarmultiplikation einen $\R$-Vektorraum, und die Abbildung
+ \[
+  \Sigma \to \R, (a_n)_{n \in \N} \mapsto \sum_{k=0}^\infty a_k
+ \]
+ ist $\R$-linear.
+\end{kor}
+
+
+Wir erhalten aus dem Lemma auch, dass $\lim_{n \to \infty} \sum_{k=n}^\infty a_k = 0$, denn wir haben
+\[
+ \sum_{k=n}^\infty a_k
+ = \sum_{k=0}^\infty a_k - \sum_{k=0}^{n-1} a_k
+ \xrightarrow{n \to \infty} \sum_{k=0}^\infty a_k - \sum_{k=0}^\infty a_k
+ = 0.
+\]
+
+
 \begin{lem}
  Ist die Reihe $\sum_{k=0}^\infty a_k$ konvergent, so ist
  \[
@@ -122,17 +178,6 @@ Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge 
  \]
 \end{lem}
 
-\begin{bem}
- Im Beweis des Lemmas werden wir die folgende kleine Aussage über konvergente Folgen nutzen, die man normalerweise im Laufe der Vorlesung behandelt: Ist eine Folge $(a_n)_{n \in \N}$ reeller Zahlen konvergent, so ist auch die Folge der Beträge $(|a_n|)_{n \in \N}$ konvergent und es gilt
- \[
-  \lim_{n \to \infty} |a_n| = \left| \lim_{n \to \infty} a_n \right|.
- \]
- Dies folgt leicht mithilfe der umgekehrten Dreiecksungleichung: Sei $a \coloneqq \lim_{n \to \infty} a_n$ und $\varepsilon > 0$ beliebig aber fest. Dann gibt es ein $N \in \N$ mit $|a - a_n| < \varepsilon$ für alle $n \geq N$. Für alle $n \geq N$ ist dann auch
- \[
-  ||a| - |a_n|| \leq |a - a_n| < \varepsilon.
- \]
- Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $|a_n| \to |a|$ für $n \to \infty$.
-\end{bem}
 
 \begin{proof}[Beweis des Lemmas]
  Ist die Reihe $\sum_{k=0}^\infty a_k$ nicht absolut konvergent, so haben wir $\sum_{k=0}^\infty |a_k| = \infty$ und die Aussage ist klar. Ansonsten gilt für alle $n \in \N$ nach der Dreiecksungleichung für endliche Summen
@@ -151,29 +196,149 @@ Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge 
 \end{proof}
 
 
+Wir wollen nun auf den Zusammenhang zwischen konvergenten und absolut konvergenten Reihen zurückkommen.
+
+
 \begin{prop}
  Ist eine Reihe $\sum_{k=0}^\infty a_k$ absolut konvergent, so ist sie auch konvergent.
 \end{prop}
 \begin{proof}
- Es sei $(s_n)_{n \in \N}$ die Folge der Partialsummen, also $s_n = \sum_{k=0}^n a_k$. Wir wollen zeigen, dass $(s_n)$ eine Cauchy-Folge ist. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Für alle $m, m' \in \N$ haben wir
+ Es sei $(s_n)_{n \in \N}$ die Folge der Partialsummen, also $s_n = \sum_{k=0}^n a_k$. Wir wollen zeigen, dass $(s_n)$ eine Cauchy-Folge ist. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Für alle $n \in \N$ haben wir für alle $m, m' \geq n$
  \[
   |s_m - s_{m'}|
   = \left| \sum_{k=\min\{m,m'\}}^{\max\{m,m'\}} a_k \right|
   \leq \sum_{k=\min\{m,m'\}}^{\max\{m,m'\}} |a_k|
-  \leq \sum_{k=\min\{m,m'\}}^\infty |a_k|.
+  \leq \sum_{k=n}^\infty |a_k|.
  \]
- 
- \begin{beh}
-  Es gibt ein $N \in \N$ mit
-  \[
-   \sum_{k = N}^\infty |a_k| < \varepsilon.
-  \]
- \end{beh}
- \begin{proof}[Beweis der Behauptung]
-  Es sei $a \coloneqq \sum_{k=0}^\infty |a_k|$. Für alle $n \in \N$ haben wir
- \end{proof}
- 
+ Da $\lim_{n \to \infty} \sum_{k=n}^\infty |a_k| = 0$ gibt es ein $N \in \N$ mit $\sum_{k=N}^\infty |a_k| < \varepsilon$. Aus der obigen Ungleichung ergibt sich damit, dass $m, m' \geq N$ ist dann $|s_m - s_{m'}| < \varepsilon$.
 \end{proof}
+
+
+\begin{lem}
+ Es seien $\sum_{k=0}^\infty a_k$ und $\sum_{k=0}^\infty b_k$ Reihen mit $0 \leq a_n \leq b_n$ für alle $n \in \N$. Dann ist $\sum_{k=0}^\infty a_k \leq \sum_{k=0}^\infty b_k$.
+\end{lem}
+\begin{proof}
+ Für die Partialsummen gilt für jedes $n \in \N$
+ \[
+  \sum_{k=0}^n a_k \leq \sum_{k=0}^n b_k.
+ \]
+ Die Aussage ergibt sich damit direkt daraus, dass Monotonie von Folgen unter Grenzwerten erhalten bleibt.
+\end{proof}
+
+
+
+
+
+\section{Konvergenzkriterien}
+
+
+\subsection{Majoranten- und Minorantenkriterium}
+
+\begin{lem}[Majoranten- und Minorantenkriterium]
+ Es sei $\sum_{k=0}^\infty a_k$ und eine Reihe reeller Zahlen und $(b_n)_{n \in \N}$ eine Folge mit $b_n \geq 0$ für alle $n \in \N$.
+ \begin{enumerate}
+  \item
+   Ist $|a_n| \leq b_n$ für alle $n \in \N$ und $\sum_{k=0}^\infty b_k < \infty$, so ist $\sum_{k=0}^\infty a_k$ absolut konvergent. (Dies ist das \emph{Majorantenkriterium}.)
+  \item
+   Ist $b_n \leq |a_n|$ für alle $n \in \N$ und $\sum_{k=0}^\infty a_k = \infty$, so ist $\sum_{k=0}^\infty a_k$ nicht absolut konvergent. (Dies ist das \emph{Minorantenkriterium}.)
+ \end{enumerate}
+\end{lem}
+\begin{proof}
+ \begin{enumerate}
+  \item
+   Für alle $n \in \N$ ist
+   \[
+    \sum_{k=0}^n |a_k| \leq \sum_{k=0}^n b_k \leq \sum_{k=0}^\infty b_k,
+   \]
+   also die Folge von Partialsummen $(\sum_{k=0}^n |a_k|)_{n \in \N}$ monoton steigend und nach oben beschränkt, und somit konvergent.
+  \item
+   Wäre $\sum_{k=0}^\infty a_k$ absolut konvergent, so würde die Reihe der Beträge $\sum_{k=0}^\infty |a_k|$ konvergieren, und nach dem Majorantenkriterium würde auch $\sum_{k=0}^\infty b_k$ konvergieren, im Widerspruch zu Annahme.
+ \end{enumerate}
+\end{proof}
+
+
+\subsection{Quotientenkriterium}
+
+
+\begin{prop}[Quotientenkriterium]
+ Es sei $(a_n)_{n \in \N}$ eine Folge mit $a_n \neq 0$ für alle $n \in \N$ und es gebe $0 \leq y < 1$ und $N \in \N$ mit $|a_{n+1}/a_n| < y$ für alle $n \geq N$. Dann ist die Reihe $\sum_{k=0}^\infty a_k$ absolut konvergent.
+\end{prop}
+\begin{proof}
+ Wir haben
+ \begin{align*}
+  \sum_{k=N}^\infty |a_k|
+  &= \sum_{k=N}^\infty |a_N| \prod_{j=N}^{k-1} \frac{|a_{j+1}|}{|a_j|}
+  = |a_N| \sum_{k=N}^\infty \prod_{j=N}^{k-1} \frac{|a_{j+1}|}{|a_j|} \\
+  &\leq |a_N| \sum_{k=N}^\infty y^{k-N}
+  = |a_N| \sum_{k=0}^\infty y^k
+  = \frac{|a_N|}{1-y},
+ \end{align*}
+ und somit
+ \[
+  \sum_{k=0}^\infty |a_k|
+  = \sum_{k=0}^{N-1} |a_k| + \sum_{k=N}^\infty |a_k|
+  \leq \sum_{k=0}^{N-1} |a_k| + \frac{|a_N|}{1-y}
+  < \infty.
+  \qedhere
+ \]
+\end{proof}
+
+
+
+\subsection{Wurzelkriterium}
+
+
+
+\subsection{Cauchysches Verdichtungskriterium}
+
+
+\subsection{Leibniz-Kriterium}
+
+
+
+
+\section{Beispiele}
+
+
+
+\subsection{Endliche Reihen}
+
+
+\subsection{Die geometrische Reihe}
+
+
+\subsection{Die allgemeine harmonische Reihe}
+
+
+\subsection{Die (alternierende) harmonische Reihe}
+
+
+\subsection{Weitere Beispiele}
+
+
+
+
+
+\section{Potenzreihen}
+
+
+\subsection{Definition}
+
+
+\subsection{Konvergenzradius}
+
+
+\subsection{Beispiele}
+
+
+
+
+\section{Lösungen der Aufgaben}
+
+\shipoutAnswer
+
+
+
 
 
 
