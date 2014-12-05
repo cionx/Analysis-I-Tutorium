@@ -23,7 +23,7 @@ Die Idee der Konstruktion ist die folgende: Wir beginnen mit $a_1 = 1$. Nun nehm
 
 Für die so konstruierte Reihe gilt nach Konstruktion $\sum_{k=1}^\infty a_k = \infty$. Andererseits wird für jedes $m \geq 1$ nach dem $m$-ten Schritt nur noch höchstens jeder $m$-te Summand hinzugefügt, so dass die Anzahl der genutzten Summanden kleiner als $1/m$ wird. Wegen der Beliebigkeit von $m \geq 1$ geht die Häufigkeit der genutzen Summanden dann gegen $0$.
 
-Wir wollen diese Konstruktion nun formalisieren: Im ersten Schritt setzen wir $a_1 = 1$, $b^{(1)}_1 \coloneqq 1$, und $\nu(1) = 1$.
+Wir wollen diese Konstruktion nun formalisieren: Im ersten Schritt setzen wir $a_1 = 1$, $b^{(1)}_1 \coloneqq 1$, und $\nu(1) \coloneqq 1$.
 
 Im zweiten Schritt beginnen setzen wir zunächst $b^{(2)}_1 \coloneqq a_1 + m = 3$. Da $1/3 < 1$ setzen wir weiter $b^{(2)}_2 \coloneqq a_1 + m = 5$. Da auch noch $1/3 + 1/5 = 8/15 < 1$ wählen wir weiter $b^{(2)}_3 \coloneqq a_1 + 3m = 7$. Wir führen diesen Vorgang bis zu dem minimalen $\nu(2) \in \N$ fort, so dass $b^{(2)}_1 + \dotsb + b^{(2)}_{\nu(2)} \geq 1$. Ein solches $\nu(2)$ existiert, da $\sum_{m=1}^\infty 1/(a_1 + m) = \infty$. (Es ist $\nu(2) = 7$, wir müssen also bis zum Summanden $1/15$ gehen.) Wir defineren dann $a_2$, \dots, $a_{\nu(2)+1}$ durch
 \[

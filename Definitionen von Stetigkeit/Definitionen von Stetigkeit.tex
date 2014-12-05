@@ -1,0 +1,121 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage{../mystyle}
+
+\setromanfont[Mapping=tex-text]{Linux Libertine O}
+% \setsansfont[Mapping=tex-text]{DejaVu Sans}
+% \setmonofont[Mapping=tex-text]{DejaVu Sans Mono}
+
+\title{Definitionen von Stetigkeit}
+\author{Jendrik Stelzner}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer Abbildung $f \colon \R \to \R$ angebeben und ihre Äquivalenz beweisen.
+
+
+\begin{defi}
+ Eine Abbildung $f \colon \R \to \R$ heißt \emph{$\varepsilon$-$\delta$-stetig im Punkt $x \in \R$}, falls es für jedes $\varepsilon > 0$ ein $\delta > 0$ gibt, so dass
+ \[
+  |x-y| < \delta \Rightarrow |f(x)-f(y)| < \varepsilon \quad \text{für alle $y \in \R$}.
+ \]
+ Die Abbildung $f$ heißt \emph{$\varepsilon$-$\delta$-stetig}, falls $f$ $\varepsilon$-$\delta$-stetig an jeder Stelle $x \in \R$ ist.
+\end{defi}
+
+\begin{bsp}
+ Wir betrachten die Abbildung $f \colon \R \to \R$, $x \mapsto x^2$ an einer Stelle $x \in \R$. Für alle $y \in \R$ haben wir
+ \begin{equation}\label{eqn: Ungleichung für Quadrat}
+  \begin{aligned}
+   \left| x^2 - y^2 \right|
+   &= |(x+y)(x-y)|
+   = |x+y||x-y|
+   \leq (|x|+|y|)|x-y| \\
+   &\leq (|x|+|x|+|x-y|)|x-y|
+   = 2|x||x-y| + |x-y|^2,
+  \end{aligned}
+ \end{equation}
+ wobei wir die Dreiecksungleichung für \mbox{$|x+y| \leq |x| + |y|$} und \mbox{$|y| = |x| + |x-y|$} nutzen. Wir unterscheiden nun zwischen zwei Fällen:
+ 
+ Ist $x = 0$, so ist $|x^2 - y^2| = |y|^2$ für alle $y \in \R$. Wählt man dann $\delta \coloneqq \sqrt{\varepsilon}$, so ist für alle $y \in \R$ mit $|y| = |x-y| < \delta$ auch $|x^2-y^2| = |y|^2 < \varepsilon$.
+ 
+ Ist $x \neq 0$, so ergibt sich für $\delta \coloneqq \min\{ \varepsilon/(4|x|), \sqrt{\varepsilon/2} \}$ aus \eqref{eqn: Ungleichung für Quadrat}, dass für alle $y \in \R$ mit $|x-y| < \delta$
+ \[
+  \left| x^2 - y^2 \right| \leq 2|x||x-y| + |x-y|^2 < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.
+ \]
+ 
+ Das zeigt, dass $f$ an jeder Stelle $x \in \R$ stetig ist
+\end{bsp}
+
+
+\begin{ExerciseList}
+ Im Folgenden seien $f, g \colon \R \to \R$.
+ \Exercise
+  Zeigen Sie, dass wenn $f$ $\varepsilon$-$\delta$-stetig an der Stelle $x \in \R$ ist und $f(x) > 0$, dann gibt es ein $\delta > 0$ mit $f(y) > 0$ für alle $y \in (x-\delta, x+\delta)$. Gilt die Aussage auch für $f(x) < 0$ oder $f(x) \neq 0$?
+ \Exercise
+  Zeigen Sie: Ist $f$ $\varepsilon$-$\delta$-stetig an der Stelle $x \in \R$ und $g$ $\varepsilon$-$\delta$-stetig an der Stelle $f(x)$, so ist die Komposition $g \circ f$ $\varepsilon$-$\delta$-stetig an der Stelle $x$.
+\end{ExerciseList}
+
+
+
+\begin{defi}
+ Eine Abbildung $f \colon \R \to \R$ heißt \emph{folgenstetig an $x \in \R$}, falls für jedes Folge $(x_n)_{n \in \N}$ mit $x_n \to x$ für $n \to \infty$ auch die Folge $(f(x_n))_{n \in \N}$ konvergiert und
+ \[
+  \lim_{n \to \infty} f(x_n) = f(x) = f\left(\lim_{n \to \infty} x_n\right).
+ \]
+ $f$ heißt \emph{folgenstetig}, falls $f$ an jeder Stelle $x \in \R$ folgenstetig ist.
+\end{defi}
+
+
+\begin{bsp}
+ Wir betrachten erneut die Abbildung $f \colon \R \to \R$, $x \mapsto x^2$ an einer Stelle $x \in \R$. Ist $(x_n)_{n \in \N}$ eine Folge mit $\lim_{n \to \infty} x_n = x$, so folgt aus den bekannten Eigenschaften konvergenter Folgen, dass auch die Folge $(x_n^2)_{n \in \N}$ konvergiert und
+ \[
+  \lim_{n \to \infty} x_n^2
+  = \lim_{n \to \infty} (x_n \cdot x_n)
+  = \left(\lim_{n \to \infty} x_n\right) \cdot \left(\lim_{n \to \infty} x_n\right)
+  = x \cdot x
+  = x^2.
+ \]
+ Das zeigt, dass $f$ an jeder Stelle $x \in \R$ folgenstetig ist.
+\end{bsp}
+
+
+\begin{defi}
+ Es sei $f \colon \R \to \R$ eine Abbildung und $x_0 \in \R$. Für $y \in \R$ schreiben wir $\lim_{x \uparrow x_0} f(x) = y$, falls
+ \[
+  \text{für alle $\varepsilon > 0$ existiert $\delta > 0$, s.d.\ $|f(x_0)-f(x)| < \varepsilon$ für alle $x_0-\delta < x < x_0$},
+ \]
+ und bezeichnen $y$ dann als den \emph{linksseitigen Limes von $f$ an $x_0$}. Analog schreiben wir \mbox{$\lim_{x \downarrow x_0} f(x) = f(y)$}, falls
+ \[
+  \text{für alle $\varepsilon > 0$ existiert $\delta > 0$, s.d.\ $|f(x_0)-f(x)| < \varepsilon$ für alle $x_0 < x < x_0+\delta$}.
+ \]
+ Wir nennen $y$ dann denn \emph{rechtsseitigen Limes von $f$ an $x_0$}. Existieren links- und rechtsseitiger Limes von $f$ an $x_0$ und ist $\lim_{x \uparrow x_0} f(x) = \lim_{x \downarrow x_0} f(x)$, so nennen wir
+ \[
+  \lim_{x \to x_0} f(x) \coloneqq \lim_{x \uparrow x_0} f(x) = \lim_{x \downarrow x_0} f(x)
+ \]
+ den \emph{beidseitgen Limes von $f$ an $x_0$}.
+\end{defi}
+
+
+\begin{defi}
+ Eine Abbildung $f \colon \R \to \R$ heißt \emph{linksstetig an der Stelle $x \in \R$}, falls $\lim_{y \uparrow x} f(y) = f(x)$. $f$ heißt \emph{rechtsstetig an der Stelle $x$}, falls $\lim_{y \downarrow x} f(y) = f(x)$. $f$ heißt \emph{beidseitig stetig an $x$}, falls $\lim_{y \to x} f(y) = f(x)$. (Insbesondere müssen die entsprechenden Grenzwerte existieren.)
+ 
+ $f$ heißt \emph{linksstetig}, falls $f$ an jeder Stelle $x \in \R$ linksstetig ist, und \emph{rechtsstetig}, falls $f$ an jeder Stelle $x \in \R$ rechtsstetig ist. Ist $f$ an jeder Stelle $x \in \R$ beidseitig stetig, so heißt $f$ \emph{beidseitig stetig}.
+\end{defi}
+
+\begin{ExerciseList}
+ Im Folgenden sei $f \colon \R \to \R$.
+ \Exercise
+  Zeigen Sie, dass $f$ genau dann beidseitig stetig ist, wenn $f$ links- und rechtsstetig ist.
+\end{ExerciseList}
+
+
+
+
+
+
+
+\end{document}
