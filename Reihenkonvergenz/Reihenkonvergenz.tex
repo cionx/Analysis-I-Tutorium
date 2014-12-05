@@ -49,7 +49,11 @@ Wir werden einige grundlegende Eigenschaften über die Konvergenz von Folgen nut
    < 1.
   \]
   
-  Sei andererseits $x \coloneqq \limsup_{n \to \infty} a_n < 1$. Da $\limsup_{n \to \infty} a_n = \inf_{n \in \N} \sup_{k \geq N} a_k$ gibt es wegen der $\varepsilon$-Charakterisierung des Infimums für alle $\varepsilon > 0$ ein $N' \in \N$ mit $\sup_{k \geq N'} a_k < x + \varepsilon$. 
+  Sei andererseits $x \coloneqq \limsup_{n \to \infty} a_n < C$. Da $\limsup_{n \to \infty} a_n = \inf_{n \in \N} \sup_{k \geq N} a_k$ gibt es wegen der $\varepsilon$-Charakterisierung des Infimums für alle $\varepsilon > 0$ ein $N' \in \N$ mit $\sup_{k \geq N'} a_k < x + \varepsilon$. Für $\varepsilon \coloneqq (C-x)/2$ gibt es daher ein $N \in \N$ mit
+  \[
+   \sup_{k \geq N} a_k < x + \varepsilon = \frac{C + x}{2} < C.
+  \]
+  Wählen wir $y \coloneqq x + \varepsilon = (C+x)/2$ so ist also $y < C$ und $a_k \leq y$ für alle $k \geq N$.
 \end{ExerciseList}
 
 
@@ -234,7 +238,7 @@ Wir wollen nun auf den Zusammenhang zwischen konvergenten und absolut konvergent
 
 \subsection{Majoranten- und Minorantenkriterium}
 
-\begin{lem}[Majoranten- und Minorantenkriterium]
+\begin{lem}
  Es sei $\sum_{k=0}^\infty a_k$ und eine Reihe reeller Zahlen und $(b_n)_{n \in \N}$ eine Folge mit $b_n \geq 0$ für alle $n \in \N$.
  \begin{enumerate}
   \item
@@ -260,7 +264,7 @@ Wir wollen nun auf den Zusammenhang zwischen konvergenten und absolut konvergent
 \subsection{Quotientenkriterium}
 
 
-\begin{prop}[Quotientenkriterium]
+\begin{prop}
  Es sei $(a_n)_{n \in \N}$ eine Folge mit $a_n \neq 0$ für alle $n \in \N$ und es gebe $0 \leq y < 1$ und $N \in \N$ mit $|a_{n+1}/a_n| < y$ für alle $n \geq N$. Dann ist die Reihe $\sum_{k=0}^\infty a_k$ absolut konvergent.
 \end{prop}
 \begin{proof}
@@ -287,13 +291,79 @@ Wir wollen nun auf den Zusammenhang zwischen konvergenten und absolut konvergent
 
 \subsection{Wurzelkriterium}
 
+\begin{prop}
+ Es sei $(a_n)_{n \in \N}$ eine Folge und es gebe $y < 1$ und $N \in \N$, so dass $|a_n|^{1/n} < y$ für alle $n \geq N$. Dann konvergiert die Reihe $\sum_{k=0}^\infty a_k$ absolut.
+\end{prop}
+\begin{proof}
+ Für alle $n \geq N$ gilt $|a_n|^{1/n} < y$ und damit $|a_n| < y^n$. Daher ist
+ \[
+  \sum_{k=N}^\infty |a_k|
+  \leq \sum_{k=N}^\infty y^k
+  = y^N \sum_{k=N}^\infty y^{k-N}
+  = y^N \sum_{k=0}^\infty y^k
+  = \frac{y^N}{1-y},
+ \]
+ und somit
+ \[
+  \sum_{k=0}^\infty |a_k|
+  = \sum_{k=0}^{N-1} |a_k| + \sum_{k=N}^\infty |a_k|
+  \leq \sum_{k=0}^{N-1} |a_k| + \frac{y^N}{1-y}
+  < \infty.
+  \qedhere
+ \]
+\end{proof}
+
+
 
 
 \subsection{Cauchysches Verdichtungskriterium}
 
 
+\begin{prop}
+ Es sei $(a_n)_{n \geq 1}$ eine monoton fallende Folge mit $a_n \geq 0$ für alle $n \in \N$. Dann konvergiert die Reihe $\sum_{k=0}^\infty a_k$ genau dann, wenn die Reihe $\sum_{\ell=0}^\infty 2^\ell a_{2^\ell}$ konvergiert.
+\end{prop}
+\begin{proof}
+ Wir haben
+ \[
+  \sum_{k=1}^\infty a_k
+  = \sum_{\ell=0}^\infty \sum_{k=2^\ell}^{2^{\ell+1}-1} a_k.
+ \]
+ Da $(a_n)$ monoton fallend ist, ist für alle $\ell \in \N$
+ \begin{gather*}
+  \sum_{k=2^\ell}^{2^{\ell+1}-1} a_k
+  \leq 2^\ell a_{2^\ell}
+ \shortintertext{sowie}
+  \sum_{k=2^\ell}^{2^{\ell+1}-1} a_k
+  \geq 2^\ell a_{2^{\ell+1}}.
+ \end{gather*}
+ Konvergiert die Reihe $\sum_{\ell=0}^\infty 2^\ell a_{2^\ell}$, so konvergiert wegen
+ \[
+  \sum_{k=1}^\infty a_k \leq \sum_{\ell=0}^\infty 2^\ell a_{2^\ell}
+ \]
+ dann auch die Reihe $\sum_{k=1}^\infty a_k$. Konvergiert die Reihe $\sum_{k=1}^\infty a_k$, so konvergiert wegen
+ \[
+  \sum_{k=1}^\infty a_k \geq \sum_{\ell=0}^\infty 2^\ell a_{2^{\ell+1}}
+ \]
+ dann auch die Reihe $\sum_{\ell=0}^\infty 2^\ell a_{2^{\ell+1}}$, und wegen
+ \[
+  \sum_{\ell=0}^\infty 2^\ell a_{2^{\ell+1}} = \frac{1}{2} \sum_{\ell=1}^\infty 2^\ell a_{2^\ell}
+ \]
+ damit auch die Reihe $\sum_{\ell=0}^\infty 2^\ell a_{2^\ell}$.
+\end{proof}
+
+
+
+
+
 \subsection{Leibniz-Kriterium}
 
+
+\begin{prop}
+ Es sei $(a_n)_{n \in \N}$ eine monoton fallende Folge mit $a_n \geq 0$ für alle $n \in \N$ und $\lim_{n \to \infty} a_n = 0$. Dann konvergiert die alternierende Reihe $\sum_{k=0}^\infty (-1)^n a_n$.
+\end{prop}
+\begin{proof}
+ 
+\end{proof}
 
 
 
