@@ -18,43 +18,50 @@
 
 
 
+
+
 \section{Vorbereitung}
 
 
 Wir werden einige grundlegende Eigenschaften über die Konvergenz von Folgen nutzen, die bisher nicht gezeigt wurden. Wir überlassen die entsprechenden Beweise den geneigten Lesern als Übung.
 
 
-\begin{ExerciseList}
- \Exercise
-  Konvergiert die Folge $(a_n)_{n \in \N}$, so konvergiert auch die Folge der Beträge $(|a_n|)_{n \in \N}$ und es gilt
-  \[
-   \lim_{n \to \infty} |a_n| = \left| \lim_{n \to \infty} a_n \right|.
-  \]
- \Answer
-  Sei $a \coloneqq \lim_{n \to \infty} a_n$ und $\varepsilon > 0$ beliebig aber fest. Dann gibt es ein $N \in \N$ mit $|a - a_n| < \varepsilon$ für alle $n \geq N$. Für alle $n \geq N$ gilt nach der umgekehrten Dreiecksungleichung
-  \[
-   ||a| - |a_n|| \leq |a - a_n| < \varepsilon.
-  \]
-  Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $|a_n| \to |a|$ für $n \to \infty$.
-  
- \Exercise
-  Für eine Folge $(a_n)_{n \in \N}$ und $C \in \R$ gilt: Es gibt genau dann $y < C$ und $N \in \N$ mit $a_n \leq y$ für alle $n \geq N$, falls $\limsup_{n \to \infty} a_n < C$.
- \Answer
-  Gibt es solche $y$ und $N$, so ist $\sup_{k \geq N} a_k \leq y$ und somit
-  \[
-   \limsup_{n \to \infty} a_n
-   = \inf_{n \in \N} \sup_{k \geq n} a_k
-   \leq \sup_{k \geq N} a_k
-   \leq y
-   < 1.
-  \]
-  
-  Sei andererseits $x \coloneqq \limsup_{n \to \infty} a_n < C$. Da $\limsup_{n \to \infty} a_n = \inf_{n \in \N} \sup_{k \geq N} a_k$ gibt es wegen der $\varepsilon$-Charakterisierung des Infimums für alle $\varepsilon > 0$ ein $N' \in \N$ mit $\sup_{k \geq N'} a_k < x + \varepsilon$. Für $\varepsilon \coloneqq (C-x)/2$ gibt es daher ein $N \in \N$ mit
-  \[
-   \sup_{k \geq N} a_k < x + \varepsilon = \frac{C + x}{2} < C.
-  \]
-  Wählen wir $y \coloneqq x + \varepsilon = (C+x)/2$ so ist also $y < C$ und $a_k \leq y$ für alle $k \geq N$.
-\end{ExerciseList}
+\begin{question}
+ Konvergiert die Folge $(a_n)_{n \in \N}$, so konvergiert auch die Folge der Beträge $(|a_n|)_{n \in \N}$ und es gilt
+ \[
+  \lim_{n \to \infty} |a_n| = \left| \lim_{n \to \infty} a_n \right|.
+ \]
+\end{question}
+\begin{solution}
+ Sei $a \coloneqq \lim_{n \to \infty} a_n$ und $\varepsilon > 0$ beliebig aber fest. Dann gibt es ein $N \in \N$ mit $|a - a_n| < \varepsilon$ für alle $n \geq N$. Für alle $n \geq N$ gilt nach der umgekehrten Dreiecksungleichung
+ \[
+  ||a| - |a_n|| \leq |a - a_n| < \varepsilon.
+ \]
+ Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $|a_n| \to |a|$ für $n \to \infty$.
+\end{solution}
+
+
+\begin{question}
+ Für eine Folge $(a_n)_{n \in \N}$ und $C \in \R$ gilt: Es gibt genau dann $y < C$ und $N \in \N$ mit $a_n \leq y$ für alle $n \geq N$, falls $\limsup_{n \to \infty} a_n < C$.
+\end{question}
+\begin{solution}
+ Gibt es solche $y$ und $N$, so ist $\sup_{k \geq N} a_k \leq y$ und somit
+ \[
+  \limsup_{n \to \infty} a_n
+  = \inf_{n \in \N} \sup_{k \geq n} a_k
+  \leq \sup_{k \geq N} a_k
+  \leq y
+  < 1.
+ \]
+ Sei andererseits $x \coloneqq \limsup_{n \to \infty} a_n < C$. Da $\limsup_{n \to \infty} a_n = \inf_{n \in \N} \sup_{k \geq N} a_k$ gibt es wegen der $\varepsilon$-Charakterisierung des Infimums für alle $\varepsilon > 0$ ein $N' \in \N$ mit $\sup_{k \geq N'} a_k < x + \varepsilon$. Für $\varepsilon \coloneqq (C-x)/2$ gibt es daher ein $N \in \N$ mit
+ \[
+  \sup_{k \geq N} a_k < x + \varepsilon = \frac{C + x}{2} < C.
+ \]
+ Wählen wir $y \coloneqq x + \varepsilon = (C+x)/2$ so ist also $y < C$ und $a_k \leq y$ für alle $k \geq N$.
+\end{solution}
+
+
+
 
 
 \section{Definition}
@@ -88,7 +95,6 @@ Wir werden einige grundlegende Eigenschaften über die Konvergenz von Folgen nut
 \end{bem}
 
 
-
 Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge der Partialsummen $(\sum_{k=0}^n a_k)_{n \in \N}$ als auch der Grenzwert dieser Folge bezeichnet. Soll also gezeigt werden, dass die Reihe $\sum_{k=0}^\infty a_k$ konvergiert, so ist damit gemeint, dass die Folge der Partialsummen $(\sum_{k=0}^n a_k)_{n \in \N}$ konvergieren soll. Soll der Wert der Reihe $\sum_{k=0}^\infty a_k$ bestimmt werden, so soll der Grenzwert $\lim_{n \to \infty} \sum_{k=0}^n a_k$ ermittelt werden.
 
 
@@ -102,10 +108,47 @@ Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge 
 \end{bem}
 
 
+\begin{question}
+ Zeigen Sie, dass für alle $-1 < q < 1$ die Reihe $\sum_{k=0}^\infty q^k$ konvergiert bestimmen Sie ihren Wert. Man bezeichnet Reihen dieser Form als \emph{geometrische Reihe}.
+\end{question}
+\begin{solution}
+ Für alle $N \in \N$ gilt bekanntermaßen
+ \[
+  \sum_{k=0}^N q^k = \frac{1-q^{N+1}}{1-q}.
+ \]
+ Da $\lim_{N \to \infty} q^N = 0$ folgt, dass die Folge der Partialsummen $(\sum_{k=0}^N q^k)_{k \in \N}$ konvergiert und
+ \[
+  \sum_{k=0}^\infty q^k
+  = \lim_{N \to \infty} \sum_{k=0}^N q^k
+  = \lim_{N \to \infty} \frac{1-q^{N+1}}{1-q}
+  = \frac{1}{1-q}.
+ \]
+\end{solution}
+
+
+\begin{question}
+ Zeigen Sie, dass die Reihe $\sum_{k=1}^\infty \frac{1}{k}$ gegen $\infty$ divergiert. Man bezeichnet diese Reihe als die \emph{harmonische Reihe}.
+\end{question}
+\begin{solution}
+ Da die Folge der Partialsummen monoton steigend ist, genügt es zu zeigen, dass es für alle $R \in \N$ ein $N \in \N$ gibt, so dass $\sum_{k=1}^N 1/k \geq R$. Dies ergibt sich daraus, dass für alle $n \in \N$
+ \[
+  \sum_{k=1}^{2^n} \frac{1}{k}
+  \geq \sum_{k=2}^{2^n} \frac{1}{k}
+  = \sum_{\ell=0}^{n-1} \sum_{k=2^\ell+1}^{2^{\ell+1}} \frac{1}{k}
+  \geq \sum_{\ell=0}^{n-1} 2^\ell \frac{1}{2^{\ell+1}}
+  = \frac{n}{2}.
+ \]
+\end{solution}
+
+
 
 
 
 \section{Grundlegende Eigenschaften}
+
+
+Wir wollen nun einige grundlegende Eigenschaften von (konvergenten) Reihen angeben und beweisen.
+
 
 \begin{lem}\label{lem: Reihe bedeutet Nullfolge}
  Konvergiert für eine Folge $(a_n)_{n \in \N}$ die Reihe $\sum_{k=0}^n a_k$, so ist $(a_n)$ eine Nullfolge, d.h. $\lim_{n \to \infty} a_n = 0$.
@@ -127,6 +170,9 @@ Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge 
  \]
  für $n \to \infty$. Also ist $(a_n)$ konvergent und $\lim_{n \to \infty} a_n = 0$.
 \end{proof}
+
+
+Man beachte, dass die Umkehrung des Lemmas nicht gilt, d.h. nicht jede Nullfolge ist auch summierbar. Ein einfaches Gegenbeispiel hierfür ist die harmonische Reihe $\sum_{k=1}^\infty \frac{1}{k}$.
 
 
 \begin{prop}
@@ -175,14 +221,15 @@ Wir erhalten aus dem Lemma auch, dass $\lim_{n \to \infty} \sum_{k=n}^\infty a_k
 \]
 
 
+Wie bereits für endliche Summen gilt auch für Reihen eine Dreiecksungleichung.
+
+
 \begin{lem}
  Ist die Reihe $\sum_{k=0}^\infty a_k$ konvergent, so ist
  \[
   \left| \sum_{k=0}^\infty a_k \right| \leq \sum_{k=0}^\infty |a_k|.
  \]
 \end{lem}
-
-
 \begin{proof}[Beweis des Lemmas]
  Ist die Reihe $\sum_{k=0}^\infty a_k$ nicht absolut konvergent, so haben wir $\sum_{k=0}^\infty |a_k| = \infty$ und die Aussage ist klar. Ansonsten gilt für alle $n \in \N$ nach der Dreiecksungleichung für endliche Summen
  \[
@@ -203,9 +250,9 @@ Wir erhalten aus dem Lemma auch, dass $\lim_{n \to \infty} \sum_{k=n}^\infty a_k
 Wir wollen nun auf den Zusammenhang zwischen konvergenten und absolut konvergenten Reihen zurückkommen.
 
 
-\begin{prop}
+\begin{lem}
  Ist eine Reihe $\sum_{k=0}^\infty a_k$ absolut konvergent, so ist sie auch konvergent.
-\end{prop}
+\end{lem}
 \begin{proof}
  Es sei $(s_n)_{n \in \N}$ die Folge der Partialsummen, also $s_n = \sum_{k=0}^n a_k$. Wir wollen zeigen, dass $(s_n)$ eine Cauchy-Folge ist. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Für alle $n \in \N$ haben wir für alle $m, m' \geq n$
  \[
@@ -218,15 +265,18 @@ Wir wollen nun auf den Zusammenhang zwischen konvergenten und absolut konvergent
 \end{proof}
 
 
+Wie wir noch sehen werden gilt die Umkehrung des Lemmas nicht, d.h. es gibt konvergente Reihen, die nicht absolut konvergent sind.
+
+
 \begin{lem}
  Es seien $\sum_{k=0}^\infty a_k$ und $\sum_{k=0}^\infty b_k$ Reihen mit $0 \leq a_n \leq b_n$ für alle $n \in \N$. Dann ist $\sum_{k=0}^\infty a_k \leq \sum_{k=0}^\infty b_k$.
 \end{lem}
 \begin{proof}
  Für die Partialsummen gilt für jedes $n \in \N$
  \[
-  \sum_{k=0}^n a_k \leq \sum_{k=0}^n b_k.
+  0 \leq \sum_{k=0}^n a_k \leq \sum_{k=0}^n b_k,
  \]
- Die Aussage ergibt sich damit direkt daraus, dass Monotonie von Folgen unter Grenzwerten erhalten bleibt.
+ und die Folge der Partialsummen ist monoton steigend. Die Aussage ergibt sich damit direkt daraus, dass Monotonie von Folgen unter Grenzwerten erhalten bleibt.
 \end{proof}
 
 
@@ -236,15 +286,21 @@ Wir wollen nun auf den Zusammenhang zwischen konvergenten und absolut konvergent
 \section{Konvergenzkriterien}
 
 
+Wir wollen nun Kriterien entwickeln, mit denen sich entscheiden lässt, ob eine Folge (absolut) konvergiert. Lemma \ref{lem: Reihe bedeutet Nullfolge} liefert uns bereits die notwendige Bedingung, dass $(a_n)_{n \in \N}$ eine Nullfolge seien muss, damit $\sum_{k=0}^\infty a_k$ konvergiert. Wie wir bereits wissen, ist diese Bedingung aber nicht hinreichend. Solche hinreichenden Bedingungen wollen wir nun ermitteln. Dabei spielt die Absolute Konvergenz eine besondere Rolle, da sich diese unter gewissen Umständen durch einen Vergleich mit der geometrischen Reihe untersuchen lässt.
+
+
 \subsection{Majoranten- und Minorantenkriterium}
+
+Eine der einfachsten Ideen um die absolutive Konvergenz einer Reihe $\sum_{k=0}^\infty a_n$ zu untersuchen besteht darin, die Reihe der Beträge $\sum_{k=0}^\infty |a_k|$ passend gegen eine konvergente, bzw. divergente Reihe abzuschätzen.
+
 
 \begin{lem}
  Es sei $\sum_{k=0}^\infty a_k$ und eine Reihe reeller Zahlen und $(b_n)_{n \in \N}$ eine Folge mit $b_n \geq 0$ für alle $n \in \N$.
  \begin{enumerate}
   \item
-   Ist $|a_n| \leq b_n$ für alle $n \in \N$ und $\sum_{k=0}^\infty b_k < \infty$, so ist $\sum_{k=0}^\infty a_k$ absolut konvergent. (Dies ist das \emph{Majorantenkriterium}.)
+   Ist $|a_n| \leq b_n$ für alle $n \in \N$ und $\sum_{k=0}^\infty b_k < \infty$, so ist $\sum_{k=0}^\infty a_k$ absolut konvergent. (Majorantenkriterium)
   \item
-   Ist $b_n \leq |a_n|$ für alle $n \in \N$ und $\sum_{k=0}^\infty a_k = \infty$, so ist $\sum_{k=0}^\infty a_k$ nicht absolut konvergent. (Dies ist das \emph{Minorantenkriterium}.)
+   Ist $b_n \leq |a_n|$ für alle $n \in \N$ und $\sum_{k=0}^\infty a_k = \infty$, so ist $\sum_{k=0}^\infty a_k$ nicht absolut konvergent. (Minorantenkriterium)
  \end{enumerate}
 \end{lem}
 \begin{proof}
@@ -257,15 +313,35 @@ Wir wollen nun auf den Zusammenhang zwischen konvergenten und absolut konvergent
    also die Folge von Partialsummen $(\sum_{k=0}^n |a_k|)_{n \in \N}$ monoton steigend und nach oben beschränkt, und somit konvergent.
   \item
    Wäre $\sum_{k=0}^\infty a_k$ absolut konvergent, so würde die Reihe der Beträge $\sum_{k=0}^\infty |a_k|$ konvergieren, und nach dem Majorantenkriterium würde auch $\sum_{k=0}^\infty b_k$ konvergieren, im Widerspruch zu Annahme.
+  \qedhere
  \end{enumerate}
 \end{proof}
 
 
+\begin{question}
+ Untersuchen Sie die Konvergenz der Reihen $\sum_{k=1}^\infty \frac{1}{\sqrt{k}}$, $\sum_{k=1}^\infty k^{-k}$ und $\sum_{k=1}^\infty \frac{1}{k!}$.
+\end{question}
+\begin{solution}
+ Für alle $k \geq 1$ ist $\sqrt{k} \leq k$ und somit $1/\sqrt{k} \geq 1/k$. Da $\sum_{k=1}^\infty 1/k = \infty$, folgt aus dem Minorantenkriterium, dass auch $\sum_{k=1}^\infty 1/\sqrt{k} = \infty$.
+ 
+ Für alle $k \geq 1$ ist $k! \geq 2^{k-1}$, und somit $1/k! \geq 1/2^{k-1}$. Da die geometrische Reihe $\sum_{k=1}^\infty 1/2^{k-1} = \sum_{k=0}^\infty (1/2)^k$ konvergiert, folgt aus dem Majorantenkriterium, dass auch die Reihe $\sum_{k=1}^\infty 1/k!$ konvergiert.
+ 
+ Für alle $k \geq 1$ ist $k! \leq k^k$ $k^{-k} = 1/k^k \leq 1/k!$. Da $\sum_{k=1}^\infty 1/k!$ konvergiert, folgt aus dem Majorantenkriterium, dass auch die Reihe $\sum_{k=1}^\infty k^{-k}$ konvergiert.
+\end{solution}
+
+
+Das Majorantenkriterium führt zusammen mit der geometrischen Reihe zu zwei wichtigen Konvergenzkriterien, dem \emph{Quotientenkriterium} und dem \emph{Wurzelkriterium}.
+
+
+
+
+
 \subsection{Quotientenkriterium}
+Ein erstes wichtes Konvergenzkriterium, dass durch den Vergleich mit der harmonischen Reihe entsteht, 
 
 
 \begin{prop}
- Es sei $(a_n)_{n \in \N}$ eine Folge mit $a_n \neq 0$ für alle $n \in \N$ und es gebe $0 \leq y < 1$ und $N \in \N$ mit $|a_{n+1}/a_n| < y$ für alle $n \geq N$. Dann ist die Reihe $\sum_{k=0}^\infty a_k$ absolut konvergent.
+ Es sei $(a_n)_{n \in \N}$ eine Folge mit $a_n \neq 0$ für alle $n \in \N$ und es gebe $0 \leq y < 1$ und $N \in \N$ mit $|a_{n+1}/a_n| \leq y$ für alle $n \geq N$. Dann ist die Reihe $\sum_{k=0}^\infty a_k$ absolut konvergent.
 \end{prop}
 \begin{proof}
  Wir haben
@@ -286,6 +362,86 @@ Wir wollen nun auf den Zusammenhang zwischen konvergenten und absolut konvergent
   \qedhere
  \]
 \end{proof}
+
+
+Wie wir bereits wissen, sind die Voraussetzungen des Quotientenkriteriums äquivalent dazu, dass $\limsup_{n \to \infty} |a_{n+1}/a_n| < 1$. Man bemerke jedoch, dass sich für den Fall $\limsup_{n \to \infty} |a_{n+1}/a_n| \geq 1$ keine Aussage über die Konvergenz von $\sum_{k=0}^\infty a_k$ treffen lässt.
+
+
+\begin{question}
+ Geben Sie divergente, bzw. absolut konvergente Reihen $\sum_{k=0}^\infty a_k$ und $\sum_{k=0}^\infty b_k$, so dass 
+ \[
+  \limsup_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right| = 1
+  \quad
+  \text{und}
+  \quad
+  \limsup_{n \to \infty} \left|\frac{b_{n+1}}{b_n}\right| > 1.
+ \]
+\end{question}
+\begin{solution}
+ Die harmonische Reihe $\sum_{k=1}^\infty 1/k$ divergiert und es gilt
+ \[
+  \limsup_{n \to \infty} \frac{1/n}{1/(n+1)}
+  = \limsup_{n \to \infty} \frac{n+1}{n}
+  = \limsup_{n \to \infty} 1+\frac{1}{n+1}
+  = 1.
+ \]
+ Die Reihe $\sum_{k=0}^\infty 2^k$ divergiert ebenfalls, da $(2^n)_{n \in \N}$ keine Nullfolge ist, und es gilt
+ \[
+  \limsup_{n \to \infty} \frac{2^{n+1}}{2^n}
+  = \limsup_{n \to \infty} 2
+  = 2
+  > 1.
+ \]
+
+ Für die Folge $(a_n)_{n \in \N}$ mit $a_{2n} \coloneqq a_{2n+1} \coloneqq 1/2^n$ für alle $n \in \N$ gilt für alle $n \in \N$
+ \[
+  \frac{a_{n+1}}{a_n} =
+  \begin{cases}
+            1  & \text{falls $n$ gerade} \\
+   \frac{1}{2} & \text{falls $n$ ungerade}.
+  \end{cases}
+ \]
+ Es ist also $\limsup_{n \to \infty} |a_{n+1}/a_n| = 1$. Die Reihe konvergiert aber offenbar mit
+ \[
+  \sum_{k=0}^\infty a_k
+  = 2 \sum_{k=0}^\infty \frac{1}{2^k}
+  = 2 \cdot 2
+  = 4.
+ \]
+ Für die Folge $(b_n)_{n \in \N}$ mit
+ \[
+  b_n \coloneqq
+  \begin{cases}
+     \frac{1}{2^n} & \text{falls $n$ gerade}, \\
+   \frac{1}{n 2^n} & \text{falls $n$ ungerade},
+  \end{cases}
+ \]
+ ist die Reihe $\sum_{k=0}^\infty b_k$ nach dem Majorantenkriterium absolut konvergent (mit Majorante $(1/2^n)_{n \in \N}$). Da für alle $n \in \N$
+ \[
+  \frac{b_{n+1}}{b_n} =
+  \begin{cases}
+   \frac{1}{2(n+1)} & \text{falls $n$ gerade}, \\
+                n/2 & \text{falls $n$ ungerade},
+  \end{cases}
+ \]
+ ist jedoch $\limsup_{n \to \infty} |b_{n+1}/b_n| = \infty$.
+\end{solution}
+
+\begin{question}
+ Man zeige, dass die folgenden Reihen absolut konvergieren: $\sum_{k=0}^\infty 2^k/k!$,
+\end{question}
+\begin{solution}
+ Es ist
+ \[
+  \limsup_{n \to \infty} \frac{2^{k+1} / (k+1)!}{2^k / k!}
+  = \limsup_{n \to \infty}\frac{2}{k} = 0,
+ \]
+ also konvergiert die Reihe $\sum_{k=0}^\infty 2^k/k!$ nach dem Quotientenkriterium.
+\end{solution}
+
+
+
+
 
 
 
@@ -403,9 +559,16 @@ Wir wollen nun auf den Zusammenhang zwischen konvergenten und absolut konvergent
 
 
 
+
+\newpage
+
+
+
+
+
 \section{Lösungen der Aufgaben}
 
-\shipoutAnswer
+\printsolutions
 
 
 

@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014/Arch Linux) (preloaded format=xelatex 2014.11.7)  4 DEC 2014 15:00
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014/Arch Linux) (preloaded format=xelatex 2014.11.7)  6 DEC 2014 19:04
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -817,61 +817,480 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box55
 \enitdp@description=\count158
 )
-(/usr/share/texmf-dist/tex/latex/exercise/exercise.sty
-Package: exercise 2012/05/08 v1.58 Exercise package (P.Pichaureau)
+(/usr/share/texmf-dist/tex/latex/exsheets/exsheets.sty
+Package: exsheets 2014/07/20 v0.15 Yet another package for the creation of exer
+cise sheets and exams.
+\l__exsheets_tmpa_int=\count159
+\l__exsheets_tmpb_int=\count160
+\l__exsheets_tmpc_int=\count161
+\l__exsheets_tmpd_int=\count162
+\l__exsheets_tmpe_int=\count163
+\l__exsheets_tmpa_dim=\dimen260
+\l__exsheets_tmpb_dim=\dimen261
 
-(/usr/share/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+(/usr/share/texmf-dist/tex/latex/l3packages/xtemplate/xtemplate.sty
+Package: xtemplate 2014/07/20 v5241 L3 Experimental prototype document function
+s
+\l__xtemplate_tmp_dim=\dimen262
+\l__xtemplate_tmp_int=\count164
+\l__xtemplate_tmp_muskip=\muskip17
+\l__xtemplate_tmp_skip=\skip60
+Variant \prop_get:NoNTF already defined; not changing it on line 106
+Variant \prop_get:NoNT already defined; not changing it on line 107
+Variant \prop_get:NoNF already defined; not changing it on line 108
 )
-Invalid UTF-8 byte or sequence at line 129 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 129 replaced by U+FFFD.
-\ExerciseSkipBefore=\skip60
-\ExerciseSkipAfter=\skip61
-\Exesep=\skip62
-\Exetopsep=\skip63
-\Exeparsep=\skip64
-\Exepartopsep=\skip65
-\Exeleftmargin=\skip66
-\Exerightmargin=\skip67
-\Exelabelwidth=\skip68
-\Exelabelsep=\skip69
-\ExerciseBefore=\skip70
-\QuestionBefore=\skip71
-\subQuestionBefore=\skip72
-\subsubQuestionBefore=\skip73
-\QuestionIndent=\skip74
-\subQuestionIndent=\skip75
-\subsubQuestionIndent=\skip76
-\c@Exercise=\count159
-\c@Answer=\count160
-\c@ExePart=\count161
-\c@Question=\count162
-\c@subQuestion=\count163
-\c@subsubQuestion=\count164
-\c@savedQuestion=\count165
-\c@savedsubQuestion=\count166
-\c@savedsubsubQuestion=\count167
-\@QuestionLevel=\count168
-\@Exercisebox=\box56
-\all@Exercisebox=\box57
-\temp@Exercisebox=\box58
-\all@Answerbox=\box59
-\temp@Answerbox=\box60
-\ExerciseDifficulty=\count169
-\QuestionDifficulty=\count170
-\subQuestionDifficulty=\count171
-\subsubQuestionDifficulty=\count172
-\ExePartDifficulty=\count173
-\@Answerbox=\box61
-\colonnesLevel=\count174
-\tempskipa=\skip77
-\tempskipb=\skip78
-\@savedmathindent=\skip79
+(/usr/share/texmf-dist/tex/latex/l3experimental/l3sort/l3sort.sty
+Package: l3sort 2013/12/14 v4623 L3 Experimental sorting functions
+\l__sort_length_int=\count165
+\l__sort_block_int=\count166
+\l__sort_begin_int=\count167
+\l__sort_end_int=\count168
+\l__sort_A_int=\count169
+\l__sort_B_int=\count170
+\l__sort_C_int=\count171
 )
-\c@everything=\count175
+(/usr/share/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty
+Package: l3keys2e 2014/07/20 v5241 LaTeX2e option processing using LaTeX3 keys
 )
+(/usr/share/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
+\etb@tempcnta=\count172
+)
+(/usr/share/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+(/usr/share/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+(/usr/share/texmf-dist/tex/latex/cntformats/cntformats.sty
+Package: cntformats 2014/07/20 v0.7 A different way to read counters. (CN)
+
+(/usr/share/texmf-dist/tex/latex/cnltx/cnltx-base.sty
+Package: cnltx-base 2014/01/05 v0.10 LaTeX tools and documenting facilities (CN
+)
+
+(/usr/share/texmf-dist/tex/latex/pgfopts/pgfopts.sty
+Package: pgfopts 2014/07/10 v2.1a LaTeX package options with pgfkeys
+\pgfopts@list@add@a@toks=\toks43
+\pgfopts@list@add@b@toks=\toks44
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is not detected.
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: pdfTeX >= 1.30 not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+)
+\c@cnltx@tmpa=\count173
+\c@cnltx@tmpb=\count174
+\c@cnltx@tmpc=\count175
+\cnltx@tmpa@length=\skip61
+\cnltx@tmpb@length=\skip62
+\cnltx@tmpc@length=\skip63
+))
+\c@question=\count176
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \addpoints with arg. spec. 'sm' on line 456.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \addbonus with arg. spec. 'sm' on line 466.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \points with arg. spec. 'sm' on line 473.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \bonus with arg. spec. 'sm' on line 480.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \pointssum with arg. spec. 's' on line 510.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \bonussum with arg. spec. 's' on line 521.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \currentpointssum with arg. spec. 's' on line 532.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \currentbonussum with arg. spec. 's' on line 543.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \totalpoints with arg. spec. 's' on line 575.
+.................................................
+\l__exsheets_variations_int=\count177
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \SetVariations with arg. spec. 'm' on line 703.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \variant with arg. spec. 'm' on line 706.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \vary with arg. spec. '' on line 709.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \lastvariant with arg. spec. '' on line 712.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareRelGrades with arg. spec. 'm' on line 765.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \grade with arg. spec. 'sm' on line 792.
+.................................................
+Invalid UTF-8 byte or sequence at line 801 replaced by U+FFFD.
+\l__exsheets_questions_skip_below_dim=\dimen263
+\l__exsheets_solutions_skip_below_dim=\dimen264
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareQuestionClass with arg. spec. 'mm' on line
+. 932.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \GetQuestionClass with arg. spec. 'm' on line 942.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \PrintQuestionClassTF with arg. spec. 'mmm' on
+. line 959.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \PrintQuestionClassT with arg. spec. 'mm' on line
+. 961.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \PrintQuestionClassF with arg. spec. 'mm' on line
+. 963.
+.................................................
+\g__exsheets_questions_id_int=\count178
+\g__exsheets_questions_used_int=\count179
+Invalid UTF-8 byte or sequence at line 1262 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1262 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1263 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1263 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 1280 replaced by U+FFFD.
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \QuestionNumber with arg. spec. 'm' on line 1424.
+.................................................
 \g__file_internal_ior=\read2
-\g__fontspec_family_LinuxLibertineO_int=\count176
+
+(/usr/share/texmf-dist/tex/latex/exsheets/exsheets_headings.def
+File: exsheets_headings.def 2014/07/20 v0.15 ExSheets headings object
+\l__exsheets_heading_main_coffin=\box56
+\l__exsheets_heading_pre_coffin=\box57
+\l__exsheets_heading_post_coffin=\box58
+\l__exsheets_heading_title_coffin=\box59
+\l__exsheets_heading_number_coffin=\box60
+\l__exsheets_heading_points_coffin=\box61
+\l__exsheets_heading_subtitle_coffin=\box62
+\l__exsheets_heading_above_dim=\dimen265
+\l__exsheets_heading_below_dim=\dimen266
+Variant \seq_set_split:NnV already defined; not changing it on line 104
+.................................................
+. xtemplate info: "declare-object-type"
+. 
+. Declaring object type 'exsheets-heading' taking 5 argument(s) on line 149.
+.................................................
+)
+(/usr/share/texmf-dist/tex/latex/exsheets/exsheets_headings.cfg
+File: exsheets_headings.cfg 2014/07/20 v0.15 ExSheets headings instances
+)
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \ExSheetsHeading with arg. spec. 'mmmmmm' on line
+. 1490.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DeclareQuestionProperty with arg. spec. 'm' on
+. line 1538.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \IfQuestionPropertyTF with arg. spec. '' on line
+. 1558.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \IfQuestionPropertyT with arg. spec. '' on line
+. 1560.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \IfQuestionPropertyF with arg. spec. '' on line
+. 1562.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \SetQuestionProperties with arg. spec. '+m' on
+. line 1565.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \GetQuestionProperty with arg. spec. 'mm' on line
+. 1595.
+.................................................
+\g__exsheets_tmpa_int=\count180
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \DebugExSheets with arg. spec. 'G{true}' on line
+. 1684.
+.................................................
+\l__exsheets_include_random_int=\count181
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \includequestions with arg. spec. 'om' on line
+. 1725.
+.................................................
+\l__exsheets_questions_set_int=\count182
+\g__exsheets_select_random_int=\count183
+\g__exsheets_selection_number_int=\count184
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \PrintIfIncludeActiveTF with arg. spec. 'mm' on
+. line 2002.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \PrintIfIncludeActiveT with arg. spec. '' on line
+. 2005.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \PrintIfIncludeActiveF with arg. spec. '' on line
+. 2008.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \printsolutions with arg. spec. 'O{all}' on line
+. 2198.
+.................................................
+\l__exsheets_counter_ch_int=\count185
+\l__exsheets_current_ch_int=\count186
+\l__exsheets_counter_sec_int=\count187
+\l__exsheets_current_sec_int=\count188
+\l__exsheets_counter_qu_int=\count189
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \NewQuSolPair with arg. spec. 'mO{}O{}mO{}O{}' on
+. line 2581.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \RenewQuSolPair with arg. spec. 'mO{}O{}mO{}O{}'
+. on line 2585.
+.................................................
+
+(/usr/share/texmf-dist/tex/latex/tasks/tasks.sty
+Package: tasks 2014/07/29 v0.10a Horizontal columned lists.
+
+(/usr/share/texmf-dist/tex/latex/eepic/epic.sty
+Enhancements to Picture Environment. Version 1.2 - Released June 1, 1986
+\@@multicnt=\count190
+\d@lta=\count191
+\@delta=\dimen267
+\@@delta=\dimen268
+\@gridcnt=\count192
+\@joinkind=\count193
+\@dotgap=\dimen269
+\@ddotgap=\dimen270
+\@x@diff=\count194
+\@y@diff=\count195
+\x@diff=\dimen271
+\y@diff=\dimen272
+\@dotbox=\box63
+\num@segments=\count196
+\num@segmentsi=\count197
+\@datafile=\read3
+)
+\l__tasks_depth_int=\count198
+\g__tasks_int=\count199
+\g__tasks_total_items_int=\count200
+\l__tasks_columns_int=\count201
+Normal \count register pool exhausted, switching to extended pool.
+\l__tasks_rows_int=\count277
+\g__tasks_current_col_num_int=\count278
+\g__tasks_current_row_num_int=\count279
+\l__tasks_item_columns_int=\count280
+\l__tasks_item_indent_dim=\dimen273
+\l__tasks_item_default_indent_dim=\dimen274
+\l__tasks_item_width_dim=\dimen275
+\l__tasks_label_width_dim=\dimen276
+\l__tasks_label_default_width_dim=\dimen277
+\l__tasks_label_offset_dim=\dimen278
+\l__tasks_label_default_offset_dim=\dimen279
+\l__tasks_column_sep_dim=\dimen280
+\l__tasks_after_item_skip=\skip64
+\l__tasks_custom_after_item_skip=\skip65
+\l__tasks_before_list_skip=\skip66
+\l__tasks_after_list_skip=\skip67
+\l__tasks_item_coffin=\box64
+\l__tasks_label_coffin=\box65
+\c@task=\count281
+\l__tasks_tmpa_int=\count282
+\l__tasks_tmpb_int=\count283
+\l__tasks_tmpa_coffin=\box66
+.................................................
+. xtemplate info: "declare-object-type"
+. 
+. Declaring object type 'tasks' taking 3 argument(s) on line 377.
+.................................................
+\l__tasks_choice_width_dim=\dimen281
+\l__tasks_choice_linewidth_dim=\dimen282
+\l__tasks_choice_checkwidth_dim=\dimen283
+\l__tasks_choice_raise_dim=\dimen284
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \startnewitemline with arg. spec. '' on line 670.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \NewTasks with arg. spec. 'O{}mO{\task }D(){1}' on
+. line 679.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \RenewTasks with arg. spec. 'O{}mO{\task }D(){1}'
+. on line 686.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining document environment 'tasks' with arg. spec. 'O{}D(){1}' on line
+. 694.
+.................................................
+ (/usr/share/texmf-dist/tex/latex/tasks/tasks.cfg
+File: tasks.cfg 2014/07/29 v0.10a tasks instances
+)
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \settasks with arg. spec. 'm' on line 710.
+.................................................
+)
+(/usr/share/texmf-dist/tex/generic/ulem/ulem.sty
+\UL@box=\box67
+\UL@hyphenbox=\box68
+\UL@skip=\skip68
+\UL@hook=\toks45
+\UL@height=\dimen285
+\UL@pe=\count284
+\UL@pixel=\dimen286
+\ULC@box=\box69
+Package: ulem 2012/05/18
+\ULdepth=\dimen287
+)
+\l__exsheets_blank_dim=\dimen288
+\l__exsheets_blank_box=\box70
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \blank with arg. spec. 'som' on line 2651.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \examspace with arg. spec. 'sm' on line 2752.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-command"
+. 
+. Defining document command \SetupExSheets with arg. spec. 'o+m' on line 2761.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining document environment 'question' with arg. spec. 'O{}G{}' on line
+. 2770.
+.................................................
+.................................................
+. LaTeX info: "xparse/define-environment"
+. 
+. Defining document environment 'solution' with arg. spec. 'O{}' on line 2770.
+.................................................
+
+(/usr/share/texmf-dist/tex/latex/translations/translations.sty
+Package: translations 2014/01/23 v1.2a internationalization of LaTeX2e packages
+ (CN)
+
+(/usr/share/texmf-dist/tex/latex/koma-script/scrlfile.sty
+Package: scrlfile 2013/12/19 v3.12 KOMA-Script package (loading files)
+
+Package scrlfile, 2013/12/19 v3.12 KOMA-Script package (loading files)
+                  Copyright (C) Markus Kohm
+
+)))
+\c@everything=\count285
+)
+\g__fontspec_family_LinuxLibertineO_int=\count286
 .................................................
 . fontspec info: "defining-font"
 . 
@@ -939,8 +1358,7 @@ LaTeX Font Info:    Checking defaults for EU1/lmr/m/n on input line 14.
 LaTeX Font Info:    ... okay on input line 14.
 LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 14.
 LaTeX Font Info:    Try loading font information for T3+cmr on input line 14.
-
-(/usr/share/texmf-dist/tex/latex/tipa/t3cmr.fd
+ (/usr/share/texmf-dist/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
 LaTeX Font Info:    ... okay on input line 14.
@@ -1010,9 +1428,21 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> EU1/lmtt/bx/n on input line 14.
 
 ABD: EveryShipout initializing macros
+(/usr/share/texmf-dist/tex/latex/translations/translations-basic-dictionary-ger
+man.trsl
+File: translations-basic-dictionary-german.trsl (german translation file `trans
+lations-basic-dictionary')
+)
+.................................................
+. exsheets info: "loading-configurations"
+. 
+. Loading custom configurations file `exsheets_configurations.cgf'.
+.................................................
+ (/usr/share/texmf-dist/tex/latex/exsheets/exsheets_configurations.cfg
+File: exsheets_configurations.cfg 
+)
 LaTeX Font Info:    Try loading font information for U+msa on input line 15.
-
-(/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
+ (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 15.
@@ -1026,14 +1456,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 [1
 
-] [2] [3] [4] [5] [6] [7] (./Reihenkonvergenz.aux) ) 
+] [2] [3] [4] [5] [6] [7] [8] [9] [10] (./Reihenkonvergenz.aux) ) 
 Here is how much of TeX's memory you used:
- 25737 strings out of 493725
- 524494 string characters out of 6151044
- 548579 words of memory out of 5000000
- 28704 multiletter control sequences out of 15000+600000
- 10746 words of font info for 64 fonts, out of 8000000 for 9000
+ 28663 strings out of 493725
+ 599320 string characters out of 6151044
+ 643915 words of memory out of 5000000
+ 31550 multiletter control sequences out of 15000+600000
+ 10852 words of font info for 65 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 62i,11n,60p,10438b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,12n,97p,10438b,330s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Reihenkonvergenz.pdf (7 pages).
+Output written on Reihenkonvergenz.pdf (10 pages).
