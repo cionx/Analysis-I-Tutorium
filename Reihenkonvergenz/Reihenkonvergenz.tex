@@ -171,6 +171,13 @@ Wir wollen nun einige grundlegende Eigenschaften von (konvergenten) Reihen angeb
  für $n \to \infty$. Also ist $(a_n)$ konvergent und $\lim_{n \to \infty} a_n = 0$.
 \end{proof}
 
+\begin{question}
+ Für welche $q \in \R$ konvergiert die Reihe $\sum_{k=0}^\infty q^k$?
+\end{question}
+\begin{solution}
+ Wir wissen bereits, dass die Reihe für $|q| < 1$ absolut konvergiert. Für $|q| \geq 1$ ist $(q^n)_{n \in \N}$ keine Nullfolge, da $|q^n| = |q|^n \geq 1$ für alle $n \in \N$, und die Reihe $\sum_{k=0}^\infty q^k$ somit nicht konvergent.
+\end{solution}
+
 
 Man beachte, dass die Umkehrung des Lemmas nicht gilt, d.h. nicht jede Nullfolge ist auch summierbar. Ein einfaches Gegenbeispiel hierfür ist die harmonische Reihe $\sum_{k=1}^\infty \frac{1}{k}$.
 
@@ -428,24 +435,63 @@ Wie wir bereits wissen, sind die Voraussetzungen des Quotientenkriteriums äquiv
 \end{solution}
 
 \begin{question}
- Man zeige, dass die folgenden Reihen absolut konvergieren: $\sum_{k=0}^\infty 2^k/k!$,
+ Untersuchen Sie die folgenden Reihen auf Konvergenz: $\sum_{k=0}^\infty 2^k/k!$, $\sum_{k=0}^\infty k^2/(k^3 + 5)$ und $\sum_{k=0}^\infty k^2/2^k$.
 \end{question}
 \begin{solution}
  Es ist
  \[
   \limsup_{n \to \infty} \frac{2^{k+1} / (k+1)!}{2^k / k!}
-  = \limsup_{n \to \infty}\frac{2}{k} = 0,
+  = \limsup_{n \to \infty}\frac{2}{k+1} = 0,
  \]
- also konvergiert die Reihe $\sum_{k=0}^\infty 2^k/k!$ nach dem Quotientenkriterium.
+ also konvergiert die Reihe $\sum_{k=0}^\infty 2^k/k!$ nach dem Quotientenkriterium absolut.
+ 
+ Für alle $n \geq 2$ ist $n^3 \geq 5$ und somit
+ \[
+  \frac{n^2}{n^3 + 5} \geq \frac{n^3}{n^3 + n^3} = \frac{1}{2n}.
+ \]
+ Da $\sum_{k=1}^\infty \frac{1}{2n} = \infty$ folgt aus dem Minorantenkriterium, dass $\sum_{k=0}^\infty k^2/(k^3 + 5) = \infty$.
+ 
+ Da
+ \begin{align*}
+  \limsup_{n \to \infty} \frac{(n+1)^2/2^{n+1}}{n^2/2^n}
+  &= \limsup_{n \to \infty} \frac{1}{2} \frac{n^2 + 2n + 1}{n^2} \\
+  &= \limsup_{n \to \infty} \frac{1}{2} \left( 1 + \frac{2}{n} + \frac{1}{n^2} \right)
+  = \frac{1}{2}
+ \end{align*}
+ konvergiert die Reihe $\sum_{k=0}^\infty k^2 / 2^k$ nach dem Quotientenkriterium absolut.
+\end{solution}
+
+
+\begin{question}
+ Es sei $-1 < q < 1$. Zeigen Sie, dass die Reihe $\sum_{k=1}^\infty k q^k$ konvergiert und bestimmen sie den Grenzwert.
+\end{question}
+\begin{solution}
+ Da
+ \[
+  \limsup_{n \to \infty} \left| \frac{(n+1)q^{n+1}}{nq^n} \right|
+  = \limsup_{n \to \infty} \left(1 + \frac{1}{n}\right) |q|
+  = |q|
+  < 1
+ \]
+ konvergiert die Reihe nach dem Quotientenkriterium. Zur Bestimmung des Grenzwertes $\xi \coloneqq \sum_{k=1}^\infty k q^k$ bemerken wir, dass
+ \begin{align*}
+  \xi
+  &= \sum_{k=1}^\infty k q^k
+  = \sum_{k=0}^\infty (k+1) q^{k+1} \\
+  &= \sum_{k=0}^\infty k q^{k+1} + \sum_{k=0}^\infty q^{k+1} \\
+  &= q \sum_{k=0}^\infty k q^k + q \sum_{k=0}^\infty q^k \\
+  &= q x + \frac{q}{1-q}.
+ \end{align*}
+ Durch Umstellen ergibt sich, dass $x = q/(1-q)^2$.
 \end{solution}
 
 
 
 
 
-
-
 \subsection{Wurzelkriterium}
+
+Ein weiteres wichtiges Konvergenzkriterium, dass sich mithilfe der geometrischen Reihe ergibt, ist das \emph{Wurzelkriterium}.
 
 \begin{prop}
  Es sei $(a_n)_{n \in \N}$ eine Folge und es gebe $y < 1$ und $N \in \N$, so dass $|a_n|^{1/n} < y$ für alle $n \geq N$. Dann konvergiert die Reihe $\sum_{k=0}^\infty a_k$ absolut.
@@ -468,6 +514,46 @@ Wie wir bereits wissen, sind die Voraussetzungen des Quotientenkriteriums äquiv
   \qedhere
  \]
 \end{proof}
+
+Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalent dazu, dass $\limsup_{n \to \infty} |a_n|^{1/n} < 1$. Wie bereits beim Quotientenkriterium können wir im Fall $\limsup_{n \to \infty} |a_n|^{1/n} = 1$ keine Aussage über das Konvergenzverhalten der Reihe treffen. Im Gegensatz zum Quotientenkriterium wissen wir jedoch im Fall $\limsup_{n \to \infty} |a_n|^{1/n} > 1$, dass die Reihe divergiert!
+
+
+\begin{question}
+ Gebe eine divergente Reihe $\sum_{k=0}^\infty a_k$ mit $\limsup_{n \to \infty} |a_n|^{1/n} = 1$ an.
+\end{question}
+\begin{solution}
+ Die harmonische Reihe $\sum_{k=1}^\infty 1/k$ divergiert mit
+ \[
+  \limsup_{n \to \infty} \frac{1}{n^{1/n}} = 1.
+ \]
+\end{solution}
+
+
+\begin{question}
+ Zeigen Sie, dass die Reihe $\sum_{k=0}^\infty a_k$ divergiert, falls $\limsup_{n \to \infty} |a_n|^{1/n} > 1$.
+\end{question}
+\begin{solution}
+ Da $\limsup_{n \to \infty} |a_n|^{1/n}| = \inf_{n \in 1} \sup_{k \geq n} |a_k|^{1/k}$ ist $1 < \sup_{k \geq n} |a_k|^{1/k}$ für alle $n \geq 1$. Es gibt daher für jedes $n \geq 1$ ein $k \geq 1$ mit $1 < |a_k|^{1/k}$ und somit $|a_k| > 1$. Also ist $(a_n)_{n \in \N}$ keine Nullfolge, und die Reihe $\sum_{k=0}^\infty a_k$ somit nicht konvergent.
+\end{solution}
+
+
+
+\begin{question}
+ Für welche $x \in \R$ konvergiert die Reihe $\sum_{k=0}^\infty \frac{1}{2^k} x^k$?
+\end{question}
+\begin{solution}
+ Für alle $x \in \R$ ist
+ \[
+  \sum_{k=0}^\infty \frac{1}{2^k} x^k
+  = \sum_{k=0}^\infty \left(\frac{x}{2}\right)^k.
+ \]
+ Diese Reihe konvergiert bekanntermaßen genau dann, wenn $|x/2| < 1$, also wenn $-2 < x < 2$.
+\end{solution}
+
+
+
+
+
 
 
 
