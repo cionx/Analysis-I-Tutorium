@@ -554,10 +554,6 @@ Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalen
 
 
 
-
-
-
-
 \subsection{Cauchysches Verdichtungskriterium}
 
 
@@ -594,6 +590,24 @@ Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalen
 \end{proof}
 
 
+\begin{question}
+ Zeigen Sie, dass die Reihe $\sum_{k=1}^\infty 1/k^\alpha$ genau dann konvergiert, wenn $\alpha>1$. (Diese Reihen sind die \emph{allgemeinen harmonischen Reihen}.)
+\end{question}
+\begin{solution}
+ Für $\alpha \leq 0$ ist $n^\alpha \leq 1$ und damit $1/n^\alpha \geq 1$ für alle $n \geq 1$. Die Reihe divergiert dann gegen $\infty$. 
+ 
+ Für $\alpha > 0$ ist die Folge $(1/n^\alpha)_{n \geq 1}$ monoton fallend mit $1/n^\alpha \geq 0$ für alle $n \geq 1$. Nach dem Cauchy-Kriterium konvergiert die Reihe $\sum_{k=1}^\infty 1/k^\alpha$ daher genau dann, wenn die Reihe
+ \[
+  \sum_{\ell=0}^\infty 2^\ell \frac{1}{\left(2^\ell\right)^\alpha}
+  = \sum_{\ell=0}^\infty 2^{\ell(1-\alpha)}
+  = \sum_{\ell=0}^\infty \left(2^{1-\alpha}\right)^\ell
+ \]
+ konvergiert. Dies ist bekanntermaßen genau dann der Fall, wenn $2^{1-\alpha} < 1$, wenn also $\alpha > 1$.
+ 
+ Die Reihe $\sum_{k=1}^\infty 1/k^\alpha$ konvergiert also genau dann, wenn $\alpha > 1$.
+\end{solution}
+
+
 
 
 
@@ -608,25 +622,17 @@ Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalen
 \end{proof}
 
 
-
-\section{Beispiele}
-
-
-
-\subsection{Endliche Reihen}
-
-
-\subsection{Die geometrische Reihe}
+\begin{question}
+ Geben Sie eine Reihe an, die zwar konvergiert, aber nicht absolut konvergent ist.
+\end{question}
+\begin{solution}
+ Die Folge $(1/n)_{n \geq 1}$ ist monoton fallend mit $\lim_{n \to \infty} a_n = 0$. Nach dem Leipnizkriterium konvergiert daher die Reihe $\sum_{k=1}^\infty \frac{(-1)^n}{n}$. Diese Reihe ist aber nicht absolut konvergent, da die harmonische Reihe divergiert.
+\end{solution}
 
 
-\subsection{Die allgemeine harmonische Reihe}
-
-
-\subsection{Die (alternierende) harmonische Reihe}
-
-
-\subsection{Weitere Beispiele}
-
+\begin{question}
+ Es seien $\sum_{k=0}^\infty a_k$ und $\sum_{k=0}^\infty b_k$ konvergente Reihen. Zeigen Sie, dass wenn eine der beide Reihen schon absolut konvergiert, auch $\sum_{k=0}^\infty a_k b_k$ absolut konvergiert. Was ist, wenn keine der beiden absolut konvergiert?
+\end{question}
 
 
 

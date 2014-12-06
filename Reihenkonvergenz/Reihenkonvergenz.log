@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014/Arch Linux) (preloaded format=xelatex 2014.11.7)  6 DEC 2014 20:31
+This is XeTeX, Version 3.14159265-2.6-0.99991 (TeX Live 2014/Arch Linux) (preloaded format=xelatex 2014.11.7)  6 DEC 2014 20:57
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1456,14 +1456,14 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 
 [1
 
-] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] (./Reihenkonvergenz.aux) ) 
+] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] (./Reihenkonvergenz.aux) ) 
 Here is how much of TeX's memory you used:
- 28668 strings out of 493725
- 599418 string characters out of 6151044
- 646901 words of memory out of 5000000
- 31555 multiletter control sequences out of 15000+600000
+ 28671 strings out of 493725
+ 599478 string characters out of 6151044
+ 648498 words of memory out of 5000000
+ 31558 multiletter control sequences out of 15000+600000
  10852 words of font info for 65 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
- 62i,12n,97p,10438b,338s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,12n,97p,10438b,337s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Reihenkonvergenz.pdf (11 pages).
+Output written on Reihenkonvergenz.pdf (12 pages).
