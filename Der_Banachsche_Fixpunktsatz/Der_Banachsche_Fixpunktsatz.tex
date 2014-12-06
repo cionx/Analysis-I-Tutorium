@@ -1,0 +1,151 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage{../mystyle}
+
+\setromanfont[Mapping=tex-text]{Linux Libertine O}
+% \setsansfont[Mapping=tex-text]{DejaVu Sans}
+% \setmonofont[Mapping=tex-text]{DejaVu Sans Mono}
+
+\title{Der Banachsche Fixpunktsatz}
+\author{Jendrik Stelzner}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+Wir wollen hier (als Übung für den Leser) den Banachschen Fixpunktsatz für $\R$ formulieren und beweisen.
+
+
+\begin{defi}
+ Eine Abbildung $f \colon \R \to \R$ heißt \emph{Kontraktion}, falls es eine Konstante $0 \leq L < 1$ gibt, so dass
+ \[
+  |f(x)-f(y)| \leq L|x-y| \quad \text{für alle $x,y \in \R$}.
+ \]
+\end{defi}
+
+
+\begin{question}
+ Bestimmen Sie, welche der folgenden Abbildungen $f, g, h \colon \R \to \R$ eine Kontraktion ist.
+ \begin{align*}
+  f&: x \mapsto \frac{x}{4} - \frac{2}{3} \\
+  g&: x \mapsto x^2 \\
+  h&: x \mapsto |x|^{1/2}
+ \end{align*}
+\end{question}
+\begin{solution}
+ $f$ ist eine Kontraktion, da für alle $x,y \in \R$
+ \[
+  |f(x)-f(y) = \left| \frac{x}{4} - \frac{y}{4} \right| = \frac{1}{4}|x-y|
+ \]
+ mit $1/4 < L$.
+ $g$ ist keine Kontraktion, denn
+ \[
+  |g(2)-g(1)| = |2^2 - 1^2| = 3 > 1 = |2-1|.
+ \]
+ $h$ ist keine Kontrakiton. Ansonsten gebe es $0 \leq L < 1$ mit $|h(x)-h(y)| < |x-y|$ für alle $x, y \in \R$. Insbesondere wäre dann für alle $n \geq 1$
+ \[
+  \frac{1}{n^{1/2}}
+  = \left|h\left(\frac{1}{n}\right) - h(0)\right|
+  \leq L\left| \frac{1}{n} - 0\right|
+  = \frac{L}{n}
+ \]
+ und somit $n^{1/2} \leq L$.
+\end{solution}
+
+
+\begin{question}
+ Für eine Abbildung $f \colon \R \to \R$ gebe es eine Konstante $L > 0$, so dass
+ \[
+  |f(x)-f(y)| \leq L|x-y| \quad \text{für alle $x,y \in \R$}.
+ \]
+ Zeigen Sie, dass $f$ stetig ist. Folgern Sie, dass Kontraktionen stetig sind.
+\end{question}
+\begin{solution}
+ $f$ erfüllt an jeder Stelle $x \in \R$ das $\varepsilon$-$\delta$-Kriterium, denn für beliebiges $\varepsilon > 0$ und ergibt sich für $\delta \coloneqq \varepsilon/L$, dass für alle $y \in \R$ mit $|x-y| < \delta$
+ \[
+  |f(x)-f(y)| \leq L|x-y| < L\delta = L \frac{\varepsilon}{L} = \varepsilon.
+ \]
+ Also ist $f$ (Lipschitz-)stetig. Kontraktionen sind per Definition genau die Lipschitz-stetigen Abbildung mit Konstante $L < 1$.
+\end{solution}
+
+
+\begin{bem}
+ Eine solche Abbildung nennt man \emph{Lipschitz-stetig} (mit Konstante $L$).
+\end{bem}
+
+
+\begin{thrm}[Banachscher Fixpunktsatz]
+ Es sei $T \colon \R \to \R$ eine Kontraktion. Dann besitzt $T$ einen eindeutigen Fixpunkt, d.h. es existiert genau ein $\xi \in \R$ mit $T(\xi) = \xi$. Außerdem gilt für jedes $x \in \R$, dass $\lim_{n \to \infty} T^n(x) = \xi$. (Hier bezeichnet $T^n$ die $n$-fache Hintereinanderschaltung von $T$ mit sich selbst.)
+\end{thrm}
+
+
+\begin{question}
+ Es sei $T \colon \R \to \R$ eine Kontraktion.
+ \begin{enumerate}
+  \item
+   Zeigen Sie die Eindeutigkeit des Fixpunktes von $T$. (Wir setzen hier noch keine Existenz voraus.)
+  \item
+   Zeigen Sie, dass für jeden Startewert $x \in \R$ die Folge $(x_n)_{n \in \N}$ mit $x_n \coloneqq T^n(x)$ konvergiert. (\emph{Hinweis}: Zeigen Sie, dass es sich um eine Cauchy-Folge handelt.)
+  \item
+   Zeigen Sie, dass für jedes $x \in \R$ der Grenzwert $\xi \coloneqq \lim_{n \to \infty} T^n(x)$ ein Fixpunkt von $T$ ist.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ Es sei $0 \leq L < 1$, so dass $|T(x)-T(y)| \leq L|x-y|$ für alle $x,y \in \R$.
+ \begin{enumerate}
+  \item
+   Es seien $\xi$ und $\zeta$ zwei Fixpunkte von $T$. Dann ist
+   \[
+    |\xi-\zeta| = |T(\xi)-T(\zeta)| \leq L|\xi-\zeta|.
+   \]
+   Da $L \neq 1$ folgt, dass $|\xi-\zeta| = 0$ und somit $\xi = \zeta$.
+  \item
+   Für alle $n \geq 1$ ist
+   \[
+    |x_{n+1} - x_n|
+    = |T(x_n) - T(x_{n-1})|
+    \leq L|x_n - x_{n-1}|.
+   \]
+   Für $M \coloneqq |x_1 - x_0|$ ergibt sich damit induktiv, dass
+   \[
+    |x_{n+1} - x_n| \leq L^n |x_1 - x_0| = M L^n.
+   \]
+   für alle $n \in \N$. Für alle $N' \in \N$ und $m, m' \geq N$, wobei o.B.d.A. $m \geq m'$, ist daher
+   \begin{align*}
+    |x_m - x_{m'}|
+    &\leq |x_m - x_{m-1}| + |x_{m-1} - x_{m-2}| + \dotsb + |x_{m'+1} - x_{m'}| \\
+    &\leq M L^{m-1} + \dotsb + M L^{m'}
+    = M L^{m'} \sum_{k=0}^{m-1-m'} L^k \\
+    &\leq M L^{N'} \sum_{k=0}^\infty L^k
+    = \frac{M}{1-L} L^{N'}.
+   \end{align*}
+   Da $\lim_{N' \to \infty} M/(1-L) L^{N'} = 0$ gibt es für alle $\varepsilon > 0$ ein $N \in \N$ mit $M/(1-L) L^N < \varepsilon$, und damit insbesondere $|x_m - x_{m'}| < \varepsilon$ für alle $m, m' \geq N$. Dies zeigt, dass $(x_n)$ eine Cauchy-Folge ist.
+  \item
+   $T$ ist eine Kontraktion, und damit insbesondere stetig. Für beliebiges $x \in \R$ erhalten wir unter Verwendung der Folgenstetigkeit für $\xi \coloneqq \lim_{n \to \infty} T^n(x)$, dass
+   \[
+    T(\xi)
+    = T\left(\lim_{n \to \infty} T^n(x)\right)
+    = \lim_{n \to \infty} T(T^n(x))
+    = \lim_{n \to \infty} T^{n+1}(x)
+    = \xi.
+   \]
+ \end{enumerate}
+\end{solution}
+
+
+\begin{bem}
+ Der Banachsche Fixpunktsatz gilt allgemeiner für alle vollständige metrische Räume. Der Beweis hierfür läuft analog.
+\end{bem}
+
+
+\newpage
+
+
+\printsolutions
+
+
+
+
+\end{document}
