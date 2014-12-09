@@ -71,13 +71,48 @@ Außerdem ist $\exp(x) > 0$ für alle $x \in \R$.
   \quad
   \text{für alle $\lambda \in [0,1]$}.
  \]
- (\emph{Hinweis}: Nutzen Sie, dass die Abbildungen $x \mapsto x^k$ auf $[0,\infty)$ konvex sind.)
+ (\emph{Hinweis}: Nutzen Sie, dass für alle $k \in \N$ die Abbildung $x \mapsto x^k$ auf $[0,\infty)$ konvex ist.)
 \end{question}
+\begin{solution}
+ Für alle $k \in \N$ ist die Abbildung
+ \[
+  [0, \infty) \to \R, x \mapsto x^k
+ \]
+ konvex, d.h. für alle $x,y \in [0,\infty)$ ist
+ \[
+  (\lambda x + (1-\lambda) y)^k
+  \leq \lambda x^k + (1-\lambda) y^k
+  \quad
+  \text{für alle $\lambda \in [0,1]$}.
+ \]
+ Damit ergibt sich, dass für alle $x,y \in \R$ und $\lambda \in [0,1]$
+ \begin{align*}
+  \exp(\lambda x + (1-\lambda) y)
+  &= \sum_{k=0}^\infty \frac{(\lambda x + (1-\lambda)^y)^k}{k!} \\
+  &\leq \sum_{k=0}^\infty \frac{\lambda x^k + (1-\lambda) y^k}{k!} \\
+  &= \lambda \sum_{k=0}^\infty \frac{x^k}{k!} + (1-\lambda) \sum_{k=0}^\infty \frac{y^k}{k!} \\
+  &= \lambda \exp(x) + (1-\lambda) \exp(y).
+ \end{align*}
+\end{solution}
+
 
 
 \begin{question}
- Folgern Sie, dass $\exp$ konvex ist. (\emph{Hinweis:} Nutzen Sie \eqref{eqn: exp Gruppenhomo} um Translationen von $\exp$ in Skalierungen zu transformieren.)
+ Folgern Sie, dass $\exp$ konvex ist. (\emph{Hinweis:} Nutzen Sie \eqref{eqn: exp Gruppenhomo} um das Verschieben der Exponentialfunktion in eine Skalierung umzuwindeln.)
 \end{question}
+\begin{solution}
+ Es seien $x,y \in \R$ beliebig aber fest. Es sei $z \in \R$, so dass $x+z, y+z \geq 0$, etwa $z \coloneqq \max\{|x|,|y|\}$. Für alle $\lambda \in [0,1]$ ist dann
+ \begin{align*}
+      &\, \exp(\lambda x + (1-\lambda) y) \\
+     =&\,  \exp(-z) \exp(z) \exp(\lambda x + (1-\lambda) y) \\
+     =&\,  \exp(-z) \exp(\lambda (x+z) + (1-\lambda) (y+z)) \\
+  \leq&\,  \exp(-z) \left( \lambda \exp(x+z) + (1-\lambda) \exp(y+z) \right) \\
+     =&\,  \lambda \exp(-z) \exp(x+z) + (1-\lambda) \exp(-z) \exp(y+z) \\
+     =&\,  \lambda \exp(x) + (1-\lambda) \exp(y).
+ \end{align*}
+ Dabei haben wir genutzt, dass $\exp(-z) > 0$. und $\exp(-z) = 1/\exp(z)$.
+\end{solution}
+
 
 
 
