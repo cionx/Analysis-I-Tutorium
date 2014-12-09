@@ -1,15 +1,15 @@
 \select@language {ngerman}
-\contentsline {section}{\numberline {1}Vorbereitung}{1}
-\contentsline {section}{\numberline {2}Definition}{2}
-\contentsline {section}{\numberline {3}Grundlegende Eigenschaften}{3}
+\contentsline {section}{\numberline {1}Folgentheoretische Vorbereitung}{1}
+\contentsline {section}{\numberline {2}Definition konvergenter Reihen}{2}
+\contentsline {section}{\numberline {3}Grundlegende Eigenschaften konvergenter Reihen}{3}
 \contentsline {section}{\numberline {4}Konvergenzkriterien}{5}
 \contentsline {subsection}{\numberline {4.1}Majoranten- und Minorantenkriterium}{5}
 \contentsline {subsection}{\numberline {4.2}Quotientenkriterium}{6}
 \contentsline {subsection}{\numberline {4.3}Wurzelkriterium}{7}
-\contentsline {subsection}{\numberline {4.4}Cauchysches Verdichtungskriterium}{7}
-\contentsline {subsection}{\numberline {4.5}Leibniz-Kriterium}{8}
-\contentsline {section}{\numberline {5}Potenzreihen}{9}
-\contentsline {subsection}{\numberline {5.1}Definition}{9}
+\contentsline {subsection}{\numberline {4.4}Cauchysches Verdichtungskriterium}{8}
+\contentsline {subsection}{\numberline {4.5}Leibniz-Kriterium}{9}
+\contentsline {section}{\numberline {5}Ausblick: Potenzreihen}{9}
+\contentsline {subsection}{\numberline {5.1}Definition}{10}
 \contentsline {subsection}{\numberline {5.2}Konvergenzradius}{10}
 \contentsline {subsection}{\numberline {5.3}Beispiele}{11}
-\contentsline {section}{\numberline {6}Lösungen der Übungen}{12}
+\contentsline {section}{\numberline {6}Lösungen der Übungen}{13}

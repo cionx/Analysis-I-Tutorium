@@ -20,17 +20,18 @@
 
 
 
-\section{Vorbereitung}
+\section{Folgentheoretische Vorbereitung}
 
 
 Wir werden im Folgenden einige grundlegende Eigenschaften über die Konvergenz von Folgen nutzen, die bisher nicht gezeigt wurden.
 
 
 \begin{question}
- Konvergiert die Folge $(a_n)_{n \in \N}$, so konvergiert auch die Folge der Beträge $(|a_n|)_{n \in \N}$ und es gilt
+ Zeigen Sie: Konvergiert die Folge $(a_n)_{n \in \N}$, so konvergiert auch die Folge der Beträge $(|a_n|)_{n \in \N}$ und es gilt
  \[
   \lim_{n \to \infty} |a_n| = \left| \lim_{n \to \infty} a_n \right|.
  \]
+ (Der Betrag ist also stetig.)
 \end{question}
 \begin{solution}
  Sei $a \coloneqq \lim_{n \to \infty} a_n$ und $\varepsilon > 0$ beliebig aber fest. Dann gibt es ein $N \in \N$ mit $|a - a_n| < \varepsilon$ für alle $n \geq N$. Für alle $n \geq N$ gilt nach der umgekehrten Dreiecksungleichung
@@ -42,7 +43,7 @@ Wir werden im Folgenden einige grundlegende Eigenschaften über die Konvergenz v
 
 
 \begin{question}
- Für eine Folge $(a_n)_{n \in \N}$ und $C \in \R$ gilt: Es gibt genau dann $y < C$ und $N \in \N$ mit $a_n \leq y$ für alle $n \geq N$, falls $\limsup_{n \to \infty} a_n < C$.
+ Zeigen Sie: Für eine Folge $(a_n)_{n \in \N}$ und obere Schranke $C \in \R$ gilt: Es gibt genau dann $y < C$ und $N \in \N$ mit $a_n \leq y$ für alle $n \geq N$, falls $\limsup_{n \to \infty} a_n < C$.
 \end{question}
 \begin{solution}
  Gibt es solche $y$ und $N$, so ist $\sup_{k \geq N} a_k \leq y$ und somit
@@ -62,7 +63,7 @@ Wir werden im Folgenden einige grundlegende Eigenschaften über die Konvergenz v
 
 
 \begin{question}
- Konvergieren für eine Folge $(a_n)_{n \in \N}$ die beiden Teilfolgen $(a_{2n})$ und $(a_{2n+1})$ und gilt $\lim_{n \to \infty} a_{2n} = \lim_{n \to \infty} a_{2n+1}$, so konvergiert bereits $(a_n)$ selbst.
+ Zeigen Sie: Konvergieren für eine Folge $(a_n)_{n \in \N}$ die beiden Teilfolgen $(a_{2n})$ und $(a_{2n+1})$ und gilt $\lim_{n \to \infty} a_{2n} = \lim_{n \to \infty} a_{2n+1}$, so konvergiert bereits $(a_n)$ selbst.
 \end{question}
 \begin{solution}
  Es sei $a \coloneqq \lim_{n \to \infty} a_{2n} = \lim_{n \to \infty} a_{2n+1}$. Es sei $\varepsilon > 0$ beliebig aber fest. Da $\lim_{n \to \infty} a_{2n} = a$ gibt es $N_1 \in \N$ mit
@@ -77,10 +78,39 @@ Wir werden im Folgenden einige grundlegende Eigenschaften über die Konvergenz v
 \end{solution}
 
 
+\begin{question}
+ Zeigen Sie, dass $\lim_{n \to \infty} (n!)^{1/n} = \infty$.
+\end{question}
+\begin{solution}
+ Es genügt, zu zeigen, dass es für jedes $a \geq 1$ ein $N \in \N$ gibt, so dass $n! \geq a^n$ für alle $n \geq N$, dass also $n!/a^n \geq 1$ für alle $n \geq N$. Hierfür bemerken wir, dass
+ \[
+  \frac{n!}{a^n}
+  = \frac{1}{a} \cdot \frac{2}{a} \dotsm \frac{n-1}{a} \cdot \frac{n}{a}
+  = \prod_{k=1}^n \frac{k}{a}.
+ \]
+ Sei nun $\tilde{N} \in \N$ mit $\tilde{N} > a$. Dann ist
+ \[
+  \frac{n}{a} \geq \frac{\tilde{N}}{a} > 1 \quad \text{für alle $n \geq \tilde{N}$},
+ \]
+ und somit für alle $n \geq \tilde{N}$
+ \[
+  \frac{n!}{a^n}
+  = \prod_{k=1}^{n} \frac{k}{a}
+  = \prod_{k=1}^{\tilde{N}} \frac{k}{a} \cdot \prod_{k=\tilde{N}+1}^n \frac{k}{a}
+  \leq \prod_{k=1}^{\tilde{N}} \frac{k}{a} \cdot \left(\frac{\tilde{N}}{a}\right)^{n-\tilde{N}}.
+ \]
+ Da $\tilde{N}/a > 1$ ist $\lim_{n \to \infty} (\tilde{N}/a)^{n-\tilde{N}} = \infty$, also auch
+ \[
+  \lim_{n \to \infty} \frac{n!}{a^n} = \infty.
+ \]
+ Insbesondere gibt es daher $N \in \N$ mit $n!/a^n \geq 1$ für alle $n \geq N$.
+\end{solution}
 
 
 
-\section{Definition}
+
+
+\section{Definition konvergenter Reihen}
 
 
 \begin{defi}
@@ -97,7 +127,7 @@ Wir werden im Folgenden einige grundlegende Eigenschaften über die Konvergenz v
 \begin{bem}
  Die Reihe $\sum_{k=N}^\infty a_k$ wird nach dieser Definition als die Folge der Partialsummen $(s_n)_{n \in \N}$ mit $s_n = \sum_{k=0}^n a_{k+N}$ verstanden. Alternativ kann man die Reihe auch als die Folge der Partialsummen $(s'_n)_{n \in \N}$ mit
  \[
-  s'_n \coloneqq \sum_{k=N}^\infty a_k
+  s'_n \coloneqq \sum_{k=N}^n a_k
  \]
  definieren. Dies macht praktisch keinen Unterschied, da dann
  \[
@@ -107,7 +137,7 @@ Wir werden im Folgenden einige grundlegende Eigenschaften über die Konvergenz v
    s_{n-N} & \text{falls } n \geq N.
   \end{cases}
  \]
- Die Folge $(s'_n)$ ist also die Folge $(s_n)$ mit Nullen aufgefüllt.
+ Die Folge $(s'_n)$ entsteht also die Folge $(s_n)$ durch Auffüllen mit Nullen.
 \end{bem}
 
 
@@ -115,7 +145,7 @@ Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge 
 
 
 \begin{defi}
- Eine Reihe $\sum_{k=0}^\infty a_k$ heißt \emph{absolut konvergent}, wenn die Reihe der Beträge $\sum_{k=0}^\infty |a_k|$ konvergiert. Die Folge $(a_n)$ heißt dann absolut summierbar.
+ Eine Reihe $\sum_{k=0}^\infty a_k$ heißt \emph{absolut konvergent}, wenn die Reihe der Beträge $\sum_{k=0}^\infty |a_k|$ konvergiert. Die Folge $(a_n)$ heißt dann \emph{absolut summierbar}.
 \end{defi}
 
 
@@ -160,7 +190,7 @@ Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge 
 
 
 
-\section{Grundlegende Eigenschaften}
+\section{Grundlegende Eigenschaften konvergenter Reihen}
 
 
 Wir wollen nun einige grundlegende Eigenschaften von (konvergenten) Reihen angeben und beweisen.
@@ -753,7 +783,7 @@ Es sei $(a_n)_{n \in \N}$ eine Folge mit $\lim_{n \to \infty} |a_n|^{1/n} = 1/2$
 
 
 
-\section{Potenzreihen}
+\section{Ausblick: Potenzreihen}
 Wir wollen hier noch einen besonderen Fall von Reihen ansprechen, sogennante Potenzreihen, und ihr Konvergenzverhalten mithilfe des Wurzelkriteriums charakterisieren.
 
 
@@ -923,6 +953,29 @@ ist der Konvergenzradius der Potenzreihe $\rho = \infty$. Sie konvergiert also f
   = 0,
  \]
  also hat die Reihe einen Konvergenzradius von $\infty$.
+\end{solution}
+
+
+\begin{question}
+ Bestimmen Sie den Konvergenzradius der Reihe
+ \[
+  \sum_{n=0}^\infty \sum_{j=1}^n \frac{1}{j} x^n.
+ \]
+\end{question}
+\begin{solution}
+ Für alle $n \geq 1$ ist
+ \[
+  1 \leq \sum_{j=1}^n \frac{1}{j} \leq \sum_{j=1}^n 1 = n,
+ \]
+ und somit
+ \[
+  1 \leq \left( \sum_{j=1}^n \frac{1}{j} \right)^{1/n} \leq n^{1/n}.
+ \]
+ Da $\lim_{n \to \infty} n^{1/n} = 1$ folgt aus dem Sandwich-Lemma, dass
+ \[
+  \lim_{n \to \infty} \left( \sum_{j=1}^n \frac{1}{j} \right)^{1/n} = 1.
+ \]
+ Der Konvergenzradius der Potenzreihe $\sum_{n=0}^\infty \sum_{j=1}^n (1/j) x^n$ beträgt also $1$.
 \end{solution}
 
 
