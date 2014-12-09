@@ -18,6 +18,17 @@
 Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer Abbildung $f \colon \R \to \R$ angebeben und ihre Äquivalenz beweisen.
 
 
+\tableofcontents
+
+
+
+
+
+\section{Grundlegende Definitionen}
+
+
+\subsection{$\varepsilon$-$\delta$-Stetigkeit}
+
 \begin{defi}
  Eine Abbildung $f \colon \R \to \R$ heißt \emph{$\varepsilon$-$\delta$-stetig im Punkt $x \in \R$}, falls es für jedes $\varepsilon > 0$ ein $\delta > 0$ gibt, so dass
  \[
@@ -61,6 +72,9 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
 \end{question}
 
 
+\subsection{Folgenstetigkeit}
+
+
 \begin{defi}
  Eine Abbildung $f \colon \R \to \R$ heißt \emph{folgenstetig an $x \in \R$}, falls für jedes Folge $(x_n)_{n \in \N}$ mit $x_n \to x$ für $n \to \infty$ auch die Folge $(f(x_n))_{n \in \N}$ konvergiert und
  \[
@@ -87,6 +101,8 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
  Es seien $f, g \colon \R \to \R$ beide folgenstetig an der Stelle $x \in R$. Zeigen Sie, dass auch die Funktionen $f+g$ und $f \cdot g$ folgenstetig an der Stelle $x$ sind.
 \end{question}
 
+
+\subsection{Stetigkeit über Grenzwerte}
 
 
 \begin{defi}
@@ -118,7 +134,6 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
 \end{bem}
 
 
-
 \begin{question}
  Zeigen Sie, dass $f$ genau dann beidseitig stetig ist, wenn $f$ links- und rechtsstetig ist.
 \end{question}
@@ -133,6 +148,7 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
   \quad
   \lim_{y \downarrow x} f(y) = \inf\{f(y) \mid y > x\}.
  \]
+ Wie sieht es für eine monoton fallende Funktion aus?
 \end{question}
 
 
@@ -143,6 +159,12 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
   \text{für alle $\varepsilon > 0$ gibt es $\delta > 0$ mit $|f(x)-y| < \varepsilon$ für $|x-x_0| < \delta$ und $x \neq x_0$}.
  \]
 \end{question}
+
+
+\subsection{Äquivalenz der Stetigkeitsbegriffe}
+
+
+Wir wollen nun zeigen, dass die verschiedenen Stetigkeitsbegriffe äquivalent zueinander sind.
 
 
 \begin{prop}
@@ -169,6 +191,160 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
  (\ref{enum: beidseitig stetig} $\Rightarrow$ \ref{enum: epsilon-delta-stetig})
  Es sei $\varepsilon > 0$ beliebig aber fest. Da $f$ beidseitig stetig an $x$ ist, existiert der beidseitige Limes $\lim_{y \to x} f(y)$ und es ist $f(x) = \lim_{y \to x} f(y)$. Nach Übung \ref{qst: Charakterisierung beidseitiger Grenzwert} gibt daher $\delta > 0$, so dass $|f(x)-f(y)| < \varepsilon$ für alle $y \in \R$ mit $|x-y| < \delta$ und $x \neq y$; für $x = y$ gilt dies offenbar ebenfalls. Also ist $f$ $\varepsilon$-$\delta$-stetig an $x$.
 \end{proof}
+
+
+Statt zwischen den verschiedenen Stetigkeitsbegriffen zu unterscheiden, sprechen wir von nun an nur noch von Stetigkeit.
+
+
+
+\begin{question}
+ Es sei
+ \[
+  \mc{O} \coloneqq \{f \colon \R \to \R \mid \text{$f$ ist stetig}\}.
+ \]
+ Zeigen Sie:
+ \begin{enumerate}
+  \item
+   Alle konstanten Funktionen sind in $\mc{O}$ enthalten.
+  \item
+   $\mc{O}$ ist ein $\R$-Vektorraum unter punktweiser Addition und Skalarmultiplikation, d.h. für alle $f, g \in \mc{O}$ ist $(f+g)(x) = f(x)+g(x)$ und für alle $f \in \mc{O}$ und $\lambda \in \R$ ist $(\lambda f)(x) = \lambda f(x)$.
+  \item
+   Zeigen Sie, dass für zwei stetige Abbildungen $f, g \in \mc{O}$ das das punktweise Produkt $f \cdot g$ stetig ist, d.h. $(f \cdot g)(x) = f(x) \cdot g(x)$ für alle $x \in \R$.
+ \end{enumerate}
+ Insgesamt zeigt dies, dass $\mc{O}$ eine $\R$-Algebra bildet. (Um genau zu sein zeigt es, dass $\mc{O}$ eine $\R$-Unteralgebra von $\Abb(\R, \R)$ ist.
+\end{question}
+
+
+
+\begin{question}
+ \begin{enumerate}
+  \item
+   Zeigen Sie, dass der Betrag
+   \[
+    |\cdot| \colon \R \to \R, x \mapsto |x|
+   \]
+   stetig ist.
+  \item
+   Folgern Sie, dass für zwei stetige Abbildungen $f, g \colon \R \to \R$ auch $\max(f,g)$ und $\min(f,g)$ stetig sind, wobei für alle $x \in \R$
+   \[
+    \max(f,g)(x) = \max\{f(x),g(x)\}
+    \quad
+    \text{und}
+    \quad
+    \min(f,g)(x) = \min\{f(x),g(x)\}.
+   \]
+ \end{enumerate}
+\end{question}
+
+
+\begin{question}
+ Es seien
+ \[
+  f \colon \R \setminus \{0\} \to \R, x \mapsto \sin\left(\frac{1}{x}\right)
+ \]
+ und
+  \[
+  g \colon \R \to \R,
+  x \mapsto
+  \begin{cases}
+   x \sin\left(\frac{1}{x}\right) & \text{falls $x \neq 0$}, \\
+                                0 & \text{falls $x = 0$}.
+  \end{cases}
+ \]
+ \begin{enumerate}
+  \item
+   Zeigen Sie, dass sich $f$ nicht stetig auf $\R$ fortsetzen lässt, d.h. es gibt keine stetige Funktion $h \colon \R \to \R$ mit $h(x) = f(x)$ für alle $x \neq 0$.
+  \item
+   Zeigen Sie, dass die Abbildung $g$ stetig ist.
+  \item
+   Es sei $x_0 \in \R$ und $s \colon \R \setminus\{x_0\} \to \R$ eine Abbildung, die in einer Umgebung von $x_0$ beschränkt sei, d.h. es gebe ein $\varepsilon > 0$ und eine Konstante $C > 0$, so dass $|s(x)| \leq C$ für alle $x \in (x_0 - \varepsilon, x_0 + \varepsilon)$ mit $x \neq x_0$. Zeigen Sie: Für eine stetige Abbildung $h \colon \R \to \R$ mit $h(x_0) = 0$ ist die Abbildung $h \cdot s$ stetig an $x_0$.
+ \end{enumerate}
+\end{question}
+
+
+
+
+
+\section{Topologische Stetigkeit}
+
+
+\begin{defi}
+ Für $x \in \R$ und $\varepsilon > 0$ definieren wir den \emph{offenen $\varepsilon$-Ball um $x$} als
+ \[
+  B_\varepsilon(x) \coloneqq \{y \in \R \mid |x-y| < \varepsilon\}.
+ \]
+\end{defi}
+
+
+\begin{defi}
+ Eine Teilmenge $U \subseteq \R$ heißt \emph{offen}, falls es für jedes $x \in U$ ein $\varepsilon > 0$ gibt, so dass $B_\varepsilon \subseteq U$.
+\end{defi}
+
+
+\begin{bsp}
+ \begin{enumerate}
+  \item
+   Die leere Menge ist offen, da die Bedingung dort leer ist.
+  \item
+   Offene Intervalle sind offen: Ist $I = (a,b)$ eine offenes Intervall und $x \in I$, so ist für
+   \[
+    \varepsilon \coloneqq \min\{x-a, b-x\}
+   \]
+   auch $B_\varepsilon(x) \subseteq I$.
+  \item
+   Abgeschlossene nicht-leere Intervalle sind nicht offen: Ist $I = [a,b]$ eine abgeschlossenen Intervall, dass nicht leer ist (also $a \leq b$), so gibt es kein $\varepsilon > 0$, so dass $B_\varepsilon(a) \subseteq I$, dann es ist $a-\varepsilon/2 \in B_\varepsilon(x)$, aber $a-\varepsilon/2 \notin I$.
+ \end{enumerate}
+\end{bsp}
+
+
+\begin{lem}
+ \begin{enumerate}
+  \item
+   Die leere Menge $\emptyset$ sowie $\R$ selbst sind offen.
+  \item
+   Ist $\{U_i \mid i \in I\}$ eine beliebige Kollektion offener Mengen, so ist auch die Vereinigung $\bigcup_{i \in I} U_i$ offen.
+  \item
+   Sind $U_1, \dotsc, U_n \subseteq \R$ offen, so ist auch der Schnitt $U_1 \cap \dotsb \cap U_n$ offen.
+ \end{enumerate}
+\end{lem}
+
+
+\begin{defi}
+ Es sei $x \in \R$ ein Punkt. Eine Menge $V \subseteq \R$ heißt \emph{Umgebung von $x$}, falls es ein $\varepsilon > 0$ gibt, so dass $B_\varepsilon(x) \subseteq V$.
+\end{defi}
+
+
+\begin{question}
+ Zeigen Sie, dass eine Menge $U \subseteq \R$ genau dann offen ist, wenn $U$ für jedes $x \in U$ eine Umgebung von $x$ ist.
+\end{question}
+
+
+\begin{question}
+ Zeigen Sie, dass eine Menge $V \subseteq \R$ genau Umgebung eines Punktes $x \in \R$ ist, wenn es eine offene Menge $U \subseteq \R$ mit $x \in U \subseteq V$ gibt.
+\end{question}
+
+
+\begin{question}
+ Zeigen Sie: 
+ \begin{enumerate}
+  \item
+   Ist $V \subseteq \R$ Umgebung eines Punktes $x \in \R$, so auch jedes Teilmenge $W \subseteq \R$ mit $V \subseteq \R$ eine Umgebung von $V$
+  \item
+   Sind $V_1, \dotsc, V_n \subseteq \R$ Umgebungen von $x \in \R$, so ist auch $V_1 \cap \dotsb \cap V_n$ eine Umgebung von $x$.
+ \end{enumerate}
+\end{question}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
