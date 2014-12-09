@@ -51,14 +51,14 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
 \end{bsp}
 
 
-\begin{ExerciseList}
- Im Folgenden seien $f, g \colon \R \to \R$.
- \Exercise
-  Zeigen Sie, dass wenn $f$ $\varepsilon$-$\delta$-stetig an der Stelle $x \in \R$ ist und $f(x) > 0$, dann gibt es ein $\delta > 0$ mit $f(y) > 0$ für alle $y \in (x-\delta, x+\delta)$. Gilt die Aussage auch für $f(x) < 0$ oder $f(x) \neq 0$?
- \Exercise
-  Zeigen Sie: Ist $f$ $\varepsilon$-$\delta$-stetig an der Stelle $x \in \R$ und $g$ $\varepsilon$-$\delta$-stetig an der Stelle $f(x)$, so ist die Komposition $g \circ f$ $\varepsilon$-$\delta$-stetig an der Stelle $x$.
-\end{ExerciseList}
+\begin{question}
+ Es sei $f \colon \R \to \R$ $\varepsilon$-$\delta$-stetig an der Stelle $x \in \R$. Zeigen Sie: Ist $f(x) > 0$, so gibt es ein $\delta > 0$ mit $f(y) > 0$ für alle $y \in (x-\delta, x+\delta)$. Gilt die Aussage auch für $f(x) < 0$ oder $f(x) \neq 0$?
+\end{question}
 
+
+\begin{question}
+ Es seien $f, g \colon \R \to \R$. Zeigen Sie: Ist $f$ $\varepsilon$-$\delta$-stetig an der Stelle $x \in \R$ und $g$ $\varepsilon$-$\delta$-stetig an der Stelle $f(x)$, so ist die Komposition $g \circ f$ $\varepsilon$-$\delta$-stetig an der Stelle $x$.
+\end{question}
 
 
 \begin{defi}
@@ -81,6 +81,12 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
  \]
  Das zeigt, dass $f$ an jeder Stelle $x \in \R$ folgenstetig ist.
 \end{bsp}
+
+
+\begin{question}
+ Es seien $f, g \colon \R \to \R$ beide folgenstetig an der Stelle $x \in R$. Zeigen Sie, dass auch die Funktionen $f+g$ und $f \cdot g$ folgenstetig an der Stelle $x$ sind.
+\end{question}
+
 
 
 \begin{defi}
@@ -106,11 +112,67 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
  $f$ heißt \emph{linksstetig}, falls $f$ an jeder Stelle $x \in \R$ linksstetig ist, und \emph{rechtsstetig}, falls $f$ an jeder Stelle $x \in \R$ rechtsstetig ist. Ist $f$ an jeder Stelle $x \in \R$ beidseitig stetig, so heißt $f$ \emph{beidseitig stetig}.
 \end{defi}
 
-\begin{ExerciseList}
- Im Folgenden sei $f \colon \R \to \R$.
- \Exercise
-  Zeigen Sie, dass $f$ genau dann beidseitig stetig ist, wenn $f$ links- und rechtsstetig ist.
-\end{ExerciseList}
+
+\begin{bem}
+ Rechts-, Links- und beidseitige Limites sind eindeutig (sofern sie existieren).
+\end{bem}
+
+
+
+\begin{question}
+ Zeigen Sie, dass $f$ genau dann beidseitig stetig ist, wenn $f$ links- und rechtsstetig ist.
+\end{question}
+
+
+\begin{question}
+ Zeigen Sie, dass für eine monoton steigende Funktion $f \colon \R \to \R$ an jeder Stelle $x \in \R$ sowohl der linksseitige als auch der rechtsseitige Limes exitieren, und dass
+ \[
+  \lim_{y \uparrow x} f(y) = \sup\{f(y) \mid y < x\}
+  \quad
+  \text{und}
+  \quad
+  \lim_{y \downarrow x} f(y) = \inf\{f(y) \mid y > x\}.
+ \]
+\end{question}
+
+
+
+\begin{question}\label{qst: Charakterisierung beidseitiger Grenzwert}
+ Es sei $f \colon \R \to \R$ und $x_0 \in \R$. Zeigen Sie, dass $\lim_{x \to x_0} f(x) = y$ genau dann, wenn
+ \[
+  \text{für alle $\varepsilon > 0$ gibt es $\delta > 0$ mit $|f(x)-y| < \varepsilon$ für $|x-x_0| < \delta$ und $x \neq x_0$}.
+ \]
+\end{question}
+
+
+\begin{prop}
+ Es sei $f \colon \R \to \R$ und $x \in \R$. Dann sind äquivalent:
+ \begin{enumerate}
+  \item\label{enum: epsilon-delta-stetig}
+   $f$ ist $\varepsilon$-$\delta$-stetig an der Stelle $x$.
+  \item\label{enum: folgenstetig}
+   $f$ ist folgenstetig an der Stelle $x$.
+  \item\label{enum: beidseitig stetig}
+   $f$ ist beidseitig stetig an der Stelle $x$.
+ \end{enumerate}
+\end{prop}
+\begin{proof}
+ (\ref{enum: epsilon-delta-stetig} $\Rightarrow$ \ref{enum: folgenstetig})
+ Sei $(x_n)_{n \in \N}$ ein Folge mit $\lim_{n \to \infty} x_n = x$. Sei $\varepsilon > 0$ beliebig aber fest. Da $f$ $\varepsilon$-$\delta$-stetig an $x$ ist, gibt es $\delta > 0$ mit $|f(x)-f(y)| < \varepsilon$ falls $|x-y| < \delta$. Da $\lim_{n \to \infty} x_n = x$ gibt es $N \in \N$ mit $|x-x_n| < \delta$ für alle $n \geq N$. Für alle $n \geq N$ ist also $|f(x)-f(x_n)| < \varepsilon$. Wegen der Beliebigkeit von $\varepsilon > 0$ folgt, dass $\lim_{n \to \infty} f(x_n) = f(x)$. Das zeigt, dass $f$ folgenstetig an $x$ ist.
+
+ (\ref{enum: folgenstetig} $\Rightarrow$ \ref{enum: epsilon-delta-stetig})
+ Angenommen, $f$ ist nicht $\varepsilon$-$\delta$-stetig an $x$. Dann gibt es $\varepsilon > 0$, so dass es für jedes $\delta > 0$ ein $y \in \R$ mit $|x-y| < \delta$ und $|f(x)-f(y)| \geq \varepsilon$ gibt. Insbesondere gibt es für jedes $n \geq 1$ ein $x_n \in \R$ mit $|x - x_n| < 1/n$ und $|f(x) - f(x_n)| \geq \varepsilon$. Es ist dann $\lim_{n \to \infty} x_n = x$ aber nicht $\lim_{n \to \infty} f(x_n) = f(x)$. Dies steht im Widerspruch zur Folgenstetigkeit von $f$ an $x$.
+ 
+ (\ref{enum: epsilon-delta-stetig} $\Rightarrow$ \ref{enum: beidseitig stetig})
+ Sei $\varepsilon > 0$ beliebig aber fest. Da $f$ $\varepsilon$-$\delta$-stetig an $x$ ist, gibt es $\delta > 0$ mit $|f(x)-f(y)| < \varepsilon$ für alle $y \in \R$ mit $|x-y| < \delta$. Inbesondere ist $|f(x)-f(y)| < \varepsilon$ für alle $y \in (x-\delta,x)$ und für alle $y \in (x,x+\delta)$. Also ist $f$ sowohl rechts- als auch linksstetig an $x$, und somit beidseitig stetig an $x$.
+ 
+ (\ref{enum: beidseitig stetig} $\Rightarrow$ \ref{enum: epsilon-delta-stetig})
+ Es sei $\varepsilon > 0$ beliebig aber fest. Da $f$ beidseitig stetig an $x$ ist, existiert der beidseitige Limes $\lim_{y \to x} f(y)$ und es ist $f(x) = \lim_{y \to x} f(y)$. Nach Übung \ref{qst: Charakterisierung beidseitiger Grenzwert} gibt daher $\delta > 0$, so dass $|f(x)-f(y)| < \varepsilon$ für alle $y \in \R$ mit $|x-y| < \delta$ und $x \neq y$; für $x = y$ gilt dies offenbar ebenfalls. Also ist $f$ $\varepsilon$-$\delta$-stetig an $x$.
+\end{proof}
+
+
+
+
 
 
 
