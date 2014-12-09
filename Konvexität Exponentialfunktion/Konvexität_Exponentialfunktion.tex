@@ -1,0 +1,96 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage{../mystyle}
+
+\setromanfont[Mapping=tex-text]{Linux Libertine O}
+% \setsansfont[Mapping=tex-text]{DejaVu Sans}
+% \setmonofont[Mapping=tex-text]{DejaVu Sans Mono}
+
+\title{Konvexität der Exponentialfunktion}
+\author{Jendrik Stelzner}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+\begin{defi}
+ Eine Abbildung $f \colon \R \to \R$ heißt konvex, falls für alle $x,y \in \R$
+ \[
+  f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda) f(y)
+  \quad \text{für alle $\lambda \in [0,1]$}.
+ \]
+\end{defi}
+
+
+\begin{question}
+ Es sei $f, g \colon \R \to \R$ konvex. Zeigen Sie: Ist $g$ monoton steigend, so ist auch $g \circ f$ konvex.
+\end{question}
+\begin{solution}
+ Es seien $x,y \in \R$ und $\lambda \in [0,1]$. Da $f$ konvex ist, ist
+ \[
+  f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda) f(y).
+ \]
+ Wegen der Monotonie von $g$ ergibt sich damit, dass
+ \[
+  g(f(\lambda x + (1-\lambda)y)) \leq g(\lambda f(x) + (1-\lambda) f(y)).
+ \]
+ Durch die Konvexität von $g$ erhalten wir auch, dass
+ \[
+  g(\lambda f(x) + (1-\lambda) f(y))
+  \leq \lambda g(f(x)) + (1-\lambda) g(f(y)).
+ \]
+ Insgesamt erhalten wir damit, ass
+ \begin{align*}
+      &\, (g \circ f)(\lambda x + (1-\lambda) y) \\
+     =&\, g(f(\lambda x + (1-\lambda) y)) \\
+  \leq&\, g(\lambda f(x) + (1-\lambda) f(y)) \\
+  \leq&\, \lambda g(f(x)) + (1-\lambda) g(f(y)) \\
+     =&\, \lambda (g \circ f)(x) + (1-\lambda) (g \circ f)(y).
+ \end{align*}
+\end{solution}
+
+
+Wir wollen nun zeigen, dass die Exponentialfunktion $\exp \colon \R \to \R$ konvex ist. Wir erinnern daran, dass
+\[
+ \exp(x) = \sum_{k=0}^\infty \frac{x^k}{k!} \quad \text{für alle $x \in \R$},
+\]
+und dass
+\begin{equation}\label{eqn: exp Gruppenhomo}
+ \exp(x+y) = \exp(x) \exp(y) \quad \text{für alle $x,y \in \R$}.
+\end{equation}
+Außerdem ist $\exp(x) > 0$ für alle $x \in \R$.
+
+
+\begin{question}
+ Zeigen Sie, dass $\exp$ auf $[0,\infty)$ konvex ist, d.h. dass für alle $x,y \in [0,\infty)$
+ \[
+  \exp(\lambda x + (1-\lambda) y)
+  \leq \lambda \exp(x) + (1-\lambda) \exp(y)
+  \quad
+  \text{für alle $\lambda \in [0,1]$}.
+ \]
+ (\emph{Hinweis}: Nutzen Sie, dass die Abbildungen $x \mapsto x^k$ auf $[0,\infty)$ konvex sind.)
+\end{question}
+
+
+\begin{question}
+ Folgern Sie, dass $\exp$ konvex ist. (\emph{Hinweis:} Nutzen Sie \eqref{eqn: exp Gruppenhomo} um Translationen von $\exp$ in Skalierungen zu transformieren.)
+\end{question}
+
+
+
+
+
+
+\newpage
+
+
+\printsolutions
+
+
+
+
+
+\end{document}

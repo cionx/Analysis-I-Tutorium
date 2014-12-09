@@ -23,7 +23,7 @@
 \section{Vorbereitung}
 
 
-Wir werden einige grundlegende Eigenschaften über die Konvergenz von Folgen nutzen, die bisher nicht gezeigt wurden. Wir überlassen die entsprechenden Beweise den geneigten Lesern als Übung.
+Wir werden im Folgenden einige grundlegende Eigenschaften über die Konvergenz von Folgen nutzen, die bisher nicht gezeigt wurden.
 
 
 \begin{question}
@@ -58,6 +58,22 @@ Wir werden einige grundlegende Eigenschaften über die Konvergenz von Folgen nut
   \sup_{k \geq N} a_k < x + \varepsilon = \frac{C + x}{2} < C.
  \]
  Wählen wir $y \coloneqq x + \varepsilon = (C+x)/2$ so ist also $y < C$ und $a_k \leq y$ für alle $k \geq N$.
+\end{solution}
+
+
+\begin{question}
+ Konvergieren für eine Folge $(a_n)_{n \in \N}$ die beiden Teilfolgen $(a_{2n})$ und $(a_{2n+1})$ und gilt $\lim_{n \to \infty} a_{2n} = \lim_{n \to \infty} a_{2n+1}$, so konvergiert bereits $(a_n)$ selbst.
+\end{question}
+\begin{solution}
+ Es sei $a \coloneqq \lim_{n \to \infty} a_{2n} = \lim_{n \to \infty} a_{2n+1}$. Es sei $\varepsilon > 0$ beliebig aber fest. Da $\lim_{n \to \infty} a_{2n} = a$ gibt es $N_1 \in \N$ mit
+ \[
+  |a_{2n} - a| < \varepsilon \quad \text{für alle $n \geq N_1$}.
+ \]
+ Da $\lim_{n \to \infty} a_{2n+1} = a$ gibt es $N_2 \in \N$ mit
+ \[
+  |a_{2n+1} - a| < \varepsilon \quad \text{für alle $n \geq N_2$}.
+ \]
+ Für $N \coloneqq \max \{2N_1, 2N_2+1\}$ ist dann $|a_n - a| < \varepsilon$ für alle $n \geq N$. Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $\lim_{n \to \infty} a_n = a$.
 \end{solution}
 
 
@@ -336,6 +352,19 @@ Eine der einfachsten Ideen um die absolutive Konvergenz einer Reihe $\sum_{k=0}^
  Für alle $k \geq 1$ ist $k! \leq k^k$ $k^{-k} = 1/k^k \leq 1/k!$. Da $\sum_{k=1}^\infty 1/k!$ konvergiert, folgt aus dem Majorantenkriterium, dass auch die Reihe $\sum_{k=1}^\infty k^{-k}$ konvergiert.
 \end{solution}
 
+\begin{question}\label{qst: absolut konvergent und beschränkt}
+ Es seien $\sum_{k=0}^\infty a_k$ eine absolut konvergente Reihe und $(b_k)_{k \in \N}$ eine beschränkte Folge. Zeigen  Sie, dass auch die Reihe $\sum_{k=0}^\infty a_k b_k$ absolut konvergiert.
+\end{question}
+\begin{solution}
+ Da die Folge $(b_k)_{k \in \N}$ beschränkt ist, gibt es eine Konstante $C > 0$ mit $|b_k| \leq C$ für alle $k \in \N$. Für alle $k \in \N$ haben wir
+ \[
+  |a_k b_k|
+  = |a_k| |b_k|
+  \leq C |a_k|,
+ \]
+ und die Konvergenz der Reihe $\sum_{k=0}^\infty C |a_k|$ folgt direkt aus der absoluten Konvergenz von $\sum_{k=0}^\infty |a_k|$. Also ist die Reihe $\sum_{k=0}^\infty a_k b_k$ nach dem Majorantenkriterium konvergent.
+\end{solution}
+
 
 Das Majorantenkriterium führt zusammen mit der geometrischen Reihe zu zwei wichtigen Konvergenzkriterien, dem \emph{Quotientenkriterium} und dem \emph{Wurzelkriterium}.
 
@@ -375,13 +404,13 @@ Wie wir bereits wissen, sind die Voraussetzungen des Quotientenkriteriums äquiv
 
 
 \begin{question}
- Geben Sie divergente, bzw. absolut konvergente Reihen $\sum_{k=0}^\infty a_k$ und $\sum_{k=0}^\infty b_k$, so dass 
+ Geben Sie divergente, bzw. absolut konvergente Reihen $\sum_{k=0}^\infty a_k$ und $\sum_{k=0}^\infty b_k$ an, so dass 
  \[
   \limsup_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right| = 1
   \quad
   \text{und}
   \quad
-  \limsup_{n \to \infty} \left|\frac{b_{n+1}}{b_n}\right| > 1.
+  \limsup_{n \to \infty} \left|\frac{b_{n+1}}{b_n}\right| = \infty.
  \]
 \end{question}
 \begin{solution}
@@ -435,7 +464,7 @@ Wie wir bereits wissen, sind die Voraussetzungen des Quotientenkriteriums äquiv
 \end{solution}
 
 \begin{question}
- Untersuchen Sie die folgenden Reihen auf Konvergenz: $\sum_{k=0}^\infty 2^k/k!$, $\sum_{k=0}^\infty k^2/(k^3 + 5)$ und $\sum_{k=0}^\infty k^2/2^k$.
+ Untersuchen Sie die Reihen $\sum_{k=0}^\infty 2^k/k!$, $\sum_{k=0}^\infty k^2/(k^3 + 5)$ und $\sum_{k=0}^\infty k^2/2^k$ auf Konvergenz.
 \end{question}
 \begin{solution}
  Es ist
@@ -480,9 +509,24 @@ Wie wir bereits wissen, sind die Voraussetzungen des Quotientenkriteriums äquiv
   = \sum_{k=0}^\infty (k+1) q^{k+1} \\
   &= \sum_{k=0}^\infty k q^{k+1} + \sum_{k=0}^\infty q^{k+1} \\
   &= q \sum_{k=0}^\infty k q^k + q \sum_{k=0}^\infty q^k \\
-  &= q x + \frac{q}{1-q}.
+  &= q \xi + \frac{q}{1-q}.
  \end{align*}
- Durch Umstellen ergibt sich, dass $x = q/(1-q)^2$.
+ Durch Umstellen ergibt sich, dass $\xi = q/(1-q)^2$.
+\end{solution}
+
+
+\begin{question}
+ Bestimmen sie alle $x \in \R$, für welche die Reihe $\sum_{k=0}^\infty x^k/k!$ konvergiert und für welche $x$ sie absolut konvergiert.
+\end{question}
+\begin{solution}
+ Für $x = 0$ konvergiert die Reihe offenbar absolut. Für $x \neq 0$ haben wir
+ \[
+  \limsup_{n \to \infty} \left| \frac{x^{k+1}/(k+1)!}{x^k/k!} \right|
+  = \limsup_{n \to \infty} \left| \frac{x^{k+1} k!}{x^k (k+1)!} \right|
+  = \limsup_{n \to \infty} \frac{|x|}{k+1}
+  = 0,
+ \]
+ und die Reihe konvergiert nach dem Quotientenkriterium absolut.
 \end{solution}
 
 
@@ -518,6 +562,11 @@ Ein weiteres wichtiges Konvergenzkriterium, dass sich mithilfe der geometrischen
 Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalent dazu, dass $\limsup_{n \to \infty} |a_n|^{1/n} < 1$. Wie bereits beim Quotientenkriterium können wir im Fall $\limsup_{n \to \infty} |a_n|^{1/n} = 1$ keine Aussage über das Konvergenzverhalten der Reihe treffen. Im Gegensatz zum Quotientenkriterium wissen wir jedoch im Fall $\limsup_{n \to \infty} |a_n|^{1/n} > 1$, dass die Reihe divergiert!
 
 
+\begin{bem}
+ Es lässt sich zeigen, dass das Wurzelkriterium stärker ist als das Quotientenkriterium, d.h. wenn sich absolute Konvergenz durch das Quotientenkriterium zeigen lässt, dann auch durch das Wurzelkriterium. Insbesondere hilft in den Fällen, in denen das Wurzelkriterium keine Aussage trifft (also wenn $\limsup_{n \to \infty} |a_n|^{1/n} = 1$), auch das Quotientenkriterium nicht weiter.
+\end{bem}
+
+
 \begin{question}
  Gebe eine divergente Reihe $\sum_{k=0}^\infty a_k$ mit $\limsup_{n \to \infty} |a_n|^{1/n} = 1$ an.
 \end{question}
@@ -535,7 +584,6 @@ Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalen
 \begin{solution}
  Da $\limsup_{n \to \infty} |a_n|^{1/n}| = \inf_{n \in 1} \sup_{k \geq n} |a_k|^{1/k}$ ist $1 < \sup_{k \geq n} |a_k|^{1/k}$ für alle $n \geq 1$. Es gibt daher für jedes $n \geq 1$ ein $k \geq 1$ mit $1 < |a_k|^{1/k}$ und somit $|a_k| > 1$. Also ist $(a_n)_{n \in \N}$ keine Nullfolge, und die Reihe $\sum_{k=0}^\infty a_k$ somit nicht konvergent.
 \end{solution}
-
 
 
 \begin{question}
@@ -618,7 +666,34 @@ Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalen
  Es sei $(a_n)_{n \in \N}$ eine monoton fallende Folge mit $a_n \geq 0$ für alle $n \in \N$ und $\lim_{n \to \infty} a_n = 0$. Dann konvergiert die alternierende Reihe $\sum_{k=0}^\infty (-1)^n a_n$.
 \end{prop}
 \begin{proof}
+ Wir betrachten die Folge der Partialsummen $(s_n)_{n \in \N}$, also
+ \[
+  s_n = \sum_{k=0}^\infty (-1)^k a_k.
+ \]
  
+ Da die Folge $(a_n)$ monoton fallend ist, ist für alle $n \in \N$
+ \[
+  s_{2(n+1)} - s_{2n} = a_{2n+2} - a_{2n+1} \leq 0.
+ \]
+ Die Teilfolge $(s_{2n})$ ist also monoton fallend. Analog ergibt sich, dass die Teilfolge $(s_{2n+1})$ monoton steigend ist.
+ 
+ Für alle $n \in \N$ haben wir außerdem
+ \[
+  s_{2n} \geq s_{2n} - a_{2n+1} =  s_{2n+1}.
+ \]
+ Es ist also für alle $n \in \N$
+ \begin{gather*}
+  s_0 \geq s_2 \geq s_4 \geq \dotsb \geq s_{2n} \geq s_{2n+1},
+ \shortintertext{sowie}
+  s_{2n} \geq s_{2n+1} \geq \dotsb \geq s_5 \geq s_3 \geq s_1.
+ \end{gather*}
+ Die Teilfolge $(s_{2n})$ ist also durch $s_1$ nach unten beschränkt, und die Teilfolge $(s_{2n+1})$ durch $s_0$ nach oben beschränkt. Die Teilfolgen $(s_{2n})$ und $(s_{2n+1})$ konvergieren also.
+ 
+ Es sei $s \coloneqq \lim_{n \to \infty} s_{2n}$ und $s' \coloneqq \lim_{n \to \infty} s_{2n+1}$. Da
+ \[
+  s - s' = \lim_{n \to \infty} (s_{2n} - s_{2n+1}) = \lim_{n \to \infty} a_{2n+1} = 0
+ \]
+ ist $s = s'$. Also ist bereits $(s_n)$ selbst konvergent (mit $\lim_{n \to \infty} s_n = s = s'$).
 \end{proof}
 
 
@@ -631,22 +706,262 @@ Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalen
 
 
 \begin{question}
- Es seien $\sum_{k=0}^\infty a_k$ und $\sum_{k=0}^\infty b_k$ konvergente Reihen. Zeigen Sie, dass wenn eine der beide Reihen schon absolut konvergiert, auch $\sum_{k=0}^\infty a_k b_k$ absolut konvergiert. Was ist, wenn keine der beiden absolut konvergiert?
+ Es seien $\sum_{k=0}^\infty a_k$ und $\sum_{k=0}^\infty b_k$ konvergente Reihen. Konvergiert dann auch die Reihe $\sum_{k=0}^\infty a_k b_k$? Was ist, wenn eine der beiden Reihen absolut konvergent ist?
 \end{question}
+\begin{solution}
+ Die Reihe $\sum_{k=1}^\infty (-1)^k/\sqrt{k}$ konvergiert nach dem Leibniz-Kriterium, die Reihe
+ \[
+  \sum_{k=1}^\infty \frac{(-1)^k}{\sqrt{k}} \frac{(-1)^k}{\sqrt{k}}
+  = \sum_{k=1}^\infty \frac{1}{k}
+ \]
+ divergiert aber.
+ 
+ Ist eine der beiden Reihen absolut konvergent, so können wir o.B.d.A.\ davon ausgehen, dass $\sum_{k=0}^\infty a_k$ absolut konvergent ist. Da die Reihe $\sum_{k=0}^\infty b_k$ zumindest konvergent ist (wenn auch nicht notwendigerweise absolut konvergent), ist die Folge $(b_k)$ eine Nullfolge und somit beschränkt (denn alle konvergenten Folgen sind beschränkt). Nach Übung \ref{qst: absolut konvergent und beschränkt} konvergiert die Reihe $\sum_{k=0}^\infty a_k b_k$ in diesem Fall absolut.
+\end{solution}
+
+
+
+\begin{question}\label{qst: Konvergenzradius}
+Es sei $(a_n)_{n \in \N}$ eine Folge mit $\lim_{n \to \infty} |a_n|^{1/n} = 1/2$. Bestimmen Sie für möglichst viele $x \in \R$ das Konvergenzverhalten der Reihe $\sum_{k=0}^\infty a_n x^n$.
+\end{question}
+\begin{solution}
+ Für alle $x \in \R$ gilt
+ \[
+  \limsup_{n \to \infty} |a_n x^n|^{1/n}
+  = |x| \limsup_{n \to \infty} |a_n|^{1/n}
+  = \frac{|x|}{2}.
+ \]
+ Aus dem Wurzelkriterium folgt, dass die Reihe $\sum_{k=0}^\infty a_n x^n$ für $|x| < 2$ absolut konvergiert und für $|x| > 2$ divergiert.
+ 
+ Für den Fall $|x| = 2$, also $x = -2$ oder $x = 2$ gibt das Wurzelkriterium, und damit auch das Quotientenkriterium, keine Auskunft. Das Verhalten an diesen Stellen hängt tatsächlich von der Folge $(a_n)_{n \in \N}$ ab: Betrachten wir etwa die Folge $(a_n)$ mit
+ \[
+  a_n = \frac{1}{2^n n},
+ \]
+ so ist
+ \[
+  \lim_{n \to \infty} |a_n|^{1/n}
+  \lim_{n \to \infty} \frac{1}{2} \frac{1}{n^{1/n}}
+  = \frac{1}{2}.
+ \]
+ Für $x = 2$ konvergiert die Reihe $\sum_{k=1}^\infty a_k x^k$ nicht, da es sich dort die harmonische Reihe handelt; für $x = -2$ konvergiert sie, da es sich dort um die alternierende harmonische Reihe handelt. Betrachtet man hingegen die Reihe $(a'_n)_{n \in \N}$ mit
+ \[
+  a'_n = \frac{(-1)^n}{2^n n},
+ \]
+ so ergibt sich genau das umgekehrte Verhalten, d.h. die Reihe $\sum_{k=1}^\infty a'_k x^k$ konvergiert an $x = 2$ und divergiert an $x = -2$.
+\end{solution}
 
 
 
 
 \section{Potenzreihen}
+Wir wollen hier noch einen besonderen Fall von Reihen ansprechen, sogennante Potenzreihen, und ihr Konvergenzverhalten mithilfe des Wurzelkriteriums charakterisieren.
 
 
 \subsection{Definition}
+\begin{defi}
+ Eine \emph{Potenzreihe} ist eine Reihe der Form $\sum_{k=0}^\infty a_k x^k$, wobei $(a_k)$ eine Folge reeller Zahlen ist, und $x \in \R$ ein reeller Parameter. Man bezeichnet die Zahl $a_k$ als den $k$-ten Koeffizienten der Potenzreihe, und die Folge $(a_n)$ als die Folge der Koeffizienten der Potenzreihe.
+ 
+ Allgemeiner bezeichnet man eine Reihe der Form $\sum_{k=0}^\infty a_k (x-x_0)^k$ als eine Potenzreihe mit \emph{Entwicklungsstelle} $x_0$.
+\end{defi}
+
+
+Die Konvergenz einer Potenzreihe hängt zum einen von der Folge der Koeffizienten $(a_n)$, als auch von der Stelle $x \in \R$. Für eine Potenzreihe $\sum_{k=0}^\infty a_k x^k$ können wir uns einige grundlegende Fragen stellen:
+\begin{itemize}
+ \item
+  Für welche $x \in \R$ konvergiert die Potenzreihe $\sum_{k=0}^\infty a_k x^k$?
+ \item
+  Wenn eine Entwicklungsstelle $x_0 \in \R$ vorgegeben ist, an welchen Stellen $x \in \R$ konvergiert dann die Potenzreihe $\sum_{k=0}^\infty a_k (x-x_0)^k$?
+ \item
+  Inwiefern lässt sich eine Funktion $f \colon \R \to \R$ als Potenzreihe darstellen, d.h. inwiefern ist es möglich, eine Koeffizientenfolge $(a_n)$ zu finden, so dass $f(x) = \sum_{k=0}^\infty a_k x^k$, und für welche $x$ ist dies Darstellung gültig?
+\end{itemize}
+
+
+Wir wollen hier mithilfe des Wurzelkriteriums zumindest eine Antwort auf die ersten beiden Fragen geben.
 
 
 \subsection{Konvergenzradius}
+Zunächst bemerken wir, dass es genügt, das Konvergenzverhalten einer Potenzreihe der Form $\sum_{k=0}^\infty a_k x^k$, d.h. mit Entwicklungsstelle $x_0 = 0$ zu untersuchen:
+
+Für eine Entwicklungsstelle $x_0 \in \R$ gilt für eine Koeffizientenfolge $(a_n)_{n \in \N}$ offenbar, dass
+\begin{align*}
+ &\sum_{k=0}^\infty a_k (x-x_0)^k \text{ konvergiert an der Stelle } y \\
+ \Leftrightarrow\,
+ &\sum_{k=0}^\infty a_k x^k \text{ konvergiert an der Stelle } y-x_0
+\end{align*}
+Es handelt sich bei dem Konvergenzverhalten von $\sum_{k=0}^\infty a_k (x-x_0)^k$ also nur um eine verschobe Versions des Konvergenverhaltens von $\sum_{k=0}^\infty a_k x^k$.
+
+
+Um das Verhalten der Potenzreihe $\sum_{k=0}^\infty a_k x^k$ zu untersuchen, wenden wir auf die Reihe das Wurzelkriterium an. Dabei erhalten wir, dass
+\[
+ \limsup_{n \to \infty} |a_n x^n|^{1/n}
+ = |x| \limsup_{n \to \infty} |a_n|^{1/n}.
+\]
+Ist also $|x| \limsup_{n \to \infty} |a_n|^{1/n} < 1$, so konvergiert die Potenzreihe $\sum_{k=0}^\infty a_k x^k$ absolut, und für $|x| \limsup_{n \to \infty} |a_n|^{1/n} > 1$ divergiert sie. Diese Beobachtung motiviert die folgende Definition:
+
+
+\begin{defi}
+ Der \emph{Konvergenzradius} einer Potenzreihe $\sum_{k=0}^\infty a_k (x-x_0)^k$ ist definiert als
+ \[
+  \rho \coloneqq \frac{1}{\limsup_{n \to \infty} |a_n|^{1/n}}.
+ \]
+ Dabei verstehen wir $1/0 = \infty$ und $1/\infty = 1$.
+\end{defi}
+
+
+Die obigen Beobachtungen lassen sich nun wie folgt formulieren:
+
+
+\begin{prop}
+ Es sei $\sum_{k=0}^\infty a_k (x-x_0)^k$ eine Potenzreihe mit Konvergenzradius $\rho$. Dann konvergiert die Potenzreihe für $|x-x_0| < \rho$ absolut und divergiert für $|x-x_0| > \rho$.
+\end{prop}
+\begin{proof}
+ Wir können o.B.d.A.\ davon ausgehen, dass $x_0 = 0$.
+ 
+ Im Falle $\rho = 0$ ist $\limsup_{n \to \infty} |a_n|^{1/n} = \infty$. Für alle $x \in \R$ mit $x \neq 0$ ist dann
+ \[
+  \limsup_{n \to \infty} |a_n x^n|^{1/n}
+  = \limsup_{n \to \infty} |x| |a_n|^{1/n}
+  = \infty,
+ \]
+ und die Reihe $\sum_{k=0}^\infty a_k x^k$ divergiert nach dem Wurzelkriterium.
+ 
+ Im Falle $\rho = \infty$ ist $\limsup_{n \to \infty} |a_n|^{1/n} = 0$. Es ergibt sich dann für alle $x \in \R$, dass
+ \[
+  \limsup_{n \to \infty} |a_n x^n|^{1/n}
+  = |x| \limsup_{n \to \infty} |a_n|^{1/n}
+  = 0,
+ \]
+ so dass die Reihe $\sum_{k=0}^\infty a_k x^k$ nach dem Wurzelkriterium absolut konvergiert.
+ 
+ Ist $\rho \in \R$ so ergibt sich, dass
+ \[
+  |x| < \rho
+  \Leftrightarrow
+  \limsup_{n \to \infty} |a_n x^n|^{1/n} < 1,
+ \]
+ weshalb die Reihe $\sum_{k=0}^\infty a_k x^k$ nach dem Wurzelkriterium für $|x| < \rho$ absolut konvergiert. Analog ergibt sich dass sie für $|x| > \rho$ divergiert.
+\end{proof}
 
 
 \subsection{Beispiele}
+
+
+Wir betrachten die Potenreihe $\sum_{k=0}^\infty x^k/k!$. Da
+\[
+ \lim_{n \to \infty} \frac{1}{(n!)^{1/n}}
+ = 0
+\]
+ist der Konvergenzradius der Potenzreihe $\rho = \infty$. Sie konvergiert also für jedes $x \in \R$ absolut. Man bezeichnet diese Potenreihe als die \emph{Exponentialreihe}. Ihr Grenzwert ist die \emph{Exponentialfunktion}.
+
+
+\begin{defi}
+ Die \emph{Exponentialfunktion} $\exp \colon \R \to \R$ ist definiert als
+ \[
+  \exp(x) \coloneqq \sum_{k=0}^\infty \frac{x^k}{k!} \quad \text{für alle $x \in \R$}.
+ \]
+\end{defi}
+
+
+\begin{question}
+ Zeigen Sie, dass die Exponentialfunktion die Funktionsgleichung
+ \[
+  \exp(x+y) = \exp(x) \cdot \exp(y) \quad \text{für alle $x,y \in \R$}
+ \]
+ erfüllt. (\emph{Hinweis}: Betrachten Sie das Cauchy-Product der Exponentialreihe mit sich selbst, d.h. die Reihe $\sum_{k=0}^\infty a_k$ mit
+ \[
+  a_k = \sum_{\ell=0}^k \frac{x^\ell}{\ell!} \frac{y^{k-\ell}}{(k-\ell)}!
+ \]
+ für alle $k \in \N$.)
+\end{question}
+\begin{solution}
+ Es seien $x,y \in \R$ beliebig aber fest. Per Definition der Exponentialfunktion ist
+ \[
+  \exp(x+y)
+  = \sum_{k=0}^\infty \frac{(x+y)^k}{k!}
+  = \sum_{k=0}^\infty \frac{1}{k!} \sum_{\ell=0}^k \binom{k}{\ell} x^\ell y^{k-\ell}
+  = \sum_{k=0}^\infty \sum_{\ell=0}^k \frac{x^\ell}{\ell!} \frac{y^{k-\ell}}{(k-\ell)!}.
+ \]
+ Andererseits haben wir
+ \[
+  \exp(x) \cdot \exp(y)
+  = \sum_{n=0}^\infty \frac{x^n}{n!} \cdot \sum_{m=0}^\infty \frac{y^m}{m!}
+  = \sum_{n=0}^\infty \sum_{m=0}^\infty \frac{x^n}{n!} \frac{y^m}{m!}.
+ \]
+ Da die Exponentialreihe absolut konvergiert erhalten wir, dass die Reihe
+ \[
+  \sum_{(n,m) \in \N \times \N} \frac{x^n}{n!} \frac{y^m}{m!}
+ \]
+ existiert und erhalten so, dass
+ \[
+  \sum_{k=0}^\infty \sum_{\ell=0}^k \frac{x^\ell}{\ell!} \frac{y^{k-\ell}}{(k-\ell)!}
+  = \sum_{(n,m) \in \N \times \N} \frac{x^n}{n!} \frac{y^m}{m!}
+  = \sum_{n=0}^\infty \sum_{m=0}^\infty \frac{x^n}{n!} \frac{y^m}{m!}.
+ \]
+\end{solution}
+
+
+\begin{question}
+ Bestimmen Sie die Konvergenzradien der Potenzreihen
+ \begin{align*}
+  \sum_{k=0}^\infty \frac{x^k}{k}
+  \quad
+  \text{und}
+  \quad
+  \sum_{k=0}^\infty \frac{(-1)^k}{(2k+1)!} x^{2k+1}.
+ \end{align*}
+\end{question}
+\begin{solution}
+ Es ist
+ \[
+  \limsup_{n \to \infty} \frac{1}{n^{1/n}} = 1,
+ \]
+ der Konvergenzradius der Potenzreihe $\sum_{k=0}^\infty x^k/k$ ist also $1$.
+ 
+ Für die Reihe $\sum_{k=0}^\infty (-1)^k x^{2k+1}/(2k+1)!$ haben wir
+ \[
+  \limsup_{n \to \infty} \frac{1}{((2n+1)!)^{1/n}}
+  = 0,
+ \]
+ also hat die Reihe einen Konvergenzradius von $\infty$.
+\end{solution}
+
+
+\begin{question}
+Geben Sie eine Potenzreihe $\sum_{k=0}^\infty a_k x^k$ an, so dass
+\[
+ \sum_{k=0}^\infty a_k x^k = \frac{1}{1-x} \quad \text{für $|x| < 1$}.
+\]
+\end{question}
+\begin{solution}
+ Man wähle $a_k = 1$ für alle $k \in \N$, dann ergibt sich die Aussage aus dem Grenzwert geometrischen Reihe.
+\end{solution}
+
+
+\begin{question}
+ Geben Sie eine Potenzreihe $\sum_{k=0}^\infty a_k (x-1)^k$ an, so dass
+ \[
+  \sum_{k=0}^\infty a_k (x-1)^k = \frac{1}{x} \quad \text{für alle $0 < x < 2$}.
+ \]
+\end{question}
+\begin{solution}
+ Für alle $|x-1| < 1$, also $0 < x < 2$, haben wir auch $|1-x| < 1$, und somit
+ \[
+  \frac{1}{x}
+  = \frac{1}{1-(1-x)}
+  = \sum_{k=0}^\infty (1-x)^k
+  = \sum_{k=0}^\infty (-1)^k (x-1)^k.
+ \]
+\end{solution}
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -658,29 +973,9 @@ Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalen
 
 
 
-\section{Lösungen der Aufgaben}
+\section{Lösungen der Übungen}
 
 \printsolutions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
