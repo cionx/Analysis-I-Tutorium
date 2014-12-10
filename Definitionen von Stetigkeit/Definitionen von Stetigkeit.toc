@@ -5,3 +5,4 @@
 \contentsline {subsection}{\numberline {1.3}Stetigkeit über Grenzwerte}{2}
 \contentsline {subsection}{\numberline {1.4}Äquivalenz der Stetigkeitsbegriffe}{3}
 \contentsline {section}{\numberline {2}Topologische Stetigkeit}{5}
+\contentsline {section}{\numberline {3}Lösungen der Übungsaufgaben}{5}

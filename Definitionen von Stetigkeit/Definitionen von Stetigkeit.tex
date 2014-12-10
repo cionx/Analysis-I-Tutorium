@@ -29,6 +29,7 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
 
 \subsection{$\varepsilon$-$\delta$-Stetigkeit}
 
+
 \begin{defi}
  Eine Abbildung $f \colon \R \to \R$ heißt \emph{$\varepsilon$-$\delta$-stetig im Punkt $x \in \R$}, falls es für jedes $\varepsilon > 0$ ein $\delta > 0$ gibt, so dass
  \[
@@ -36,6 +37,7 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
  \]
  Die Abbildung $f$ heißt \emph{$\varepsilon$-$\delta$-stetig}, falls $f$ $\varepsilon$-$\delta$-stetig an jeder Stelle $x \in \R$ ist.
 \end{defi}
+
 
 \begin{bsp}
  Wir betrachten die Abbildung $f \colon \R \to \R$, $x \mapsto x^2$ an einer Stelle $x \in \R$. Für alle $y \in \R$ haben wir
@@ -65,11 +67,52 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
 \begin{question}
  Es sei $f \colon \R \to \R$ $\varepsilon$-$\delta$-stetig an der Stelle $x \in \R$. Zeigen Sie: Ist $f(x) > 0$, so gibt es ein $\delta > 0$ mit $f(y) > 0$ für alle $y \in (x-\delta, x+\delta)$. Gilt die Aussage auch für $f(x) < 0$ oder $f(x) \neq 0$?
 \end{question}
+\begin{solution}
+ Da $f$ an der Stelle $x$ $\varepsilon$-$\delta$-stetig ist, gibt es $\delta > 0$, so dass 
+ \[
+  |f(x) - f(y)| < \frac{f(x)}{2} \quad \text{für alle $y \in \R$ mit $|x-y| < \delta$}.
+ \]
+ Durch die Dreiecksungleichung ergibt sich, dass
+ \[
+  |f(y)| \geq |f(x)| - |f(x)-f(y)| \quad \text{für alle $y \in \R$}.
+ \]
+ Zusammen ergibt sich damit, dass für alle $y \in \R$ mit $|x-y| < \delta$
+ \begin{align*}
+  |f(y)|
+  \geq |f(x)| - |f(x)-f(y)|
+  > f(x) - \frac{f(x)}{2}
+  = \frac{f(x)}{2}
+  > 0.
+ \end{align*}
+ Dass $|x-y| < \delta$ bedeutet gerade, dass $y \in (x-\delta, x+\delta)$, wodurch sich die Aussage ergibt.
+\end{solution}
 
 
 \begin{question}
- Es seien $f, g \colon \R \to \R$. Zeigen Sie: Ist $f$ $\varepsilon$-$\delta$-stetig an der Stelle $x \in \R$ und $g$ $\varepsilon$-$\delta$-stetig an der Stelle $f(x)$, so ist die Komposition $g \circ f$ $\varepsilon$-$\delta$-stetig an der Stelle $x$.
+ Es seien $f, g \colon \R \to \R$. Zeigen Sie: Ist $f$ $\varepsilon$-$\delta$-stetig an der Stelle $x \in \R$ und $g$ $\varepsilon$-$\delta$-stetig an der Stelle $f(x)$, so ist die Komposition $g \circ f$ $\varepsilon$-$\delta$-stetig an der Stelle $x$. 
 \end{question}
+\begin{solution}
+ Sei $\varepsilon > 0$ beliebig aber fest. Wegen der $\varepsilon$-$\delta$-Stetigkeit von $g$ an der Stelle $f(x)$ gibt es $\delta' > 0$, so dass
+ \[
+  |f(x)-y'| < \delta' \Rightarrow |g(f(x))-g(y')| < \varepsilon
+  \quad \text{für alle $y' \in \R$}.
+ \]
+ Wegen der $\varepsilon$-$\delta$-Stetigkeit von $f$ an $x$ gibt es ein $\delta > 0$, so dass
+ \[
+  |x-y| < \delta \Rightarrow |f(x)-f(y)| < \delta'
+  \quad \text{für alle $y \in \R$}.
+ \]
+ Für alle $y \in \R$ ist daher
+ \[
+  |x-y| < \delta
+  \Rightarrow |f(x)-f(y)| < \delta'
+  \Rightarrow |g(f(x))-g(f(y))| < \varepsilon.
+ \]
+ Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $g \circ f$ $\varepsilon$-$\delta$-stetig an der Stelle $x$ ist.
+\end{solution}
+
+
+Wir erhalten damit, dass für zwei $\varepsilon$-$\delta$-stetige Abbildungen $f \colon \R \to \R$ und $g \colon \R \to \R$ auch die Verknüpfung $g \circ f$ $\varepsilon$-$\delta$-stetig ist.
 
 
 \subsection{Folgenstetigkeit}
@@ -100,6 +143,38 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
 \begin{question}
  Es seien $f, g \colon \R \to \R$ beide folgenstetig an der Stelle $x \in R$. Zeigen Sie, dass auch die Funktionen $f+g$ und $f \cdot g$ folgenstetig an der Stelle $x$ sind.
 \end{question}
+\begin{solution}
+ Es sei $(x_n)_{n \in \N}$ eine Folge mit $\lim_{n \to \infty} x_n = x$. Da $f$ und $g$ folgenstetig an der Stelle $x$ sind, sind auch die Folgen $(f(x_n))_{n \in \N}$ und $(g(x_n))_{n \in \N}$ konvergent und es gilt
+ \[
+  \lim_{n \to \infty} f(x_n) = f(x)
+  \quad
+  \text{und}
+  \quad
+  \lim_{n \to \infty} g(x_n) = g(x).
+ \]
+ Nach den üblichen Rechenregeln für Folgen konvergieren daher auch die Folgen
+ \begin{align*}
+  ((f+g)(x_n))_{n \in \N}
+  &= (f(x_n)+g(x_n))_{n \in \N}
+ \shortintertext{und}
+  ((f \cdot g)(x_n))_{n \in \N}
+  &= (f(x_n) \cdot g(x_n))_{n \in \N},
+ \end{align*}
+ und es gilt
+ \begin{gather*}
+  \lim_{n \to \infty} (f+g)(x_n)
+  = \lim_{n \to \infty} f(x_n) + g(x_n)
+  = f(x) + g(x)
+  = (f+g)(x)
+ \shortintertext{sowie}
+  \lim_{n \to \infty} (f \cdot g)(x_n)
+  = \lim_{n \to \infty} f(x_n) \cdot g(x_n)
+  = f(x) \cdot g(x)
+  = (f \cdot g)(x).
+ \end{gather*}
+ Dies zeigt, dass auch $f + g$ und $f \cdot g$ folgenstetig an $x$ sind.
+\end{solution}
+
 
 
 \subsection{Stetigkeit über Grenzwerte}
@@ -137,6 +212,9 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
 \begin{question}
  Zeigen Sie, dass $f$ genau dann beidseitig stetig ist, wenn $f$ links- und rechtsstetig ist.
 \end{question}
+\begin{solution}
+ $f$ ist genau dann beidseitig stetig, wenn $f$ an jeder Stelle $x \in \R$ beidseitig stetig ist, wenn also $f$ an jeder Stelle $x \in \R$ sowohl links- als auch rechtsstetig ist. Dies ist äquivalent dazu, dass $f$ an jeder Stelle rechtstetig ist, und an jeder Stelle auch linksstetig ist. Dies bedeutet, dass $f$ links- und rechtsstetig ist.
+\end{solution}
 
 
 \begin{question}
@@ -150,15 +228,47 @@ Im Folgenden wollen wir die unterschiedlichen Definitionen der Stetigkeit einer 
  \]
  Wie sieht es für eine monoton fallende Funktion aus?
 \end{question}
-
+\begin{solution}
+ Es sei $f$ monoton steigend und $x \in \R$. Wir wollen zeigen, dass $a \coloneqq \sup_{y < x} f(y)$ die Eigenschaften des linksseitigen Limes erfüllt. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Nach der $\varepsilon$-Charakterisierung des Supremums gibt es ein $y_0 < x$ mit $a-\varepsilon < f(y_0)$. Aus der Monotonie von $f$ folgt, dass
+ \[
+  a-\varepsilon < f(y_0) \leq f(y) \leq \sup_{y' < x} f(y') = a \quad \text{für alle $y_0 \leq y < x$}.
+ \]
+ Für $\delta \coloneqq x-y_0 > 0$ ist also $|f(y)-a| < \varepsilon$ für alle $y \in (x-\delta, x)$. Wegen der Beliebigkeit von $\varepsilon>0$ zeigt dies, dass $\lim_{y \uparrow x} f(y) = a$.
+ 
+ Analog zeigt man, dass $\lim_{y \downarrow x} f(y) = \inf_{x < y} f(x)$. Für monoton fallende Funktionen zeigt man analog, dass obere und untere Grenzwerte an jeder Stelle existieren, und dass für alle $x \in \R$
+ \[
+  \lim_{y \uparrow x} f(y) = \inf_{y < x} f(y)
+  \quad
+  \text{und}
+  \quad
+  \lim_{y \downarrow x} f(y) = \sup_{y > x} f(y).
+ \]
+\end{solution}
 
 
 \begin{question}\label{qst: Charakterisierung beidseitiger Grenzwert}
- Es sei $f \colon \R \to \R$ und $x_0 \in \R$. Zeigen Sie, dass $\lim_{x \to x_0} f(x) = y$ genau dann, wenn
+ Es sei $f \colon \R \to \R$ und $x \in \R$. Zeigen Sie, dass $\lim_{x \to x_0} f(x) = a$ genau dann, wenn
  \[
-  \text{für alle $\varepsilon > 0$ gibt es $\delta > 0$ mit $|f(x)-y| < \varepsilon$ für $|x-x_0| < \delta$ und $x \neq x_0$}.
+  \text{für alle $\varepsilon > 0$ gibt es $\delta > 0$ mit $|f(y)-a| < \varepsilon$ für $|x-y| < \delta$ und $y \neq x$}.
  \]
 \end{question}
+\begin{solution}
+ Angenommen, es ist $a = \lim_{y \to x} f(y)$. Dann ist sowohl $\lim_{y \uparrow x} f(y) = a$ als auch $\lim_{y \downarrow x} f(y) = a$. Sei $\varepsilon > 0$ beliebig aber fest. Da $\lim_{y \uparrow x} f(y) = a$ gibt es $\delta_1 > 0$, so dass
+ \[
+  |f(y)-a| < \varepsilon \quad \text{für alle $y \in (x-\delta_1, x)$}.
+ \]
+ Da $\lim_{y \downarrow x} f(y) = a$ gibt es $\delta_2 > 0$, so dass
+ \[
+  |f(y)-a| < \varepsilon \quad \text{für alle $y \in (x, x+\delta_2)$}.
+ \]
+ Für $\delta \coloneqq \min\{\delta_1, \delta_2\}$ ist damit
+ \[
+  |f(y)-a| < \varepsilon \quad \text{für alle $y \in (x-\delta, x+\delta)$ mit $y \neq x$}.
+ \]
+ Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies eine der Implikationen.
+ 
+ Angenommen, es gibt für jedes $\varepsilon > 0$ ein $\delta > 0$, so dass $|f(y)-a| < \varepsilon$ für alle $y \in (x-\delta, x+\delta)$ mit $y \neq x$. Insbesondere gilt dann $|f(y)-a| < \varepsilon$ für alle $y \in (x-\delta,x)$ und $y \in (x,x+\delta)$, weshalb dann $\lim_{y \uparrow x} f(y) = a$ und $\lim_{y \downarrow x} f(y) = a$. Somit ist $\lim_{y \to x} f(y) = a$.
+\end{solution}
 
 
 \subsection{Äquivalenz der Stetigkeitsbegriffe}
@@ -196,7 +306,6 @@ Wir wollen nun zeigen, dass die verschiedenen Stetigkeitsbegriffe äquivalent zu
 Statt zwischen den verschiedenen Stetigkeitsbegriffen zu unterscheiden, sprechen wir von nun an nur noch von Stetigkeit.
 
 
-
 \begin{question}
  Es sei
  \[
@@ -213,7 +322,6 @@ Statt zwischen den verschiedenen Stetigkeitsbegriffen zu unterscheiden, sprechen
  \end{enumerate}
  Insgesamt zeigt dies, dass $\mc{O}$ eine $\R$-Algebra bildet. (Um genau zu sein zeigt es, dass $\mc{O}$ eine $\R$-Unteralgebra von $\Abb(\R, \R)$ ist.
 \end{question}
-
 
 
 \begin{question}
@@ -235,6 +343,46 @@ Statt zwischen den verschiedenen Stetigkeitsbegriffen zu unterscheiden, sprechen
    \]
  \end{enumerate}
 \end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Es sei $x \in \R$ und $(x_n)_{n \in \N}$ eine Folge mit $\lim_{n \to \infty} x_n = x$. Wie wir bereits wissen, ist dann auch die Folge $(|x_n|)_{n \in \N}$ konvergent und
+   \[
+    \lim_{n \to \infty} |x_n|
+    = \left| \lim_{n \to \infty} x_n \right|
+    = |x|.
+   \]
+   Wegen der Beliebigkeit der Folge $(x_n)$ folgt, dass der Betrag folgenstetig an $x$ ist. Aus der Beliebigkeit der Stelle $x \in \R$ folgt, dass der Betrag folgenstetig ist.
+  \item
+   Wir bemerke, dass für alle $x,y \in \R$
+   \[
+    \max(x,y) = \frac{x+y}{2} + \frac{|x-y|}{2} = \frac{x+y+|x-y|}{2},
+   \]
+   denn für $x \leq y$ ist $x-y \leq 0$ und somit
+   \[
+    \frac{x+y+|x-y|}{2}
+    = \frac{x+y-(x-y)}{2}
+    = y
+    = \max(x,y),
+   \]
+   und für $y \leq x$ ist $x-y \geq 0$ und somit
+   \[
+    \frac{x+y+|x-y|}{2}
+    = \frac{x+y+(x-y)}{2}
+    = x
+    = \max(x,y).
+   \]
+   Die Stetigkeit von
+   \[
+    \max(f,g) = \frac{f+g+|f-g|}{2}
+   \]
+   ergibt sich aus den schon bekannten Aussagen über Kombination stetiger Abbildungen. Analog zeigt man, dass
+   \[
+    \min(x,y) = \frac{x+y-|x-y|}{2} \quad \text{für alle $x,y \in \R$},
+   \]
+   und dass damit $\min(f,g)$ stetig ist.
+ \end{enumerate}
+\end{solution}
 
 
 \begin{question}
@@ -335,6 +483,12 @@ Statt zwischen den verschiedenen Stetigkeitsbegriffen zu unterscheiden, sprechen
 \end{question}
 
 
+
+
+
+\section{Lösungen der Übungsaufgaben}
+
+\printsolutions
 
 
 
