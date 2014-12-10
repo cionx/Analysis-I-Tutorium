@@ -995,6 +995,32 @@ ist der Konvergenzradius der Potenzreihe $\infty$. Sie konvergiert also für jed
 
 
 \begin{question}
+ Zeigen Sie, dass $\exp(x) > 0$ für alle $x \in \R$. (\emph{Hinweis}: Zeigen sie zunächst, dass $\exp(x) > 0$ für alle $x \geq 0$.)
+\end{question}
+\begin{solution}
+ Für alle $x \geq 0$ ist
+ \[
+  \exp(x)
+  = \sum_{k=0}^\infty \frac{x^k}{k!}
+  \geq \sum_{k=0}^1 \frac{x^k}{k!}
+  = 1 + x
+  \geq 1.
+ \]
+ Für alle $x \in \R$
+ \[
+  \exp(x)\exp(-x) = \exp(x+(-x)) = \exp(0) = 1,
+ \]
+ also $\exp(-x) = 1/\exp(-x)$. Da $\exp(x) \geq 1$ für alle $x \geq 0$, ergibt sich so, dass
+ \[
+  \exp(x) = 1/\exp(-x) > 0
+ \]
+ für alle $x \leq 0$.
+\end{solution}
+
+
+
+
+\begin{question}
  Bestimmen Sie die Konvergenzradien der Potenzreihen
  \begin{align*}
   \sum_{k=0}^\infty \frac{x^k}{k}
