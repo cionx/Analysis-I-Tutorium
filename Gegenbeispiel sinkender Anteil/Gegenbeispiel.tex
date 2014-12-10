@@ -10,37 +10,44 @@
 
 \begin{document}
 
-Wir wollen eine streng monoton steigende Folge $(a_n)_{n \geq 1}$ mit $a_n \in \N$, $a_n \geq 1$ für alle $n \in \N$ konstruieren, so dass zwar
+Wir wollen eine streng monoton steigende Folge $(a_n)_{n \geq 1}$ mit $a_n \in \N$, $a_n \geq 1$ für alle $n \geq 1$ konstruieren, so dass
 \[
  \sum_{n=1}^\infty \frac{1}{a_n} = \infty,
 \]
-aber die Häufigkeit der genutzen Summanden gegen $0$ geht, d.h.
+aber die Häufigkeit der genutzten Summanden gegen $0$ geht, d.h.
 \begin{equation}\label{eqn: Grenzwert}
  \lim_{n \to \infty} \frac{|\{k \in \N \mid a_k \in \{1, \dotsc, n\}\}|}{n} = 0.
 \end{equation}
 
-Die Idee der Konstruktion ist die folgende: Wir beginnen mit $a_1 = 1$. Nun nehmen wir jede zweite Zahl hinzu, bis die entsprechende Summe mindestens $2$ beträgt. Dann nehmen wir jede dritte Zahl hinzu, bis die entsprechende Summe mindestens $3$ beträgt. Dies führen wir dann fort, wobei im $n$-ten Schritt der Konstruktion solange jeder $n$-te Summand hinzugefügt wird, bis die bisherige Summe mindestens $n$ beträgt.
+Die Idee der Konstruktion ist die folgende: Wir beginnen mit $a_1 = 1$. Nun nehmen wir jeden zweiten Summanden hinzu, bis die Summe der bisherigen Summanden mindestens $2$ beträgt. Wir haben also also $a_2 = 3$, $a_3 = 5$, $a_4 = 7$ usw.\ bis zu $a_M$, so dass $\sum_{k=1}^M 1/a_k \geq 2$. Dann nehmen wir jeden dritten Summanden hinzu, bis die bisherige Summe mindstens $3$ beträgt. Dies führen wir dann fort, wobei im $n$-ten Schritt der Konstruktion solange jeder $n$-te Summand hinzugefügt wird, bis die bisherige Summe mindestens $n$ beträgt.
 
-Für die so konstruierte Reihe gilt nach Konstruktion $\sum_{k=1}^\infty a_k = \infty$. Andererseits wird für jedes $m \geq 1$ nach dem $m$-ten Schritt nur noch höchstens jeder $m$-te Summand hinzugefügt, so dass die Anzahl der genutzten Summanden kleiner als $1/m$ wird. Wegen der Beliebigkeit von $m \geq 1$ geht die Häufigkeit der genutzen Summanden dann gegen $0$.
+Für die so konstruierte Reihe gilt nach Konstruktion $\sum_{k=1}^\infty a_k = \infty$. Andererseits wird für jedes $m \geq 1$ nach dem $m$-ten Schritt nur noch höchstens jeder $m$-te Summand hinzugefügt, weshalb die  Häufigkeit der genutzen Summanden gegen $0$ geht.
 
-Wir wollen diese Konstruktion nun formalisieren: Im ersten Schritt setzen wir $a_1 = 1$, $b^{(1)}_1 \coloneqq 1$, und $\nu(1) \coloneqq 1$.
+Wir wollen diese Konstruktion nun formalisieren: Im ersten Schritt setzen wir $a_1 \coloneqq 1$, $b^{(1)}_1 \coloneqq 1$, und $\nu(1) \coloneqq 1$.
 
-Im zweiten Schritt beginnen setzen wir zunächst $b^{(2)}_1 \coloneqq a_1 + m = 3$. Da $1/3 < 1$ setzen wir weiter $b^{(2)}_2 \coloneqq a_1 + m = 5$. Da auch noch $1/3 + 1/5 = 8/15 < 1$ wählen wir weiter $b^{(2)}_3 \coloneqq a_1 + 3m = 7$. Wir führen diesen Vorgang bis zu dem minimalen $\nu(2) \in \N$ fort, so dass $b^{(2)}_1 + \dotsb + b^{(2)}_{\nu(2)} \geq 1$. Ein solches $\nu(2)$ existiert, da $\sum_{m=1}^\infty 1/(a_1 + m) = \infty$. (Es ist $\nu(2) = 7$, wir müssen also bis zum Summanden $1/15$ gehen.) Wir defineren dann $a_2$, \dots, $a_{\nu(2)+1}$ durch
+Im zweiten Schritt beginnen setzen wir zunächst $b^{(2)}_1 \coloneqq a_1 + 2 = 3$. Da $1/3 < 1$ setzen wir weiter $b^{(2)}_2 \coloneqq a_1 + 4 = 5$. Da auch noch $1/3 + 1/5 = 8/15 < 1$ wählen wir weiter $b^{(2)}_3 \coloneqq a_1 + 6 = 7$. Wir führen diesen Vorgang bis zu dem minimalen $\nu(2) \in \N$ fort, so dass
 \[
- a_2 \coloneqq b^{(2)}_1, a_3 \coloneqq b^{(2)}_2, \dotsc, a_{\nu(n)+1} \coloneqq b^{(n)}_{\nu(n)}.
+ \frac{1}{b^{(2)}_1} + \frac{1}{b^{(2)}_2} + \dotsb + \frac{1}{b^{(2)}_{\nu(2)}}
+ = \frac{1}{a_1 + 2} + \frac{1}{a_1 + 4} + \dotsb +  \frac{1}{a_1 + 2 \nu(2)}
+ \geq 1.
 \]
-
-Haben wir bereits $n-1$ solcher Schritte durchlaufen, und die Werte $a_1$, \dots, $a_k$ definiert, so wählen wir im $n$-ten Schritt das minimale $\nu(n) \in \N$ mit
+Ein solches $\nu(2)$ existiert, da $\sum_{m=1}^\infty 1/(a_1 + 2m) = \infty$. (Es ergibt sich, dass $\nu(2) = 7$, wir müssen also bis zum Summanden $1/15$ gehen.) Wir defineren dann $a_2$, \dots, $a_{1+\nu(2)}$ durch
 \[
- \frac{1}{a_k + n} + \frac{1}{a_k + 2n} + \dotsb + \frac{1}{a_k + \nu(n) n} \geq 1,
+ a_2 \coloneqq b^{(2)}_1, a_3 \coloneqq b^{(2)}_2, \dotsc, a_{1+\nu(n)} \coloneqq b^{(n)}_{\nu(n)}.
+\]
+Die Zahl $\nu(2)$ gibt also an, wie viele Summanden wir im zweiten Schritt hinzugefügt haben.
+
+Haben wir bereits $n-1$ solcher Schritte durchlaufen, so haben wir bereits die Folgenwerte $a_1$, \dots, $a_{\nu(1)+\dotsb+\nu(n-1)}$ definiert; zur besseren Lesbarkeit schreiben wir \mbox{$k \coloneqq \nu(1)+\dotsb+\nu(n-1)$}. Wir wählen im $n$-ten Schritt dann die minimale Anzahl neuer Summanden \mbox{$\nu(n) \in \N$} mit
+\[
+ \frac{1}{a_k + n} + \frac{1}{a_k + 2n} + \dotsb + \frac{1}{a_k + \nu(n)n} \geq 1,
 \]
 und setzen
 \[
  a_{k + i} \coloneqq b^{(n)}_i \coloneqq a_k + in \quad \text{für alle $1 \leq i \leq \nu(n)$}.
 \]
-Ein solches $\nu(n)$ existiert, da $\sum_{m=1}^\infty 1/(a_k + mn) = \infty$.
+Ein solches $\nu(n)$ existiert, da $\sum_{i=1}^\infty 1/(a_k + in) = \infty$.  Die Zahl $\nu(n)$ gibt also an, wie viele Summanden im $n$-ten Schritt hinzugefügt wurden.
 
-Da wir in jedem der Schritte mindestens einen neuen Wert konstruieren, ist $a_n$ für alle $n \geq 1$ definiert. Aus der Konstruktion ist sofort ersichtlch, dass für alle $m \in \N$
+Da wir in jedem der Schritte mindestens einen Summanden hinzunehmen, ist $a_n$ für alle $n \geq 1$ definiert; es ist auch klar, dass die Folge $(a_n)$ streng monoton steigend ist. Aus der Konstruktion wird auch sofort ersichtlch, dass für alle $m \in \N$
 \begin{align*}
  \sum_{k=1}^\infty a_k
  &= \lim_{N \to \infty} \sum_{k=1}^N a_k
@@ -77,7 +84,7 @@ und somit
 \]
 Da
 \[
- \lim_{n \to \infty} \underbrace{\frac{c}{n}}_{\to 0} + \frac{1}{m} \underbrace{\frac{n-c + 1}{n}}_{\to 1}
+ \lim_{n \to \infty}\frac{c}{n} + \frac{1}{m} \frac{n-c + 1}{n}
  = \frac{1}{m}
 \]
 ist damit auch
@@ -87,13 +94,12 @@ ist damit auch
     =&\, \lim_{n \to \infty} \frac{c}{n} + \frac{1}{m} \frac{n-c + 1}{n} \\
     =&\, \frac{1}{m}.
 \end{align*}
-
 Aus der Beliebigkeit von $m \geq 1$ folgt damit, dass
 \begin{align*}
  0 
  &\leq \liminf_{n \to \infty} \frac{|\{k \in \N \mid a_k \in \{1, \dotsc, n\}\}|}{n} \\
  &\leq \limsup_{n \to \infty} \frac{|\{k \in \N \mid a_k \in \{1, \dotsc, n\}\}|}{n}
- = 0,
+ \leq 0,
 \end{align*}
 und somit bereits
 \[

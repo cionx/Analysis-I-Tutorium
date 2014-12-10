@@ -31,19 +31,21 @@ Wir werden im Folgenden einige grundlegende Eigenschaften über die Konvergenz v
  \[
   \lim_{n \to \infty} |a_n| = \left| \lim_{n \to \infty} a_n \right|.
  \]
- (Der Betrag ist also stetig.)
+ (Der Betrag ist also (folgen)stetig.) Wenn die Folge der Beträge $(|a_n|)$ konvergiert, konvergiert dann auch schon die Folge $(a_n)$?
 \end{question}
 \begin{solution}
- Sei $a \coloneqq \lim_{n \to \infty} a_n$ und $\varepsilon > 0$ beliebig aber fest. Dann gibt es ein $N \in \N$ mit $|a - a_n| < \varepsilon$ für alle $n \geq N$. Für alle $n \geq N$ gilt nach der umgekehrten Dreiecksungleichung
+ Sei $a \coloneqq \lim_{n \to \infty} a_n$ und $\varepsilon > 0$ beliebig aber fest. Dann gibt es ein $N \in \N$ mit $|a - a_n| < \varepsilon$ für alle $n \geq N$. Für alle $n \geq N$ gilt damit nach der umgekehrten Dreiecksungleichung
  \[
   ||a| - |a_n|| \leq |a - a_n| < \varepsilon.
  \]
  Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $|a_n| \to |a|$ für $n \to \infty$.
+ 
+ Die Umkehrung der Aussage gilt nicht: Die Folge $((-1)^n)_{n \in \N}$ selber konvergiert nicht, aber die Folge der Beträge ist konstant und somit konvergent.
 \end{solution}
 
 
 \begin{question}
- Zeigen Sie: Für eine Folge $(a_n)_{n \in \N}$ und obere Schranke $C \in \R$ gilt: Es gibt genau dann $y < C$ und $N \in \N$ mit $a_n \leq y$ für alle $n \geq N$, falls $\limsup_{n \to \infty} a_n < C$.
+ Zeigen Sie, dass für eine Folge $(a_n)_{n \in \N}$ und obere Schranke $C \in \R$ gilt: Es gibt genau dann $y < C$ und $N \in \N$ mit $a_n \leq y$ für alle $n \geq N$, falls $\limsup_{n \to \infty} a_n < C$.
 \end{question}
 \begin{solution}
  Gibt es solche $y$ und $N$, so ist $\sup_{k \geq N} a_k \leq y$ und somit
@@ -52,13 +54,13 @@ Wir werden im Folgenden einige grundlegende Eigenschaften über die Konvergenz v
   = \inf_{n \in \N} \sup_{k \geq n} a_k
   \leq \sup_{k \geq N} a_k
   \leq y
-  < 1.
+  < C.
  \]
- Sei andererseits $x \coloneqq \limsup_{n \to \infty} a_n < C$. Da $\limsup_{n \to \infty} a_n = \inf_{n \in \N} \sup_{k \geq N} a_k$ gibt es wegen der $\varepsilon$-Charakterisierung des Infimums für alle $\varepsilon > 0$ ein $N' \in \N$ mit $\sup_{k \geq N'} a_k < x + \varepsilon$. Für $\varepsilon \coloneqq (C-x)/2$ gibt es daher ein $N \in \N$ mit
+ Sei andererseits $a \coloneqq \limsup_{n \to \infty} a_n < C$. Da $\limsup_{n \to \infty} a_n = \inf_{n \in \N} \sup_{k \geq N} a_k$ gibt es wegen der $\varepsilon$-Charakterisierung des Infimums für alle $\varepsilon > 0$ ein $N' \in \N$ mit $\sup_{k \geq N'} a_k < a + \varepsilon$. Für $\varepsilon \coloneqq (C-a)/2 > 0$ gibt es daher ein $N \in \N$ mit
  \[
-  \sup_{k \geq N} a_k < x + \varepsilon = \frac{C + x}{2} < C.
+  \sup_{k \geq N} a_k < a + \varepsilon = \frac{C + a}{2} < C.
  \]
- Wählen wir $y \coloneqq x + \varepsilon = (C+x)/2$ so ist also $y < C$ und $a_k \leq y$ für alle $k \geq N$.
+ Wählen wir $y \coloneqq a + \varepsilon = (C+a)/2$ so ist also $y < C$ und $a_k \leq y$ für alle $k \geq N$.
 \end{solution}
 
 
@@ -82,13 +84,13 @@ Wir werden im Folgenden einige grundlegende Eigenschaften über die Konvergenz v
  Zeigen Sie, dass $\lim_{n \to \infty} (n!)^{1/n} = \infty$.
 \end{question}
 \begin{solution}
- Es genügt, zu zeigen, dass es für jedes $a \geq 1$ ein $N \in \N$ gibt, so dass $n! \geq a^n$ für alle $n \geq N$, dass also $n!/a^n \geq 1$ für alle $n \geq N$. Hierfür bemerken wir, dass
+ Es genügt, zu zeigen, dass es für jedes $a > 0$ ein $N \in \N$ gibt, so dass $n! \geq a^n$ für alle $n \geq N$, dass also $n!/a^n \geq 1$ für alle $n \geq N$. Hierfür bemerken wir, dass
  \[
   \frac{n!}{a^n}
   = \frac{1}{a} \cdot \frac{2}{a} \dotsm \frac{n-1}{a} \cdot \frac{n}{a}
   = \prod_{k=1}^n \frac{k}{a}.
  \]
- Sei nun $\tilde{N} \in \N$ mit $\tilde{N} > a$. Dann ist
+ für alle $n \in \N$. Sei nun $\tilde{N} \in \N$ mit $\tilde{N} > a$. Dann ist
  \[
   \frac{n}{a} \geq \frac{\tilde{N}}{a} > 1 \quad \text{für alle $n \geq \tilde{N}$},
  \]
@@ -97,7 +99,7 @@ Wir werden im Folgenden einige grundlegende Eigenschaften über die Konvergenz v
   \frac{n!}{a^n}
   = \prod_{k=1}^{n} \frac{k}{a}
   = \prod_{k=1}^{\tilde{N}} \frac{k}{a} \cdot \prod_{k=\tilde{N}+1}^n \frac{k}{a}
-  \leq \prod_{k=1}^{\tilde{N}} \frac{k}{a} \cdot \left(\frac{\tilde{N}}{a}\right)^{n-\tilde{N}}.
+  \geq \prod_{k=1}^{\tilde{N}} \frac{k}{a} \cdot \left(\frac{\tilde{N}}{a}\right)^{n-\tilde{N}}.
  \]
  Da $\tilde{N}/a > 1$ ist $\lim_{n \to \infty} (\tilde{N}/a)^{n-\tilde{N}} = \infty$, also auch
  \[
@@ -118,7 +120,7 @@ Wir werden im Folgenden einige grundlegende Eigenschaften über die Konvergenz v
  \[
   s_n \coloneqq \sum_{k=0}^n a_k
  \]
- definiert; $s_n$ heißt die \emph{$n$-te Partialsumme} (der Folge $(a_n)$). Diese Folge der Partialsummen bezeichnet man als \emph{Reihe} und schreibt man als $\sum_{k=0}^\infty a_k$. Konvergiert die Reihe $\sum_{k=0}^\infty a_k$, d.h. konvergiert die Folge der Partialsummen $(s_n)$, so bezeichnet man den Grenzwert $\lim_{n \to \infty} s_n = \lim_{n \to \infty} \sum_{k=0}^n a_k$ ebenfalls als $\sum_{k=0}^\infty a_k$ und nennt dies den \emph{Wert der Reihe}. Die Folge $(a_n)$ heißt dann summierbar.
+ definiert; das Folgenglied $s_n$ heißt die \emph{$n$-te Partialsumme} (der Folge $(a_n)$). Diese Folge der Partialsummen bezeichnet man als \emph{Reihe} und schreibt man als $\sum_{k=0}^\infty a_k$. Konvergiert die Reihe $\sum_{k=0}^\infty a_k$, d.h. konvergiert die Folge der Partialsummen $(s_n)$, so bezeichnet man den Grenzwert $\lim_{n \to \infty} s_n = \lim_{n \to \infty} \sum_{k=0}^n a_k$ ebenfalls als $\sum_{k=0}^\infty a_k$ und nennt dies den \emph{Wert der Reihe}. Die Folge $(a_n)$ heißt dann \emph{summierbar}.
  
  Für $N \in \N$ ist die Reihe $\sum_{k=N}^\infty a_k$ als die Reihe $\sum_{k=0}^\infty a_{k+N}$ definiert.  
 \end{defi}
@@ -137,11 +139,11 @@ Wir werden im Folgenden einige grundlegende Eigenschaften über die Konvergenz v
    s_{n-N} & \text{falls } n \geq N.
   \end{cases}
  \]
- Die Folge $(s'_n)$ entsteht also die Folge $(s_n)$ durch Auffüllen mit Nullen.
+ Die Folge $(s'_n)$ entsteht also aus der Folge $(s_n)$ durch Auffüllen mit Nullen.
 \end{bem}
 
 
-Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge der Partialsummen $(\sum_{k=0}^n a_k)_{n \in \N}$ als auch der Grenzwert dieser Folge bezeichnet. Soll also gezeigt werden, dass die Reihe $\sum_{k=0}^\infty a_k$ konvergiert, so ist damit gemeint, dass die Folge der Partialsummen $(\sum_{k=0}^n a_k)_{n \in \N}$ konvergieren soll. Soll der Wert der Reihe $\sum_{k=0}^\infty a_k$ bestimmt werden, so soll der Grenzwert $\lim_{n \to \infty} \sum_{k=0}^n a_k$ ermittelt werden.
+Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge der Partialsummen $(\sum_{k=0}^n a_k)_{n \in \N}$ als auch der Grenzwert dieser Folge bezeichnet. Soll gezeigt werden, dass die Reihe $\sum_{k=0}^\infty a_k$ konvergiert, so ist damit gemeint, dass die Folge der Partialsummen $(\sum_{k=0}^n a_k)_{n \in \N}$ konvergieren soll. Soll der Wert der Reihe $\sum_{k=0}^\infty a_k$ bestimmt werden, so soll der Grenzwert $\lim_{n \to \infty} \sum_{k=0}^n a_k$ ermittelt werden.
 
 
 \begin{defi}
@@ -155,14 +157,14 @@ Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge 
 
 
 \begin{question}
- Zeigen Sie, dass für alle $-1 < q < 1$ die Reihe $\sum_{k=0}^\infty q^k$ konvergiert bestimmen Sie ihren Wert. Man bezeichnet Reihen dieser Form als \emph{geometrische Reihe}.
+ Zeigen Sie, dass für alle $-1 < q < 1$ die Reihe $\sum_{k=0}^\infty q^k$ konvergiert und  bestimmen Sie ihren Wert. Man bezeichnet Reihen dieser Form als \emph{geometrische Reihe}.
 \end{question}
 \begin{solution}
  Für alle $N \in \N$ gilt bekanntermaßen
  \[
   \sum_{k=0}^N q^k = \frac{1-q^{N+1}}{1-q}.
  \]
- Da $\lim_{N \to \infty} q^N = 0$ folgt, dass die Folge der Partialsummen $(\sum_{k=0}^N q^k)_{k \in \N}$ konvergiert und
+ Da $|q| < 1$ ist $\lim_{N \to \infty} q^N = 0$, und es folgt, dass die Folge der Partialsummen $(\sum_{k=0}^N q^k)_{N \in \N}$ konvergiert und
  \[
   \sum_{k=0}^\infty q^k
   = \lim_{N \to \infty} \sum_{k=0}^N q^k
@@ -176,7 +178,7 @@ Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge 
  Zeigen Sie, dass die Reihe $\sum_{k=1}^\infty \frac{1}{k}$ gegen $\infty$ divergiert. Man bezeichnet diese Reihe als die \emph{harmonische Reihe}.
 \end{question}
 \begin{solution}
- Da die Folge der Partialsummen monoton steigend ist, genügt es zu zeigen, dass es für alle $R \in \N$ ein $N \in \N$ gibt, so dass $\sum_{k=1}^N 1/k \geq R$. Dies ergibt sich daraus, dass für alle $n \in \N$
+ Für alle $n \in \N$ ist
  \[
   \sum_{k=1}^{2^n} \frac{1}{k}
   \geq \sum_{k=2}^{2^n} \frac{1}{k}
@@ -184,6 +186,7 @@ Man bemerke, dass man mit der Notation $\sum_{k=0}^\infty a_k$ sowohl die Folge 
   \geq \sum_{\ell=0}^{n-1} 2^\ell \frac{1}{2^{\ell+1}}
   = \frac{n}{2}.
  \]
+ Da $\lim_{n \to \infty} n/2 = \infty$ und die Folge der Partialsummen $(\sum_{k=1}^N 1/k)_{N \in \N}$ monoton wachsend ist, folgt, dass auch $\lim_{N \to \infty} \sum_{k=1}^N 1/k = \infty$.
 \end{solution}
 
 
@@ -197,25 +200,26 @@ Wir wollen nun einige grundlegende Eigenschaften von (konvergenten) Reihen angeb
 
 
 \begin{lem}\label{lem: Reihe bedeutet Nullfolge}
- Konvergiert für eine Folge $(a_n)_{n \in \N}$ die Reihe $\sum_{k=0}^n a_k$, so ist $(a_n)$ eine Nullfolge, d.h. $\lim_{n \to \infty} a_n = 0$.
+ Konvergiert die Reihe $\sum_{k=0}^n a_k$, so ist $(a_n)$ eine Nullfolge, d.h. die Folge $(a_n)$ konvergiert und es ist $\lim_{n \to \infty} a_n = 0$.
 \end{lem}
 \begin{proof}
- Wir betrachten die Folge der Partialsummen $(s_n)_{n \in \N}$, also $s_n \coloneqq \sum_{k=0}^n a_k$. Dass die Reihe $\sum_{k=0}^\infty a_k$ konvergiert bedeutet gerade, dass die Folge $(s_n)$ konvergiert. Es sei
+ Wir betrachten die Folge der Partialsummen $(s_n)_{n \in \N}$, also $s_n \coloneqq \sum_{k=0}^n a_k$. Dass die Reihe $\sum_{k=0}^\infty a_k$ konvergiert bedeutet, dass die Folge $(s_n)$ konvergiert. Es sei
  \[
   s \coloneqq \lim_{n \to \infty} s_n.
  \]
- Wir bemerken nun, dass für alle $n \geq 1$
+ Für alle $n \geq 1$ ist
  \[
   s_n - s_{n-1}
   = \left( \sum_{k=0}^n a_k \right) - \left( \sum_{k=0}^{n-1} a_k \right)
   = a_n.
  \]
- Durch die üblichen Rechenregeln konvergenter Folgen ergibt sich daher, dass
+ Durch die üblichen Rechenregeln für konvergente Folgen ergibt sich daher, dass
  \[
   a_n = s_n - s_{n-1} \to s-s = 0
  \]
  für $n \to \infty$. Also ist $(a_n)$ konvergent und $\lim_{n \to \infty} a_n = 0$.
 \end{proof}
+
 
 \begin{question}
  Für welche $q \in \R$ konvergiert die Reihe $\sum_{k=0}^\infty q^k$?
@@ -265,6 +269,31 @@ Man beachte, dass die Umkehrung des Lemmas nicht gilt, d.h. nicht jede Nullfolge
 \end{kor}
 
 
+\begin{question}
+ Bestimmen Sie das Konvergenzverhalten der Reihe $\sum_{k=0}^\infty 1/2^{3+2k}$ und den Grenzwert, falls die Reihe konvergiert.
+\end{question}
+\begin{solution}
+ Es ist
+ \[
+  \sum_{k=0}^\infty \frac{1}{2^{3+2k}}
+  = \sum_{k=0}^\infty \frac{1}{2^3} \cdot \frac{1}{(2^2)^k}
+  = \sum_{k=0}^\infty \frac{1}{8} \cdot \frac{1}{4^k}.
+ \] 
+ Die Reihe $\sum_{k=0}^\infty 1/4^k$ konvergiert mit
+ \[
+  \sum_{k=0}^\infty \frac{1}{4^k}
+  = \frac{1}{1-\frac{1}{4}}
+  = \frac{4}{3}.
+ \]
+ Also konvergiert auch die Reihe $\sum_{k=0}^\infty 1/2^{3+2k}$ und es ist
+ \[
+  \sum_{k=0}^\infty \frac{1}{2^{3+2k}}
+  = \frac{1}{8} \cdot \frac{4}{3}
+  = \frac{1}{6}.
+ \]
+\end{solution}
+
+
 Wir erhalten aus dem Lemma auch, dass $\lim_{n \to \infty} \sum_{k=n}^\infty a_k = 0$, denn wir haben
 \[
  \sum_{k=n}^\infty a_k
@@ -274,7 +303,7 @@ Wir erhalten aus dem Lemma auch, dass $\lim_{n \to \infty} \sum_{k=n}^\infty a_k
 \]
 
 
-Wie bereits für endliche Summen gilt auch für Reihen eine Dreiecksungleichung.
+Wie bereits für endliche Summen gilt auch für Reihen eine Dreiecksungleichung (die sich in der Praxis als sehr nützlich erweist).
 
 
 \begin{lem}
@@ -284,11 +313,13 @@ Wie bereits für endliche Summen gilt auch für Reihen eine Dreiecksungleichung.
  \]
 \end{lem}
 \begin{proof}[Beweis des Lemmas]
- Ist die Reihe $\sum_{k=0}^\infty a_k$ nicht absolut konvergent, so haben wir $\sum_{k=0}^\infty |a_k| = \infty$ und die Aussage ist klar. Ansonsten gilt für alle $n \in \N$ nach der Dreiecksungleichung für endliche Summen
+ Ist die Reihe $\sum_{k=0}^\infty a_k$ nicht absolut konvergent, so haben wir $\sum_{k=0}^\infty |a_k| = \infty$ und die Aussage ist klar. Wir gehen daher davon aus, dass die Reihe $\sum_{k=0}^n a_k$ absolut konvergiert.
+ 
+ Für alle $n \in \N$ gilt dann nach der Dreiecksungleichung für endliche Summen
  \[
   \left| \sum_{k=0}^n a_k \right| \leq \sum_{k=0}^n |a_k|,
  \]
- so dass wir im Grenzwert
+ weshalb wir im Grenzwert
  \[
   \left| \sum_{k=0}^\infty a_k \right|
   = \left| \lim_{n \to \infty} \sum_{k=0}^n a_k \right|
@@ -304,17 +335,17 @@ Wir wollen nun auf den Zusammenhang zwischen konvergenten und absolut konvergent
 
 
 \begin{lem}
- Ist eine Reihe $\sum_{k=0}^\infty a_k$ absolut konvergent, so ist sie auch konvergent.
+ Ist die Reihe $\sum_{k=0}^\infty a_k$ absolut konvergent, so ist sie auch konvergent.
 \end{lem}
 \begin{proof}
  Es sei $(s_n)_{n \in \N}$ die Folge der Partialsummen, also $s_n = \sum_{k=0}^n a_k$. Wir wollen zeigen, dass $(s_n)$ eine Cauchy-Folge ist. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Für alle $n \in \N$ haben wir für alle $m, m' \geq n$
  \[
   |s_m - s_{m'}|
-  = \left| \sum_{k=\min\{m,m'\}}^{\max\{m,m'\}} a_k \right|
-  \leq \sum_{k=\min\{m,m'\}}^{\max\{m,m'\}} |a_k|
+  = \left| \sum_{k=\min\{m,m'\}+1}^{\max\{m,m'\}} a_k \right|
+  \leq \sum_{k=\min\{m,m'\}+1}^{\max\{m,m'\}} |a_k|
   \leq \sum_{k=n}^\infty |a_k|.
  \]
- Da $\lim_{n \to \infty} \sum_{k=n}^\infty |a_k| = 0$ gibt es ein $N \in \N$ mit $\sum_{k=N}^\infty |a_k| < \varepsilon$. Aus der obigen Ungleichung ergibt sich damit, dass $m, m' \geq N$ ist dann $|s_m - s_{m'}| < \varepsilon$.
+ Da die Reihe $\sum_{k=0}^\infty a_k$ absolut konvergiert, ist $\lim_{n \to \infty} \sum_{k=n}^\infty |a_k| = 0$. Also gibt es ein $N \in \N$ mit $\sum_{k=N}^\infty |a_k| < \varepsilon$. Für $m, m' \geq N$ ist dann nach der obigen Ungleichung $|s_m - s_{m'}| < \varepsilon$.
 \end{proof}
 
 
@@ -329,7 +360,7 @@ Wie wir noch sehen werden gilt die Umkehrung des Lemmas nicht, d.h. es gibt konv
  \[
   0 \leq \sum_{k=0}^n a_k \leq \sum_{k=0}^n b_k,
  \]
- und die Folge der Partialsummen ist monoton steigend. Die Aussage ergibt sich damit direkt daraus, dass Monotonie von Folgen unter Grenzwerten erhalten bleibt.
+ und die Folgen der Partialsummen sind monoton steigend. Die Aussage ergibt sich damit direkt daraus, dass Monotonie von Folgen unter Grenzwerten erhalten bleibt.
 \end{proof}
 
 
@@ -339,7 +370,7 @@ Wie wir noch sehen werden gilt die Umkehrung des Lemmas nicht, d.h. es gibt konv
 \section{Konvergenzkriterien}
 
 
-Wir wollen nun Kriterien entwickeln, mit denen sich entscheiden lässt, ob eine Folge (absolut) konvergiert. Lemma \ref{lem: Reihe bedeutet Nullfolge} liefert uns bereits die notwendige Bedingung, dass $(a_n)_{n \in \N}$ eine Nullfolge seien muss, damit $\sum_{k=0}^\infty a_k$ konvergiert. Wie wir bereits wissen, ist diese Bedingung aber nicht hinreichend. Solche hinreichenden Bedingungen wollen wir nun ermitteln. Dabei spielt die Absolute Konvergenz eine besondere Rolle, da sich diese unter gewissen Umständen durch einen Vergleich mit der geometrischen Reihe untersuchen lässt.
+Wir wollen nun Kriterien entwickeln, mit denen sich entscheiden lässt, ob eine Folge (absolut) konvergiert. Lemma \ref{lem: Reihe bedeutet Nullfolge} liefert uns bereits die notwendige Bedingung, dass $(a_n)_{n \in \N}$ eine Nullfolge seien muss, damit $\sum_{k=0}^\infty a_k$ konvergiert. Wie wir bereits wissen, ist diese Bedingung aber nicht hinreichend. Solche hinreichenden Bedingungen wollen wir nun ermitteln. Dabei spielt die absolute Konvergenz eine besondere Rolle, da sich diese oftmals einfacher untersuchen lässt, als nur die Konvergenz selbst.
 
 
 \subsection{Majoranten- und Minorantenkriterium}
@@ -348,12 +379,12 @@ Eine der einfachsten Ideen um die absolutive Konvergenz einer Reihe $\sum_{k=0}^
 
 
 \begin{lem}
- Es sei $\sum_{k=0}^\infty a_k$ und eine Reihe reeller Zahlen und $(b_n)_{n \in \N}$ eine Folge mit $b_n \geq 0$ für alle $n \in \N$.
+ Es sei $\sum_{k=0}^\infty a_k$ eine Reihe reeller Zahlen und $(b_n)_{n \in \N}$ eine Folge mit $b_n \geq 0$ für alle $n \in \N$.
  \begin{enumerate}
   \item
    Ist $|a_n| \leq b_n$ für alle $n \in \N$ und $\sum_{k=0}^\infty b_k < \infty$, so ist $\sum_{k=0}^\infty a_k$ absolut konvergent. (Majorantenkriterium)
   \item
-   Ist $b_n \leq |a_n|$ für alle $n \in \N$ und $\sum_{k=0}^\infty a_k = \infty$, so ist $\sum_{k=0}^\infty a_k$ nicht absolut konvergent. (Minorantenkriterium)
+   Ist $b_n \leq |a_n|$ für alle $n \in \N$ und $\sum_{k=0}^\infty b_k = \infty$, so ist $\sum_{k=0}^\infty a_k$ nicht absolut konvergent. (Minorantenkriterium)
  \end{enumerate}
 \end{lem}
 \begin{proof}
@@ -363,9 +394,9 @@ Eine der einfachsten Ideen um die absolutive Konvergenz einer Reihe $\sum_{k=0}^
    \[
     \sum_{k=0}^n |a_k| \leq \sum_{k=0}^n b_k \leq \sum_{k=0}^\infty b_k,
    \]
-   also die Folge von Partialsummen $(\sum_{k=0}^n |a_k|)_{n \in \N}$ monoton steigend und nach oben beschränkt, und somit konvergent.
+   also die Folge der Partialsummen $(\sum_{k=0}^n |a_k|)_{n \in \N}$ monoton steigend und nach oben beschränkt, und somit konvergent.
   \item
-   Wäre $\sum_{k=0}^\infty a_k$ absolut konvergent, so würde die Reihe der Beträge $\sum_{k=0}^\infty |a_k|$ konvergieren, und nach dem Majorantenkriterium würde auch $\sum_{k=0}^\infty b_k$ konvergieren, im Widerspruch zu Annahme.
+   Wäre $\sum_{k=0}^\infty a_k$ absolut konvergent, so würde die Reihe der Beträge $\sum_{k=0}^\infty |a_k|$ konvergieren. Nach dem Majorantenkriterium würde dann auch $\sum_{k=0}^\infty b_k$ konvergieren, im Widerspruch zur Annahme, dass $\sum_{k=0}^\infty b_k = \infty$.
   \qedhere
  \end{enumerate}
 \end{proof}
@@ -377,9 +408,21 @@ Eine der einfachsten Ideen um die absolutive Konvergenz einer Reihe $\sum_{k=0}^
 \begin{solution}
  Für alle $k \geq 1$ ist $\sqrt{k} \leq k$ und somit $1/\sqrt{k} \geq 1/k$. Da $\sum_{k=1}^\infty 1/k = \infty$, folgt aus dem Minorantenkriterium, dass auch $\sum_{k=1}^\infty 1/\sqrt{k} = \infty$.
  
- Für alle $k \geq 1$ ist $k! \geq 2^{k-1}$, und somit $1/k! \geq 1/2^{k-1}$. Da die geometrische Reihe $\sum_{k=1}^\infty 1/2^{k-1} = \sum_{k=0}^\infty (1/2)^k$ konvergiert, folgt aus dem Majorantenkriterium, dass auch die Reihe $\sum_{k=1}^\infty 1/k!$ konvergiert.
+ Für alle $k \geq 1$ ist
+ \[
+  k!
+  = \prod_{n=1}^k n
+  = \prod_{n=2}^k n
+  \geq \prod_{n=2}^k 2
+  = 2^{k-1},
+ \]
+ und somit $1/k! \leq 1/2^{k-1}$. Da die geometrische Reihe $\sum_{k=1}^\infty 1/2^{k-1} = \sum_{k=0}^\infty (1/2)^k$ konvergiert, folgt aus dem Majorantenkriterium, dass auch die Reihe $\sum_{k=1}^\infty 1/k!$ konvergiert.
  
- Für alle $k \geq 1$ ist $k! \leq k^k$ $k^{-k} = 1/k^k \leq 1/k!$. Da $\sum_{k=1}^\infty 1/k!$ konvergiert, folgt aus dem Majorantenkriterium, dass auch die Reihe $\sum_{k=1}^\infty k^{-k}$ konvergiert.
+ Für alle $k \geq 1$ ist
+ \[
+  k! = \prod_{n=1}^k n \leq \prod_{n=1}^k k = k^k,
+ \]
+ und somit $k^{-k} = 1/k^k \leq 1/k!$. Da $\sum_{k=1}^\infty 1/k!$ konvergiert, folgt aus dem Majorantenkriterium, dass auch die Reihe $\sum_{k=1}^\infty k^{-k}$ konvergiert.
 \end{solution}
 
 \begin{question}\label{qst: absolut konvergent und beschränkt}
@@ -392,18 +435,18 @@ Eine der einfachsten Ideen um die absolutive Konvergenz einer Reihe $\sum_{k=0}^
   = |a_k| |b_k|
   \leq C |a_k|,
  \]
- und die Konvergenz der Reihe $\sum_{k=0}^\infty C |a_k|$ folgt direkt aus der absoluten Konvergenz von $\sum_{k=0}^\infty |a_k|$. Also ist die Reihe $\sum_{k=0}^\infty a_k b_k$ nach dem Majorantenkriterium konvergent.
+ und die Konvergenz der Reihe $\sum_{k=0}^\infty C |a_k|$ folgt direkt aus der absoluten Konvergenz von $\sum_{k=0}^\infty a_k$. Also ist die Reihe $\sum_{k=0}^\infty a_k b_k$ nach dem Majorantenkriterium konvergent.
 \end{solution}
 
 
-Das Majorantenkriterium führt zusammen mit der geometrischen Reihe zu zwei wichtigen Konvergenzkriterien, dem \emph{Quotientenkriterium} und dem \emph{Wurzelkriterium}.
+Das Majorantenkriterium führt zusammen mit der geometrischen Reihe als Majorante zu zwei wichtigen Konvergenzkriterien, dem \emph{Quotientenkriterium} und dem \emph{Wurzelkriterium}.
 
 
 
 
 
 \subsection{Quotientenkriterium}
-Ein erstes wichtes Konvergenzkriterium, dass durch den Vergleich mit der harmonischen Reihe entsteht, 
+Ein erstes wichtes Konvergenzkriterium, dass durch den Vergleich mit der harmonischen Reihe entsteht, ist das \emph{Quotientenkriterium}.
 
 
 \begin{prop}
@@ -434,7 +477,7 @@ Wie wir bereits wissen, sind die Voraussetzungen des Quotientenkriteriums äquiv
 
 
 \begin{question}
- Geben Sie divergente, bzw. absolut konvergente Reihen $\sum_{k=0}^\infty a_k$ und $\sum_{k=0}^\infty b_k$ an, so dass 
+ Geben Sie jeweils divergente und absolut konvergente Reihen $\sum_{k=0}^\infty a_k$ und $\sum_{k=0}^\infty b_k$ an, so dass 
  \[
   \limsup_{n \to \infty} \left|\frac{a_{n+1}}{a_n}\right| = 1
   \quad
@@ -451,12 +494,16 @@ Wie wir bereits wissen, sind die Voraussetzungen des Quotientenkriteriums äquiv
   = \limsup_{n \to \infty} 1+\frac{1}{n+1}
   = 1.
  \]
- Die Reihe $\sum_{k=0}^\infty 2^k$ divergiert ebenfalls, da $(2^n)_{n \in \N}$ keine Nullfolge ist, und es gilt
+ Die Reihe $\sum_{k=0}^\infty k^k$ divergiert ebenfalls, da $(n^n)_{n \in \N}$ keine Nullfolge ist, und es gilt
  \[
-  \limsup_{n \to \infty} \frac{2^{n+1}}{2^n}
-  = \limsup_{n \to \infty} 2
-  = 2
-  > 1.
+  \limsup_{n \to \infty} \frac{(n+1)^{n+1}}{n^n}
+  = \limsup_{n \to \infty} (n+1) \underbrace{\left(1 + \frac{1}{n}\right)^n}_{\geq 1}
+  \geq \limsup_{n \to \infty} n+1
+  = \infty,
+ \]
+ also
+ \[
+  \limsup_{n \to \infty} \frac{(n+1)^{n+1}}{n^n} = \infty.
  \]
 
  Für die Folge $(a_n)_{n \in \N}$ mit $a_{2n} \coloneqq a_{2n+1} \coloneqq 1/2^n$ für alle $n \in \N$ gilt für alle $n \in \N$
@@ -506,9 +553,9 @@ Wie wir bereits wissen, sind die Voraussetzungen des Quotientenkriteriums äquiv
  
  Für alle $n \geq 2$ ist $n^3 \geq 5$ und somit
  \[
-  \frac{n^2}{n^3 + 5} \geq \frac{n^3}{n^3 + n^3} = \frac{1}{2n}.
+  \frac{n^2}{n^3 + 5} \geq \frac{n^2}{n^3 + n^3} = \frac{1}{2n}.
  \]
- Da $\sum_{k=1}^\infty \frac{1}{2n} = \infty$ folgt aus dem Minorantenkriterium, dass $\sum_{k=0}^\infty k^2/(k^3 + 5) = \infty$.
+ Da $\sum_{k=1}^\infty 1/(2k) = \infty$ ist nach dem Minorantenkriterium \mbox{$\sum_{k=0}^\infty k^2/(k^3 + 5) = \infty$}.
  
  Da
  \begin{align*}
@@ -546,17 +593,16 @@ Wie wir bereits wissen, sind die Voraussetzungen des Quotientenkriteriums äquiv
 
 
 \begin{question}
- Bestimmen sie alle $x \in \R$, für welche die Reihe $\sum_{k=0}^\infty x^k/k!$ konvergiert und für welche $x$ sie absolut konvergiert.
+ Untersuchen Sie, für welche $x \in \R$ die Reihe $\sum_{k=0}^\infty x^k/k!$ absolut konvergiert, und für welche $x$ sie absolut konvergiert.
 \end{question}
 \begin{solution}
  Für $x = 0$ konvergiert die Reihe offenbar absolut. Für $x \neq 0$ haben wir
  \[
-  \limsup_{n \to \infty} \left| \frac{x^{k+1}/(k+1)!}{x^k/k!} \right|
-  = \limsup_{n \to \infty} \left| \frac{x^{k+1} k!}{x^k (k+1)!} \right|
-  = \limsup_{n \to \infty} \frac{|x|}{k+1}
+  \limsup_{n \to \infty} \left| \frac{x^{n+1}/(n+1)!}{x^n/n!} \right|
+  = \limsup_{n \to \infty} \frac{|x|}{n+1}
   = 0,
  \]
- und die Reihe konvergiert nach dem Quotientenkriterium absolut.
+ weshalb die Reihe $\sum_{k=0}^\infty x^k/k!$ nach dem Quotientenkriterium absolut konvergiert. Die Reihe konvergiert also für alle $x \in \R$ absolut.
 \end{solution}
 
 
@@ -568,10 +614,10 @@ Wie wir bereits wissen, sind die Voraussetzungen des Quotientenkriteriums äquiv
 Ein weiteres wichtiges Konvergenzkriterium, dass sich mithilfe der geometrischen Reihe ergibt, ist das \emph{Wurzelkriterium}.
 
 \begin{prop}
- Es sei $(a_n)_{n \in \N}$ eine Folge und es gebe $y < 1$ und $N \in \N$, so dass $|a_n|^{1/n} < y$ für alle $n \geq N$. Dann konvergiert die Reihe $\sum_{k=0}^\infty a_k$ absolut.
+ Es sei $(a_n)_{n \in \N}$ eine Folge und es gebe $0 \leq y < 1$ und $N \in \N$, $N \geq 1$, so dass $|a_n|^{1/n} \leq y$ für alle $n \geq N$. Dann konvergiert die Reihe $\sum_{k=0}^\infty a_k$ absolut.
 \end{prop}
 \begin{proof}
- Für alle $n \geq N$ gilt $|a_n|^{1/n} < y$ und damit $|a_n| < y^n$. Daher ist
+ Für alle $n \geq N$ gilt $|a_n|^{1/n} \leq y$ und somit $|a_n| \leq y^n$. Daher ist
  \[
   \sum_{k=N}^\infty |a_k|
   \leq \sum_{k=N}^\infty y^k
@@ -592,6 +638,18 @@ Ein weiteres wichtiges Konvergenzkriterium, dass sich mithilfe der geometrischen
 Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalent dazu, dass $\limsup_{n \to \infty} |a_n|^{1/n} < 1$. Wie bereits beim Quotientenkriterium können wir im Fall $\limsup_{n \to \infty} |a_n|^{1/n} = 1$ keine Aussage über das Konvergenzverhalten der Reihe treffen. Im Gegensatz zum Quotientenkriterium wissen wir jedoch im Fall $\limsup_{n \to \infty} |a_n|^{1/n} > 1$, dass die Reihe divergiert!
 
 
+\begin{question}
+ Zeigen Sie, dass die Reihe $\sum_{k=0}^\infty a_k$ divergiert, falls $\limsup_{n \to \infty} |a_n|^{1/n} > 1$.
+\end{question}
+\begin{solution}
+ Da $\limsup_{n \to \infty} |a_n|^{1/n} = \inf_{n \in \N, n \geq 1} \sup_{k \geq n} |a_k|^{1/k}$ ist
+ \[
+  1 < \limsup_{n \to \infty} |a_n|^{1/n} \leq \sup_{k \geq n} |a_k|^{1/k} \quad \text{für alle $n \geq 1$}.
+ \]
+ Es gibt daher für jedes $n \geq 1$ ein $k \geq n$ mit $1 < |a_k|^{1/k}$ und somit $|a_k| > 1$. Also ist $(a_n)_{n \in \N}$ keine Nullfolge, und die Reihe $\sum_{k=0}^\infty a_k$ somit nicht konvergent.
+\end{solution}
+
+
 \begin{bem}
  Es lässt sich zeigen, dass das Wurzelkriterium stärker ist als das Quotientenkriterium, d.h. wenn sich absolute Konvergenz durch das Quotientenkriterium zeigen lässt, dann auch durch das Wurzelkriterium. Insbesondere hilft in den Fällen, in denen das Wurzelkriterium keine Aussage trifft (also wenn $\limsup_{n \to \infty} |a_n|^{1/n} = 1$), auch das Quotientenkriterium nicht weiter.
 \end{bem}
@@ -605,14 +663,6 @@ Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalen
  \[
   \limsup_{n \to \infty} \frac{1}{n^{1/n}} = 1.
  \]
-\end{solution}
-
-
-\begin{question}
- Zeigen Sie, dass die Reihe $\sum_{k=0}^\infty a_k$ divergiert, falls $\limsup_{n \to \infty} |a_n|^{1/n} > 1$.
-\end{question}
-\begin{solution}
- Da $\limsup_{n \to \infty} |a_n|^{1/n}| = \inf_{n \in 1} \sup_{k \geq n} |a_k|^{1/k}$ ist $1 < \sup_{k \geq n} |a_k|^{1/k}$ für alle $n \geq 1$. Es gibt daher für jedes $n \geq 1$ ein $k \geq 1$ mit $1 < |a_k|^{1/k}$ und somit $|a_k| > 1$. Also ist $(a_n)_{n \in \N}$ keine Nullfolge, und die Reihe $\sum_{k=0}^\infty a_k$ somit nicht konvergent.
 \end{solution}
 
 
@@ -654,11 +704,15 @@ Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalen
  \end{gather*}
  Konvergiert die Reihe $\sum_{\ell=0}^\infty 2^\ell a_{2^\ell}$, so konvergiert wegen
  \[
-  \sum_{k=1}^\infty a_k \leq \sum_{\ell=0}^\infty 2^\ell a_{2^\ell}
+  \sum_{k=1}^\infty a_k
+  = \sum_{\ell=0}^\infty \sum_{k=2^\ell}^{2^{\ell+1}-1} a_k
+  \leq \sum_{\ell=0}^\infty 2^\ell a_{2^\ell}
  \]
- dann auch die Reihe $\sum_{k=1}^\infty a_k$. Konvergiert die Reihe $\sum_{k=1}^\infty a_k$, so konvergiert wegen
+ auch die Reihe $\sum_{k=1}^\infty a_k$. Konvergiert die Reihe $\sum_{k=1}^\infty a_k$, so konvergiert wegen
  \[
-  \sum_{k=1}^\infty a_k \geq \sum_{\ell=0}^\infty 2^\ell a_{2^{\ell+1}}
+  \sum_{k=1}^\infty a_k
+  = \sum_{\ell=0}^\infty \sum_{k=2^\ell}^{2^{\ell+1}-1} a_k
+  \geq \sum_{\ell=0}^\infty 2^\ell a_{2^{\ell+1}}
  \]
  dann auch die Reihe $\sum_{\ell=0}^\infty 2^\ell a_{2^{\ell+1}}$, und wegen
  \[
@@ -669,10 +723,10 @@ Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalen
 
 
 \begin{question}
- Zeigen Sie, dass die Reihe $\sum_{k=1}^\infty 1/k^\alpha$ genau dann konvergiert, wenn $\alpha>1$. (Diese Reihen sind die \emph{allgemeinen harmonischen Reihen}.)
+ Bestimmen Sie, für welche $\alpha \in \R$ die Reihe $\sum_{k=1}^\infty 1/k^\alpha$ konvergiert. (Diese Reihen sind die \emph{allgemeinen harmonischen Reihen}.)
 \end{question}
 \begin{solution}
- Für $\alpha \leq 0$ ist $n^\alpha \leq 1$ und damit $1/n^\alpha \geq 1$ für alle $n \geq 1$. Die Reihe divergiert dann gegen $\infty$. 
+ Für $\alpha \leq 0$ ist $1/n^\alpha = n^{-\alpha} \geq 1$ für alle $n \geq 1$. Die Reihe divergiert dann gegen $\infty$. 
  
  Für $\alpha > 0$ ist die Folge $(1/n^\alpha)_{n \geq 1}$ monoton fallend mit $1/n^\alpha \geq 0$ für alle $n \geq 1$. Nach dem Cauchy-Kriterium konvergiert die Reihe $\sum_{k=1}^\infty 1/k^\alpha$ daher genau dann, wenn die Reihe
  \[
@@ -692,13 +746,25 @@ Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalen
 \subsection{Leibniz-Kriterium}
 
 
+\begin{defi}
+ Eine Folge $(a_n)_{n \in \N}$ heißt \emph{alternierend}, falls
+ \[
+  \sgn a_n = -\sgn a_{n+1} \quad \text{für alle $n \in \N$},
+ \]
+ wenn sich also die Vorzeichen der $a_n$ durchgehend ändern. Eine Reihe $\sum_{k=0}^\infty a_k$ heißt alternierend, falls die Folge $(a_n)$ alternierend ist.
+\end{defi}
+
+
+Die bisherigen Konvergenzkriterien helfen uns nur die absolute Konvergenz einer Reihe zu untersuchen. Ist eine Folge konvergent, aber nicht absolut konvergent, so helfen sie uns nicht weiter. Im Falle von alternierenden Reihen kann uns das Leibniz-Kriterium weiterhelfen.
+
+
 \begin{prop}
- Es sei $(a_n)_{n \in \N}$ eine monoton fallende Folge mit $a_n \geq 0$ für alle $n \in \N$ und $\lim_{n \to \infty} a_n = 0$. Dann konvergiert die alternierende Reihe $\sum_{k=0}^\infty (-1)^n a_n$.
+ Es sei $(a_n)_{n \in \N}$ eine monoton fallende Folge mit $\lim_{n \to \infty} a_n = 0$ (insbesondere ist $a_n \geq 0$ für alle $n \in \N$). Dann konvergiert die alternierende Reihe $\sum_{k=0}^\infty (-1)^n a_n$.
 \end{prop}
 \begin{proof}
  Wir betrachten die Folge der Partialsummen $(s_n)_{n \in \N}$, also
  \[
-  s_n = \sum_{k=0}^\infty (-1)^k a_k.
+  s_n = \sum_{k=0}^n (-1)^k a_k \quad \text{für alle $n \in \N$}.
  \]
  
  Da die Folge $(a_n)$ monoton fallend ist, ist für alle $n \in \N$
@@ -731,7 +797,7 @@ Wie wir bereits wissen, sind die Voraussetzungen des Wurzelkriteriums äquivalen
  Geben Sie eine Reihe an, die zwar konvergiert, aber nicht absolut konvergent ist.
 \end{question}
 \begin{solution}
- Die Folge $(1/n)_{n \geq 1}$ ist monoton fallend mit $\lim_{n \to \infty} a_n = 0$. Nach dem Leipnizkriterium konvergiert daher die Reihe $\sum_{k=1}^\infty \frac{(-1)^n}{n}$. Diese Reihe ist aber nicht absolut konvergent, da die harmonische Reihe divergiert.
+ Die Folge $(1/n)_{n \geq 1}$ ist monoton fallend mit $\lim_{n \to \infty} 1/n = 0$. Nach dem Leipnizkriterium konvergiert daher die Reihe $\sum_{k=1}^\infty \frac{(-1)^k}{k}$. Diese Reihe ist aber nicht absolut konvergent, da die harmonische Reihe divergiert. Man bezeichnet die Reihe $\sum_{k=1}^\infty (-1)^k/k$ als die \emph{alternierende harmonische Reihe}.
 \end{solution}
 
 
@@ -763,19 +829,19 @@ Es sei $(a_n)_{n \in \N}$ eine Folge mit $\lim_{n \to \infty} |a_n|^{1/n} = 1/2$
  \]
  Aus dem Wurzelkriterium folgt, dass die Reihe $\sum_{k=0}^\infty a_n x^n$ für $|x| < 2$ absolut konvergiert und für $|x| > 2$ divergiert.
  
- Für den Fall $|x| = 2$, also $x = -2$ oder $x = 2$ gibt das Wurzelkriterium, und damit auch das Quotientenkriterium, keine Auskunft. Das Verhalten an diesen Stellen hängt tatsächlich von der Folge $(a_n)_{n \in \N}$ ab: Betrachten wir etwa die Folge $(a_n)$ mit
+ Für den Fall $|x| = 2$, also $x = -2$ oder $x = 2$ gibt das Wurzelkriterium, und damit auch das Quotientenkriterium, keine Auskunft. Das Verhalten an diesen Stellen hängt von der konkreten Folge $(a_n)_{n \in \N}$ ab: Betrachten wir etwa die Folge $(a_n)_{n \geq 1}$ mit
  \[
-  a_n = \frac{1}{2^n n},
+  a_n = \frac{1}{2^n n} \quad \text{für alle $n \geq 1$},
  \]
  so ist
  \[
   \lim_{n \to \infty} |a_n|^{1/n}
-  \lim_{n \to \infty} \frac{1}{2} \frac{1}{n^{1/n}}
+  = \lim_{n \to \infty} \frac{1}{2} \frac{1}{n^{1/n}}
   = \frac{1}{2}.
  \]
- Für $x = 2$ konvergiert die Reihe $\sum_{k=1}^\infty a_k x^k$ nicht, da es sich dort die harmonische Reihe handelt; für $x = -2$ konvergiert sie, da es sich dort um die alternierende harmonische Reihe handelt. Betrachtet man hingegen die Reihe $(a'_n)_{n \in \N}$ mit
+ Für $x = 2$ konvergiert die Reihe $\sum_{k=1}^\infty a_k x^k$ nicht, da es sich dort die harmonische Reihe handelt; für $x = -2$ konvergiert sie, da es sich dort um die alternierende harmonische Reihe handelt. Betrachtet man hingegen die Reihe $(a'_n)_{n \geq 1}$ mit
  \[
-  a'_n = \frac{(-1)^n}{2^n n},
+  a'_n = \frac{(-1)^n}{2^n n} \quad \text{für alle $n \geq 1$},
  \]
  so ergibt sich genau das umgekehrte Verhalten, d.h. die Reihe $\sum_{k=1}^\infty a'_k x^k$ konvergiert an $x = 2$ und divergiert an $x = -2$.
 \end{solution}
@@ -789,20 +855,20 @@ Wir wollen hier noch einen besonderen Fall von Reihen ansprechen, sogennante Pot
 
 \subsection{Definition}
 \begin{defi}
- Eine \emph{Potenzreihe} ist eine Reihe der Form $\sum_{k=0}^\infty a_k x^k$, wobei $(a_k)$ eine Folge reeller Zahlen ist, und $x \in \R$ ein reeller Parameter. Man bezeichnet die Zahl $a_k$ als den $k$-ten Koeffizienten der Potenzreihe, und die Folge $(a_n)$ als die Folge der Koeffizienten der Potenzreihe.
+ Eine \emph{Potenzreihe} ist eine Reihe der Form $\sum_{k=0}^\infty a_k x^k$, wobei $(a_k)$ eine Folge reeller Zahlen ist, und $x \in \R$ ein reeller Parameter. Man bezeichnet die Zahl $a_k$ als den \emph{$k$-ten Koeffizienten der Potenzreihe}, und die Folge $(a_n)$ als die \emph{Folge der Koeffizienten der Potenzreihe}.
  
- Allgemeiner bezeichnet man eine Reihe der Form $\sum_{k=0}^\infty a_k (x-x_0)^k$ als eine Potenzreihe mit \emph{Entwicklungsstelle} $x_0$.
+ Allgemeiner bezeichnet man eine Reihe der Form $\sum_{k=0}^\infty a_k (x-x_0)^k$ als eine \emph{Potenzreihe mit Entwicklungsstelle} $x_0$.
 \end{defi}
 
 
-Die Konvergenz einer Potenzreihe hängt zum einen von der Folge der Koeffizienten $(a_n)$, als auch von der Stelle $x \in \R$. Für eine Potenzreihe $\sum_{k=0}^\infty a_k x^k$ können wir uns einige grundlegende Fragen stellen:
+Das Konvergenzverhalten einer Potenzreihe hängt zum einen von der Folge der Koeffizienten $(a_n)$ ab und zum anderen von der Stelle $x \in \R$. Für eine Potenzreihe $\sum_{k=0}^\infty a_k x^k$ können wir uns einige grundlegende Fragen stellen:
 \begin{itemize}
  \item
   Für welche $x \in \R$ konvergiert die Potenzreihe $\sum_{k=0}^\infty a_k x^k$?
  \item
   Wenn eine Entwicklungsstelle $x_0 \in \R$ vorgegeben ist, an welchen Stellen $x \in \R$ konvergiert dann die Potenzreihe $\sum_{k=0}^\infty a_k (x-x_0)^k$?
  \item
-  Inwiefern lässt sich eine Funktion $f \colon \R \to \R$ als Potenzreihe darstellen, d.h. inwiefern ist es möglich, eine Koeffizientenfolge $(a_n)$ zu finden, so dass $f(x) = \sum_{k=0}^\infty a_k x^k$, und für welche $x$ ist dies Darstellung gültig?
+  Inwiefern lässt sich eine Funktion $f \colon \R \to \R$ als Potenzreihe darstellen, d.h. inwiefern ist es möglich, eine Koeffizientenfolge $(a_n)$ mit $f(x) = \sum_{k=0}^\infty a_k x^k$ zu finden, und für welche $x$ ist dies Darstellung gültig?
 \end{itemize}
 
 
@@ -810,9 +876,7 @@ Wir wollen hier mithilfe des Wurzelkriteriums zumindest eine Antwort auf die ers
 
 
 \subsection{Konvergenzradius}
-Zunächst bemerken wir, dass es genügt, das Konvergenzverhalten einer Potenzreihe der Form $\sum_{k=0}^\infty a_k x^k$, d.h. mit Entwicklungsstelle $x_0 = 0$ zu untersuchen:
-
-Für eine Entwicklungsstelle $x_0 \in \R$ gilt für eine Koeffizientenfolge $(a_n)_{n \in \N}$ offenbar, dass
+Zunächst bemerken wir, dass es genügt, das Konvergenzverhalten einer Potenzreihe der Form $\sum_{k=0}^\infty a_k x^k$, d.h. mit Entwicklungsstelle $x_0 = 0$ zu untersuchen: Für eine gegebene Entwicklungsstelle $x_0 \in \R$ gilt für eine Koeffizientenfolge $(a_n)_{n \in \N}$ offenbar, dass
 \begin{align*}
  &\sum_{k=0}^\infty a_k (x-x_0)^k \text{ konvergiert an der Stelle } y \\
  \Leftrightarrow\,
@@ -826,15 +890,15 @@ Um das Verhalten der Potenzreihe $\sum_{k=0}^\infty a_k x^k$ zu untersuchen, wen
  \limsup_{n \to \infty} |a_n x^n|^{1/n}
  = |x| \limsup_{n \to \infty} |a_n|^{1/n}.
 \]
-Ist also $|x| \limsup_{n \to \infty} |a_n|^{1/n} < 1$, so konvergiert die Potenzreihe $\sum_{k=0}^\infty a_k x^k$ absolut, und für $|x| \limsup_{n \to \infty} |a_n|^{1/n} > 1$ divergiert sie. Diese Beobachtung motiviert die folgende Definition:
+Ist also $|x| \limsup_{n \to \infty} |a_n|^{1/n} < 1$, so konvergiert die Potenzreihe $\sum_{k=0}^\infty a_k x^k$ absolut, für $|x| \limsup_{n \to \infty} |a_n|^{1/n} > 1$ divergiert sie. Diese Beobachtung motiviert die folgende Definition:
 
 
 \begin{defi}
- Der \emph{Konvergenzradius} einer Potenzreihe $\sum_{k=0}^\infty a_k (x-x_0)^k$ ist definiert als
+ Der \emph{Konvergenzradius} einer Potenzreihe $\sum_{k=0}^\infty a_k (x-x_0)^k$ ist
  \[
   \rho \coloneqq \frac{1}{\limsup_{n \to \infty} |a_n|^{1/n}}.
  \]
- Dabei verstehen wir $1/0 = \infty$ und $1/\infty = 1$.
+ Dabei verstehen wir $1/0 = \infty$ und $1/\infty = 0$.
 \end{defi}
 
 
@@ -881,7 +945,7 @@ Wir betrachten die Potenreihe $\sum_{k=0}^\infty x^k/k!$. Da
  \lim_{n \to \infty} \frac{1}{(n!)^{1/n}}
  = 0
 \]
-ist der Konvergenzradius der Potenzreihe $\rho = \infty$. Sie konvergiert also für jedes $x \in \R$ absolut. Man bezeichnet diese Potenreihe als die \emph{Exponentialreihe}. Ihr Grenzwert ist die \emph{Exponentialfunktion}.
+ist der Konvergenzradius der Potenzreihe $\infty$. Sie konvergiert also für jedes $x \in \R$ absolut. Man bezeichnet diese Potenreihe als die \emph{Exponentialreihe}. Ihr Grenzwert ist die \emph{Exponentialfunktion}.
 
 
 \begin{defi}
@@ -921,7 +985,7 @@ ist der Konvergenzradius der Potenzreihe $\rho = \infty$. Sie konvergiert also f
  \[
   \sum_{(n,m) \in \N \times \N} \frac{x^n}{n!} \frac{y^m}{m!}
  \]
- existiert und erhalten so, dass
+ existiert und erhalten so durch die üblichen Umordnungssätze für absolut konvergente Reihen, dass
  \[
   \sum_{k=0}^\infty \sum_{\ell=0}^k \frac{x^\ell}{\ell!} \frac{y^{k-\ell}}{(k-\ell)!}
   = \sum_{(n,m) \in \N \times \N} \frac{x^n}{n!} \frac{y^m}{m!}
@@ -947,12 +1011,12 @@ ist der Konvergenzradius der Potenzreihe $\rho = \infty$. Sie konvergiert also f
  \]
  der Konvergenzradius der Potenzreihe $\sum_{k=0}^\infty x^k/k$ ist also $1$.
  
- Für die Reihe $\sum_{k=0}^\infty (-1)^k x^{2k+1}/(2k+1)!$ haben wir
+ Für die Reihe $\sum_{k=0}^\infty (-1)^k x^{2k+1}/(2k+1)!$ bemerken wir, dass $(2n+1)! \geq n!$ für alle $n \in \N$ und somit wegen $\lim_{n \to \infty} (n!)^{1/n} = \infty$ auch $\lim_{n \to \infty} ((2n+1)!)^{1/n} = \infty$. Daher ist
  \[
   \limsup_{n \to \infty} \frac{1}{((2n+1)!)^{1/n}}
   = 0,
  \]
- also hat die Reihe einen Konvergenzradius von $\infty$.
+ die Reihe hat also einen Konvergenzradius von $\infty$.
 \end{solution}
 
 
@@ -997,7 +1061,7 @@ Geben Sie eine Potenzreihe $\sum_{k=0}^\infty a_k x^k$ an, so dass
  \]
 \end{question}
 \begin{solution}
- Für alle $|x-1| < 1$, also $0 < x < 2$, haben wir auch $|1-x| < 1$, und somit
+ Für alle $0 < x < 2$ haben wir $|1-x| < 1$ und deshalb
  \[
   \frac{1}{x}
   = \frac{1}{1-(1-x)}

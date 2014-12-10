@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Arch Linux) (format=xelatex 2014.3.13)  9 DEC 2014 06:48
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Arch Linux) (format=xelatex 2014.3.13)  10 DEC 2014 02:25
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1482,110 +1482,112 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write4
 \openout4 = `Reihenkonvergenz.toc'.
 
-Missing character: There is no ᠥ in font Linux Libertine O/OT:script=latn;langu
-age=DFLT;mapping=tex-text;!
 
 [1
 
 ]
-Missing character: There is no ༕ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ৱ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ᘞ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ূ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ጎ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ಈ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ᭈ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ਯ in font Linux Libertine O/OT:script=latn;langu
+age=DFLT;mapping=tex-text;!
+Missing character: There is no ০ in font Linux Libertine O/OT:script=latn;langu
+age=DFLT;mapping=tex-text;!
+Missing character: There is no ৈ in font Linux Libertine O/OT:script=latn;langu
+age=DFLT;mapping=tex-text;!
+Missing character: There is no ⚼ in font Linux Libertine O/OT:script=latn;langu
+age=DFLT;mapping=tex-text;!
+Missing character: There is no ☣ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
  [2]
-Missing character: There is no ៉ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no Ԍ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ⍸ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ⤁ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
- [3]
-Missing character: There is no ᗾ in font Linux Libertine O/OT:script=latn;langu
-age=DFLT;mapping=tex-text;!
- [4]
-Missing character: There is no ᐢ in font Linux Libertine O/OT:script=latn;langu
+ [3] [4]
+Missing character: There is no ᜡ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
  [5]
-Missing character: There is no ଈ in font Linux Libertine O/OT:script=latn;langu
-age=DFLT;mapping=tex-text;!
-Missing character: There is no ᡸ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ⚩ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
  [6]
-Missing character: There is no ૅ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ㈓ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ᤔ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ぼ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ᜮ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ೮ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ╦ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ✭ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ԅ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ゠ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
  [7] [8]
-Missing character: There is no ⧵ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ᚖ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ⠯ in font Linux Libertine O/OT:script=latn;langu
-age=DFLT;mapping=tex-text;!
-Missing character: There is no ໬ in font Linux Libertine O/OT:script=latn;langu
-age=DFLT;mapping=tex-text;!
-Missing character: There is no ᩤ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ጄ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
  [9]
-Missing character: There is no ܴ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ੅ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ⩠ in font Linux Libertine O/OT:script=latn;langu
+ [10] [11] [12]
+Missing character: There is no ⵃ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
- [10]
-Missing character: There is no ႓ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ⍀ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ⭇ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ഍ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
- [11] [12]
-Missing character: There is no ޙ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ᫶ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no Ⰿ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ᫏ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ⬆ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ᪮ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ⫟ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ぐ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ⏞ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ⧾ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ⹣ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ᴔ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
-Missing character: There is no ⸴ in font Linux Libertine O/OT:script=latn;langu
-age=DFLT;mapping=tex-text;!
-Missing character: There is no ♺ in font Linux Libertine O/OT:script=latn;langu
-age=DFLT;mapping=tex-text;!
-Missing character: There is no ⡬ in font Linux Libertine O/OT:script=latn;langu
-age=DFLT;mapping=tex-text;!
-Missing character: There is no ᳳ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ᢃ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
  [13]
-Missing character: There is no ᮴ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ⯾ in font Linux Libertine O/OT:script=latn;langu
+age=DFLT;mapping=tex-text;!
+Missing character: There is no ⩻ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
  [14]
-Missing character: There is no ⹵ in font Linux Libertine O/OT:script=latn;langu
-age=DFLT;mapping=tex-text;!
-Missing character: There is no Ց in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ഹ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
  [15]
-Missing character: There is no ᛑ in font Linux Libertine O/OT:script=latn;langu
+Missing character: There is no ᪱ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
- [16] [17]
-Missing character: There is no ࠰ in font Linux Libertine O/OT:script=latn;langu
+ [16]
+Missing character: There is no 「 in font Linux Libertine O/OT:script=latn;langu
+age=DFLT;mapping=tex-text;!
+Missing character: There is no 　 in font Linux Libertine O/OT:script=latn;langu
+age=DFLT;mapping=tex-text;!
+Missing character: There is no ଢ଼ in font Linux Libertine O/OT:script=latn;langu
+age=DFLT;mapping=tex-text;!
+ [17]
+Missing character: There is no ৙ in font Linux Libertine O/OT:script=latn;langu
 age=DFLT;mapping=tex-text;!
 
-[18] [19] (./Reihenkonvergenz.aux) ) 
+[18]
+Missing character: There is no บ in font Linux Libertine O/OT:script=latn;langu
+age=DFLT;mapping=tex-text;!
+Missing character: There is no ❱ in font Linux Libertine O/OT:script=latn;langu
+age=DFLT;mapping=tex-text;!
+ [19] [20] (./Reihenkonvergenz.aux) ) 
 Here is how much of TeX's memory you used:
- 28388 strings out of 493918
- 593428 string characters out of 6153679
- 656073 words of memory out of 5000000
- 31214 multiletter control sequences out of 15000+600000
+ 28394 strings out of 493918
+ 593464 string characters out of 6153679
+ 657478 words of memory out of 5000000
+ 31220 multiletter control sequences out of 15000+600000
  10852 words of font info for 65 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 62i,12n,97p,10463b,342s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,12n,97p,10463b,340s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on Reihenkonvergenz.pdf (19 pages).
+Output written on Reihenkonvergenz.pdf (20 pages).
