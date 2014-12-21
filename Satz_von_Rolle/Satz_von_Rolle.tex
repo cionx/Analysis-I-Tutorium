@@ -1,0 +1,87 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage{../mystyle}
+
+\setromanfont[Mapping=tex-text]{Linux Libertine O}
+% \setsansfont[Mapping=tex-text]{DejaVu Sans}
+% \setmonofont[Mapping=tex-text]{DejaVu Sans Mono}
+
+\title{Der Satz von Rolle}
+\author{Jendrik Stelzner}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+Wir wollen hier den Satz von Rolle angeben und beweisen. Als Vorbereitung hierdrauf wollen wir das Verhalten von differenzierbaren Funktionen an Extremstellen betrachten.
+
+
+\section{Extremstellen}
+
+
+\begin{defi}
+ Es sei $X \subseteq \R^n$, $f \colon X \to \R$ und $x \in X$. $f$ heißt \emph{lokal maximal an $x$}, falls es eine Umgebung $V$ von $x$ gibt, so dass
+ \[
+  f(x) \geq f(y) \quad \text{für alle $y \in V \cap X$}.
+ \]
+ $f$ heißt \emph{lokal minimal an $x$}, falls es eine Umgebung $V$ von $x$ gibt, so dass
+ \[
+  f(x) \leq f(y) \quad \text{für alle $y \in V \cap X$}.
+ \]
+ Ist $f$ lokal maximal oder lokal minimal an $x$, so heißt $f$ \emph{lokal extremal an $x$}; dann heißt $x$ eine \emph{lokale Extremstelle von $f$}.
+\end{defi}
+
+
+Im Eindimensionalen differenzierbare Funktionen lässt sich mithilfe der Ableitung eine notwendige Bedingungen für das Vorhandensein einer lokalen Extremstelle angeben.
+
+
+\begin{lem}
+ Es sei $V \subseteq \R$ eine Umgebung von $x$ und $f \colon V \to \R$ lokal extremal an $x$. Dann ist $f'(x) = 0$.
+\end{lem}
+\begin{proof}
+ Wir zeigen, dass $f$ nicht extremal an $x$ ist, wenn $f'(x) \neq 0$. Wir beschränken uns dabei auf den Fall $f'(x) > 0$, der Fall $f'(x) < 0$ verläuft analog.
+ 
+ Da $f'(x) > 0$ ist
+ \[
+  \lim_{h \to \infty} \frac{f(x+h)-f(x)}{h} > 0.
+ \]
+ Es gibt daher ein $\varepsilon > 0$, so dass
+ \[
+  \frac{f(x+h)-f(x)}{h} > 0 \quad \text{für alle $h \neq 0$ mit $|h| < \varepsilon$}.
+ \]
+ Für alle $0 < h < \varepsilon$ ist daher
+ \[
+  \frac{f(x+h)-f(x)}{h} > 0
+  \Leftrightarrow f(x+h)-f(x) > 0
+  \Leftrightarrow f(x+h) > f(x),
+ \]
+ und für alle $-\varepsilon < h < 0$ ist
+ \[
+  \frac{f(x+h)-f(x)}{h} > 0
+  \Leftrightarrow f(x+h)-f(x) < 0
+  \Leftrightarrow f(x+h) < f(x).
+ \]
+ Es ist daher
+ \begin{gather*}
+  f(x) < f(y) \quad \text{für alle $y \in (x,x+\varepsilon)$}
+ \shortintertext{und}
+  f(x) > f(y) \quad \text{für alle $y \in (x-\varepsilon,x)$}.
+ \end{gather*}
+ Es kann also $f$ an $x$ nicht extremal sein.
+\end{proof}
+
+
+Wir können nun den Satz von Rolle beweisen.
+
+
+\begin{thrm}[Rolle]
+ Es seien $a,b \in \R$ mit $a < b$. Die Funktion $f \colon [a,b] \to \R$ sei stetig und auf $(a,b)$ differenzierbar. Es sei $f(a) = f(b)$. Dann gibt es ein $\xi \in (a,b)$ mit $f'(\xi) = 0$. 
+\end{thrm}
+\begin{proof}
+ Wir können o.B.d.A. davon ausgehen, dass $f(a) = f(b) = 0$. Ist $f$ konstant, so ist die Aussage klar. Ist $f$ nicht konstant, so nutzen wir, dass das Intervall $[a,b]$ kompakt ist, und $f$ auf $[a,b]$ sein Maximum und Minimum annimmt; da $f$ nicht konstant ist, muss eines von beiden verschieden von Null sein. Es sei $\xi \in [a,b]$ eine Extremstelle von $f$ mit $f(\xi) \neq 0$. Offenbar ist $\xi \in (a,b)$. Da $\xi$ eine Extremstelle von $f$ ist, ist $f'(\xi) = 0$.
+\end{proof}
+
+
+
+\end{document}

@@ -1,0 +1,201 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage{../mystyle}
+
+\title{Kompakte Teilmengen von $\R^n$}
+\author{Jendrik Stelzner}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+\section{Stetige Funktionen auf abgeschlossenen Intervallen}
+
+
+Zur Motivation des Kompaktheitbegriffes wollen wir zunächst das folgende sehr nützliche Lemma beweisen:
+
+
+\begin{lem}\label{lem: stetig auf Intervall}
+ Es seien $a,b \in \R$ mit $a < b$ und $f \colon [a,b] \to \R$ stetig. Dann ist die Abbildung $f$ beschränkt und nimmt auf $[a,b]$ ihr Maximum und Minimum an, d.h. es gibt $x_{\text{max}}, x_{\text{min}} \in [a,b]$ mit
+ \[
+  f(x_{\text{max}}) = \sup_{y \in [a,b]} f(y)
+  \quad
+  \text{und}
+  \quad
+  f(x_{\text{min}}) = \inf_{y \in [a,b]} f(y).
+ \]
+\end{lem}
+
+
+Für offene Intervalle oder halboffene Intervalle gilt diese Aussage nicht. Man betrachte etwa die Abbildung $(0,1] \to \R, x \mapsto 1/x$, oder gar $(0,1] \to \R, x \mapsto \sin(1/x)/x$.
+
+
+Herzstück des Beweises ist die Beobachtung, dass auf $[a,b]$ jede Folge eine konvergente Teilfolge besitzt.
+
+
+\begin{lem}\label{lem: Intervall ist kompakt}
+ Es seien $a,b \in \R$ mit $a < b$ und $(x_n)_{n \in \N}$ eine Folge auf $[a,b]$. Dann besitzt $(x_n)$ eine konvergente Teilfolge $(x_{n_j})_{j \in \N}$, und für den Grenzwert $x \coloneqq \lim_{j \to \infty} x_{n_j}$ gilt $x \in [a,b]$.
+\end{lem}
+\begin{proof}
+ Da $a \leq x_n \leq b$ für alle $n \in \N$ ist die Folge $(x_n)$ beschränkt und besitzt daher nach Bolzano-Weierstraß eine konvergente Teilfolge $(x_{n_j})_{j \in \N}$. Es sei $x \coloneqq \lim_{j \to \infty} x_{n_j}$. Da $a \leq x_{n_j} \leq b$ für alle $j \in \N$ ist auch $a \leq x \leq b$, also $x \in [a,b]$.
+\end{proof}
+
+
+\begin{proof}[Beweis von Lemma \ref{lem: stetig auf Intervall}]
+ Wir zeigen zunächst, dass $f$ beschränkt ist: Angenommen, $f$ wäre nach oben unbeschränkt. Dann gibt es für alle $n \in \N$ ein $x_n \in [a,b]$ mit $f(x_n) \geq n$. Nach Lemma \ref{lem: Intervall ist kompakt} besitzt die Folge $(x_n)$ eine konvergente Folge $(x_{n_j})_{j \in \N}$. Da $f$ stetig ist, konvergiert auch die Folge $(f(x_{n_j}))_{j \in \N}$. Für alle $j \in \N$ ist aber $f(x_{n_j}) \geq n_j$, die Folge $f(x_{n_j})$ konvergiert also nicht. Dieser Widerspruch zeigt dass $f$ nach oben unbeschränkt seien muss. Analog ergibt sich, dass $f$ auch nach unten beschränkt ist. Also ist $f$ beschränkt.
+ 
+ Es sei
+ \[
+  M \coloneqq \sup_{y \in [a,b]} f(y).
+ \]
+ Da $f$ nach oben beschränkt ist, ist $M < \infty$. Nach der $\varepsilon$-Charakterisierung des Supremums gibt es für alle $n \geq 1$ ein $x_n \in [a,b]$ mit
+ \[
+  M \geq f(x_n) \geq M - \frac{1}{n}.
+ \]
+ Nach Lemma \ref{lem: Intervall ist kompakt} besitzt die Folge $(x_n)$ eine konvergente Teilfolge $(x_{n_j})_{j \in \N}$. Es sei $x \coloneq \lim_{j \to \infty} x_{n_j}$. Da $f$ stetig ist, konvergiert auch die Folge $(f(x_{n_j}))$ und es gilt
+ \[
+  \lim_{j \to \infty} f(x_{n_j}) = f(x).
+ \]
+ Andererseits gilt für alle $j \in \N$
+ \[
+  M \geq f(x_{n_j}) \geq M - \frac{1}{n_j}.
+ \]
+ Also muss nach dem Sandwich-Lemma auch
+ \[
+  \lim_{j \to \infty} f(x_{n_j}) = M.
+ \]
+ Also ist $f(x) = M$. Das zeigt, dass $f$ auf $[a,b]$ sein Maximum annimmt. Analog ergibt sich, dass $f$ auf $[a,b]$ auch sein Minimum annimmt.
+\end{proof}
+
+
+
+
+
+\section{Folgenkompaktheit}
+
+
+Zum Beweis von Lemma \ref{lem: stetig auf Intervall} haben wir Folgenstetigkeit und Lemma \ref{lem: Intervall ist kompakt} benötigt. Diese Beobachtung legt nahe, dass sich Lemma \ref{lem: stetig auf Intervall} auf beliebige Teilmengen $K \subseteq \R^n$ verallgemeinern lässt, für die eine zu Lemma \ref{lem: Intervall ist kompakt} analoge Aussage gilt.
+
+
+\begin{defi}
+ Es sei $X \subseteq \R^n$ und $(x_n)$ ein Folge auf $X$. Wir sagen \emph{$(x_n)$ konvergiert auf $X$}, falls die Folge $(x_n)$ konvergiert und $\lim_{n \to \infty} x_n \in X$.
+\end{defi}
+
+
+\begin{bsp}
+ Die Folge $(1/n)_{n \geq 1}$ konvergiert auf $[0,1]$, nicht aber auch $(0,1)$.
+\end{bsp}
+
+
+
+\begin{defi}
+ Eine Teilmenge $K \subseteq \R^n$ heißt \emph{folgenkompakt}, falls jede Folge $(x_n)$ auf $K$ eine auf $K$ konvergente Teilfolge besitzt.
+\end{defi}
+
+
+\begin{bsp}
+ Lemma \ref{lem: Intervall ist kompakt} zeigt, dass ein Intervall $[a,b]$ mit $a < b$ folgenkompakt ist. Offene Intervalle hingegen sind niemals folgenkompakt: Sind $a,b \in \R$ mit $a < b$, so ist $(a + (b-a)/(n+2))_{n \in \N}$ eine Folge auf $(a,b)$, die keine auf $(a,b)$ konvergente Teilfolge besitzt.
+\end{bsp}
+
+
+\begin{prop}
+ Es sei $K \subseteq \R^n$ folgenkompakt und $f \colon K \to \R$ stetig. Dann ist die Abbildung $f$ auf $K$ beschränkt und nimmt auf $K$ ihr Maximum und ihr Minimum an, d.h. es gibt $x_{\text{min}}, x_{\text{max}} \in K$ mit
+ \[
+  f(x_{\text{max}}) = \sup_{y \in K} f(y)
+  \quad
+  \text{und}
+  \quad
+  f(x_{\text{min}}) = \inf_{y \in K} f(y).
+ \]
+\end{prop}
+\begin{proof}
+ Nehme den Beweis von Lemma \ref{lem: stetig auf Intervall} und ersetze $[a,b]$ durch $K$ und die Verweise auf Lemma \ref{lem: Intervall ist kompakt} durch Folgenkompaktheit.
+\end{proof}
+
+
+Da sich stetige Funktionen auf folgenkompakten Mengen gutartig verhalten, sind folgenkompakte Mengen von großer Bedeutung für die Analysis.
+
+
+
+
+
+\section{Überdeckungskompaktheit}
+Ein weiterer Kompaktheitsbegriff ist der der Überdeckungskompaktheit.
+
+
+\begin{defi}
+ Es sei $X \subseteq \R^n$ eine Teilmenge. Eine \emph{Überdeckung von $X$} ist eine Kollektion $\{A_i\}_{i \in I}$ von Teilmengen $A_i \subseteq \R^n$ mit $X \subseteq \bigcup_{i \in I} A_i$.
+ 
+ Mit einer \emph{Teilüberdeckung} der Überdeckung $\{A_i\}_{i \in I}$ bezeichnen wir eine Teilkollektion $\{A_j\}_{j \in J}$, also $J \subseteq I$, die selber eine Überdeckung von $X$ bildet.
+ 
+ Eine Überdeckung $\{A_i\}_{i \in I}$ heißt abzählbar, bzw. endlich, falls die Indexmenge $I$ abzählbar, bzw. endlich ist.
+ 
+ Eine \emph{offene Überdeckung} von $X$ ist eine Überdeckung $\{U_i\}_{i \in I}$ von $X$ bei der alle Mengen $U_i \subseteq \R^n$ offen sind.
+\end{defi}
+
+
+\begin{bem}
+ Teilüberdeckungen von offenen Überdeckungen sind offenbar wieder offene Überdeckungen.
+\end{bem}
+
+
+
+\begin{bsp}
+ \begin{enumerate}
+  \item
+   Die Kollektion $\{(n-1,n+2) \mid n \in \Z\}$ ist eine (abzählbare) offen Überdeckung von $\R$.
+  \item
+   Die Kollektion $\{(n,n+1) \mid n \in \Z\}$ ist keine Überdeckung von $\R$, da $\Z$ nicht überdeckt wird.
+  \item
+   Für alle $\varepsilon > 0$ bilden die $n$-dimenisonaler $\varepsilon$-Bälle $\{B_\varepsilon(x) \mid x \in \R^n\}$ eine offene Überdeckung von $\R^n$.
+  \item
+   Die Kollektion $\{[n,n+1) \mid n \in \N\}$ bildet eine (abzählbare) Überdeckung von $\R$, jedoch keine offene.
+  \item
+   Eine Kollektion $\{A_i\}_{i \in I}$ von Teilmengen $A_i \subseteq \R^n$ ist genau dann eine Überdeckung einer einelementigen Menge $\{x\}$ mit $x \in \R^n$, falls $x \in A_i$ für ein $i \in I$. Die Überdeckung besitzt dann eine einelementige Teilüberdeckung.
+  \item
+   Ist $\{A_i\}_{i \in I}$ eine Überdeckung von $Y \subseteq \R^n$, so ist $\{A_i\}_{i \in I}$ auch für jedes $X \subseteq Y$ eine Überdeckung von $X$.
+ \end{enumerate}
+\end{bsp}
+
+
+\begin{defi}
+ Eine Teilmenge $C \subseteq \R^n$ heißt \emph{überdeckungskompakt}, falls jede offene Überdeckung von $C$ ein endliche Teilüberdeckung besitzt.
+\end{defi}
+
+
+\begin{lem}
+ Für $a,b \in \R$ mit $a < b$ ist das abgeschlossen Intervall $[a,b]$ überdeckungskompakt.
+\end{lem}
+\begin{proof}
+ Es sei $\{U_i \mid i \in I\}$ eine offene Überdeckung von $[a,b]$. Für jedes $s \in [a,b]$ ist $\{U_i \mid i \in I\}$ auch eine offene Überdeckung von $[a,s]$. Wir betrachten die Menge
+ \[
+  S \coloneqq \{s \in [a,b] \mid \text{$[a,s]$ besitzt eine endliche Teilüberdeckung}\}.
+ \]
+ Wir haben $S \neq \emptyset$, denn $[a,a] = \{a\}$ besitzt eine endliche Teilüberdeckung (sogar eine einelementige), also $a \in S$. Ist $s \in S$, so ist für alle $a \leq t \leq s$ offenbar auch $t \in S$. Also ist $S$ ein Intervall. Für $s \coloneqq \sup S$ ist daher
+ \[
+  S = [a,s) \quad \text{oder} \quad S = [a,s].
+ \]
+ 
+ Wir zeigen nun, dass $b \in S$. Da $\{U_i\}_{i \in I}$ eine Überdeckung von $s$ ist, gibt es ein $j \in I$ mit $s \in U_j$. Da $U_j$ offen ist, gibt es ein $\varepsilon > 0$ mit $(x-\varepsilon,x+\varepsilon) \subseteq U_j$. Wählen wir nun ein $t \in [a,s)$ mit $s-\varepsilon < t$, so besitzt $[a,t]$ ein endliche Teilüberdeckung, d.h. es gibt $i_1, \dotsc, i_n \in I$ mit $[a,t] \subseteq U_{i_1} \cup \dotsb U_{i_n}$. Für alle
+ \begin{equation}\label{eqn: Wahl von u}
+  u \in [s,b] \quad \text{mit} \quad u < s + \varepsilon
+ \end{equation}
+ besitzt
+ \[
+  [a,u]
+  = [a,t] \cup [t,u]
+  \subseteq [a,t] \cup (x-\varepsilon, x+\varepsilon)
+  \subseteq U_1 \cup \dotsb \cup U_n \cup U_j.
+ \]
+ eine endliche Teilüberdeckung. Also ist $u \in S$. Damit $u \leq \sup S = s$, und da nach Konstruktion auch $u \geq s$ muss $s = u$. Da aus \eqref{eqn: Wahl von u} schon folgt, dass $u = s$, muss schon $[s,b] = \{s\}$, also auch $s = b$. Zusammen mit $s = u \in S$ ergibt sich, dass $b \in S$. Per Definition von $S$ besitzt also $[a,b]$ eine endliche Teilüberdeckung.
+\end{proof}
+
+
+
+
+
+
+
+\end{document}
