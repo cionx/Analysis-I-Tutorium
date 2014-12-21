@@ -1,0 +1,554 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{scrartcl}
+
+\usepackage{../mystyle}
+
+\title{Grundbegriffe der Analysis I in $\R^n$}
+\author{Jendrik Stelzner}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+
+\section{Vorbereitung}
+
+Wir gehen davon aus, dass der Leser mit der Vektorraumstruktur des $\R^n$ vertraut ist. Die \emph{Norm} eines Vektors $x = (x_1, \dotsc, x_n) \in \R^n$ ist als
+\[
+ \|x\| = \sqrt{\sum_{i=1}^n x_i^2}
+\]
+definiert.
+
+Auf $\R^1 = \R$ stimmt die Norm mit dem Betrag überein. Die Norm unter $\R^2$ entspricht unter der üblichen Identifikation von $\R^2$ mit $\C$ dem Betrag auf $\C$; unsere folgenden Betrachtungen erhalten daher auch den Konvergenz- und den Stetigkeitsbegriff auf $\C$.
+
+Die Norm erfüllt die folgenden Eigenschaften:
+\begin{itemize}
+ \item
+  Für alle $x \in \R^n$ ist $\|x\| \geq 0$, und es ist genau dann $\|x\| = 0$, wenn $x = 0$.
+ \item
+  Die Norm ist \emph{absolut homogen}, d.h. für alle $x \in \R^n$ und $\lambda \in \R$ ist
+  \[
+   \|\lambda x\| = |\lambda| \|x\|.
+  \]
+ \item
+  Für alle $x,y \in \R^n$ gilt die \emph{Dreiecksungleichung}
+  \[
+   \|x+y\| \leq \|x\| + \|y\|.
+  \]
+\end{itemize}
+
+
+Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|y-x\|$ für alle $x, y \in \R^n$.
+
+
+\begin{question}
+ \begin{enumerate}
+  \item
+   Zeigen Sie, dass die Wurzelfunktion subadditiv ist, d.h. dass
+   \[
+    \sqrt{x+y} \leq \sqrt{x} + \sqrt{y} \quad \text{für alle $x,y \geq 0$}.
+   \]
+  \item
+   Folgern sie dass für alle $x, y \in \R^n$ mit Koordinaten $x = (x_1, \dotsc, x_n)$ und $y = (y_1, \dotsc, y_n)$ die beiden Ungleichungen
+   \begin{gather*}
+    |x_i - y_i| \leq \|x-y\| \quad \text{für alle $1 \leq i \leq n$}
+   \shortintertext{und}
+    \|x-y\| \leq \sum_{i=1}^n |x_i - y_i|
+   \end{gather*}
+   gelten.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Für alle $x, y \geq 0$ ist
+   \begin{align*}
+                   &\, \sqrt{x+y} \leq \sqrt{x}+\sqrt{y} \\
+    \Leftrightarrow&\, x + y \leq (\sqrt{x}+\sqrt{y})^2 = x + y + 2\sqrt{xy} \\
+    \Leftrightarrow&\, 0 \leq \sqrt{xy},
+   \end{align*}
+   was offenbar gilt.
+  \item
+   Für alle $1 \leq i \leq n$ ist wegen der Monotonie der Wurzel
+   \[
+    \|x-y\|
+    = \sqrt{\sum_{j=1}^n (x_j - y_j)^2}
+    \geq \sqrt{(x_i - y_i)^2}
+    = |x_i - y_i|,
+   \]
+   was die erste Ungleichung zeigt. Die zweite Ungleichung folgt mithilfe der Subadditivität der Wurzel durch
+   \[
+    \|x-y\|
+    = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}
+    \leq \sum_{i=1}^n \sqrt{(x_i-y_i)^2}
+    = \sum_{i=1}^n |x_i - y_i|.
+   \]
+ \end{enumerate}
+\end{solution}
+
+
+
+
+
+\section{Folgenkonvergenz und Stetigkeit}
+
+
+\begin{defi}
+ Es sei $(x_n)_{n \in \N}$ eine Folge auf $\R^m$, also $x_n \in \R^m$ für alle $n \in \N$, und $x \in \R^m$. Wir sagenn, dass $(x_n)$ gegen $x$ konvergiert, falls es für alle $\varepsilon > 0$ ein $N \in \N$ gibt, so dass
+ \[
+  \| x_n - x \| < \varepsilon \quad \text{für alle $n \geq N$}.
+ \]
+ Wir schreiben dann $\lim_{n \to \infty} x_n = x$ oder $x_n \to \infty$ für $n \to \infty$.
+\end{defi}
+
+
+Da die Norme auf $\R^1 = \R$ mit dem Betrag übereinstimmt, handelt es sich um eine Erweiterung des Konvergenzbegriffes auf $\R$. Die Konvergenz in $\R^m$ lässt sich auch auf die Konvergenz in $\R$ zurückführen. Eine Folge auf $\R^m$ konvergiert nämlich genau dann, wenn sie in jeder einzelnen Koordinate konvergiert.
+
+
+\begin{lem}\label{lem: convergence in coordinates}
+ Es sei $(x_n)$ eine Folge auf $\R^m$ und $x \in \R^m$. In Koordinaten sei $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$ und $x = (x^{(1)}, \dotsc, x^{(m)})$. Dann ist genau dann $\lim_{n \to \infty} x_n = x$, wenn $\lim_{n \to \infty} x^{(i)}_n = x^{(i)}$ für alle $1 \leq i \leq m$.
+\end{lem}
+\begin{proof}
+ Ist $x_n \to x$, so ist $\|x_n - x\| \to 0$. Für alle $1 \leq i \leq m$ ist
+ \[
+  0 \leq |x^{(i)}_n - x^{(i)}| \leq \|x_n - x\| \quad \text{für alle $n \in \N$}
+ \]
+ und daher nach dem Sandwich-Lemma $|x^{(i)}_n - x^{(i)}| \to 0$. Also ist $x^{(i)}_n \to x^{(i)}$ für alle $1 \leq i \leq m$.
+ 
+ Ist andererseits $x^{(i)}_n \to x^{(i)}$ für alle $1 \leq i \leq m$, so ist $|x^{(i)}_n - x^{(i)}| \to 0$ für alle $1 \leq i \leq m$. Damit ist auch $\sum_{i=1}^m |x^{(i)}_n - x^{(i)}| \to 0$. Da
+ \[
+  0 \leq \|x_n - x\| \leq \sum_{i=1}^m |x^{(i)}_n - x^{(i)}| \quad \text{für alle $n \in \N$}
+ \]
+ ist daher nach dem Sandwich-Lemma auch $\|x_n - x\| \to 0$, also $x_n \to x$.
+\end{proof}
+
+
+\begin{bem}
+ Für den Fall $\C \cong \R^2$ erhalten wir, dass eine Folge komplexer Zahlen $(z_n)$ genau dann gegen $z \in \C$ konvergiert, wenn die Folge der Realteile $(\Re(z))$ gegen $\Re(z)$ konvergiert und die Folge der Imaginärteile $(\Im(z))$ gegen $\Im(z)$ konvergiert.
+\end{bem}
+
+
+Viele der Eigenschaften und Rechenregeln, die wir für konvergente Folgen auf $\R$ kenne, lassen sich auf Folgen auf $\R^n$ zu verallgemeinern. So sind Grenzwerte auch im Mehrdimensionalen eindeutig und verträglich mit Addition und Skalarmultiplikation. Im Komplexen ergibt sich auch eine Verträglichkeit mit der Multiplikation und Division, wie wir sie schon aus dem reellen kennen.
+
+
+\begin{question}
+ Es seien $(\xi_n)$ und $(\zeta_n)$ zwei konvergente Folgen komplexer Zahlen mit Grenzwerten $\xi \coloneqq \lim_{n \to \infty} \xi_n$ und $\zeta \coloneqq \lim_{n \to \infty} \zeta_n$. Zeigen Sie, dass auch die Folge $(\xi_n \cdot \zeta_n)$ konvergiert und
+ \[
+  \lim_{n \to \infty} (\xi_n \cdot \zeta_n)
+  = \xi \cdot \zeta
+  = \left( \lim_{n \to \infty} \xi_n \right) \cdot \left( \lim_{n \to \infty} \zeta_n \right).
+ \]
+\end{question}
+\begin{proof}
+ Es seien $\xi_n = u_n + i v_n$ und $\zeta_n = x_n + i y_n$ für alle $n \in \N$ die Zerlegungen in Real- und Imaginärteile, sowie $\xi = u + i v$ und $\zeta = x + i y$ die Zerlegungen der Grenzwerte in Real- und Imaginärteile. Dass $\xi_n \to \xi$ ist äquivalent dazu, dass $u_n \to u$ und $v_n \to v$, und dass $\zeta_n \to \zeta$ ist äquivalent dazu, dass $x_n \to x$ und $y_n \to y$. Nach Lemma \ref{lem: convergence in coordinates} und den bekannten Rechenregeln für die Grenzwerte reelle Folgen folgt damit, dass
+ \begin{align*}
+  \xi_n \cdot \zeta_n
+  &= (u_n + i v_n) \cdot (x_n + i y_n)
+  = (u_n x_n - v_n y_n) + i (u_n y_n + v_n x_n) \\
+  &\to (ux - vy) + i(uy + vx)
+  = (u + iv) \cdot (x + iy)
+  = \xi \cdot \zeta.
+  \qedhere
+ \end{align*}
+\end{proof}
+
+
+Nachdem wir nun den Begriff der Folgenkonvergenz ins Mehrdimensionale verallgemeinert haben, wollen wir uns jetzt dem Begriff der Stetigkeit zuwenden.
+
+
+\begin{defi}
+ Es sei $X \subseteq \R^n$ und $f \colon X \to \R^m$. $f$ heißt \emph{stetig an der Stelle $x \in X$} falls es für alle $\varepsilon > 0$ ein $\delta > 0$ gibt, so dass
+ \[
+  \|x-y\| < \delta \Rightarrow \|f(x)-f(y)\| < \varepsilon \quad \text{für alle $y \in X$}.
+ \]
+\end{defi}
+
+
+Da die Norm auf $\R^1 = \R$ mit dem Betrag übereinstimmt ist dieser Stetigkeitsbegriff eine Verallgemeinerung der $\varepsilon$-$\delta$-Stetigkeit auf $\R$. Für den Fall $\R^2 \cong \C$ erhalten wir so auch einen Stetigkeitsbegriff für Abbildungen $\C \to \R^n$.
+
+
+Wir haben bereits gesehen, dass sich Stetigkeit auf $\R$ auch durch Folgenstetigkeit verstehen lässt. Dies gilt auch für Stetigkeit im Mehrdimensionalen.
+
+
+\begin{lem}
+ Es sei $X \subseteq \R^n$, $f \colon X \to \R^m$ und $x \in X$. Dann sind äquivalent:
+ \begin{enumerate}
+  \item
+   $f$ ist stetig an $x$.
+  \item
+   Für jede Folge $(x_n)$ auf $X$ mit $x_n \to x$ konvergiert auch die Folge $(f(x_n))$ und es gilt
+   \[
+    \lim_{n \to \infty} f(x_n) = f(x) = f\left( \lim_{n \to \infty} x_n \right).
+   \]
+ \end{enumerate}
+\end{lem}
+\begin{proof}
+ Angenommen $f$ ist stetig an $x$. Es sei $(x_n)$ eine Folge auf $X$ mit $x_n \to x$. Wir müssen zeigen, dass $f(x_n) \to f(x)$. Es sei $\varepsilon > 0$ beliebig aber fest. Da $f$ stetig an $x$ ist, gibt es ein $\delta > 0$, so dass
+ \[
+  |f(x) - f(y)| < \varepsilon \quad \text{für alle $y \in X$ mit $|x-y| < \delta$}.
+ \]
+ Da $x_n \to x$ gibt es ein $N \in \N$ mit $|x - x_n| < \delta$ für alle $n \geq N$. Wir erhalten damit, dass $|f(x) - f(x_n)| < \varepsilon$ für alle $n \geq N$. Aus der Beliebigkeit von $\varepsilon > 0$ folgt damit, dass $f(x_n) \to f(x)$.
+ 
+ Angenommen $f$ ist nicht stetig an $x$. Dann gibt es ein $\varepsilon > 0$, so dass es für alle $\delta > 0$ ein $y \in X$ gibt, so dass zwar $|x-y| < \delta$, aber $|f(x)-f(y)| \geq \varepsilon$. Insbesondere gibt es daher für alle $n \geq 1$ ein $x_n \in X$ mit $|x - x_n| < 1/n$ und $|f(x) - f(y)| \geq \varepsilon$. Es ist dann $(x_n)$ eine Folge auf $X$ mit $x_n \to x$, aber $(f(x_n))$ konvergiert nicht gegen $f(x)$, da $|f(x) - f(x_n)| \geq \varepsilon$ für alle $n \in \N$.
+\end{proof}
+
+
+Auch im Mehrdimensionalen bezeichnet man diese beiden Konvergenzbegriffe als \emph{$\varepsilon$-$\delta$-Stetigkeit} und \emph{Folgenstetigkeit}.
+
+
+\begin{question}
+ Untersuchen Sie ob sich die Abbildung
+ \[
+  f \colon \R^2 \setminus \{0\} \to \R, (x,y) \mapsto \frac{xy}{x^2 + y^2}
+ \]
+ stetig auf $\R^2$ fortsetzen lässt, d.h. ob es eine stetige Funktion $\hat{f} \colon \R^2 \to \R$ gibt, so dass $\hat{f}|_{\R^2 \setminus \{0\}} = f$.
+\end{question}
+\begin{solution}
+ Angenommen, $f$ ließe sich zu einer stetigen Funktion $\hat{f} \colon \R^2 \to \R$ fortsetzen. Wir betrachten die beiden Folgen $(x_n)$ und $(y_n)$ auf $\R^2$ mit
+ \[
+  x_n = \left( \frac{1}{n}, 0 \right)
+  \quad
+  \text{und}
+  \quad
+  y_n = \left( \frac{1}{n}, \frac{1}{n} \right)
+  \quad
+  \text{für alle $n \geq 1$}.
+ \]
+ Da $1/n \to 0$ ist $x_n \to (0,0)$ und $y_n \to (0,0)$ nach Lemma \ref{lem: convergence in coordinates}. Da $\hat{f}$ stetig ist konvergieren auch die Folgen $(\hat{f}(x_n))$ und $(\hat{f}(y_n))$ und es gilt
+ \[
+  \lim_{n \to \infty} \hat{f}(x_n) = \hat{f}(0,0) = \lim_{n \to \infty} \hat{f}(y_n).
+ \]
+ Da $\hat{f}|_{\R^2 \setminus \{0\}} = f$ ist $\hat{f}(x_n) = f(x_n)$ und $\hat{f}(y_n) = f(y_n)$ für alle $n \geq 1$. Also konvergieren die Folgen $(f(x_n))$ und $(f(y_n))$ und es ist
+ \[
+  \lim_{n \to \infty} f(x_n) = \hat{f}(0,0) = \lim_{n \to \infty} f(y_n).
+ \]
+ Wir haben jedoch
+ \begin{gather*}
+  \lim_{n \to \infty} f(x_n)
+  = \lim_{n \to \infty} 0
+  = 0
+ \shortintertext{und}
+  \lim_{n \to \infty} f(y_n)
+  = \lim_{n \to \infty} \frac{\frac{1}{n^2}}{\frac{1}{n^2} + \frac{1}{n^2}}
+  = \lim_{n \to \infty} \frac{1}{2}
+  = \frac{1}{2}.
+ \end{gather*}
+\end{solution}
+
+
+Wir haben bereits gesehen, dass sich Konvergenz in $\R^n$ durch Konvergenz in den einzelnen Koordinaten beschreiben lässt. Eine analoge Aussage gilt auch für die Stetigkeit: Eine Funktion ist genau dann stetig, wenn sie in jeder Koordinate stetig ist.
+
+
+\begin{lem}
+ Es sei $X \subseteq \R^m$ und $f \colon X \to \R^k$ mit Koordinaten $f = (f_1, \dotsc, f_k)$, d.h. $f_1, \dotsc, f_k \colon X \to \R$ mit
+ \[
+  f(x) = (f_1(x), \dotsc, f_k(x)) \quad \text{für alle $x \in X$}.
+ \]
+ Dann ist $f$ genau dann stetig an der Stelle $x \in X$, falls $f_i$ für alle $1 \leq i \leq k$ stetig an der Stelle $x$ ist.
+\end{lem}
+\begin{proof}
+ Wir wollen zeigen, dass die $f$ genau dann folgenstetig an $x$ ist, wenn alle $f_i$ alle folgenstetig an $x$ sind. Es sei $(x_n)$ eine Folge auf $X$ mit $x_n \to x$. Dass $f(x_n) \to f(x)$ bedeutet in Koordinaten, dass
+ \[
+  (f_1(x_n), \dotsc, f_k(x_n)) \to (f_1(x), \dots, f_k(x)).
+ \]
+ Dies ist nach Lemma \ref{lem: convergence in coordinates} äquivalent dazu, dass $f_i(x_n) \to f_i(x)$ für alle $1 \leq i \leq k$. Dass $f$ mit der Folge $(x_n)$ verträglich ist, ist also äquivalent dazu, dass die $f_i$ alle veträglich mit $(x_n)$ sind. Deshalb ist $f$ genau dann folgenstetig an $x$, wenn die $f_i$ alle folgenstetig an $x$ sind.
+\end{proof}
+
+
+
+
+\section{Umgebungen und offene Mengen}
+
+
+\begin{defi}
+ Für $x \in \R^n$ und $\varepsilon > 0$ ist
+ \[
+  B_\varepsilon(x) \coloneqq \{y \in \R^n \mid \|x-y\| < \varepsilon\}
+ \]
+ der \emph{offene $\varepsilon$-Ball um $x$}.
+\end{defi}
+
+
+Im Eindimensionalen ist $B_\varepsilon(x) = (x-\varepsilon,x+\varepsilon)$. Mithilfe von $\varepsilon$-Bällen lassen sich die Begriffe einer Umgebung und einer offenen Menge auf das Mehrdimensionale verallgemeinern.
+
+
+\begin{defi}
+ Es sei $x \in \R^n$. Eine Teilmenge $V \subseteq \R^n$ heißt \emph{Umgebung von $x$}, falls es es ein $\varepsilon > 0$ gibt, so dass $B_\varepsilon(x) \subseteq V$.
+\end{defi}
+
+
+\begin{defi}
+ Eine Teilmenge $U \subseteq \R^n$ heißt \emph{offen}, falls es für alle $x \in U$ ein $\varepsilon > 0$ gibt, so dass $B_\varepsilon(x) \subseteq U$.
+\end{defi}
+
+
+\begin{question}
+ Zeigen Sie, dass offene $\varepsilon$-Bälle offen sind, d.h. dass $B_\varepsilon(x)$ für alle $x \in \R^n$ und $\varepsilon > 0$ offen ist.
+\end{question}
+\begin{solution}
+ Es sei $x \in X$ und $\varepsilon > 0$. Um zu zeigen, dass $B_\varepsilon(x)$ offen ist, müssen wir zeigen, dass es für jedes $y \in B_\varepsilon(x)$ ein $\delta > 0$ gibt, so dass $B_\delta(y) \subseteq B_\varepsilon(x)$. Sei hierfür $y \in B_\varepsilon(x)$ beliebig aber fest. Wir setzen
+ \[
+  \delta \coloneqq \varepsilon - |x-y|.
+ \]
+ Da $|x-y| < \varepsilon$ ist $\delta > 0$. Für alle $z \in B_\delta(y)$ ist
+ \[
+  |x-z|
+  \leq |x-y| + |y-z|
+  < |x-y| + \delta
+  = |x-y| + \varepsilon - |x-y|
+  = \varepsilon,
+ \]
+ und somit $z \in B_\varepsilon(x)$. Also ist $B_\delta(y) \subseteq B_\varepsilon(x)$. 
+ \begin{center}
+  \tikzsetnextfilename{epsilon_balls_are_open}
+  \begin{tikzpicture}[scale=3]
+   % big circle
+   \draw[fill=black] (0,0) circle (0.02) node[below] {$x$};
+   \draw[thick, dashed] (0,0) circle (1);
+   \draw[<->] (0,0) to node[above] {$\varepsilon$} (1,0);
+   % small circle
+   \draw[fill=black] (0.5,0.5) circle (0.02) node[below] {$y$};
+   \draw[thick, dashed] (0.5,0.5) circle ({1 - sqrt(0.5});
+   \draw[<->] (0.5, 0.5) to node[above] {$\delta$} ({sqrt(0.5)}, {sqrt(0.5)});
+  \end{tikzpicture}
+ \end{center}
+ Aus der Beliebigkeit von $y \in B_\varepsilon(x)$ folgt, dass $B_\varepsilon(x)$ offen ist.
+\end{solution}
+
+
+\begin{question}
+ Es seien $a,b \in \R$ mit $a < b$. Zeigen Sie, dass das offene Intervall $(a,b)$ offen ist. Zeigen sie ferner, dass das abgeschlossene Intervall $[a,b]$ nicht offen ist.
+\end{question}
+\begin{solution}
+ Da
+ \[
+  (a,b) = B_{\frac{b-a}{2}}\left(\frac{a+b}{2}\right)
+ \]
+ ist das offen Intervall $(a,b)$ offen.
+ 
+ Um zu zeigen, dass das abgeschlossen Intervall $[a,b]$ nicht offen ist, betrachten wir den Punkt $a \in [a,b]$. Für jedes $\varepsilon > 0$ ist
+ \[
+  a - \frac{\varepsilon}{2} \in B_\varepsilon(a)
+  \quad
+  \text{aber}
+  \quad
+  a - \frac{\varepsilon}{2} \notin [a,b],
+ \]
+ und deshalb $B_\varepsilon(x) \nsubseteq [a,b]$. Also enthält $[a,b]$ keinen $\varepsilon$-Ball um $a$ und ist daher nicht offen.
+\end{solution}
+
+
+\begin{question}
+ Zeigen Sie die folgenden Eigenschaften offener Mengen:
+ \begin{enumerate}
+  \item
+   Die Teilmengen $\emptyset$ und $\R^n$ sind offen.
+  \item
+   Sind $U_1, \dotsc, U_s \subseteq \R^n$ offen, so ist auch der Schnitt $U_1 \cap \dotsb \cap U_s$ offen. Endliche Schnitte offener Mengen sind also offen.
+  \item
+   Gilt die Aussage auch für unendliche Schnitte?
+  \item
+   Für eine Kollektion $\{U_i \mid i \in I\}$ offener Mengen $U_i \subseteq \R^n$ ist auch die Vereinigung $\bigcup_{i \in I} U_i$ offen.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Da die leere Menge keine Element enthält ist die Bedingung, dass es für alle $x \in \emptyset$ ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq \emptyset$ gibt, trivialerweise erfüllt. Dass $\R^n$ offen ist, ist ebenfalls klar, da $B_\varepsilon(x) \subseteq \R^n$ für alle $\varepsilon > 0$.
+  \item
+   Ist $U_1 \cap \dotsb \cap U_s = \emptyset$ so ist die Aussage klar. Ansonsten sei $x \in U_1 \cap \dotsb \cap U_s$. Dann ist $x \in U_i$ für alle $1 \leq i \leq s$. Da die $U_i$ offen sind, gibt es für jedes $1 \leq i \leq s$ ein $\varepsilon_i > 0$ mit $B_{\varepsilon_i}(x) \subseteq U_i$. Es sei $\varepsilon \coloneqq \min_{1 \leq i \leq s} \varepsilon_i$. Wir haben
+   \[
+    B_\varepsilon(x) \subseteq B_{\varepsilon_i}(x) \subseteq U_i
+    \quad
+    \text{für alle $1 \leq i \leq s$},
+   \]
+   und somit $B_\varepsilon(x) \subseteq U_1 \cap \dotsb \cap U_s$. Aus der Beliebigkeit von $x \in U_1 \cap \dotsb \cap U_s$ folgt, dass $U_1 \cap \dotsb \cap U_s$ offen ist.
+  \item
+   Für unendliche Schnitte gilt die Aussage nicht. Man betrachte etwa die offenen Intervalle
+   \[
+    U_n \coloneqq (-1-1/n, 1+1/n)  \quad \text{für alle $n \in \N$, $n \geq 1$}.
+   \]
+   Wir wissen bereits, dass die $U_n$ alle offen sind. Wir wissen aber auch, dass
+   \[
+    \bigcap_{n=1}^\infty U_n = [-1,1]
+   \]
+   nicht offen ist.
+  \item
+   Es sei $x \in \bigcup_{i \in I} U_i$. Dann gibt es ein $j \in I$ mit $x \in U_j$. Da $U_j$ offen ist, gibt es ein $\varepsilon > 0$, so dass $B_\varepsilon(x) \subseteq U_j$. Es ist dann auch
+   \[
+    B_\varepsilon(x) \subseteq U_j \subseteq \bigcup_{i \in I} U_i.
+   \]
+   Aus der Beliebigkeit von $x \in \bigcup_{i \in I} U_i$ folgt, dass $\bigcup_{i \in I} U_i$ offen ist.
+ \end{enumerate}
+\end{solution}
+
+
+\begin{lem}
+ Eine Teilmenge $U \subseteq \R^n$ ist genau dann offen, wenn $U$ eine Umgebung für jedes $x \in U$ ist.
+\end{lem}
+\begin{proof}
+ Wenn $U$ offen ist, gibt es für jedes $x \in U$ ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq U$, so dass $U$ eine Umgebung von $x$ ist. Also ist $U$ für jedes $x \in U$ eine Umgebung.
+ 
+ Angenommen, $U$ ist für jedes $x \in U$ eine Umgebung. Dann gibt es für alle $x \in U$ ein $\varepsilon_x > 0$ mit $B_{\varepsilon_x}(x) \subseteq U$. Dann ist
+ \[
+  U = \bigcup_{x \in U} \{x\} \subseteq \bigcup_{x \in U} B_{\varepsilon_x}(x) \subseteq U,
+ \]
+ also $U = \bigcup_{x \in U} B_{\varepsilon_x}(x)$. Da $\varepsilon$-Bälle offen sind, ist $U$ als Vereinigung offener Mengen offen.
+ 
+ Der zweite Teil lässt sich auch per Widerspruch beweisen: Ist $U$ nicht offen, so gibt es ein $x \in U$, so dass $U$ keine Umgebung von $x$ ist. Dann gibt es kein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq U$. Dann ist $U$ auch keine Umgebung von $x$. Also ist $U$ nicht für jedes $x \in U$ eine Umgebung.
+\end{proof}
+
+
+Per Definition ist für alle $x, y \in \R^n$ und $\varepsilon > 0$
+\[
+ \|x-y\| < \varepsilon \Leftrightarrow y \in B_\varepsilon(x).
+\]
+Wir können daher die Definition der Folgenkonvergenz auch durch $\varepsilon$-Bälle angeben: Ist $(x_n)$ eine Folge auf $\R^m$ und $x \in \R$, so ist
+\begin{align*}
+                 &\, \text{$(x_n)$ konvergiert mit $x_n \to x$ für $n \to \infty$   } \\
+ \Leftrightarrow &\, \text{für alle $\varepsilon > 0$ gibt es $N \in \N$ mit $\|x - x_n\| < \varepsilon$ für alle $n \geq N$} \\
+ \Leftrightarrow &\, \text{für alle $\varepsilon > 0$ gibt es $N \in \N$ mit $x_n \in B_\varepsilon(x)$ für alle $n \geq N$} \\
+ \Leftrightarrow &\, \text{für alle $\varepsilon > 0$ ist $x_n \in B_\varepsilon(x)$ für fast alle $n \in \N$}.
+\end{align*}
+
+
+\begin{bem}
+ Wir sagen, dass eine Eigenschaft für \emph{fast alle} $n \in \N$ gilt, wenn sie nur für endlich viele $n$ nicht gilt. Dass eine Eigenschaft nicht für fast alle $n \in \N$ gilt ist äquivalent dazu, dass sie für unendlich viele $n \in \N$ nicht gilt.
+\end{bem}
+
+
+Aus der obigen Formulierung kann man durch Verwendung des Umgebungsbegriffes auch noch das $\varepsilon$ entfernen.
+
+
+\begin{lem}
+ Es sei $(x_n)$ eine Folge auf $\R^m$ und $x \in \R^m$. Dann sind äquivalent:
+ \begin{enumerate}
+  \item
+   $(x_n)$ konvergiert mit $\lim_{n \to \infty} x_n = x$.
+  \item
+   Für jede Umgebung $V \subseteq \R^m$ von $x$ ist $x_n \in V$ für fast alle $n \in \N$.
+ \end{enumerate}
+\end{lem}
+\begin{proof}
+ Angenommen $(x_n)$ konvergiert gegen $x$. Ist $V \subseteq \R^m$ eine Umgebung von $x$, so gibt es ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq V$. Da $x_n \to x$ ist $x_n \in B_\varepsilon(x) \subseteq V$ für fast alle $n \in \N$.
+ 
+ Angenommen $(x_n)$ konvergiert nicht gegen $x$. Dann gibt es ein $\varepsilon > 0$, so dass $x_n \notin B_\varepsilon(x)$ für unendlich viele $n \in \N$. $B_\varepsilon(x)$ ist aber eine Umgebung von $x$.
+\end{proof}
+
+
+Auch der Begriff der Stetigkeit lässt sich durch die Begriffe der $\varepsilon$-Bälle formulieren: Ist $X \subseteq \R^n$ und $f \colon X \to \R^m$, so ist für $x \in X$
+\begin{align*}
+                & \text{$f$ ist stetig an $x$} \\
+ \Leftrightarrow& \forall \varepsilon > 0 \exists \delta > 0 \forall y \in X : \|x-y\| < \delta \Rightarrow \|f(x)-f(y)\| < \varepsilon \\
+ \Leftrightarrow& \text{für jedes $\varepsilon > 0$ gibt es ein $\delta > 0$ mit $f(B_\delta(x) \cap X) \subseteq B_\varepsilon(f(x))$} \\
+ \Leftrightarrow& \text{für jedes $\varepsilon > 0$ gibt es ein $\delta > 0$ mit $B_\delta(x) \cap X \subseteq f^{-1}(B_\varepsilon(f(x)))$}.
+\end{align*}
+
+
+Auch hier lässen sich $\varepsilon$ und $\delta$ durch Verwendung von Umgebungen und offenen Mengen umgehen: Lokal lässt sich Stetigkeit durch Umgebungen charakterisieren und global durch offene Mengen.
+
+
+\begin{lem}
+ Es sei $X \subseteq \R^n$ und $f \colon X \to \R^m$.
+ \begin{enumerate}
+  \item
+   Es sei $x \in X$. Dann sind äquivalent:
+   \begin{enumerate}
+    \item\label{enum: stetig an x epsilon delta}
+     $f$ ist stetig an $x$.
+    \item\label{enum: stetig an x Umgebungen}
+     Für jede Umgebung $W \subseteq \R^m$ von $f(x)$ gibt es eine Umgebung $V \subseteq \R^n$ von $x$ mit
+     \[
+      f^{-1}(W) = V \cap X.
+     \]
+   \end{enumerate}
+  \item
+   Es sind äquivalent:
+   \begin{enumerate}
+    \item\label{enum: stetig epsilon delta}
+     $f$ ist stetig.
+    \item\label{enum: stetig offene Mengen}
+     Für jede offene Menge $V \subseteq \R^m$ gibt es eine offene Menge $U \subseteq \R^n$ mit
+     \[
+      f^{-1}(V) = U \cap X.
+     \]
+   \end{enumerate}
+ \end{enumerate}
+\end{lem}
+\begin{proof}
+ \begin{enumerate}
+  \item
+   (\ref{enum: stetig an x epsilon delta} $\Rightarrow$ \ref{enum: stetig an x Umgebungen}) Es sei $W \subseteq \R^m$ eine Umgebung von $f(x)$. Dann gibt es ein $\varepsilon > 0$ mit $B_\varepsilon(f(x)) \subseteq W$. Da $f$ stetig an $x$ ist, gibt es ein $\delta > 0$ mit
+   \[
+    B_\delta(x) \cap X \subseteq f^{-1}(B_\varepsilon(f(x))) \subseteq f^{-1}(W).
+   \]
+   
+   (\ref{enum: stetig an x Umgebungen} $\Rightarrow$ \ref{enum: stetig an x epsilon delta}) Es sei $\varepsilon > 0$ beliebig aber fest. Da $B_\varepsilon(f(x))$ eine Umgebung von $f(x)$ ist, gibt es eine Umgebung $V \subseteq \R^n$ von $x$ mit $f^{-1}(B_\varepsilon(f(x))) = V \cap X$, also $f(V \cap X) \subseteq B_\varepsilon(x)$. Da $V$ eine Umgebung von $x$ ist, gibt es ein $\delta > 0$ mit $B_\delta(x) \subseteq V$. Da
+   \[
+    f(B_\delta(x)) \subseteq f(V) \subseteq B_\varepsilon(f(x))
+   \]
+   ist damit
+   \[
+    \|f(x)-f(y)\| < \varepsilon \quad \text{für alle $y \in Y$ mit $\|x-y\| < \delta$}.
+   \]
+  \item
+   Zum Beweis dieser Äquivalenz werden wir die gerade gezeigte Äquivalenz verwenden.
+   
+   (\ref{enum: stetig epsilon delta} $\Rightarrow$ \ref{enum: stetig offene Mengen}) Es sei $W \subseteq \R^m$ eine offene Menge. Da $f$ stetig ist, ist $f$ an jeder Stelle $x \in X$ stetig. Für jedes $x \in f^{-1}(W) \subseteq X$ ist $W$ eine Umgebung von $f(x)$. Also gibt es nach dem ersten Teil des Lemmas für jedes $x \in f^{-1}(W)$ eine Umgebung $V_x$ von $x$ mit $f^{-1}(W) = V_x \cap X$. Für jedes $x$ ist $V_x$ eine Umgebung von $x$, es gibt also ein $\varepsilon_x > 0$ mit $B_{\varepsilon_x}(x) \subseteq V_x$. Wir betrachten die offene Menge $U \coloneqq \bigcup_{x \in X} B_{\varepsilon_x}(x)$. Es ist
+   \begin{align*}
+    f^{-1}(W)
+    &= \bigcup_{x \in f^{-1}(W)} \{x\}
+    \subseteq \bigcup_{x \in f^{-1}(W)} B_{\varepsilon_x}(x) \cap X \\
+    &\subseteq \bigcup_{x \in f^{-1}(W)} \underbrace{V_x \cap X}_{= f^{-1}(W)}
+    = f^{-1}(W),
+   \end{align*}
+   und damit bereits
+   \[
+    f^{-1}(W)
+    = \bigcup_{x \in f^{-1}(W)} B_\varepsilon(x) \cap X
+    =  U \cap X.
+   \]
+   
+   (\ref{enum: stetig offene Mengen} $\Rightarrow$ \ref{enum: stetig epsilon delta}) Es sei $x \in X$. Es sei $W$ eine Umgebung von $f(x)$. Da $W$ eine Umgebung von $f(x)$ ist, gibt es ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq W$. Nach Annahme gibt es eine offene Menge $U \subseteq \R^n$ mit $f^{-1}(B_\varepsilon(x)) = U \cap X$. Da $x \in f^{-1}(B_\varepsilon(x))$ muss $x \in U$. Also ist $U$ eine Umgebung von $x$ (denn $U$ ist offen). Wir setzen
+   \[
+    V \coloneqq f^{-1}(W) \cup U.
+   \]
+   Da $U$ eine Umgebung von $x$ ist, und $U \subseteq V$, ist auch $V$ eine Umgebung von $x$. Für diese Umgebung $V$ von $x$ gilt
+   \begin{align*}
+    V \cap X
+    &= (f^{-1}(W) \cup U) \cap X
+    = (f^{-1}(W) \cap X) \cup (U \cap X) \\
+    &= f^{-1}(W) \cup f^{-1}(B_\varepsilon(x))
+    = f^{-1}(W).
+   \end{align*}
+   Das zeigt nach dem ersten Teil des Lemmas, dass $f$ stetig an $x$ ist.
+ \end{enumerate}
+\end{proof}
+
+
+\begin{bem}
+ Wir erhalten insbesondere, dass eine Abbildung $f \colon \R^n \to \R^m$ genau dann stetig ist, wenn für jede offen Menge $U \subseteq \R^m$ ihr Urbild $f^{-1}(U) \subseteq \R^n$ offen ist.
+\end{bem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\section{Lösungen}
+
+\printsolutions
+
+
+
+\end{document}

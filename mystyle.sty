@@ -2,10 +2,17 @@
 \usepackage[ngerman]{babel}
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{mathtools}
-\usepackage{tikz}
-\usetikzlibrary{positioning}
 \usepackage{enumitem}
 \usepackage{exsheets}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+\usetikzlibrary{external} %lagert TikZ-Bilder aus um die Kompilierzeit zu verringern
+\tikzexternalize[prefix=tikz/]
+\tikzset{external/system call={%
+  xelatex \tikzexternalcheckshellescape
+  -halt-on-error -interaction=batchmode
+  -jobname "\image" "\texsource"}}
 
 \newcounter{everything}
 
@@ -24,6 +31,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
 
 \newcommand{\mc}{\mathcal}
 
