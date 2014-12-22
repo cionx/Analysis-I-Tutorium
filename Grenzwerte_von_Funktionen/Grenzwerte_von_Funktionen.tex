@@ -23,44 +23,39 @@
 \section{Häufungspunkte}
 
 
-Es sei $A \subseteq \R$ und $f \colon A \to \R$. Wir wollen untersuchen, wie sich $f$ an einer Stelle $x \in \R$ verhält, bzw.\ verhalten sollte. Hierfür betrachten wir die folgenden beiden Ansätze:
-
-
-\begin{enumerate}
- \item
-  Falls $x \in A$, was ist $f(x)$?
- \item
-  Was verhält sich $f$ in der Nähe von $x$?
-\end{enumerate}
-
-
-Der zweite Ansatz hat den Vorteil, dass wir ihn auch für $x \notin A$ nutzen können, sofern $f$ in der Nähe von $x$ definiert ist.
-
-Falls $x \in A$ können wir auch untersuchen, inwiefern sich die Ergebnisse der beiden Ansätze unterscheidenn, d.h.\ inwiefern das Verhalten von $f$ an der Stelle $x$ mit dem Verhalten in der Nähe von $x$ verträglich ist.
+Es sei $A \subseteq \R^n$ und $f \colon A \to \R$. Wir wollen untersuchen, wie sich $f$ an einer Stelle $x \in \R^n$ verhält, bzw.\ verhalten sollte. Damit es Sinn ergibt, dass Verhalten von $f$ an $x$ zu untersuchen, brauchen wir, dass $f$ „in der Nähe“ von $x$ definiert ist. Dies motiviert die folgende Definition:
 
 
 \begin{defi}
- Es sei $A \subseteq \R$. Ein Punkt $x \in \R$ heißt \emph{Häufungspunkt von $A$}, falls es für alle $\varepsilon > 0$ ein $a \in A$ mit $|x-a| < \varepsilon$ und $x \neq a$ gibt.
+ Es sei $A \subseteq \R^n$. Ein Punkt $x \in \R^n$ heißt \emph{Häufungspunkt von $A$}, falls es für alle $\varepsilon > 0$ ein $a \in A$ mit $\|x-a\| < \varepsilon$ und $x \neq a$ gibt.
  
  Wir bezeichnen die Menge aller Häufungspunkte von $A$ mit $A'$.
 \end{defi}
 
 
-Vorstellungsmäßig ist $x \in \R$ ein Häufungspunkt von $A \subseteq \R$, falls sich $x$ \emph{von außen} durch Punkte aus $A$ annähern lässt.
+Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, falls sich $x$ \emph{von außen} durch Punkte aus $A$ annähern lässt.
 
 
 \begin{bsp}
  \begin{itemize}
   \item
-   $x = 0$ ist ein Häufungspunkte der Menge $A \coloneqq \{1/n \mid n \geq 1\}$. Da $\lim_{n \to \infty} 1/n = 0$ gibt es für jedes $\varepsilon > 0$  ein $n \geq 1$ mit $|x-1/n| < \varepsilon$, und es ist $1/n \neq 0$.
+   $x = 0$ ist ein Häufungspunkt von $A \coloneqq \{1/n \mid n \geq 1\} \subseteq \R$: Da $\lim_{n \to \infty} 1/n = 0$ gibt es für jedes $\varepsilon > 0$  ein $n \geq 1$ mit $|x-1/n| < \varepsilon$, wobei klar ist, dass $1/n \neq 0$.
   \item
-   Der Punkt $x = 2$ ist \emph{kein} Häufungspunkt der Menge $A \coloneqq [0,1] \cup \{2\}$, denn das einzige $a \in A$ mit $|x-a| < 1/2$ ist $a = 2$.
+   Der Punkt $x = 2$ ist \emph{kein} Häufungspunkt der Menge $A \coloneqq [0,1] \cup \{2\} \subseteq \R$, denn das einzige $a \in A$ mit $|x-a| < 1/2$ ist $a = 2$.
+  \item
+   Ist $U \subseteq \R^n$ offen, so ist jeder Punkt $x \in U$ ein Häufungspunkt von $U$: Da $U$ offen ist, gibt es ein $\delta > 0$ mit $B_\delta(x) \subseteq U$. Für jedes $\varepsilon > 0$ gibt es für $\omega \coloneqq \min\{\varepsilon,\delta\}$ daher ein
+   \[
+    y \in B_\omega(x) \subseteq B_\delta(x) \subseteq U \quad \text{mit $y \neq x$},
+   \]
+   und es gilt $\|x-y\| < \omega \leq \varepsilon$.
+  \item
+   Allgemeiner ergibt sich mit dieser Argumentation, dass $x \in \R^n$ ein Häufungspunkt von $V \subseteq \R^n$ ist, falls $V$ eine Umgebung von $x$ ist.
  \end{itemize}
 \end{bsp}
 
 
 \begin{question}
- Es sei $A \subseteq \R$ und $x \in \R$. Zeigen Sie, dass $x$ genau dann ein Häufungspunkt von $A$ ist, falls es eine Folge $(a_n)_{n \in \N}$ gibt, so dass $a_n \in A \setminus \{x\}$ für alle $n \in \N$ und $\lim_{n \to \infty} a_n = x$.
+ Es sei $A \subseteq \R^m$ und $x \in \R^m$. Zeigen Sie, dass $x$ genau dann ein Häufungspunkt von $A$ ist, falls es eine Folge $(a_n)_{n \in \N}$ auf $A \setminus \{x\}$ gibt, so dass $a_n \to x$.
 \end{question}
 \begin{solution}
  Angenommen, $x$ ist ein Häufungspunkt von $A$. Dann gibt es für jedes $n \geq 1$ ein $a_n \in A \setminus \{x\}$ mit $|x-a_n| < 1/n$. Die Folge $(x_n)_{n \geq 1}$ konvergiert per Konstruktion gegen $x$.
@@ -70,13 +65,38 @@ Vorstellungsmäßig ist $x \in \R$ ein Häufungspunkt von $A \subseteq \R$, fall
 
 
 \begin{question}
- Es sei $M$ eine endliche Menge. Zeigen Sie, dass $M' = \emptyset$.
+ Es sei $M \subseteq \R^n$ endlich. Zeigen Sie, dass $M' = \emptyset$.
 \end{question}
+\begin{solution}
+ Es sei $x \in \R^n$. Ist $x \notin M$, so ergibt sich für
+ \[
+  \varepsilon \coloneqq \frac{1}{2} \min_{m \in M} \|x-m\| > 0,
+ \]
+ dass es kein $m \in M$ mit $\|x-m\| < \varepsilon$ gibt. Also ist $x$ dann kein Häufungspunkt von $M$. Ist $x \in M$, so ergibt sich für
+ \[
+  \varepsilon
+  \coloneqq
+  \begin{cases}
+   \frac{1}{2} \min_{m \in M, m \neq x} \|x-m\| & \text{falls $|M| \geq 2$} \\
+                                               1 & \text{falls $M = \{x\}$},
+  \end{cases}
+ \]
+ dass $x$ das einzige $m \in M$ mit $\|x-m\| < \varepsilon$ ist. Also ist $x$ auch dann kein Häufungspunkt von $M$.
+\end{solution}
 
 
 \begin{question}
  Bestimmen Sie $\Z'$.
 \end{question}
+\begin{solution}
+ Es sei $x \in \R$. Ist $x \notin \Z$, so gibt es für
+ \[
+  \varepsilon \coloneq \frac{1}{2} \min\{ \lceil x \rceil - x, x - \lfloor x \rfloor \}
+ \]
+ kein $n \in \Z$ mit $\|x-n\| < \varepsilon$. Also ist $x$ dann kein Häufungspunkt von $\Z$. Ist andererseits $x \in \Z$, so gibt es außer $x$ kein $n \in \Z$ mit $\|x-n\| < 1/2$, weshalb $x$ auch dann kein Häufungspunkt von $\Z$ ist.
+ 
+ Also ist kein $x \in \R$ ein Häufungspunkt von $\Z$, und somit $\Z' = \emptyset$.
+\end{solution}
 
 
 \begin{question}
@@ -88,11 +108,29 @@ Vorstellungsmäßig ist $x \in \R$ ein Häufungspunkt von $A \subseteq \R$, fall
    Es ist $(A \cup B)' = A' \cup B'$.
  \end{enumerate}
 \end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Es sei $x \in A'$. Für jedes $\varepsilon > 0$ gibt es daher ein $a \in A$ mit $\|x-a\| < \varepsilon$ und $a \neq x$. Da $a \in A \subseteq B$ folgt, dass es für jedes $\varepsilon > 0$ ein $b \in B$ mit $\|x-b\| < \varepsilon$ und $b \neq x$ gibt. Also ist $x$ ein Häufungspunkt von $B$, also $b \in B'$. Aus der Beliebigkeit von $a \in A'$ folgt, dass $A' \subseteq B'$.
+  \item
+   Da $A \subseteq A \cup B$ ist $A' \subseteq (A \cup B)'$, und da $B \subseteq A \cup B$ ist $B' \subseteq (A \cup B)'$. Also ist auch $A' \cup B' \subseteq (A \cup B)'$.
+   
+   Angenommen, es ist $x \notin A' \cup B'$. Dann gibt es $\varepsilon_A, \varepsilon_B > 0$, so dass es kein $a \in A$ mit $\|x-a\| < \varepsilon$ und $x \neq a$ gibt, und auch kein $b \in B$ mit $\|x-b\| < \varepsilon$ und $x \neq b$. Für $\varepsilon \coloneqq \min\{\varepsilon_A, \varepsilon_B\}$ gibt es daher kein $y \in A \cup B$ mit $\|x-y\| < \varepsilon$ und $y \neq x$. Also ist dann $x \notin (A \cup B)'$. Das zeigt, dass auch $(A \cup B)' \subseteq A' \cup B'$.
+  \qedhere
+ \end{enumerate}
+\end{solution}
 
 
 \begin{question}
  Bestimmen Sie $A'$ für $A \coloneqq [0,1] \cup [2,3]$.
 \end{question}
+\begin{proof}
+ Wir zeigen zunächst, dass für alle $a,b \in \R$ mit $a<b$
+ \[
+  [a,b]' = [a,b].
+ \]
+\end{proof}
+
 
 
 
