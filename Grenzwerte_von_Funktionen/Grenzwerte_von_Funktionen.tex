@@ -23,7 +23,7 @@
 \section{Häufungspunkte}
 
 
-Es sei $A \subseteq \R^n$ und $f \colon A \to \R$. Wir wollen untersuchen, wie sich $f$ an einer Stelle $x \in \R^n$ verhält, bzw.\ verhalten sollte. Damit es Sinn ergibt, dass Verhalten von $f$ an $x$ zu untersuchen, brauchen wir, dass $f$ „in der Nähe“ von $x$ definiert ist. Dies motiviert die folgende Definition:
+Es sei $A \subseteq \R^n$ und $f \colon A \to \R$. Wir wollen untersuchen, wie sich $f$ an einer Stelle $x \in \R^n$ verhält, bzw.\ verhalten sollte. Um das Verhalten von $f$ an $x$ zu untersuchen, brauchen wir, dass $f$ „in der Nähe“ von $x$ definiert ist. Hierfür brauchen wir, dass $x$ „nahe“ an $A$ ist. Dies motiviert die folgende Definition:
 
 
 \begin{defi}
@@ -55,14 +55,14 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
 
 
 \begin{question}
- Es sei $A \subseteq \R^m$ und $x \in \R^m$. Zeigen Sie, dass $x$ genau dann ein Häufungspunkt von $A$ ist, falls es eine Folge $(a_n)_{n \in \N}$ auf $A \setminus \{x\}$ gibt, so dass $a_n \to x$.
+ Es sei $A \subseteq \R^m$ und $x \in \R^m$. Zeigen Sie, dass $x$ genau dann ein Häufungspunkt von $A$ ist, falls es eine Folge $(a_n)$ auf $A \setminus \{x\}$ gibt, so dass $a_n \to x$.
 \end{question}
 \begin{solution}
  Angenommen, $x$ ist ein Häufungspunkt von $A$. Dann gibt es für jedes $n \geq 1$ ein $a_n \in A \setminus \{x\}$ mit $|x-a_n| < 1/n$. Die Folge $(x_n)_{n \geq 1}$ konvergiert per Konstruktion gegen $x$.
  
  Angenommen, eine solche Folge $(a_n)_{n \in \N}$ existiert. Dann gibt es für jedes $\varepsilon > 0$ ein $N \in \N$, so dass $|x-a_n| < \varepsilon$ für alle $n \geq N$. Inbesondere ist $a_N \in A$ mit $|x-a_N| < \varepsilon$ und $a_N \neq x$.
 \end{solution}
-
+ 
 
 \begin{question}
  Es sei $M \subseteq \R^n$ endlich. Zeigen Sie, dass $M' = \emptyset$.
@@ -231,21 +231,30 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
 \begin{lem}
  Es sei $A \subseteq \R^m$, $f \colon A \to \R^k$ und $x \in \R^m$ ein Häufungspunkt von $A$. Für $y \in \R^k$ sind äquivalent:
  \begin{enumerate}
-  \item
+  \item\label{enum: Grenzwert mit epsilon delta}
    $\lim_{a \to x, a \in A} f(a) = y$.
-  \item
+  \item\label{enum: Grenzwert mit Folgen}
    Für jede Folge $(a_n)$ auf $A \setminus \{x\}$ mit $a_n \to x$ gilt, dass auch $f(a_n) \to y$.
  \end{enumerate}
  (Da $x$ ein Häufungspunkt von $A$ ist, existiert auch eine entsprechende Folge.)
 \end{lem}
-
+\begin{proof}
+ (\ref{enum: Grenzwert mit epsilon delta} $\Rightarrow$ \ref{enum: Grenzwert mit Folgen}) Es sei $(a_n)$ eine Folge auf $A \setminus \{x\}$ mit $a_n \to x$. Wir wollen zeigen, dass $f(a_n) \to y$. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Da $\lim_{a \to x, a \in A} f(a) = y$ gibt es ein $\delta > 0$, so dass
+ \[
+  \|x-a\| < \delta \Rightarrow \|f(x)-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in A$ mit $a \neq x$}.
+ \]
+ Da $a_n \to x$ gibt es ein $N \in \N$ mit $\|x - a_n\| < \delta$ für alle $n \geq N$. Da $a_n \neq x$ ist deshalb $\|f(x)-f(a_n)\| < \varepsilon$ für alle $n \geq N$.
+ 
+ (\ref{enum: Grenzwert mit Folgen} $\Rightarrow$ \ref{enum: Grenzwert mit epsilon delta}) Angenommen es ist nicht $\lim_{a \to x, a \in A} f(a) = y$. Dann gibt es ein $\varepsilon > 0$, so dass es für alle $\delta > 0$ ein $a \in A$ gibt, so dass zwar $x \neq a$ und $\|x-a\| < \delta$, aber $\|y-f(a)\| \geq \varepsilon$. Insbesondere gibt es deshalb für alle $n \geq 1$ ein $a_n \in A \setminus \{x\}$ mit $\|x-a_n\| < 1/n$ aber $\|y-f(a_n)\| \geq \varepsilon$. Dann ist $(a_n)$ eine Folge auf $A \setminus \{x\}$ mit $a_n \to x$, aber nicht $f(a_n) \rightarrow y$.
+\end{proof}
 
 
 Mithilfe dieses Lemmas können wir viele Aussagen für die Grenzwerte von Folgen auf Grenzwerte von Funktionen übertragen.
 
 
 \begin{prop}
- Es seien $A \subseteq \R$, $x$ ein Häufungspunkt von $A$, $f, f_1, f_2 \colon A \to \R$ und $\lambda \in \R$.
+ Es seien $A \subseteq \R^n$, $f, f_1, f_2 \colon A \to \R^m$, $\lambda \in \R$ und $x \in \R^n$ ein Häufungspunkt von $A$.
  \begin{enumerate}
   \item
    Der Grenzwert $\lim_{a \to x, a \in A} f(a)$ ist eindeutig (wenn er existiert).
@@ -263,6 +272,9 @@ Mithilfe dieses Lemmas können wir viele Aussagen für die Grenzwerte von Folgen
     \lim_{\substack{a \to x \\ a \in A}} (\lambda f)(a)
     = \lambda \lim_{\substack{a \to x \\ a \in A}} f(a).
    \]
+ \end{enumerate}
+ Im Fall $n = 1$, also für $\R^1 = \R$, gilt auch eine Verträglichkeit mit Multiplikation und Division.
+ \begin{enumerate}[resume]
   \item
    Existieren die Grenzwerte $\lim_{a \to x, a \in A} f_1(a)$ und $\lim_{a \to x, a \in B} f_2(a)$, so existiert auch der Grenzwert $\lim_{x \to a, a \in A} (f_1 \cdot f_2)(a)$ und es gilt
    \[
@@ -278,25 +290,37 @@ Mithilfe dieses Lemmas können wir viele Aussagen für die Grenzwerte von Folgen
     = \frac{\lim_{a \to x, a \in A} f_1(a)}{\lim_{a \to x, a \in A} f_2(a)}
    \]
  \end{enumerate}
+ (Sehen wir $\R^2 \cong \C$, so ergibt sich auch eine Verträglichkeit mit der Multiplikation und Division im Komplexen; hierdrauf wollen wir jetzt aber nicht weiter eingehen.)
 \end{prop}
 
 
-Wie wir bereits gesehen haben, können für eine Funktion $f \colon X \to \R$ mit Definitionsbereich $X \subseteq \R$ und Teilmengen $A, B \subseteq X$ mit gemeinsamen Häufungspunkt $x \in \R$ die beiden Grenzwerte $\lim_{a \to x, a \in A} f(a)$ und $\lim_{b \to x, b \in B} f(b)$ existieren, aber dennoch
+Wie wir bereits gesehen haben, können für eine Funktion $f \colon X \to \R^m$ mit Definitionsbereich $X \subseteq \R^n$ und Teilmengen $A, B \subseteq X$ mit gemeinsamen Häufungspunkt $x \in \R^n$ die beiden Grenzwerte $\lim_{a \to x, a \in A} f(a)$ und $\lim_{b \to x, b \in B} f(b)$ existieren, aber dennoch
 \[
  \lim_{\substack{a \to x \\ a \in A}} f(a)
  \neq
  \lim_{\substack{b \to x \\ b \in B}} f(b).
 \]
-Es kann auch passieren, dass einer der beiden Grenzwerte existiert, der andere jedoch nicht. Es gibt also im Allgemeinen keinen Zusammehang zwischen dem Grenzwert von $f$ über $A$ und dem Grenzwert über $B$.
+Es kann auch passieren, dass einer der beiden Grenzwerte existiert, der andere jedoch nicht. Es gibt also im Allgemeinen keinen Zusammehang zwischen dem Grenzwert von $f$ über $A$ und dem Grenzwert über $B$. Unter bestimmten Umständen lassen sich die entsprechenden Grenzwerte dennoch vergleichen:
 
 
 \begin{lem}\label{lem: Grenzwerte auf Teilmengen}
- Es seien $A, B \subseteq \R$ und $f \colon B \to \R$. Ist $x$ ein gemeinsamer Häufungspunkt von $A$ und $B$, sodass $\lim_{b \to x, b \in B} f(b)$ existiert, so existiert auch der Grenzwert $\lim_{a \to x, a \in A} f(a)$, und es gilt
+ Es seien $A \subseteq B \subseteq \R^n$ und $f \colon B \to \R^m$. Ist $x \in \R^n$ ein gemeinsamer Häufungspunkt von $A$ und $B$, sodass $\lim_{b \to x, b \in B} f(b)$ existiert, so existiert auch der Grenzwert $\lim_{a \to x, a \in A} f(a)$, und es gilt
  \[
   \lim_{\substack{a \to x \\ a \in A}} f(a)
   = \lim_{\substack{b \to x \\ b \in B}} f(b).
  \]
 \end{lem}
+\begin{proof}
+ Zur besseren Lesbarkeit setzen wir $y \coloneqq \lim_{b \to x, b \in B} f(b)$. Wir wollen zeigen, dass auh $\lim_{a \to x, x \in A} f(a) = y$. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Da $y = \lim_{b \to x, b \in B} f(b)$ gibt es ein $\delta > 0$, so dass
+ \[
+  \|x-b\| < \delta \Rightarrow \|y-f(b)\| < \varepsilon \quad \text{für alle $b \in B$ mit $b \neq x$}.
+ \]
+ Da $A \subseteq B$ ist daher insbesondere
+ \[
+  \|x-a\| < \delta \Rightarrow \|y-f(a)\| < \varepsilon \quad \text{für alle $a \in A$ mit $a \neq x$}.
+ \]
+ Wegen der Beliebigkeit von $\varepsilon > 0$ folgt, dass $\lim_{a \to x, a \in A} f(a) = y$.
+\end{proof}
 
 
 \begin{kor}
@@ -306,17 +330,26 @@ Es kann auch passieren, dass einer der beiden Grenzwerte existiert, der andere j
   = \lim_{\substack{b \to x \\ b \in B}} f(b).
  \]
 \end{kor}
+\begin{proof}
+ Da die beiden Grenzwerte $\lim_{a \to x, a \in A} f(a)$ und $\lim_{b \to x, b \in B} f(b)$ existieren, und $A \cap B \subseteq A$ und $A \cap B \subseteq B$, erhalten wir aus Lemma \ref{lem: Grenzwerte auf Teilmengen}, dass auch der Grenzwert $\lim_{c \to x, c \in A \cap B} f(c)$ existiert und
+ \[
+  \lim_{\substack{a \to x \\ a \in A}} f(a)
+  = \lim_{\substack{c \to x \\ c \in A \cap B}} f(c)
+  = \lim_{\substack{b \to x \\ b \in B}} f(b).
+  \qedhere
+ \]
+\end{proof}
 
 
 
 
 
-\section{Links- rechts- und beidseitige Grenzwerte}
+\section{Links-, rechts- und beidseitige Grenzwerte}
 Wir wollen uns nun einem Sonderfall von Funktionsgrenzwerten zuwenden.
 
 
 \begin{defi}
- Es sei $A \subseteq \R$, $f \colon A \to \R$ und $x \in \R$.
+ Es sei $f \colon A \to \R^m$ mit Definitionsbereich $A \subseteq \R$ und $x \in \R$.
  
  Gibt es ein $r > 0$, so dass $(x-r, x) \subseteq A$, so schreiben wir
  \[

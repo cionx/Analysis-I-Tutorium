@@ -72,14 +72,22 @@ Im Eindimensionalen differenzierbare Funktionen lässt sich mithilfe der Ableitu
 \end{proof}
 
 
-Wir können nun den Satz von Rolle beweisen.
+Wir können nun den Satz von Rolle beweisen. (Wir benötigen auch noch, dass abgeschlossene Intervalle $[a,b]$ kompakt sind --- siehe hierzu die entsprechende Übersicht zu kompakten Teilmengen von $\R^n$.)
 
 
 \begin{thrm}[Rolle]
  Es seien $a,b \in \R$ mit $a < b$. Die Funktion $f \colon [a,b] \to \R$ sei stetig und auf $(a,b)$ differenzierbar. Es sei $f(a) = f(b)$. Dann gibt es ein $\xi \in (a,b)$ mit $f'(\xi) = 0$. 
 \end{thrm}
 \begin{proof}
- Wir können o.B.d.A. davon ausgehen, dass $f(a) = f(b) = 0$. Ist $f$ konstant, so ist die Aussage klar. Ist $f$ nicht konstant, so nutzen wir, dass das Intervall $[a,b]$ kompakt ist, und $f$ auf $[a,b]$ sein Maximum und Minimum annimmt; da $f$ nicht konstant ist, muss eines von beiden verschieden von Null sein. Es sei $\xi \in [a,b]$ eine Extremstelle von $f$ mit $f(\xi) \neq 0$. Offenbar ist $\xi \in (a,b)$. Da $\xi$ eine Extremstelle von $f$ ist, ist $f'(\xi) = 0$.
+ Wir können o.B.d.A. davon ausgehen, dass $f(a) = f(b) = 0$.  Ist $f$ konstant, also $f = 0$, so ist die Aussage klar. Ansonsten gibt es ein $c \in [a,b]$ mit $f(c) \neq 0$; daher ist
+ \[
+  \sup_{x \in [a,b]} f(x) > 0 \quad \text{oder} \quad \inf_{x \in [a,b]} f(x) < 0.
+ \]
+ Da $[a,b]$ kompakt ist werden beide Werte angenommen; es gibt also $\xi \in [a,b]$, so dass
+ \[
+  f(\xi) = \max_{x \in [a,b]} f(x) > 0 \quad \text{oder} \quad f(\xi) = \min_{x \in [a,b]} f(x) < 0.
+ \]
+ Wir erhalten in beiden Fällen, dass $\xi$ eine Extremstelle von $f$ ist und dass $\xi \notin \{a,b\}$. Da $\xi \in (a,b)$ eine Extremstelle von $f$ ist muss $f'(\xi) = 0$.
 \end{proof}
 
 
