@@ -323,7 +323,7 @@ Es kann auch passieren, dass einer der beiden Grenzwerte existiert, der andere j
 \end{proof}
 
 
-\begin{kor}
+\begin{kor}\label{kor: gemeinsamer Häufungspunkt mit gemeinsamen Grenzwert}
  Es sei $f \colon X \to \R$ mit Definitionsbereich $X \subseteq \R$. Es seien $A, B \subseteq X$ Teilmengen, so dass $x \in \R$ ein gemeinsamer Häufungspunkt von $A$, $B$ ist, und die beiden Grenzwerte $\lim_{a \to x, a \in A} f(a)$ und $\lim_{b \to x, b \in B} f(b)$ existieren. Ist $x$ auch ein Häufungspunkt von $A \cap B$, so ist
  \[
   \lim_{\substack{a \to x \\ a \in A}} f(a)
@@ -383,7 +383,7 @@ Wir wollen uns nun einem Sonderfall von Funktionsgrenzwerten zuwenden.
 \end{defi}
 
 
-Die Wohldefiniertheit der jeweiligen Ausdrücke, also die Unabhängigkeit von $r$, ergibt sich aus Lemma \ref{lem: Grenzwerte auf Teilmengen}.
+Die Wohldefiniertheit der jeweiligen Ausdrücke, also die Unabhängigkeit von $r$, ergibt sich aus Korollar \ref{kor: gemeinsamer Häufungspunkt mit gemeinsamen Grenzwert}.
 
 
 Der beidseitige Grenzwert lässt sich auch als Kombination des links- und rechtsseitigen Grenzwertes definieren:
@@ -410,17 +410,15 @@ Der beidseitige Grenzwert lässt sich auch als Kombination des links- und rechts
 
 
 \begin{defi}
- Es sei $A \subseteq \R$, $f \colon A \to \R$ und $x \in \R$ ein Häufungspunkt von $A$. Wir schreiben dass $\lim_{a \to x, a \in A} f(x) = \infty$, falls es für alle $R > 0$ ein $\delta > 0$ gibt, so dass
+ Es sei $A \subseteq \R^n$, $f \colon A \to \R^m$ und $x \in \R^n$ ein Häufungspunkt von $A$. Wir schreiben dass $\lim_{a \to x, a \in A} f(x) = \infty$, falls es für alle $R > 0$ ein $\delta > 0$ gibt, so dass
  \[
-  |f(a)| \geq R \quad \text{für alle $a \in A$ mit $|x-a| < \delta$ und $a \neq x$}.
+  \|x-a\| < \delta \Rightarrow \|f(a)\| \geq R \quad \text{für alle $a \in A$ mit $a \neq x$}.
  \]
- Wir schreiben $\lim_{a \to x, a \in A} f(x) = -\infty$, falls es für alle $R > 0$ eine $\delta > 0$ gibt, so dass
+ Wir schreiben $\lim_{a \to x, a \in A} f(x) = -\infty$, falls es für alle $R > 0$ ein $\delta > 0$ gibt, so dass
  \[
-  |f(a)| \leq -R \quad \text{für alle $a \in A$ mit $|x-a| < \delta$ und $a \neq x$}.
+  \|x-a\| < \delta \Rightarrow \|f(a)\| \leq -R \quad \text{für alle $a \in A$ mit $a \neq x$}.
  \]
 \end{defi}
-
-
 
 
 \begin{defi}
