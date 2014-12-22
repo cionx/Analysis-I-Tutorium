@@ -124,13 +124,36 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
 \begin{question}
  Bestimmen Sie $A'$ für $A \coloneqq [0,1] \cup [2,3]$.
 \end{question}
-\begin{proof}
- Wir zeigen zunächst, dass für alle $a,b \in \R$ mit $a<b$
+\begin{solution}
+ \begin{beh}
+  Für alle $a, b \in \R$ mit $a < b$ ist
+  \[
+   [a,b]' = [a,b].
+  \]
+ \end{beh}
+ \begin{proof}[Beweis der Behauptung]
+  Für $x < a$  ist $a - x > 0$, es gibt aber kein $y \in [a,b]$ mit $\|x-y\| < a-x$; also ist dann $x \notin [a,b]'$ Analog ergibt sich, dass auch $x \notin [a,b]'$ für $x > b$. Also ist $[a,b]' \subseteq [a,b]$.
+  
+  Dass $a,b \in [a,b]'$ ergibt sich durch die Folgen $(x_n)$ auf $(a,b]$ und $(y_n)$ auf $[a,b)$ mit
+  \[
+   x_n \coloneqq a + \frac{b-a}{n+1}
+   \quad
+   \text{und}
+   \quad
+   y_n \coloneqq b - \frac{b-a}{n+1}
+   \quad
+   \text{für alle $n \in \N$}.
+  \]
+  Dass $x \in [a,b]'$ für $a < x < b$ ergibt sich daraus, dass $[a,b]$ eine Umgebung für diese $x$ ist. Damit ergibt sich, dass $[a,b] \subseteq [a,b]'$.
+ \end{proof}
+ 
+ Aus der Behauptung ergibt sich direkt, dass
  \[
-  [a,b]' = [a,b].
+  ([0,1] \cup [2,3])'
+  = [0,1]' \cup [2,3]'
+  = [0,1] \cup [2,3].
  \]
-\end{proof}
-
+\end{solution}
 
 
 
@@ -140,13 +163,13 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
 
 
 \begin{defi}
- Es sei $A \subseteq \R$ und $x \in \R$ ein Häufungspunkt von $A$. Für $y \in \R$ schreiben wir
+ Es sei $A \subseteq \R^n$, $f \colon A \to \R^m$ und $x \in \R^n$ ein Häufungspunkt von $A$. Für $y \in \R^m$ schreiben wir
  \[
   \lim_{\substack{a \to x \\ a \in A}} f(a) = y,
  \]
  falls es für jedes $\varepsilon > 0$ ein $\delta > 0$ gibt, so dass
  \[
-  |x-a| < \delta \Rightarrow |f(x)-f(a)| < \varepsilon
+  \|x-a\| < \delta \Rightarrow \|f(x)-f(a)\| < \varepsilon
   \quad
   \text{für alle $a \in A$ mit $a \neq x$}.
  \]
@@ -167,7 +190,7 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
       1 & \text{falls $x > 0$}.
     \end{cases}
    \]
-   Der Punkt $0$ ist ein Häufungspunkt von $(-\infty,0)$ und $(0,\infty)$, und es ist
+   $0$ ist ein gemeinsamer Häufungspunkt von $(-\infty,0)$ und $(0,\infty)$, und es ist
    \[
     \lim_{\substack{x \to 0 \\ x \in (-\infty, 0)}} f(x) = -1,
     \quad
@@ -182,11 +205,11 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
    \]
    $0$ ist ein Häufungspunkt der beiden Mengen
    \[
-    A \coloneqq \left\{ \frac{1}{\frac{\pi}{2} + n \cdot 2\pi} \mid n \in \N \right\}
+    A \coloneqq \left\{ \frac{1}{\frac{\pi}{2} + n \cdot 2\pi} \,\middle|\, n \in \N \right\}
     \quad
     \text{und}
     \quad
-    B \coloneqq \left\{ \frac{1}{\frac{3\pi}{2} + n \cdot 2\pi} \mid n \in \N \right\},
+    B \coloneqq \left\{ \frac{1}{\frac{3\pi}{2} + n \cdot 2\pi} \,\middle|\, n \in \N \right\},
    \]
    und es ist
    \[
@@ -206,14 +229,16 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
 
 
 \begin{lem}
- Es sei $A \subseteq \R$, $f \colon A \to \R$ und $x \in \R$ ein Häufungspunkt von $A$. Für $y \in \R$ sind äquivalent:
+ Es sei $A \subseteq \R^m$, $f \colon A \to \R^k$ und $x \in \R^m$ ein Häufungspunkt von $A$. Für $y \in \R^k$ sind äquivalent:
  \begin{enumerate}
   \item
-   $\lim_{a \to x, a \in A} f(a) = x$.
+   $\lim_{a \to x, a \in A} f(a) = y$.
   \item
-   Für jede Folge $(a_n)_{n \in \N}$ mit $a_n \in A \setminus \{x\}$ für alle $n \in \N$ und $\lim_{n \to \infty} a_n = x$ gilt, dass $\lim_{n \to \infty} f(a_n) = f(x)$.
+   Für jede Folge $(a_n)$ auf $A \setminus \{x\}$ mit $a_n \to x$ gilt, dass auch $f(a_n) \to y$.
  \end{enumerate}
+ (Da $x$ ein Häufungspunkt von $A$ ist, existiert auch eine entsprechende Folge.)
 \end{lem}
+
 
 
 Mithilfe dieses Lemmas können wir viele Aussagen für die Grenzwerte von Folgen auf Grenzwerte von Funktionen übertragen.
