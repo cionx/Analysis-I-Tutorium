@@ -89,7 +89,7 @@ Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|
    \shortintertext{und}
     \|x-y\| \leq \sum_{i=1}^n |x_i - y_i|
    \end{gather*}
-   gelten.
+   gelten. (Durch die Betrachtung von $y = 0$ erhalten wir insbesondere, dass $|x_i| \leq \|x\|$ für alle $1 \leq i \leq n$ und $\|x\| \leq \sum_{i=1}^n |x_i|$.)
  \end{enumerate}
 \end{question}
 \begin{solution}
@@ -119,6 +119,35 @@ Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|
    \]
  \end{enumerate}
 \end{solution}
+
+
+\begin{defi}
+ Eine Teilmenge $X \subseteq \R^n$ heißt \emph{beschränkt}, falls es ein $C > 0$ gibt, so dass $\|x\| \leq C$ für alle $x \in X$.
+\end{defi}
+
+
+\begin{question}
+ Für $1 \leq i \leq n$ sei $\pi_i \colon \R^n \to \R, (x_1, \dotsc, x_n) \mapsto x_i$ die Projektion in die $i$-te Koordinate. Zeigen Sie: $X \subseteq \R^n$ ist genau dann beschränkt, wenn $\pi_i(X)$ für alle $1 \leq i \leq n$ beschränkt ist.
+\end{question}
+\begin{proof}
+ Angenommen $X$ ist beschränkt. Dann gibt es ein $C > 0$, so dass $\|x\| \leq C$ für alle $x \in X$. Für jedes $1 \leq i \leq n$ ist daher
+ \[
+  |\pi_i(x)| = |x_i| \leq x \leq C \quad \text{für alle $x = (x_1, \dotsc, x_n) \in X$},
+ \]
+ und somit
+ \[
+  |x| \leq C \quad \text{für alle $x \in \pi_i(X)$}.
+ \]
+ Also ist $\pi_i(X)$ für alle $1 \leq i \leq n$ beschränkt.
+ 
+ Angenommen, die $\pi_i(X)$ sind alle beschränkt. Dann gibt es für jedes $1 \leq i \leq n$ ein $C_i > 0$ mit $\pi_i(x) \subseteq C_i$ für alle $x \in X$. Für $C \coloneqq C_1 + \dotsb + C_n$ ist daher
+ \[
+  \|x\| \leq \sum_{i=1}^n |x_i| \leq \sum_{i=1}^n C_i = C
+  \quad \text{für alle $x = (x_1, \dotsc, x_n) \in X$}.
+ \]
+ Also ist $X$ beschränkt.
+\end{proof}
+
 
 
 
@@ -983,7 +1012,7 @@ Wie wir bereits gesehen haben, ist eine Abbildung $f \colon \R^n \to \R^m$ genau
 \begin{lem}
  Es sei $X \subseteq \R^n$ und $f \colon \R^m$. Dann ist $f$ genau dann stetig, falls es für jede abgeschlossene Teilmenge $C \subseteq \R^m$ eine abgeschlossen Teilmenge $A \subseteq \R^n$ gibt, so dass $f^{-1}(C) = A \cap X$.
  
- Insbesondere ist eine Abbildung $f \colon \R^n \to \R^m$ genau dann offen, wenn die Urbilder abgeschlossener Mengen ebenfalls abgeschlossen sind.
+ Insbesondere ist eine Abbildung $f \colon \R^n \to \R^m$ genau dann stetig, wenn die Urbilder abgeschlossener Mengen ebenfalls abgeschlossen sind.
 \end{lem}
 \begin{proof}
  Angenommen $f$ ist stetig. Es sei $C \subseteq \R^m$ abgeschlossen. Da $C$ abgeschlossen ist, ist $C^c$ offen. Da $f$ stetig ist, gibt es eine offene Menge $U \subseteq \R^n$ mit $f^{-1}(C^c) = U \cap X$. Daher ist
@@ -1027,6 +1056,23 @@ Diese Charakterisierung stetiger Abbildungen erlaubt es uns mit wenig Arbeit die
    Es ist klar, dass $[0,1]^n = A_1 \cap \dotsb \cap A_n$. Da (beliebige) Schnitte abgeschlossener Mengen wieder abgeschlossen sind, genügt es zu zeigen, dass die $A_i$ abgeschlossen sind. Dies ergibt sich daraus, dass die kanonischen Projektionen $\pi_i \colon \R^n \to \R$ stetig sind, das Einheitsintervall $[0,1] \subseteq \R$ abgeschlossen und $A_i = \pi_i^{-1}([0,1])$ für alle $1 \leq i \leq n$.
  \end{itemize}
 \end{bsp}
+
+
+\begin{question}
+ Zeigen Sie, dass der „unendliche Zylinder“
+ \[
+  Z \coloneqq S^1 \times \R = \{(x,y,z) \in \R^3 \mid \|(x,y)\| = 1\}
+ \]
+ abgeschlossen ist.
+\end{question}
+\begin{solution}
+ Die Abbildung
+ \[
+  f \colon \R^3 \to \R, (x,y,z) \mapsto \sqrt{x^2 + y^2}
+ \]
+ ist stetig, das $f = \|\pi_1^2 + \pi_2^2\|$. Da $\{1\} \subseteq \R$ abgeschlossen ist, ist also auch $Z = f^{-1}(\{1\})$ abgeschlossen.
+\end{solution}
+
 
 
 Eine wichtige Eigeschaft von abgeschlossenen Mengen besteht darin, dass sie unter Grenzwerten von Folgen abgeschlossen sind.

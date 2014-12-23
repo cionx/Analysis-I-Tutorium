@@ -174,6 +174,44 @@ Ein weiterer Kompaktheitsbegriff ist der der Überdeckungskompaktheit. Wie sich 
 \end{defi}
 
 
+\begin{lem}
+ Es sei $K \subseteq \R^n$ überdeckungskompakt. Dann gilt:
+ \begin{enumerate}
+  \item
+   $K$ ist abgeschlossen.
+  \item
+   $K$ ist beschränkt.
+ \end{enumerate}
+\end{lem}
+\begin{proof}
+ \begin{enumerate}
+  \item
+   Wir zeigen, dass $K$ abgeschlossen ist, indem wir zeigen, dass $K^c$ offen ist. Es sei hierfür $x \in K^c$ beliebig aber fest. Wir wollen zeigen, dass es ein $\varepsilon > 0$ gibt, so dass $B_\varepsilon(x) \subseteq K$. Für jedes $y \in K$ ist $x \neq y$ (da $x \notin K$), also $\varepsilon_y \coloneqq \|x-y\|/2 > 0$. Für jedes $y \in K$ sind dann $B_{\varepsilon_y}(x)$ und $B_{\varepsilon_y}(y)$ disjunkt.
+   
+   (Wir würden nun gerne die Bälle $B_{\varepsilon_y}(x)$ schneiden, um eine, hoffentlich offene, Menge zu erhalten, die $x$ enthält, aber disjunkt zu $K$ ist. Das Problem ist, dass der möglicherweise unendliche Schnitt $\bigcap_{y \in K} B_{\varepsilon_y}(x)$ nicht mehr notwendigerweise offen ist. Mithilfe der Überdeckungskompaktheit können wir diesen unendlichen Schnitt aber durch einen endlichen ersetzen:)
+   
+   Die $\varepsilon$-Bälle $\{B_{\varepsilon_y}(y) \mid y \in K\}$ bilden eine offene Überdeckung von $K$. Da $K$ überdeckungskompakt ist, besitzt diese Überdeckung eine endliche Teilüberdeckung; es gibt also $y_1, \dotsc, y_s \in K$ mit
+   \begin{equation}\label{eqn: K endliche Überdeckung}
+    K \subseteq B_{\varepsilon_{y_1}}(y_1) \cup \dotsb \cup B_{\varepsilon_{y_s}}(y_s).
+   \end{equation}
+   Wir setzen $\varepsilon \coloneqq \min_{i=1,\dotsc,s} \varepsilon_{y_s} > 0$. Da $B_{\varepsilon_y}(x)$ und $B_{\varepsilon_y}(y)$ für alle $y \in K$ disjunkt sind, folgt aus \eqref{eqn: K endliche Überdeckung}, dass auch $B_\varepsilon(x)$ und $K$ disjunkt sind; es ist nämlich
+   \begin{align*}
+    B_\varepsilon(x) \cap K
+    &\subseteq B_\varepsilon(x) \cap \bigcup_{i=1}^s B_{\varepsilon_{y_i}}(y_i)
+    = \bigcup_{i=1}^s (B_\varepsilon(x) \cap B_{\varepsilon_{y_i}}(y_i)) \\
+    &\subseteq \bigcup_{i=1}^s \underbrace{(B_{\varepsilon_{y_i}}(x) \cap B_{\varepsilon_{y_i}(y_i)})}_{= \emptyset}
+    = \emptyset.
+   \end{align*}
+   Es ist also $B_\varepsilon(x) \subseteq K^c$. Aus der Beliebigkeit von $x \in K^c$ folgt, dass $K^c$ offen ist, und somit $K$ abgeschlossen.
+  \item
+   Die offenen Bälle $\{B_r(0) \mid r > 0\}$ bilden eine offene Überdeckung von $\R^n$, und damit insbesondere auch von $K$. Da $K$ überdeckungskompakt ist, besitzt diese Überdeckung eine endliche Teilüberdeckung. Es gibt also Radien $r_1, \dotsc, r_M > 0$ mit $K \subseteq B_{r_1}(0) \cup \dotsb \cup B_{r_M}(0)$. Für den Radius $R = \max_{i=1,\dotsc,M} r_i$ so ist $B_{r_i}(0) \subseteq B_R(0)$ für alle $1 \leq i \leq s$, und somit auch $K \subseteq B_R(0)$. Also ist $K$ beschränkt.
+  \qedhere
+ \end{enumerate}
+\end{proof}
+
+
+
+
 \begin{prop}
  Es sei $K \subseteq \R^n$. Dann sind äquivalent:
  \begin{enumerate}
@@ -199,6 +237,50 @@ Ein weiterer Kompaktheitsbegriff ist der der Überdeckungskompaktheit. Wie sich 
  \end{equation}
  Da jeder der $\varepsilon$-Bälle $B_{\varepsilon_x}(x)$ nur endlich viele Folgeglieder enthält, enthält auch $K$ wegen \eqref{eqn: K endlich überdeckt} nur endlich viele Folgeglieder, was offenbar nicht seien kann. Das zeigt, dass aus Überdeckungskompaktheit Folgenkompaktheit folgt.
 \end{proof}
+
+
+Wegen der Äquivalenz von Folgen- und Überdeckungskompaktheit in $\R^n$ spricht man auch nur von Kompaktheit; eine Teilmenge $K \subseteq \R^n$ heißt also \emph{kompakt}, falls sie folgenkompakt, bzw.\ überdeckungskompakt ist.
+
+
+
+
+
+
+\section{Der Satz von Heine-Borel}
+Der Satz von Heine-Borel beantwortet die Frage, wie kompakte Teilmengen von $\R^n$ aussehen.
+
+
+\begin{thrm}[Satz von Heine-Borel]
+ Eine Teilmenge $K \subseteq \R^n$ ist genau dann kompakt, wenn $K$ abgeschlossen und beschränkt ist.
+\end{thrm}
+\begin{proof}
+ Wir haben bereits gesehen, dass jede (überdeckungs)kompakte Teilmenge sowohl abgeschlossen als auch beschränkt ist.
+ 
+ Es sei andererseits $K$ abgeschlossen und beschränkt. Wir wollen zeigen, dass $K$ (folgen)kompakt ist. Es sei hierfür $(x_n)_{n \in \N}$ eine Folge auf $K$. Da $K$ beschränkt ist, besitzt $K$ nach dem Satz von Bolzano-Weierstraß eine konvergente Teilfolge $(x_{n_j})_{j \in \N}$. Da $(x_{n_j})$ eine Folge auf $K$ ist, und $K$ abgeschlossen ist, ist auch $\lim_{j \to \infty} x_{n_j} \in K$. Also ist $K$ (folgen)kompakt.
+\end{proof}
+
+
+Der Satz von Heine-Borel ist sehr nützlich, um Teilmengen von $\R^n$ auf Kompaktheit zu untersuchen.
+
+
+\begin{bsp}
+ \begin{itemize}
+  \item
+   Die $n$-dimensionale Sphäre $S^n = \{x \in \R^{n+1} \mid \|x\| = 1\}$ ist offenbar beschränkt, und wir wissen bereits, dass sie auch abgeschlossen ist. Also ist $S^n$ kompakt.
+  \item
+   Wir wissen bereits, dass der Einheitswürfel $[0,1]^n \subseteq \R^n$ abgeschlossen ist. Er ist auch beschränkt, denn für alle $x = (x_1, \dotsc, x_n) \in [0,1]^n$ ist $\|x\| \leq \sum_{i=1}^n |x_i| \leq n$. Also ist der Einheitswürfel kompakt.
+  \item
+   Das offen Intervall $(0,1)$ ist zwar beschränkt, aber nicht abgeschlossen, und somit auch nicht kompakt.
+  \item
+   Der unendliche Zylinder $S^1 \times \R \subseteq \R^3$ ist zwar abgeschlossen, aber nicht beschränkt, und somit ebenfalls nicht kompakt. (Für jedes $C > 0$ ist $x \coloneqq (1,0,C) \in S^1 \times \R$ mit $\|x\| > C$.)
+  \item
+   
+  \end{itemize}
+\end{bsp}
+
+
+
+
 
 
 

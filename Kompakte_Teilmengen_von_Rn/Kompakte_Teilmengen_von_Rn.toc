@@ -2,3 +2,4 @@
 \contentsline {section}{\numberline {1}Stetige Funktionen auf abgeschlossenen Intervallen}{1}
 \contentsline {section}{\numberline {2}Folgenkompaktheit}{2}
 \contentsline {section}{\numberline {3}Überdeckungskompaktheit}{3}
+\contentsline {section}{\numberline {4}Der Satz von Heine-Borel}{5}
