@@ -10,6 +10,11 @@
 \begin{document}
 \maketitle
 
+\tableofcontents
+
+
+
+
 
 \section{Stetige Funktionen auf abgeschlossenen Intervallen}
 
@@ -73,7 +78,7 @@ Herzstück des Beweises ist die Beobachtung, dass auf $[a,b]$ jede Folge eine ko
 
 
 
-\section{Kompaktheit}
+\section{Folgenkompaktheit}
 
 
 Zum Beweis von Lemma \ref{lem: stetig auf Intervall} haben wir Folgenstetigkeit und Lemma \ref{lem: Intervall ist kompakt} benötigt. Diese Beobachtung legt nahe, dass sich Lemma \ref{lem: stetig auf Intervall} auf beliebige Teilmengen $K \subseteq \R^n$ verallgemeinern lässt, für die eine zu Lemma \ref{lem: Intervall ist kompakt} analoge Aussage gilt.
@@ -116,6 +121,86 @@ Zum Beweis von Lemma \ref{lem: stetig auf Intervall} haben wir Folgenstetigkeit 
 
 
 Da sich stetige Funktionen auf kompakten Mengen gutartig verhalten, sind kompakte Mengen von großer Bedeutung für die Analysis.
+
+
+
+
+
+\section{Überdeckungskompaktheit}
+
+
+Ein weiterer Kompaktheitsbegriff ist der der Überdeckungskompaktheit. Wie sich herausstellt, sind Überdeckungskompaktheit und Folgenkompaktheit für Teilmengen von $\R^n$ äquivalent.
+
+
+\begin{defi}
+ Es sei $\{U_i\}_{i \in I}$ eine Kollektion von Teilmengen $U_i \subseteq \R^n$ und $X \subseteq \R^n$.
+ 
+ Die Kollektion $\{U_i\}_{i \in I}$ heißt \emph{Überdeckung von $X$}, falls $X \subseteq \bigcup_{i \in I} U_i$. Sie heißt \emph{endlich}, bzw.\ \emph{abzählbar}, falls $I$ endlich, bzw.\ abzählbar ist.
+ 
+ Eine \emph{Teilüberdeckung} ist dann eine Teilkollektion $\{U_j\}_{j \in J}$, also $J \subseteq I$, so dass bereits $\{U_j\}_{j \in J}$ eine Überdeckung von $X$ ist.
+ 
+ Außerdem heißt die Überdeckung $\{U_i\}_{i \in I}$ von $X$ \emph{offen}, falls die $U_i \subseteq \R^n$ alle offen sind.
+\end{defi}
+
+
+\begin{bem}
+ Offenbar ist eine Teilüberdeckung einer offenen Überdeckung ebenfalls offen.
+\end{bem}
+
+
+
+\begin{bsp}
+ \begin{itemize}
+  \item
+   Die Kollektion $\{B_n(0) \mid n \in \N, n \geq 1\}$ bildet eine abzählbare, offene Überdeckung von $\R^n$.
+  \item
+   Die offenen Intervalle $\{(a,b) \mid a,b \in \R, a < b\}$ bilden eine offene Überdeckung von $\R$.
+  \item
+   Allgemein bilden die $\varepsilon$-Bälle $\{B_\varepsilon(x) \mid x \in \R^n, \varepsilon > 0\}$ eine offene Überdeckung von $\R^n$.
+  \item
+   Die Würfel $\{[-K,K]^n \mid K \in \N, K \geq 1\}$ bilden eine abzählbar Überdeckung von $\R^n$, die nicht offen ist.
+  \item
+   Die $\varepsilon$-Bälle mit rationalen Radius um Mittelpunkte mit rationalen Koeffizienten $\{B_q(x) \mid x \in \Q^n, q \in \Q, q > 0\}$ bilden eine offene Überdeckung von $\R^n$.
+  \item
+   Die Intervalle $\{(n,n+1) \mid n \in \Z\}$ bilden eine offene Überdeckung von $\R \setminus \Z = \bigcup_{n \in \N} (n,n+1)$, aber nicht von $\R$.
+  \item
+   Die offenen Intervalle $\{ (-1/n, 1+1/n) \mid n \in \N, n \geq 1\}$ bilden eine offene Überdeckung des abgeschlossenen Einheitsintervalls $[0,1]$; diese Überdeckung besitzt eine endliche (sogar einelementige) Teilüberdeckung.
+ \end{itemize}
+\end{bsp}
+
+
+\begin{defi}
+ Eine Teilmenge $K \subseteq \R^n$ heißt \emph{überdeckungskompakt}, falls jede offene Überdeckung von $K$ eine endliche Teilüberdeckung besitzt.
+\end{defi}
+
+
+\begin{prop}
+ Es sei $K \subseteq \R^n$. Dann sind äquivalent:
+ \begin{enumerate}
+  \item
+   $K$ ist folgenkompakt.
+  \item
+   $K$ ist überdeckungskompakt.
+ \end{enumerate}
+\end{prop}
+\begin{proof}
+ Angenommen $K$ ist überdeckungskompakt, aber nicht folgenkompakt. Dann gibt es eine Folge $(x_n)$ auf $K$, die keine auf $K$ konvergente Teilfolge besitzt.
+ 
+ \begin{beh}
+  Für jedes $x \in K$ gibt es ein $\varepsilon_x > 0$, so dass $\|x - x_n\| \geq \varepsilon$ für fast alle $n \in \N$.
+ \end{beh}
+ \begin{proof}[Beweis der Behauptung]
+  Ansonsten gebe es ein $x \in K$, so dass es für jedes $\varepsilon > 0$ unendlich viele $n \in N$ mit $\|x - x_n\| < \varepsilon$ gibt. Insbesondere gibt es dann ein $n_1 \in \N$ mit $\|x - x_{n_1}\| < 1$. Dann gibt es auch ein $n_2 \in \N$ mit $n_2 > n_1$ und $\|x - x_n\| < 1/2$. Rekursiv ergibt sich, dass es für alle $j \geq 1$ ein $n_j \in \N$ gibt, so dass $n_j > n_{j-1}$ und $\|x - x_{n_j}\| < 1/j$. Es ist dann $n_j$ eine Teilfolge mit $x_{n_j} \to x$. Dies steht im Widerspruch zur Annahme, dass $(x_n)$ keine auf $K$ konvergente Teilfolge besitzt.
+ \end{proof}
+ 
+ Die $\varepsilon$-Bälle $\{B_{\varepsilon_x}(x) \mid x \in K\}$ bilden offenbar eine offene Überdeckung von $K$. Da $K$ kompakt ist, besitzt diese offene Überdeckung eine endliche Teilüberdeckung. Es gibt also $x_1, \dotsc, x_s \in K$, so dass
+ \begin{equation}\label{eqn: K endlich überdeckt}
+  K \subseteq B_{\varepsilon_{x_1}}(x_1) \cup \dotsb \cup B_{\varepsilon_{x_s}}(x_s).
+ \end{equation}
+ Da jeder der $\varepsilon$-Bälle $B_{\varepsilon_x}(x)$ nur endlich viele Folgeglieder enthält, enthält auch $K$ wegen \eqref{eqn: K endlich überdeckt} nur endlich viele Folgeglieder, was offenbar nicht seien kann. Das zeigt, dass aus Überdeckungskompaktheit auch Folgenkompaktheit folgt.
+\end{proof}
+
+
 
 
 
