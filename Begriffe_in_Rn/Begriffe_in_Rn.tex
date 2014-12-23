@@ -11,7 +11,14 @@
 \maketitle
 
 
+\tableofcontents
+
+
+
+
+
 \section{Vorbereitung}
+
 
 Wir gehen davon aus, dass der Leser mit der Vektorraumstruktur des $\R^n$ vertraut ist. Die \emph{Norm} eines Vektors $x = (x_1, \dotsc, x_n) \in \R^n$ ist als
 \[
@@ -39,6 +46,33 @@ Die Norm erfüllt die folgenden Eigenschaften:
 
 
 Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|y-x\|$ für alle $x, y \in \R^n$.
+
+
+\begin{question}
+ Zeigen Sie die umgekehrte Dreiecksungleichung
+ \[
+  \|x-y\| \leq |\|x\|-\|y\|| \quad \text{für alle $x,y \in \R^n$}.
+ \]
+\end{question}
+\begin{solution}
+ Für alle $x,y \in \R^n$ ist
+ \[
+  \|x\| = \|y+x-y\| \leq \|y\| + \|x-y\|
+ \]
+ und damit $\|x\|-\|y\| \leq \|x-y\|$, sowie
+ \[
+  \|y\| = \|x+y-x\| \leq \|x\| + \|y-x\| \leq \|x\| + \|x-y\|
+ \]
+ und damit $\|y\|-\|x\| \leq \|x-y\|$. Es ist
+ \[
+  |\|x\|-\|y\|| = \|x\|-\|y\|
+  \quad
+  \text{oder}
+  \quad
+  |\|x\|-\|y\|| = \|y\|-\|x\|;
+ \]
+ in beiden Fällen erhalten wir, dass $|\|x\|-\|y\|| \leq \|x-y\|$.
+\end{solution}
 
 
 \begin{question}
@@ -90,7 +124,7 @@ Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|
 
 
 
-\section{Folgenkonvergenz und Stetigkeit}
+\section{Folgen}
 
 
 \begin{defi}
@@ -100,6 +134,25 @@ Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|
  \]
  Wir schreiben dann $\lim_{n \to \infty} x_n = x$ oder $x_n \to \infty$ für $n \to \infty$.
 \end{defi}
+
+
+Wie schon in $\R$ ergibt sich auch in $\R^n$, dass Grenzwerte eindeutig sind.
+
+
+\begin{lem}
+ Es sei $(x_n)$ eine Folge auf $\R^m$. Sind $y, y' \in \R^m$ mit $x_n \to y$ und $x_n \to y'$ für $n \to \infty$, so ist $y = y'$.
+\end{lem}
+\begin{proof}
+ Es sei $\varepsilon > 0$ beliebig aber fest. Da $\lim_{n \to \infty} x_n = y$ gibt es ein $N_1 \in \N$ mit $\|y - x_n\| < \varepsilon/2$  für alle $n \geq N_1$. Da $\lim_{n \to \infty} x_n = y'$ gibt es ein $N_2 \in \N$ mit $\|y - x_n\| < \varepsilon/2$  für alle $n \geq N_2$. Für $N \coloneqq \max\{N_1, N_2\}$ ist deshalb für alle $n \geq N$
+ \begin{align*}
+  \|y-y'\|
+  &= \|y-x_n + x_n-y'\| \\
+  &\leq \|y-x_n\| + \|x_n-y'\|
+  < \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
+  = \varepsilon.
+ \end{align*}
+ Also ist $\|y-y'\| < \varepsilon$ für alle $\varepsilon > 0$. Es muss also $\|y-y'\| = 0$, also $y-y' = 0$ und somit $y = y'$.
+\end{proof}
 
 
 Da die Norme auf $\R^1 = \R$ mit dem Betrag übereinstimmt, handelt es sich um eine Erweiterung des Konvergenzbegriffes auf $\R$. Die Konvergenz in $\R^m$ lässt sich auch auf die Konvergenz in $\R$ zurückführen. Eine Folge auf $\R^m$ konvergiert nämlich genau dann, wenn sie in jeder einzelnen Koordinate konvergiert.
@@ -139,7 +192,7 @@ Viele der Eigenschaften und Rechenregeln, die wir für konvergente Folgen auf $\
   = \left( \lim_{n \to \infty} \xi_n \right) \cdot \left( \lim_{n \to \infty} \zeta_n \right).
  \]
 \end{question}
-\begin{proof}
+\begin{solution}
  Es seien $\xi_n = u_n + i v_n$ und $\zeta_n = x_n + i y_n$ für alle $n \in \N$ die Zerlegungen in Real- und Imaginärteile, sowie $\xi = u + i v$ und $\zeta = x + i y$ die Zerlegungen der Grenzwerte in Real- und Imaginärteile. Dass $\xi_n \to \xi$ ist äquivalent dazu, dass $u_n \to u$ und $v_n \to v$, und dass $\zeta_n \to \zeta$ ist äquivalent dazu, dass $x_n \to x$ und $y_n \to y$. Nach Lemma \ref{lem: convergence in coordinates} und den bekannten Rechenregeln für die Grenzwerte reelle Folgen folgt damit, dass
  \begin{align*}
   \xi_n \cdot \zeta_n
@@ -150,7 +203,56 @@ Viele der Eigenschaften und Rechenregeln, die wir für konvergente Folgen auf $\
   = \xi \cdot \zeta.
   \qedhere
  \end{align*}
+\end{solution}
+
+
+Für Folgen auf $\R$ kennen wir bereits den Begriff der Cauchy-Folge, und wissen, dass eine Folge genau dann konvergiert, wenn sie eine Cauchy-Folge ist. Dies lässt sich auf $\R^n$ verallgemeinern:
+
+
+\begin{defi}
+ Eine Folge $(x_n)$ auf $\R^m$ heißt \emph{Cauchy}-Folge, falls es für alle $\varepsilon > 0$ ein $N \in \N$ gibt, so dass $\|x_n - x_{n'}\| < \varepsilon$ für alle $n, n' \geq N$.
+\end{defi}
+
+
+Wir haben bereits gesehen, dass eine Folge im Mehrdimensionalen genau dann konvergiert, wenn sie in jeder Koordinate konvergiert. Es ergibt sich auch, dass eine Folge im Mehrdimensionalen genau dann eine Cauchy-Folge ist, wenn sie in jeder Komponente eine Cauchy-Folge ist.
+
+
+\begin{question}
+ Es sei $(x_n)$ eine Folge auf $\R^m$ mit Koordinaten $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$. Zeigen Sie, dass $(x_n)$ genau dann eine Cauchy-Folge ist, wenn $(x^{(i)}_n)$ für alle $1 \leq i \leq m$ eine Cauchy-Folge ist.
+\end{question}
+\begin{solution}
+ Wir wissen bereits, dass für alle $n, n' \in \N$
+ \begin{gather*}
+  \left| x^{(i)}_n - x^{(i)}_{n'} \right| \leq \|x_n - x_{n'}\| \quad \text{für alle $1 \leq i \leq m$},
+ \shortintertext{und dass}
+  \|x_n - x_{n'}\| \leq \sum_{i=1}^m \left| x^{(i)}_n - x^{(i)}_{n'} \right|.
+ \end{gather*}
+ 
+ Ist $(x_n)$ eine Cauchy-Folge, so gibt es für alle $\varepsilon > 0$ ein $N \in \N$, so dass $\|x_n - x_{n'}\| < \varepsilon$ für alle $n \geq N$, und somit auch $|x^{(i)}_n - x^{(i)}_{n'}| < \varepsilon$ für alle $n \geq N$ für alle $1 \leq i \leq m$.
+ 
+ Es sei andererseits $(x^{(i)}_n)$ für alle $1 \leq i \leq n$ eine Cauchy-Folge. Wir wollen zeigen, dass dann auch $(x_n)$ eine Cauchy-Folge ist. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Für jedes $1 \leq i \leq m$ gibt es, da $(x^{(i)}_n)$ eine Cauchy-Folge ist, ein $N_i \in \N$ mit $|x^{(i)}_n - x^{(i)}_{n'}| < \varepsilon/m$ für alle $1 \leq i \leq m$. Wir setzen $N \coloneqq \max_{1 \leq i \leq m} N_i$. Für alle $n, n' \geq N$ ist dann
+ \[
+  \|x_n - x_{n'}\|
+  \leq \sum_{i=1}^m \left| x^{(i)}_n - x^{(i)}_{n'} \right|
+  < \sum_{i=1}^m \frac{\varepsilon}{m}
+  = \varepsilon.
+ \]
+ Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $(x_n)$ eine Cauchy-Folge ist.
+\end{solution}
+
+
+\begin{prop}[Vollständigkeit von $\R^m$]
+ Es sei $(x_n)$ eine Folge auf $\R^m$. Dann ist $(x_n)$ genau dann eine Cauchy-Folge, wenn $(x_n)$ konvergiert.
+\end{prop}
+\begin{proof}
+ $(x_n)$ ist genau dann eine Cauchy-Folge, wenn $(x_n)$ in jeder Koordinate eine Cauchy-Folge ist. Wegen der Vollständigkeit von $\R$ ist dies äquivalent dazu, dass $(x_n)$ in jeder Koordinate konvergiert. Dies ist wiederum äquivalent dazu, dass $(x_n)$ auf $\R^m$ konvergiert.
 \end{proof}
+
+
+
+
+
+\section{Stetigkeit}
 
 
 Nachdem wir nun den Begriff der Folgenkonvergenz ins Mehrdimensionale verallgemeinert haben, wollen wir uns jetzt dem Begriff der Stetigkeit zuwenden.
@@ -165,6 +267,59 @@ Nachdem wir nun den Begriff der Folgenkonvergenz ins Mehrdimensionale verallgeme
 
 
 Da die Norm auf $\R^1 = \R$ mit dem Betrag übereinstimmt ist dieser Stetigkeitsbegriff eine Verallgemeinerung der $\varepsilon$-$\delta$-Stetigkeit auf $\R$. Für den Fall $\R^2 \cong \C$ erhalten wir so auch einen Stetigkeitsbegriff für Abbildungen $\C \to \R^n$.
+
+
+\begin{question}
+ Zeigen Sie, dass die Norm
+ \[
+  f \colon \R^n \to \R, x \mapsto \|x\|
+ \]
+ stetig ist.
+\end{question}
+\begin{solution}
+ Es sei $x \in \R^n$ ein beliebiger Punkt. Wir wollen zeigen, dass $f$ stetig an $x$ ist. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Für alle $y \in \R^n$ ist nach der umgekehrten Dreiecksungleichung
+ \[
+  \|x-y\| \geq |\|x\|-\|y\||.
+ \]
+ Für $\delta \coloneqq \varepsilon$ ist daher $\|x-y\| < \varepsilon$ für alle $y \in \R^n$ mit $\|x-y\| < \delta$. Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $f$ an $x$ stetig ist, und aus der Beliebigkeit von $x \in \R^n$ folgt, dass $x$ stetig ist.
+\end{solution}
+
+
+\begin{question}
+ Zeigen Sie, dass die Projektion $\pi_i \colon \R^n \to \R, (x_1, \dotsc, x_n) \mapsto x_i$ für alle $1 \leq i \leq n$ stetig ist.
+\end{question}
+\begin{solution}
+ Für den Beweis fixieren wir ein beliebiges $1 \leq i \leq n$. Es sei $x \in \R^n$ beliebig aber fest. Wir wollen zeigen, dass $\pi_i$ stetig an $x$ ist. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Wir wissen, dass für alle $y = (y_1, \dotsc, y_n) \in \R^n$ die Ungleichung $|x_i - y_i| \leq \|x-y\|$ gilt. Für $\delta \coloneqq \varepsilon$ haben wir daher, dass für alle $y \in \R^n$ mit $\|x-y\| < \delta$
+ \[
+  |\pi_i(x)-\pi_i(y)| = |x_i - y_i| \leq \|x-y\| < \delta = \varepsilon.
+ \]
+ Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $\pi_i$ stetig an $x$ ist, und wegen der Beliebigkeit von $x \in \R^n$ erhalten wir weiter, dass $\pi_i$ stetig ist.
+\end{solution}
+
+
+Eine wichtige Eigenschaft stetiger Funktionen besteht darin, dass die Einschränkung stetiger Funktionen wieder stetig ist:
+
+
+\begin{question}
+ Es seien $A \subseteq B \subseteq \R^n$ und $f \colon B \to \R^m$. Zeigen Sie: Ist $f$ stetig, so ist auch die Einschränkung $f|_A$ stetig. (Die Einschränkung ist als
+ \[
+  f|_A \colon A \to \R^m, a \mapsto f(a)
+ \]
+ definiert.)
+\end{question}
+\begin{solution}
+ Es sei $x \in A$ beliebig aber fest. Wir wollen zeigen, dass $f$ stetig an $x$ ist. Sie hierfür $\varepsilon > 0$ beliebig aber fest. Da $A \subseteq B$ ist auch $x \in B$. Da $f \colon B \to \R^m$ stetig ist, gibt es ein $\delta > 0$, so dass
+ \[
+  \|x-b\| < \delta \Rightarrow \|f(x)-f(b)\| < \varepsilon
+  \quad \text{für alle $b \in B$}.
+ \]
+ Da $A \subseteq B$ ist deshalb auch
+ \[
+  \|x-a\| < \delta \Rightarrow \|f(x)-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in A$}.
+ \]
+ Da $f|_A(a) = f(a)$ für alle $a \in A$ zeigt dies wegen der Beliebigkeit von $\varepsilon > 0$, dass $f|_A$ stetig an $x$ ist. Wegen der Beliebigkeit von $a \in A$ folgt damit, dass $f|_A$ stetig ist.
+\end{solution}
 
 
 Wir haben bereits gesehen, dass sich Stetigkeit auf $\R$ auch durch Folgenstetigkeit verstehen lässt. Dies gilt auch für Stetigkeit im Mehrdimensionalen.
@@ -194,6 +349,18 @@ Wir haben bereits gesehen, dass sich Stetigkeit auf $\R$ auch durch Folgenstetig
 
 
 Auch im Mehrdimensionalen bezeichnet man diese beiden Konvergenzbegriffe als \emph{$\varepsilon$-$\delta$-Stetigkeit} und \emph{Folgenstetigkeit}.
+
+
+\begin{question}
+ Zeigen Sie erneut die Stetigkeit der Projektionen $\pi_i \colon \R^m \to \R, (x_1, \dotsc, x_m) \to x_i$, indem Sie zeigen, dass sie folgenstetig sind.
+\end{question}
+\begin{solution}
+ Für den Beweis fixieren ein beliebiges $1 \leq i \leq m$. Es sei $x \in \R^n$ beliebig aber fest. Wir wollen zeigen, dass $\pi_i$ an $x$ folgenstetig ist. Sei hierfür $(x_n)$ eine Folge auf $\R^n$ mit $x_n \to x$; in Koordinaten sei $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$ und $x = (x_1, \dotsc, x_m)$. Dass $x_n \to x$ bedeutet insbesondere, das $x^{(i)}_n \to x^{(i)}$. Es ist also
+ \[
+  \pi_i(x_n) = x^{(i)}_n \to x.
+ \]
+ Das zeigt, dass $\pi_i$ folgenstetig an $x$ ist, und wegen der Beliebigkeit von $x \in \R^n$, dass $\pi_i$ folgenstetig ist.
+\end{solution}
 
 
 \begin{question}
@@ -233,6 +400,8 @@ Auch im Mehrdimensionalen bezeichnet man diese beiden Konvergenzbegriffe als \em
   = \lim_{n \to \infty} \frac{1}{2}
   = \frac{1}{2}.
  \end{gather*}
+ 
+ $f$ lässt sich also nicht stetig auf $\R^2 \setminus \{0\}$ fortsetzen.
 \end{solution}
 
 
@@ -257,7 +426,11 @@ Wir haben bereits gesehen, dass sich Konvergenz in $\R^n$ durch Konvergenz in de
 
 
 
+
 \section{Umgebungen und offene Mengen}
+
+
+\subsection{Definition und grundlegende Eigenschaften}
 
 
 \begin{defi}
@@ -269,12 +442,68 @@ Wir haben bereits gesehen, dass sich Konvergenz in $\R^n$ durch Konvergenz in de
 \end{defi}
 
 
-Im Eindimensionalen ist $B_\varepsilon(x) = (x-\varepsilon,x+\varepsilon)$. Mithilfe von $\varepsilon$-Bällen lassen sich die Begriffe einer Umgebung und einer offenen Menge auf das Mehrdimensionale verallgemeinern.
+\begin{bem}
+ Im Eindimensionalen ist $B_\varepsilon(x) = (x-\varepsilon,x+\varepsilon)$.
+\end{bem}
+
+
+\begin{bem}
+ Für $x \in \R^n$ und $0 < \varepsilon \leq \varepsilon'$ ist $B_\varepsilon(x) \subseteq B_{\varepsilon'}(x)$ und für $0 < \varepsilon < \varepsilon'$ ist $B_\varepsilon(x) \subsetneq B_{\varepsilon'}(x)$.
+\end{bem}
+
+
+
+Mithilfe von $\varepsilon$-Bällen lassen sich die Begriffe einer Umgebung und einer offenen Menge auf das Mehrdimensionale verallgemeinern.
 
 
 \begin{defi}
  Es sei $x \in \R^n$. Eine Teilmenge $V \subseteq \R^n$ heißt \emph{Umgebung von $x$}, falls es es ein $\varepsilon > 0$ gibt, so dass $B_\varepsilon(x) \subseteq V$.
 \end{defi}
+
+
+\begin{question}\label{qst: Eigenschaften von Umgebungen}
+ Es sei $x \in \R^n$. Zeigen Sie:
+ \begin{enumerate}
+  \item
+   $\R^n$ ist eine Umgebung von $x$.
+  \item
+   Ist $V \subseteq \R^n$ eine Umgebung von $x$ und $W \subseteq \R^n$ eine beliebige Teilmenge mit $V \subseteq W$, so ist auch $W$ eine Umgebung auf $W$.
+  \item
+   Sind $V_1, \dotsc, V_s \subseteq \R^n$ Umgebungen von $x$, so ist auch $V_1 \cap \dotsb \cap V_s$ eine Umgebung von $x$.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Für beliebige $\varepsilon > 0$ ist $B_\varepsilon(x) \subseteq \R^n$, also ist $\R^n$ eine Umgebung von $x$.
+  \item
+   Da $V$ eine Umgebung von $x$ ist, gibt es ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq V$. Da $V \subseteq W$ ist damit auch $B_\varepsilon(x) \subseteq W$. Also ist $W$ eine Umgebung von $x$.
+  \item
+   Da die $V_i$ Umgebungen von $x$ sind, gibt es für jedes $1 \leq i \leq s$ ein $\varepsilon_i  > 0$ mit $B_{\varepsilon_i}(x) \subseteq V_i$. Für $\varepsilon \coloneqq \min_{1 \leq i \leq s} \varepsilon_i > 0$ ist daher
+   \[
+    B_\varepsilon(x) \subseteq B_{\varepsilon_i}(x) \subseteq V_i
+    \quad \text{für alle $1 \leq i \leq s$}.
+   \]
+   Also ist auch $B_\varepsilon(x) \subseteq V_1 \cap \dotsb \cup V_s$. Also ist $V_1 \cap \dotsb \cap V_s$ eine Umgebung von $x$.
+ \end{enumerate}
+\end{solution}
+
+
+\begin{bem}
+ Ist $X$ eine Menge, so ist ein \emph{Filter auf $X$} eine Kollektion von Teilmengen $\mc{F} \subseteq \mc{P}(X)$, so dass
+ \begin{enumerate}
+  \item
+   $\mc{F}$ ist nicht leer,
+  \item
+   $\emptyset \notin \mc{F}$,
+  \item
+   für alle $S_1, \dotsc, S_n \in \mc{F}$ ist auch $S_1 \cap \dotsb \cap S_n \in \mc{F}$, und
+  \item
+   ist $S \in \mc{F}$, so ist für alle $T \subseteq X$ mit $S \subseteq T$ auch $T \in \mc{F}$.
+ \end{enumerate}
+ Übung \ref{qst: Eigenschaften von Umgebungen} zeigt, dass die Umgebungen eines Punktes $x \in \R^n$ einen Filter bilden.
+\end{bem}
+
 
 
 \begin{defi}
@@ -317,6 +546,16 @@ Im Eindimensionalen ist $B_\varepsilon(x) = (x-\varepsilon,x+\varepsilon)$. Mith
 
 
 \begin{question}
+ Zeigen Sie, dass $V \subseteq \R^n$ genau dann eine Umgebung von $x \in \R^n$ ist, falls es eine offene Menge $U \subseteq \R^n$ mit $x \in U$ und $U \subseteq V$ gibt.
+\end{question}
+\begin{solution}
+ Angenommen, $V$ ist eine Umgebung von $x$. Dann gibt es ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq V$. Dann ist $B_\varepsilon(x)$ eine offene Menge mit $x \in B_\varepsilon(x)$ und $B_\varepsilon(x) \subseteq V$.
+ 
+ Angenommen, es gibt eine offene Menge $U \subseteq \R^n$ mit $x \in U$ und $U \subseteq V$. Da $U$ offen ist, gibt es ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq U$. Da $U \subseteq V$ ist damit auch $B_\varepsilon(x) \subseteq V$, also ist $V$ eine Umgebung von $x$.
+\end{solution}
+
+
+\begin{question}
  Es seien $a,b \in \R$ mit $a < b$. Zeigen Sie, dass das offene Intervall $(a,b)$ offen ist. Zeigen sie ferner, dass das abgeschlossene Intervall $[a,b]$ nicht offen ist.
 \end{question}
 \begin{solution}
@@ -336,6 +575,31 @@ Im Eindimensionalen ist $B_\varepsilon(x) = (x-\varepsilon,x+\varepsilon)$. Mith
  \]
  und deshalb $B_\varepsilon(x) \nsubseteq [a,b]$. Also enthält $[a,b]$ keinen $\varepsilon$-Ball um $a$ und ist daher nicht offen.
 \end{solution}
+
+
+\begin{question}
+ Zeigen Sie, dass die Teilmenge
+ \[
+  U \coloneqq \{x \in \R^n \mid \|x\| > 1\}
+ \]
+ offen ist.
+\end{question}
+\begin{proof}
+ Es sei $x \in U$, also $\|x\| > 1$. Wir setzen
+ \[
+  \varepsilon \coloneqq \|x\|-1.
+ \]
+ Da $\|x\| > 1$ ist $\varepsilon > 0$. Wir behaupten, dass $B_\varepsilon(x) \subseteq U$. Dies ergibt sich daraus, dass für alle $y \in B_\varepsilon(x)$
+ \[
+  \|y\|
+  = \|x - (x - y)\|
+  \geq |\|x\| - \|x-y\||
+  \geq \|x\| - \|y-x\|
+  > \|x\| - (\|x\|-1)
+  = 1,
+ \]
+ und somit $y \in U$.
+\end{proof}
 
 
 \begin{question}
@@ -399,6 +663,9 @@ Im Eindimensionalen ist $B_\varepsilon(x) = (x-\varepsilon,x+\varepsilon)$. Mith
 \end{proof}
 
 
+\subsection{Charakterisierung von Folgenkonvergenz}
+
+
 Per Definition ist für alle $x, y \in \R^n$ und $\varepsilon > 0$
 \[
  \|x-y\| < \varepsilon \Leftrightarrow y \in B_\varepsilon(x).
@@ -436,6 +703,9 @@ Aus der obigen Formulierung kann man durch Verwendung des Umgebungsbegriffes auc
 \end{proof}
 
 
+\subsection{Charakterisierung von Stetigkeit}
+
+
 Auch der Begriff der Stetigkeit lässt sich durch die Begriffe der $\varepsilon$-Bälle formulieren: Ist $X \subseteq \R^n$ und $f \colon X \to \R^m$, so ist für $x \in X$
 \begin{align*}
                 & \text{$f$ ist stetig an $x$} \\
@@ -443,6 +713,20 @@ Auch der Begriff der Stetigkeit lässt sich durch die Begriffe der $\varepsilon$
  \Leftrightarrow& \text{für jedes $\varepsilon > 0$ gibt es ein $\delta > 0$ mit $f(B_\delta(x) \cap X) \subseteq B_\varepsilon(f(x))$} \\
  \Leftrightarrow& \text{für jedes $\varepsilon > 0$ gibt es ein $\delta > 0$ mit $B_\delta(x) \cap X \subseteq f^{-1}(B_\varepsilon(f(x)))$}.
 \end{align*}
+
+
+
+\begin{question}
+ Es sei $X \subseteq \R^n$ und $f \colon X \to \R^m$. Ein Punkt $x \in X$ heißt \emph{isolierter Punkt}, falls es ein $\varepsilon > 0$ gibt, so dass $B_\varepsilon(x) \cap X = \{x\}$. Zeigen Sie, dass $f$ an allen isolierten Punkten stetig ist.
+\end{question}
+\begin{solution}
+ Es sei $x \in X$ ein isolierter Punkt. Dann gibt es ein $\delta > 0$ mit $B_\varepsilon(x) \cap X = \{x\}$. Für beliebige $\varepsilon > 0$ ist deshalb
+ \[
+  f(B_\delta(x)) = f(\{x\}) = \{f(x)\} \subseteq B_\varepsilon(f(x)),
+ \]
+ und somit $f$ stetig an $x$.
+\end{solution}
+
 
 
 Auch hier lässen sich $\varepsilon$ und $\delta$ durch Verwendung von Umgebungen und offenen Mengen umgehen: Lokal lässt sich Stetigkeit durch Umgebungen charakterisieren und global durch offene Mengen.
@@ -522,22 +806,281 @@ Auch hier lässen sich $\varepsilon$ und $\delta$ durch Verwendung von Umgebunge
     = f^{-1}(W).
    \end{align*}
    Das zeigt nach dem ersten Teil des Lemmas, dass $f$ stetig an $x$ ist.
+  \qedhere
  \end{enumerate}
 \end{proof}
 
 
 \begin{bem}
- Wir erhalten insbesondere, dass eine Abbildung $f \colon \R^n \to \R^m$ genau dann stetig ist, wenn für jede offen Menge $U \subseteq \R^m$ ihr Urbild $f^{-1}(U) \subseteq \R^n$ offen ist.
+ Wir erhalten insbesondere, dass eine Abbildung $f \colon \R^n \to \R^m$ genau dann stetig ist, wenn für jede offene Menge $U \subseteq \R^m$ auch ihr Urbild $f^{-1}(U) \subseteq \R^n$ offen ist.
 \end{bem}
 
 
+Die Charakterisierung von Stetigkeit durch Umgebungen und offene Mengen mag zunächst sehr kompliziert und unpraktisch erscheinen; ihn der Praxis ist erspart sie jedoch viel Rechenarbeit. Eine häufige Anwendung dieser Charakterisierung besteht etwa darin, dass man die Offenheit einer Teilmenge $U \subseteq \R^n$ zeigt, indem man eine stetige Funktion $f \colon \R^n \to \R^m$ und eine offene Menge $V \subseteq \R^m$ konstuiert, so dass $U = f^{-1}(V)$; dies kann zu kurzen und eleganten Beweisen führen.
+
+
+\begin{bsp}
+ \begin{itemize}
+  \item
+   Wir wollen zeigen, dass die Menge
+   \[
+    U \coloneqq \{x \in \R^n \mid \|x\| > 1\}
+   \]
+   offen ist. Hierfür betrachten wir die Abbildung
+   \[
+    f \colon \R^n \to \R, x \mapsto \|x\|.
+   \]
+   Wir wissen bereits, dass $f$ stetig ist. Da die Menge $(1,\infty) \subseteq \R$ offen ist, ist auch $U = f^{-1}((0,\infty))$ offen.
+  \item
+   Die Offenheit von $\varepsilon$-Bällen ergibt sich dadurch, dass für jedes $x \in \R^n$ die Abbildung
+   \[
+    f \colon \R^n \to \R, y \mapsto \|x-y\|
+   \]
+   stetig ist, die Menge $(0,\varepsilon) \subseteq \R$ offen ist, und $B_\varepsilon(x) = f^{-1}((0,\varepsilon))$.
+ \end{itemize}
+\end{bsp}
+
+
+\begin{question}
+ Zeigen Sie, dass die Menge
+ \[
+  U \coloneqq \{(x,y) \in \R^2 \mid x + 3y + 2 > y^2 - 6x^3 \}
+ \]
+ offen ist.
+\end{question}
+\begin{proof}
+ Für alle $(x,y) \in \R^2$ ist
+ \[
+  x + 3y + 2 > y^2 - 6x^3
+  \Leftrightarrow 6x^3 + x - y^2 + 3y > 2.
+ \]
+ Da die Projektionen $\R^2 \to \R, (x_1, x_2) \mapsto x_i$ für $i=1,2$ stetig sind, ist nach den üblichen Rechenregel für stetige Funktionen auch
+ \[
+  f \colon \R^2 \to \R, (x,y) \mapsto 6x^3 + x - y^2 + 3y
+ \]
+ stetig. Da $(2,\infty) \subseteq \R$ offen ist, ergibt sich, dass auch $U = f^{-1}((2,\infty))$ offen ist.
+\end{proof}
+
+
+\begin{question}
+ Zeigen Sie, dass für alle $x \in \R$ und $\varepsilon > 0$ die Menge
+ \[
+  U \coloneqq \{y \in \R^n \mid \|x-y\| > \varepsilon\}
+ \]
+ offen ist.
+\end{question}
+\begin{solution}
+ Die Abbildung $f \colon \R^n \to \R, y \mapsto \|x-y\|$ ist stetig, und die Teilmenge $(\varepsilon,\infty) \subseteq \R$ ist offen, also ist $U = f^{-1}((\varepsilon,\infty))$ offen.
+\end{solution}
 
 
 
 
 
+\section{Abgeschlossene Mengen}
 
 
+\begin{defi}
+ Eine Teilmenge $A \subseteq \R^n$ heißt \emph{abgeschlossen}, falls ihr Komplement $A^c \subseteq \R^n$ offen ist.
+\end{defi}
+
+
+\begin{defi}
+ Für $x \in \R^n$ und $\varepsilon > 0$ ist
+ \[
+  \overline{B}_\varepsilon(x) \coloneqq \{y \in \R^n \mid \|x-y\| \leq \varepsilon \}
+ \]
+ der \emph{abgeschlossene $\varepsilon$-Ball um $x$}.
+\end{defi}
+
+
+\begin{bsp}
+ \begin{itemize}
+  \item
+   Für alle $a,b \in \R$ mit $a < b$ ist das abgeschlossene Intervall $[a,b]$ abgeschlossen, denn $[a,b]^c = (-\infty,a) \cup (b, \infty)$ ist offen.
+  \item
+   Abgeschlossene $\varepsilon$-Bälle sind abgeschlossen, denn für $x \in \R^n$ und $\varepsilon > 0$ ist
+   \[
+    \overline{B}_\varepsilon(x)^c = \{y \in \R^n \mid \|x-y\| > \varepsilon\}
+   \]
+   offen.
+  \item
+   Punkte sind abgeschlossen, d.h.\ für alle $x \in \R^n$ ist die einpunktige Menge $A \{x\} \subseteq \R^n$ abgeschlossen: Es ist $\{x\}^c = \R^n \setminus \{x\}$. Für $y \in \R^n \setminus \{x\}$ ist $y \neq x$ und somit $\varepsilon \coloneqq \|x-y\| > 0$. Da $x \notin B_\varepsilon(y)$ ist $B_\varepsilon(y) \subseteq A^\{x\}$. Das zeigt, dass $A \setminus \{x\}$ offen ist, also $\{x\}$ abgeschlossen.
+  \item
+   Das offene Intervall $(0,1) \subseteq \R$ ist nicht abgeschlossen, denn
+   \[
+    (0,1)^c = (-\infty,0] \cup [1,\infty)
+   \]
+   ist nicht offen (die Menge enthält keine $\varepsilon$-Bälle um $0$ oder $1$).
+  \item
+   Es lässt sich zeigen, dass die einzigen Teilmengen $X \subseteq \R^n$, die sowohl offen als auch abgeschlossen sind, $\emptyset$ und $\R^n$ sind.
+ \end{itemize}
+\end{bsp}
+
+
+Man beachte, dass nicht jede Teilmenge $X \subseteq \R^n$ offen oder abgeschlossen ist. $[0,1) \subseteq \R$ etwa ist nicht offen (die Menge enthält keinen $\varepsilon$-Ball um $0$) aber auch nicht abgeschlossen, da
+\[
+ [0,1)^c = (-\infty,0) \cup [1,\infty)
+\]
+nicht offen ist (denn die Menge enthält keinen $\varepsilon$-Ball um $1$).
+
+
+\begin{question}
+ Zeigen Sie:
+ \begin{enumerate}
+  \item
+   $\emptyset, \R^n \subseteq \R^n$ sind abgeschlossen.
+  \item
+   Sind $A_1, \dotsc, A_s \subseteq \R^n$ abgeschlossen, so ist auch $A_1 \cup \dotsb \cup A_s$ abgeschlossen.
+  \item
+   Ist $\{A_i\}_{i \in I}$ eine Kollektion von abgeschlossenen Teilmengen $A_i \subseteq \R^n$, so ist auch der Schnitt $\bigcap_{i \in I} A_i \subseteq \R^n$ abgeschlossen.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Da $\emptyset^c = \R^n$ offen ist, ist $\emptyset$ abgeschlossen, und da $(\R^n)^c = \emptyset$ offen ist, ist auch $\R^n$ abgeschlossen.
+  \item
+   Da $A_1$, \dots, $A_s$ abgeschlossen sind, sind $A_1^c$, \dots, $A_s^c$ offen. Also ist auch $A_1^c \cup \dotsb \cup A_s^c$ offen. Da
+   \[
+    A_1^c \cup \dotsb \cup A_s^c
+    = (A_1 \cap \dotsb \cap A_s)^c
+   \]
+   ist deshalb $A_1 \cap \dotsb \cap A_s$ abgeschlossen.
+  \item
+   Da die $A_i$ abgeschlossen sind, ist $A_i^c$ für alle $i \in I$ offen. Also ist auch
+   \[
+    \left( \bigcap_{i \in I} A_i \right)^c
+    = \bigcup_{i \in I} A_i^c
+   \]
+   offen, und somit $\bigcap_{i \in I} A_i$ abgeschlossen.
+ \end{enumerate}
+\end{solution}
+
+
+\begin{question}
+ Es seien $M$ und $N$ Mengen und $f \colon M \to N$ eine beliebige Funktion. Zeigen Sie, dass für alle $Y \subseteq N$
+ \[
+  f^{-1}(Y^c) = (f^{-1}(Y))^c.
+ \]
+ (Also ist $f^{-1}(N \setminus Y) = M \setminus f^{-1}(Y)$.)
+\end{question}
+\begin{solution}
+ Für alle $x \in M$ ist
+ \[
+  x \in f^{-1}(Y^c)
+  \Leftrightarrow f(x) \in Y^c
+  \Leftrightarrow f(x) \notin Y
+  \Leftrightarrow x \notin f^{-1}(Y)
+  \Leftrightarrow x \in (f^{-1}(Y))^c.
+ \]
+\end{solution}
+
+
+Wie wir bereits gesehen haben, ist eine Abbildung $f \colon \R^n \to \R^m$ genau dann offen, wenn für jede offene Menge $U \subseteq \R^m$ auch das Urbild $f^{-1}(U) \subseteq \R^n$ offen ist. Wir können diese Stetigkeit nun auch über Abgeschlossen Mengen charakterisieren:
+
+
+\begin{lem}
+ Es sei $X \subseteq \R^n$ und $f \colon \R^m$. Dann ist $f$ genau dann stetig, falls es für jede abgeschlossene Teilmenge $C \subseteq \R^m$ eine abgeschlossen Teilmenge $A \subseteq \R^n$ gibt, so dass $f^{-1}(C) = A \cap X$.
+ 
+ Insbesondere ist eine Abbildung $f \colon \R^n \to \R^m$ genau dann offen, wenn die Urbilder abgeschlossener Mengen ebenfalls abgeschlossen sind.
+\end{lem}
+\begin{proof}
+ Angenommen $f$ ist stetig. Es sei $C \subseteq \R^m$ abgeschlossen. Da $C$ abgeschlossen ist, ist $C^c$ offen. Da $f$ stetig ist, gibt es eine offene Menge $U \subseteq \R^n$ mit $f^{-1}(C^c) = U \cap X$. Daher ist
+ \[
+  f^{-1}(C)
+  = X \setminus (X \setminus f^{-1}(C))
+  = X \setminus f^{-1}(C^c)
+  = X \setminus (U \cap X)
+  = U^c \cap X.
+ \]
+ Da $U$ offen ist, ist $U^c$ abgeschlossen.
+ 
+ Es sei andererseits $U \subseteq \R^m$ offen. Dann ist $U^c$ abgeschlossen, es gibt also nach Annahe eine abgeschlossene Teilmenge $A \subseteq \R^n$ mit $f^{-1}(U^c) = A \cap X$. Analog zur vorherigen Rechnung ergibt sich, dass
+ \[
+  f^{-1}(U) = A^c \cap X;
+ \]
+ da $A$ abgeschlossen ist, ist $A^c$ offen, also ist $f$ stetig an $x$.
+\end{proof}
+
+
+Diese Charakterisierung stetiger Abbildungen erlaubt es uns mit wenig Arbeit die Abgeschlossenheit einer Menge zu überprüfen.
+
+
+\begin{bsp}
+ \begin{itemize}
+  \item
+   Die $n$-dimensionale Sphäre
+   \[
+    S^n \coloneqq \{x \in \R^{n+1} \mid \|x\| = 1\}
+   \]
+   ist abgeschlossen, denn die Norm
+   \[
+    f \colon \R^{n+1} \to \R, x \mapsto \|x\|
+   \]
+   ist stetig, $\{1\} \in \R$ ist abgeschlossen und $S^n = f^{-1}(\{1\})$.
+  \item
+   Der $n$-dimensionale Einheitswürfel $[0,1]^n \subseteq \R^n$ ist abgeschlossen: Für $1 \leq i \leq n$ definieren wir
+   \[
+    A_i \coloneqq \{(x_1, \dotsc, x_n) \in \R^n \mid 0 \leq x_i \leq 1\}.
+   \]
+   Es ist klar, dass $[0,1]^n = A_1 \cap \dotsb \cap A_n$. Da (beliebige) Schnitte abgeschlossener Mengen wieder abgeschlossen sind, genügt es zu zeigen, dass die $A_i$ abgeschlossen sind. Dies ergibt sich daraus, dass die kanonischen Projektionen $\pi_i \colon \R^n \to \R$ stetig sind, das Einheitsintervall $[0,1] \subseteq \R$ abgeschlossen und $A_i = \pi_i^{-1}([0,1])$ für alle $1 \leq i \leq n$.
+ \end{itemize}
+\end{bsp}
+
+
+Eine wichtige Eigeschaft von abgeschlossenen Mengen besteht darin, dass sie unter Grenzwerten von Folgen abgeschlossen sind.
+
+
+\begin{lem}
+ Es sei $A \subseteq \R^n$. Dann sind äquivalent:
+ \begin{enumerate}
+  \item
+   $A$ ist abgeschlossen.
+  \item
+   Für jede Folge $(a_n)$ auf $A$, die in $\R^n$ konvergiert, ist auch $\lim_{n \to \infty} a_n \in A$.
+ \end{enumerate}
+\end{lem}
+\begin{proof}
+ Angenommen $A$ ist abgeschlossen. Es sei $(x_n)$ eine konvergente Folge auf $\R^n$ mit $x_n \to x$ aber $x \notin A$. Da $x \notin A$ ist $x \in A^c$, und da $A$ abgeschlossen ist, ist $A^c$ offen. Es gibt also ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq A^c$. Da $x_n \to x$ ist $x_n \in B_\varepsilon(x)$ für fast alle $n \in \N$. Also ist $x_n \in A^c$ für fast alle $n \in \N$, bzw.\ äquivalent $x_n \in A$ für nur endlich viele $n \in \N$. Insbesondere kann $(x_n)$ keine Folge auf $A$ sein.
+ 
+ Angenommen $A$ ist nicht abgeschlossen. Dann ist $A^c$ nicht offen. Es gibt also ein $x \in A^c$, so dass $B_\varepsilon(x) \nsubseteq A^c$ für alle $\varepsilon > 0$, bzw. äquivalent $B_\varepsilon(x) \cap A \neq \emptyset$ für alle $\varepsilon > 0$. Insbesondere gibt es daher für alle $n \geq 1$ ein $a_n \in A$ mit $\|x-a_n\| < 1/n$. Dann ist per Konstruktion $a_n \to x$, aber da $x \in A^c$ ist $x \notin A$.
+\end{proof}
+
+
+\begin{bsp}
+ \begin{itemize}
+  \item
+   Wir betrachten noch einmal die $n$-dimensionale Sphäre
+   \[
+    S^n = \{x \in \R^{n+1} \mid \|x\| = 1\}.
+   \]
+   Ist $(x_n)$ eine Folge auf $S^n$, die gegen ein $x \in \R^{n+1}$ konvergiert, so ist $\|x_n\| = 1$ für alle $n \in \N$. Wegen der Stetigkeit der Norm $\|\cdot\|$ ist dann auch
+   \[
+    \|x\|
+    = \|\lim_{n \to \infty} x_n\|
+    = \lim_{n \to \infty} \|x_n\|
+    = \lim_{n \to \infty} 1
+    = 1,
+   \]
+   also $x \in S^n$. Also ergibt sich auch durch diese Charakterisierung der Abgeschlossenheit, dass $S^n$ abgeschlossen ist.
+  \item
+   Allgmeiner ergibt sich so auch die Aussage, dass Urbilder abgeschlossener Mengen abgeschlossen sind: Es sei $f \colon \R^n \to \R^m$ stetig und $A \subseteq \R^m$ abgeschlossen. Für jede Folge $(x_n)$ auf $f^{-1}(A)$ ist dann $f(x_n) \in A$ für alle $n \in \N$. Konvergiert $(x_n)$ gegen ein $x \in \R^n$, so konvergiert $f(x_n)$ wegen der Stetigkeit von $f$ gegen $f(x)$. Da $A$ abgeschlossen ist muss auch $f(x) \in A$. Damit ist dann auch $x \in f^{-1}(A)$.
+  \item
+   Auch die Abgeschlossenheit des Einheitswürfels $[0,1]^m \subseteq \R^m$ ergibt sich durch die Abgeschlossenheit unter Grenzwerten: Es sei $(x_n)$ eine Folge auf $[0,1]^m$, die gegen ein $x \in \R^m$ konvergiert. In Koordinaten sei $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$ und $x = (x^{(1)}, \dotsc, x^{(m)})$. Da $x_n \to x$ ist $x^{(i)}_n \to x^{(i)}$ für alle $1 \leq i \leq m$. Da $0 \leq x^{(i)}_n \leq 1$ für alle $n \in \N$ ist auch $0 \leq x^{(i)} \leq 1$ für alle $0 \leq i \leq m$. Also ist auch $x \in [0,1]^m$.
+ \end{itemize}
+\end{bsp}
+
+
+Das letzte Beispiel lässt sich Verallgemeinern:
+
+
+\begin{question}
+ Es seien $A_1, \dotsc, A_m \subseteq \R$ abgeschlossen. Zeigen Sie, dass $A_1 \times \dotsb \times A_m \subseteq \R^m$ abgeschlossen ist.
+\end{question}
+\begin{solution}
+ Es sei $(x_n)$ eine Folge auf $A_1 \times A_m$ die gegen $x \in \R^m$ konvergiert. In Koordinaten gelte $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$ sowie $x = (x^{(1)}, \dotsc, x^{(m)})$. Da $x_n \to x$ ist $x^{(i)}_n \to x^{(i)}$ für alle $1 \leq i \leq m$. Für alle $1 \leq i \leq m$ ist $x^{(i)}_n \in A_i$ für alle $n \in \N$, und da $A_i$ abgeschlossen ist damit auch $x^{(i)} \in A_i$. Es ist also $x \in A_1 \times \dotsb \times A_m$.
+\end{solution}
 
 
 
