@@ -23,7 +23,7 @@
 \section{Häufungspunkte}
 
 
-Es sei $A \subseteq \R^n$ und $f \colon A \to \R$. Wir wollen untersuchen, wie sich $f$ an einer Stelle $x \in \R^n$ verhält, bzw.\ verhalten sollte. Um das Verhalten von $f$ an $x$ zu untersuchen, brauchen wir, dass $f$ „in der Nähe“ von $x$ definiert ist. Hierfür brauchen wir, dass $x$ „nahe“ an $A$ ist. Dies motiviert die folgende Definition:
+Es sei $A \subseteq \R^n$ und $f \colon A \to \R^m$. Wir wollen untersuchen, wie sich $f$ an einer Stelle $x \in \R^n$ verhält, bzw.\ verhalten sollte. Um das Verhalten von $f$ an $x$ zu untersuchen, brauchen wir, dass $f$ „in der Nähe“ von $x$ definiert ist. Hierfür brauchen wir, dass $x$ „nahe“ an $A$ ist. Dies motiviert die folgende Definition:
 
 
 \begin{defi}
@@ -31,6 +31,30 @@ Es sei $A \subseteq \R^n$ und $f \colon A \to \R$. Wir wollen untersuchen, wie s
  
  Wir bezeichnen die Menge aller Häufungspunkte von $A$ mit $A'$.
 \end{defi}
+
+
+\begin{question}
+ Es sei $x \in \R^n$. Der \emph{punktierte offene $\varepsilon$-Ball um $x$} ist die Menge
+ \[
+  \dot{B}_\varepsilon(x) \coloneqq B_\varepsilon(x) \setminus \{x\} = \{y \in \R^n \mid 0 < \|y\| < \varepsilon\}.
+ \]
+ Eine \emph{punktierte Umgebung von $x$} ist eine Menge $U \setminus \{x\}$, wobei $U \subseteq \R^n$ eine Umgebung von $x$ ist.
+ 
+ Es sei $A \subseteq \R^n$ und $x \in \R^n$. Zeigen Sie, dass die folgenden Bedingungen äquivalent sind:
+ \begin{enumerate}
+  \item\label{enum: Häufungspunkt}
+   $x$ ist ein Häufungspunkt von $A$.
+  \item\label{enum: punktierte Bälle}
+   Für jedes $\varepsilon > 0$ gibt es ein $a \in A$ mit $a \in \dot{B}_\varepsilon(x)$.
+  \item\label{enum: punktierte Umgebungen}
+   Für jede punktierte Umgebung $V$ von $x$ gibt es ein $a \in A$ mit $a \in V$.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ (\ref{enum: Häufungspunkt} $\Leftrightarrow$ \ref{enum: punktierte Bälle}) \ref{enum: punktierte Bälle} ist eine direkte Umformulierung der Definition von \ref{enum: Häufungspunkt}.
+ 
+ (\ref{enum: punktierte Bälle} $\Leftrightarrow$ \ref{enum: punktierte Umgebungen}) Jeder punktierte $\varepsilon$-Ball um $x$ ist auch eine punktierte Umgebung von $x$. Andererseits enthält jede punktierte Umgebung von $x$ einen punktierten $\varepsilon$-Ball um $x$.
+\end{solution}
 
 
 Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, falls sich $x$ \emph{von außen} durch Punkte aus $A$ annähern lässt.
@@ -49,7 +73,7 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
    \]
    und es gilt $\|x-y\| < \omega \leq \varepsilon$.
   \item
-   Allgemeiner ergibt sich mit dieser Argumentation, dass $x \in \R^n$ ein Häufungspunkt von $V \subseteq \R^n$ ist, falls $V$ eine Umgebung von $x$ ist.
+   Allgemeiner ergibt sich mit dieser Argumentation, dass $x \in \R^n$ ein Häufungspunkt von $V \subseteq \R^n$ ist, falls $V$ eine Umgebung von $x$ ist. (Es genügt bereits eine punktierte Umgebung.)
  \end{itemize}
 \end{bsp}
 
@@ -62,7 +86,7 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
  
  Angenommen, eine solche Folge $(a_n)_{n \in \N}$ existiert. Dann gibt es für jedes $\varepsilon > 0$ ein $N \in \N$, so dass $|x-a_n| < \varepsilon$ für alle $n \geq N$. Inbesondere ist $a_N \in A$ mit $|x-a_N| < \varepsilon$ und $a_N \neq x$.
 \end{solution}
- 
+
 
 \begin{question}
  Es sei $M \subseteq \R^n$ endlich. Zeigen Sie, dass $M' = \emptyset$.
@@ -234,9 +258,9 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
   \item\label{enum: Grenzwert mit epsilon delta}
    $\lim_{a \to x, a \in A} f(a) = y$.
   \item\label{enum: Grenzwert mit Folgen}
-   Für jede Folge $(a_n)$ auf $A \setminus \{x\}$ mit $a_n \to x$ gilt, dass auch $f(a_n) \to y$.
+   Für jede Folge $(a_n)$ auf $A \setminus \{x\}$ mit $a_n \to x$ ist $f(a_n) \to y$.
  \end{enumerate}
- (Da $x$ ein Häufungspunkt von $A$ ist, existiert auch eine entsprechende Folge.)
+ (Da $x$ ein Häufungspunkt von $A$ ist, existiert eine entsprechende Folge.)
 \end{lem}
 \begin{proof}
  (\ref{enum: Grenzwert mit epsilon delta} $\Rightarrow$ \ref{enum: Grenzwert mit Folgen}) Es sei $(a_n)$ eine Folge auf $A \setminus \{x\}$ mit $a_n \to x$. Wir wollen zeigen, dass $f(a_n) \to y$. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Da $\lim_{a \to x, a \in A} f(a) = y$ gibt es ein $\delta > 0$, so dass
@@ -250,7 +274,18 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
 \end{proof}
 
 
-Mithilfe dieses Lemmas können wir viele Aussagen für die Grenzwerte von Folgen auf Grenzwerte von Funktionen übertragen.
+Aus dieser Beschreibung von Funktionsgrenzwerten durch  Folgen ergeben sich direkt zwei einfache Konsequenzen: Zum einen sehen wir, dass sich Funktionsgrenzwerte auch koordinatenweise beschreiben lassen.
+
+
+\begin{lem}
+ Es sei $f \colon A \to \R^m$ mit $A \subseteq \R^n$ und $x \in \R^n$ ein Häufungspunkt von $A$. In Koordinaten sei $f = (f_1, \dotsc, f_m)$. Für $y = (y_1, \dotsc, y_m) \in \R^m$ ist genau dann $\lim_{a \to x, a \in A} f(a) = y$, falls $\lim_{a \to x, a \in A} f_i(a) = y_i$ für alle $1 \leq i \leq m$.
+\end{lem}
+\begin{proof}
+ Das $\lim_{a \to x, a \in A} f(a) = y$ ist äquivalent dazu, dass für jede Folge $(a_n)$ auf $A \setminus \{x\}$ mit $a_n \to x$ auch $f(a_n) \to y$. Dies ist äquivalent dazu, dass für jede Folge $(a_n)$ auf $A \setminus \{x\}$ auch $f_i(a_n) \to y_i$ für alle $1 \leq i \leq m$. Dies bedeutet wiederum, dass $\lim_{a \to x, a \in A} f_i(a) = y_i$ für alle $1 \leq i \leq n$.
+\end{proof}
+
+
+Ein weiteres Ergebnis ist, dass Funktionsgrenzwerte mit den üblichen Rechenregeln im $\R^n$ verträglich sind.
 
 
 \begin{prop}
@@ -259,7 +294,7 @@ Mithilfe dieses Lemmas können wir viele Aussagen für die Grenzwerte von Folgen
   \item
    Der Grenzwert $\lim_{a \to x, a \in A} f(a)$ ist eindeutig (wenn er existiert).
   \item
-   Existieren die Grenzwerte $\lim_{a \to x, a \in A} f_1(a)$ und $\lim_{a \to x, a \in B} f_2(a)$, so existiert auch der Grenzwert $\lim_{x \to a, a \in A} (f_1 + f_2)(a)$ und es gilt
+   Existieren die Grenzwerte $\lim_{a \to x, a \in A} f_1(a)$ und $\lim_{a \to x, a \in A} f_2(a)$, so existiert auch der Grenzwert $\lim_{x \to a, a \in A} (f_1 + f_2)(a)$ und es gilt
    \[
     \lim_{\substack{a \to x \\ a \in A}} (f_1 + f_2)(a)
     =
@@ -276,7 +311,7 @@ Mithilfe dieses Lemmas können wir viele Aussagen für die Grenzwerte von Folgen
  Im Fall $n = 1$, also für $\R^1 = \R$, gilt auch eine Verträglichkeit mit Multiplikation und Division.
  \begin{enumerate}[resume]
   \item
-   Existieren die Grenzwerte $\lim_{a \to x, a \in A} f_1(a)$ und $\lim_{a \to x, a \in B} f_2(a)$, so existiert auch der Grenzwert $\lim_{x \to a, a \in A} (f_1 \cdot f_2)(a)$ und es gilt
+   Existieren die Grenzwerte $\lim_{a \to x, a \in A} f_1(a)$ und $\lim_{a \to x, a \in A} f_2(a)$, so existiert auch der Grenzwert $\lim_{x \to a, a \in A} (f_1 \cdot f_2)(a)$ und es gilt
    \[
     \lim_{\substack{a \to x \\ a \in A}} (f_1 \cdot f_2)(a)
     =
@@ -294,24 +329,24 @@ Mithilfe dieses Lemmas können wir viele Aussagen für die Grenzwerte von Folgen
 \end{prop}
 
 
-Wie wir bereits gesehen haben, können für eine Funktion $f \colon X \to \R^m$ mit Definitionsbereich $X \subseteq \R^n$ und Teilmengen $A, B \subseteq X$ mit gemeinsamen Häufungspunkt $x \in \R^n$ die beiden Grenzwerte $\lim_{a \to x, a \in A} f(a)$ und $\lim_{b \to x, b \in B} f(b)$ existieren, aber dennoch
+Wie wir bereits gesehen haben, können für eine Funktion $f \colon X \to \R^m$ mit Definitionsbereich $X \subseteq \R^n$ für Teilmengen $A, B \subseteq X$ mit gemeinsamen Häufungspunkt $x \in \R^n$ die beiden Grenzwerte $\lim_{a \to x, a \in A} f(a)$ und $\lim_{b \to x, b \in B} f(b)$ existieren, aber dennoch
 \[
  \lim_{\substack{a \to x \\ a \in A}} f(a)
  \neq
  \lim_{\substack{b \to x \\ b \in B}} f(b).
 \]
-Es kann auch passieren, dass einer der beiden Grenzwerte existiert, der andere jedoch nicht. Es gibt also im Allgemeinen keinen Zusammehang zwischen dem Grenzwert von $f$ über $A$ und dem Grenzwert über $B$. Unter bestimmten Umständen lassen sich die entsprechenden Grenzwerte dennoch vergleichen:
+Es kann auch passieren, dass einer der beiden Grenzwerte existiert, der andere jedoch nicht. Es gibt also im Allgemeinen keinen Zusammehang zwischen dem Grenzwert von $f$ über $A$ und dem Grenzwert über $B$. Unter bestimmten Umständen lassen sich die entsprechenden Grenzwerte aber vergleichen:
 
 
 \begin{lem}\label{lem: Grenzwerte auf Teilmengen}
- Es seien $A \subseteq B \subseteq \R^n$ und $f \colon B \to \R^m$. Ist $x \in \R^n$ ein gemeinsamer Häufungspunkt von $A$ und $B$, sodass $\lim_{b \to x, b \in B} f(b)$ existiert, so existiert auch der Grenzwert $\lim_{a \to x, a \in A} f(a)$, und es gilt
+ Es seien $A \subseteq B \subseteq \R^n$ und $f \colon B \to \R^m$. Ist $x \in \R^n$ ein gemeinsamer Häufungspunkt von $A$ und $B$, sodass der Grenzwert $\lim_{b \to x, b \in B} f(b)$ existiert, so existiert auch $\lim_{a \to x, a \in A} f(a)$, und es gilt
  \[
   \lim_{\substack{a \to x \\ a \in A}} f(a)
   = \lim_{\substack{b \to x \\ b \in B}} f(b).
  \]
 \end{lem}
 \begin{proof}
- Zur besseren Lesbarkeit setzen wir $y \coloneqq \lim_{b \to x, b \in B} f(b)$. Wir wollen zeigen, dass auh $\lim_{a \to x, x \in A} f(a) = y$. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Da $y = \lim_{b \to x, b \in B} f(b)$ gibt es ein $\delta > 0$, so dass
+ Zur besseren Lesbarkeit setzen wir $y \coloneqq \lim_{b \to x, b \in B} f(b)$. Wir wollen zeigen, dass auch $\lim_{a \to x, x \in A} f(a) = y$. Es sei hierfür $\varepsilon > 0$ beliebig aber fest. Da \mbox{$y = \lim_{b \to x, b \in B} f(b)$} gibt es ein $\delta > 0$, so dass
  \[
   \|x-b\| < \delta \Rightarrow \|y-f(b)\| < \varepsilon \quad \text{für alle $b \in B$ mit $b \neq x$}.
  \]
@@ -324,7 +359,7 @@ Es kann auch passieren, dass einer der beiden Grenzwerte existiert, der andere j
 
 
 \begin{kor}\label{kor: gemeinsamer Häufungspunkt mit gemeinsamen Grenzwert}
- Es sei $f \colon X \to \R$ mit Definitionsbereich $X \subseteq \R$. Es seien $A, B \subseteq X$ Teilmengen, so dass $x \in \R$ ein gemeinsamer Häufungspunkt von $A$, $B$ ist, und die beiden Grenzwerte $\lim_{a \to x, a \in A} f(a)$ und $\lim_{b \to x, b \in B} f(b)$ existieren. Ist $x$ auch ein Häufungspunkt von $A \cap B$, so ist
+ Es sei $f \colon X \to \R^m$ mit Definitionsbereich $X \subseteq \R^n$. Es seien $A, B \subseteq X$ Teilmengen, so dass $x \in \R^n$ ein gemeinsamer Häufungspunkt von $A$ und $B$ ist, und die beiden Grenzwerte $\lim_{a \to x, a \in A} f(a)$ und $\lim_{b \to x, b \in B} f(b)$ existieren. Ist $x$ auch ein Häufungspunkt von $A \cap B$, so ist
  \[
   \lim_{\substack{a \to x \\ a \in A}} f(a)
   = \lim_{\substack{b \to x \\ b \in B}} f(b).
