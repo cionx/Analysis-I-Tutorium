@@ -3,3 +3,4 @@
 \contentsline {section}{\numberline {2}Folgenkompaktheit}{2}
 \contentsline {section}{\numberline {3}Überdeckungskompaktheit}{3}
 \contentsline {section}{\numberline {4}Der Satz von Heine-Borel}{5}
+\contentsline {section}{\numberline {5}Weitere Eigenschaften kompakter Mengen}{6}

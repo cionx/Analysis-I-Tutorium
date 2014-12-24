@@ -129,10 +129,10 @@ Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|
 \begin{question}
  Für $1 \leq i \leq n$ sei $\pi_i \colon \R^n \to \R, (x_1, \dotsc, x_n) \mapsto x_i$ die Projektion in die $i$-te Koordinate. Zeigen Sie: $X \subseteq \R^n$ ist genau dann beschränkt, wenn $\pi_i(X)$ für alle $1 \leq i \leq n$ beschränkt ist.
 \end{question}
-\begin{proof}
+\begin{solution}
  Angenommen $X$ ist beschränkt. Dann gibt es ein $C > 0$, so dass $\|x\| \leq C$ für alle $x \in X$. Für jedes $1 \leq i \leq n$ ist daher
  \[
-  |\pi_i(x)| = |x_i| \leq x \leq C \quad \text{für alle $x = (x_1, \dotsc, x_n) \in X$},
+  |\pi_i(x)| = |x_i| \leq \|x\| \leq C \quad \text{für alle $x = (x_1, \dotsc, x_n) \in X$},
  \]
  und somit
  \[
@@ -146,7 +146,7 @@ Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|
   \quad \text{für alle $x = (x_1, \dotsc, x_n) \in X$}.
  \]
  Also ist $X$ beschränkt.
-\end{proof}
+\end{solution}
 
 
 
@@ -275,6 +275,38 @@ Wir haben bereits gesehen, dass eine Folge im Mehrdimensionalen genau dann konve
 \end{prop}
 \begin{proof}
  $(x_n)$ ist genau dann eine Cauchy-Folge, wenn $(x_n)$ in jeder Koordinate eine Cauchy-Folge ist. Wegen der Vollständigkeit von $\R$ ist dies äquivalent dazu, dass $(x_n)$ in jeder Koordinate konvergiert. Dies ist wiederum äquivalent dazu, dass $(x_n)$ auf $\R^m$ konvergiert.
+\end{proof}
+
+
+Wir kennen den Satz von Bolzano-Weierstraß, der besagt, dass jede beschränkt Folge auf $\R$ eine konvergente Teilfolge besitzt. Die naheliegende Verallgemeinerung gilt auch für $\R^n$.
+
+
+\begin{defi}
+ Eine Folge $(x_n)$ auf $\R^m$ heißt beschränkt, falls die Menge der Folgeglieder $\{x_n \mid n \in \N\}$ beschränkt ist, falls es also ein $C > 0$ gibt, so dass $\|x_n\| \leq C$ für alle $n \in \N$.
+\end{defi}
+
+
+\begin{prop}[Satz von Bolzano-Weierstraß]
+ Jede beschränkte Folge $(x_n)_{n \in \N}$ auf $\R^m$ besitzt eine konvergente Teilfolge.
+\end{prop}
+\begin{proof}
+ In Koordinaten sei $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$. Da die Folge $(x_n)$ beschränkt ist, ist die Folge $(x^{(i)}_n)_{n \in \N}$ für alle $1 \leq i \leq m$ beschränkt.
+ 
+ Da die Folge $(x^{(1)}_n)_{n \in \N}$ beschränkt ist, besitzt sie nach dem Satz von Bolzano-Weierstraß auf $\R$ eine konvergente Teilfolge $n_{1,j}$; es sei
+ \[
+  x^{(1)} \coloneqq \lim_{j \to \infty} x^{(1)}_{n_{1,j}}.
+ \]
+ Da die Folge $(x^{(2)}_{n_{1,j}})_{j \in \N}$ beschränkt ist, besitzt sie nach dem Satz von Bolzano-Weierstraß auf $\R$ eine konvergente Teilfolge $n_{2,j}$; wir setzen
+ \[
+  x^{(2)} \coloneqq \lim_{j \to \infty} x^{(2)}_{n_{2,j}}.
+ \]
+ Da $x^{(1)}_{n_{1,j}} \to x^{(1)}$ für $j \to \infty$ ist auch $x^{(1)}_{n_{2,j}} \to x^{(1)}$ für $j \to \infty$.
+ 
+ Wir erhalten rekursiv Teilfolgen $n_{1,j}$, \dots, $n_{m,j}$ und $x^{(1)}, \dotsc, x^{(m)} \in \R$, so dass für jedes $1 \leq k \leq m$
+ \[
+  x^{(i)} = \lim_{j \to \infty} x^{(i)}_{n_{k,j}} \quad \text{für alle $1 \leq i \leq k$}.
+ \]
+ Inbesondere ist $n_{m,j}$ eine Teilfolge, so dass $x^{(i)}_{n_{m,j}} \to x^{(i)}$ für $j \to \infty$ für jedes $1 \leq i \leq m$. Daher ist $x_{n_{m,j}} \to (x^{(1)}, \dotsc, x^{(m)})$ für $j \to \infty$. Als besitzt $(x_n)$ eine konvergente Teilfolge.
 \end{proof}
 
 
@@ -1126,6 +1158,24 @@ Das letzte Beispiel lässt sich Verallgemeinern:
 \end{question}
 \begin{solution}
  Es sei $(x_n)$ eine Folge auf $A_1 \times A_m$ die gegen $x \in \R^m$ konvergiert. In Koordinaten gelte $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$ sowie $x = (x^{(1)}, \dotsc, x^{(m)})$. Da $x_n \to x$ ist $x^{(i)}_n \to x^{(i)}$ für alle $1 \leq i \leq m$. Für alle $1 \leq i \leq m$ ist $x^{(i)}_n \in A_i$ für alle $n \in \N$, und da $A_i$ abgeschlossen ist damit auch $x^{(i)} \in A_i$. Es ist also $x \in A_1 \times \dotsb \times A_m$.
+\end{solution}
+
+
+\begin{question}
+ Es sei $f \colon \R \to \R$ eine stetige Funktion. Zeigen Sie, dass der Grahp
+ \[
+  G \coloneqq \{(x,f(x)) \mid x \in \R\}
+ \]
+ abgeschlossen ist.
+\end{question}
+\begin{solution}
+ Es sei $(y_n)$ eine Folge auf $G$ mit $y_n \to y$ für $y \in \R^2$. Wir wollen zeigen, dass $y \in G$. In Koordinaten sei $y_n = (y^{(1)}_n, y^{(2)}_n)$ für alle $n \in \N$ und $y = (y^{(1)}, y^{(2)})$. Da $(y_n)$ eine Folge auf $G$ ist, ist $y^{(2)}_n = f(y^{(1)}_n)$ für alle $n \in \N$. Schreiben wir $x_n \coloneqq y^{(1)}_n$, so ist also $y_n = (x_n, f(x_n))$ für alle $n \in \N$.
+ 
+ Da $y_n \to y$ ist $x_n \to y^{(1)}$ und $f(x_n) \to y^{(2)}$. Da $f$ stetig ist, folgt aus $x_n \to y^{(1)}$, dass $f(x_n) \to f(y^{(1)})$. Aus der Eindeutigkeit von Grenzwerten folgt damit, dass
+ \[
+  y^{(2)} = \lim_{n \to \infty} f(x_n) = f\left(y^{(1)}\right).
+ \]
+ Also ist $y = (y^{(1)}, y^{(2)}) = (y^{(1)}, f(y^{(1)}))$ und somit auch $y \in G$. Das zeigt, dass $G$ abgeschlossen ist.
 \end{solution}
 
 
