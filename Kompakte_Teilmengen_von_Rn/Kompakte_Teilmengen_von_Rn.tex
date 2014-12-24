@@ -278,6 +278,7 @@ Der Satz von Heine-Borel ist sehr nützlich, um Teilmengen von $\R^n$ auf Kompak
 
 
 \section{Weitere Eigenschaften kompakter Mengen}
+Wir wollen hier noch weitere Eigenschaften kompakter Mengen angeben und beweisen. Dabei geben wir jeweils mehrere Beweise an, um den Leser mit den verschiedenen Charakterisierungen kompakter Mengen vertraut zu machen.
 
 
 \begin{lem}
@@ -312,7 +313,7 @@ Der Satz von Heine-Borel ist sehr nützlich, um Teilmengen von $\R^n$ auf Kompak
 Wie wir bereits gesehen haben, sind nicht alle abgeschlossenen Mengen kompakt. Es gilt jedoch, dass abgeschlossener Teilmengen kompakter Mengen selber kompakt ist.
 
 
-\begin{lem}
+\begin{lem}\label{lem: abgeschlossen Teilmengen von kompakten Mengen}
  Ist $K \subseteq \R^m$ kompakt und $C \subseteq \R^m$ abgeschlossen mit $C \subseteq K$, so ist auch $C$ kompakt.
 \end{lem}
 \begin{proof}
@@ -331,6 +332,14 @@ Wie wir bereits gesehen haben, sind nicht alle abgeschlossenen Mengen kompakt. E
  Das zeigt, dass jede offen Überdeckung von $C$ eine endliche Teilüberdeckung besitzt. Also ist $C$ (überdeckungs)kompakt.
  
  \emph{(Heine-Borel)} Da $K$ kompakt ist, ist $K$ beschränkt. Da $C \subseteq K$ ist daher auch $C$ beschränkt. Da $C$ abgeschlossen und beschränkt ist, ist $K$ kompakt.
+\end{proof}
+
+
+\begin{kor}
+ Ist $\{K_i\}_{i \in i}$ eine nichtleere Kollektion kompakter Teilmengen $K_i \subseteq \R^n$, so ist auch $\bigcap_{i \in I} K_i$ kompakt.
+\end{kor}
+\begin{proof}
+ Da die $K_i$ kompakt sind, sind sie auch abgeschlossen. Also ist auch $\bigcap_{i \in I} K_i$ abgeschlossen. Da außerdem $\bigcap_{i \in I} K_i \subseteq K_j$ für beliebiges $j \in I$ ist $\bigcap_{i \in I} K_i$ nach Lemma \ref{lem: abgeschlossen Teilmengen von kompakten Mengen} kompakt. (Hierfür benötigen wir, dass ein $j \in I$ existiert.)
 \end{proof}
 
 
@@ -373,7 +382,7 @@ Eine weitere wichtige Aussage ist, dass stetige Funktionen Kompaktheit erhalten.
  \emph{(Folgenkompaktheit)} Es sei $(y_n)$ eine Folge auf $f(K)$. Für jedes $n \in \N$ gibt es dann ein $x_n \in K$ mit $f(x_n) = y_n$. Da $K$ (folgen)kompakt ist besitzt die Folge $(x_n)$ eine auf $K$ konvergente Teilfolge $(n_j)_{j \in \N}$. Es sei $x \coloneqq \lim_{j \to \infty} x_{n_j} \in K$. Aus der Stetigkeit von $f$ folgt, dass auch die Folge $(f(x_{n_j}))_{j \in \N} = (y_{n_j})_{j \in \N}$ konvergiert und
  \[
   f(x)
-  = f(\lim_{j \to \infty} x_{n_j})
+  = f\left( \lim_{j \to \infty} x_{n_j} \right)
   = \lim_{j \to \infty} f(x_{n_j})
   = \lim_{j \to \infty} y_{n_j}.
  \]
