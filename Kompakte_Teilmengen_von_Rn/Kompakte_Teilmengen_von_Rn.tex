@@ -208,11 +208,17 @@ Um zu verstehen, welche Teilmengen von $\R^n$ folgenkompakt sind, wollen wir ein
 \end{proof}
 
 
+
+
+
+\section{Äquivalenz der Kompaktheitsbegriffe}
+
+
 \begin{prop}
  Eine Teilmenge $K \subseteq \R^n$ ist genau dann folgenkompakt, wenn sie überdeckungskompakt ist.
 \end{prop}
 \begin{proof}
- Angenommen $K$ ist überdeckungskompakt, aber nicht folgenkompakt. Dann gibt es eine Folge $(x_n)$ auf $K$, die keine auf $K$ konvergente Teilfolge besitzt.
+ (Überdeckungskompaktheit $\Rightarrow$ Folgenkompaktheit) Angenommen $K$ ist überdeckungskompakt, aber nicht folgenkompakt. Dann gibt es eine Folge $(x_n)$ auf $K$, die keine auf $K$ konvergente Teilfolge besitzt.
  
  \begin{beh}
   Für jedes $x \in K$ gibt es ein $\varepsilon_x > 0$, so dass $\|x - x_n\| \geq \varepsilon$ für fast alle $n \in \N$.
@@ -226,6 +232,39 @@ Um zu verstehen, welche Teilmengen von $\R^n$ folgenkompakt sind, wollen wir ein
   K \subseteq B_{\varepsilon_{x_1}}(x_1) \cup \dotsb \cup B_{\varepsilon_{x_s}}(x_s).
  \end{equation}
  Da jeder der $\varepsilon$-Bälle $B_{\varepsilon_x}(x)$ nur endlich viele Folgeglieder enthält, enthält auch $K$ wegen \eqref{eqn: K endlich überdeckt} nur endlich viele Folgeglieder, was offenbar nicht seien kann. Das zeigt, dass aus Überdeckungskompaktheit Folgenkompaktheit folgt.
+ 
+ (Überdeckungskompaktheit $\Rightarrow$ Folgenkompaktheit) Entscheident für diese Implikation ist die folgende Eigenschaften überdeckungskompakter Mengen:
+ 
+ \begin{beh}
+  Es sei $(x_n)$ eine Folge auf $K$. Dann gibt es für jedes $\varepsilon > 0$ eine Teilfolge $n_j$, so dass $\|x_{n_j} - x_{n_{j'}}\| < \varepsilon$ für alle $j, j' \in \N$.
+ \end{beh}
+ \begin{proof}[Beweis der Behauptung]
+  Die $(\varepsilon/2)$-Bälle $\{B_{\varepsilon/2}(y) \mid y \in K\}$ bilden offenbar eine offene Überdeckung von $K$. Wegen der Überdeckungskompaktheit von $K$ besitzt diese offene Überdeckung eine endliche Teilüberdeckung. Es gibt daher $y_1, \dotsc, y_s \in K$ mit
+  \[
+   K \subseteq B_{\varepsilon/2}(y_1) \cup \dotsb \cup B_{\varepsilon/2}(y_s).
+  \]
+  Es muss dann einer dieser $(\varepsilon/2)$-Bälle unendlich viele Folgeglieder enthalten; wir können o.B.d.A.\ davon ausgehen, dass $x_n \in B_{\varepsilon/2}(y_1)$ für unendlich viele $n \in \N$. Es gibt daher eine Teilfolge $n_j$ mit $x_{n_j} \in B_{\varepsilon/2}(y_1)$ für alle $j \in \N$. Inbesondere ist daher für alle $j, j' \in \N$
+  \[
+   \|x_{n_j} - x_{n_{j'}}\|
+   \leq \|x_{n_j} - y_1\| + \|x_{n_{j'}} - y_1\|
+   < \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
+   = \varepsilon.
+   \qedhere
+  \]
+ \end{proof}
+ 
+ Nach der Behauptung gibt es eine Teilfolge $n_{1,j}$, so dass $\|x_{n_{1,j}}-x_{n_{1,j'}}\| < 1$ für alle $j, j' \in \N$. Nach der Behauptung besitzt die Folge $(x_{n_{1,j}})_{j \in \N}$ eine Teilfolge $n_{2,j}$, so dass $\|x_{n_{2,j}} - x_{n_{2,j'}}\| < 1/2$ für alle $j, j' \in \N$. Rekursives Weiterführen ergibt für jedes $k \geq 2$ eine Teilfolge $n_{k,j}$ von $(x_{n_{k-1,j}})_{j \in \N}$, so dass
+ \[
+  \|x_{n_{k,j}} - x_{n_{k,j'}}\| < 1/k \quad \text{für alle $j, j' \in \N$}.
+ \]
+ 
+ Wir wollen diese Folgen nun zu der gewünschten Cauchy-Folge zusammenfassen; hierfür benutzen wir einen Standardtrick, den der \emph{Diagonalfolge}: Wir definieren die gewünschte Teilfolge $n_j$ durch $n_j \coloneqq n_{j,j}$ für alle $j \geq 1$, d.h.\ wir nehmen das erste Glied aus der Teilfolge $(x_{n_{1,j}})$, das zweite Glied aus der Folge $(x_{n_{2,j}})$, das dritte Glied aus der Folge $(x_{n_{3,j}})$, usw. Für die so erhaltene Teilfolge $n_j$ ist
+ \[
+  \| x_{n_j} - x_{n_{j'}} \| < 1/J \quad \text{für alle $J \in \N$, $J \geq 1$ und $j, j' \geq J$}.
+ \]
+ Also ist $(x_{n_j})_{j \in \N}$ eine Cauchy-Folge, und somit konvergent. Da $K$ überdeckungskompakt ist, ist $K$ auch abgeschlossen, und deshalb $\lim_{j \to \infty} x_{n_j} \in K$.
+ 
+ Das zeigt, dass jede Folge auf $K$ eine auf $K$ konvergente Teilfolge besitzt, also dass $K$ folgenkompakt ist.
 \end{proof}
 
 
