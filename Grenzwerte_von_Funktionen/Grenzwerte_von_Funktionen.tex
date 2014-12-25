@@ -437,40 +437,151 @@ Der beidseitige Grenzwert lässt sich auch als Kombination des links- und rechts
  \end{enumerate}
 \end{lem}
 
+\begin{bsp}
+ \begin{itemize}
+  \item
+    Der Grenzwert $\lim_{x \to 0} \sin(1/x)$ existiert nicht: Die beiden Folgen $(a_n)$ und $(b_n)$ mit
+   \[
+    a_n \coloneqq \frac{1}{\frac{\pi}{2} + n \cdot 2\pi}
+    \quad
+    \text{und}
+    \quad
+    b_n \coloneqq \frac{1}{\frac{3\pi}{2} + n \cdot 2\pi}
+   \]
+   konvergieren gegen $0$, aber
+   \begin{gather*}
+    \lim_{n \to \infty} \sin \frac{1}{a_n}
+    = \lim_{n \to \infty} 1
+    = 1
+   \shortintertext{und}
+    \lim_{n \to \infty} \sin \frac{1}{b_n}
+    = \lim_{n \to \infty} -1
+    = -1.
+   \end{gather*}
+  \item
+   Es ist $\lim_{x \to 0} x \sin(1/x) = 0$: Wir wissen bereits, dass die Abbildung
+   \[
+    f \colon \R \to \R,
+    f(x) \coloneqq
+    \begin{cases}
+     \sin \frac{1}{x} & \text{für $x \neq 0$}, \\
+                    0 & \text{für $x = 0$},
+    \end{cases}
+   \]
+   stetig ist. (Stetigkeit an $x \neq 0$ ist klar, und an $x = 0$ ergibt die Stetigkeit aus dem $\varepsilon$-$\delta$-Kriterium.) Daher ist
+   \[
+    \lim_{x \to 0} x \sin \frac{1}{x}
+    = \lim_{x \to 0} f(x)
+    = f(0)
+    = 0.
+   \]
+  \item
+   Für $p, q \in \N$ mit $p, q \geq 1$ ist
+   \[
+    \lim_{x \to 1} \frac{x^p-1}{x^q-1} = \frac{p}{q}.
+   \]
+   Das Problem besteht darin, dass $1^q-1 = 1^p-1 = 0$. Dieses Problem beseitigen wir dadurch, dass wir aus den Polynomen $x^p-1$ und $x^q-1$ den Linearfaktor $x-1$ ausklammern. Wir erhalten so, dass für alle $x \neq 1$
+   \[
+    \frac{x^p-1}{x^q-1}
+    = \frac{(x-1)\sum_{k=0}^{p-1} x^k}{(x-1)\sum_{k=0}^{q-1} x^k}
+    = \frac{\sum_{k=0}^{p-1} x^k}{\sum_{k=0}^{q-1} x^k}.
+   \]
+   Daher ist
+   \[
+    \lim_{x \to 1} \frac{x^p-1}{x^q-1}
+    = \lim_{x \to 1} \frac{\sum_{k=0}^{p-1} x^k}{\sum_{k=0}^{q-1} x_k}
+    = \frac{\sum_{k=0}^{p-1} 1}{\sum_{k=0}^{q-1} 1}
+    = \frac{p}{q}.
+   \]
+  \item
+   Wir wollen untersuchen, wie sich die Grenzwert von $x \sqrt{1 + 4/x^2}$ an $x = 0$ verhält --- von unten, oben und beidseitig. Hierfür bemerken wir, dass für alle $x \neq 0$
+   \begin{align*}
+    x \sqrt{1 + \frac{4}{x^2}}
+    &= \sgn(x) |x| \sqrt{1 + \frac{4}{x^2}} \\
+    &= \sgn(x) \sqrt{x^2} \sqrt{1 + \frac{4}{x^2}}
+    = \sgn(x) \sqrt{x^2 + 4}.
+   \end{align*}
+   Daher ist
+   \begin{align*}
+    \lim_{x \uparrow 0} x \sqrt{1 + \frac{4}{x^2}}
+    &= \lim_{x \uparrow 0} \sgn(x) \sqrt{x^2 + 4}
+    = \lim_{x \uparrow 0} -1 \cdot \sqrt{x^2 + 4} \\
+    &= -\lim_{x \uparrow 0} \sqrt{x^2 + 4}
+    = -2.
+   \end{align*}
+   Analog ergibt sich, dass
+   \[
+    \lim_{x \downarrow 0} x \sqrt{1 + \frac{4}{x^2}}
+    = 2.
+   \]
+   Damit kennen wir das Verhalten von Grenzwert von oben und von unten. Der beidseitige Grenzwert existiert nicht, da oberer und unterer Grenzwert verschieden sind.
+  \item
+   Wir wollen den Grenzwert
+   \[
+    \lim_{x \uparrow 2} \frac{x^2 - 14x + 24}{|x-2| + |x^2-4|}
+   \]
+   untersuchen. Hierfür bemerken wir, dass für alle $x \neq 2$
+   \begin{align*}
+    \frac{x^2 - 14x + 24}{|x-2| + |x^2-4|}
+    &= \frac{(x-2)(x-12)}{|x-2| + |x-2| |x+2|} \\
+    &= \frac{(x-2)(x-12)}{\sgn(x-2)(x-2) + \sgn(x-2)(x-2)|x+2|} \\
+    &= \frac{x-12}{\sgn(x-2) + \sgn(x-2)|x+2|} \\
+    &= \sgn(x-2) \frac{x-12}{1 + |x+2|}.
+   \end{align*}
+   Daher ist
+   \begin{align*}
+    \lim_{x \uparrow 2} \frac{x^2 - 14x + 24}{|x-2| + |x^2-4|}
+    &= \lim_{x \uparrow 2} \sgn(x-2) \frac{x-12}{1+|x+2|} \\
+    = \lim_{x \uparrow 2} -1 \cdot \frac{x-12}{1+|x+2|}
+    &= -\lim_{x \uparrow 2} \frac{x-12}{1+|x+2|}
+    = - \frac{2-12}{1+|2+2|}
+    = 2.
+   \end{align*}
+   Analog ergibt sich, dass auch
+   \[
+    \lim_{x \downarrow 2} \frac{x^2 - 14x + 24}{|x-2| + |x^2-4|} = -2.
+   \]
+ \end{itemize}
+\end{bsp}
+
 
 
 
 
 \section{Uneigentliche Grenzwerte}
+Sie wie bei Folgen kann man auch bei Funktionen uneigentliche Grenzwerte definieren.
 
 
 \begin{defi}
- Es sei $A \subseteq \R^n$, $f \colon A \to \R^m$ und $x \in \R^n$ ein Häufungspunkt von $A$. Wir schreiben dass $\lim_{a \to x, a \in A} f(x) = \infty$, falls es für alle $R > 0$ ein $\delta > 0$ gibt, so dass
+ Es sei $A \subseteq \R^n$, $f \colon A \to \R$ und $x \in \R^n$ ein Häufungspunkt von $A$. Wir schreiben dass $\lim_{a \to x, a \in A} f(a) = \infty$, falls es für alle $R > 0$ ein $\delta > 0$ gibt, so dass
  \[
-  \|x-a\| < \delta \Rightarrow \|f(a)\| \geq R \quad \text{für alle $a \in A$ mit $a \neq x$}.
+  \|x-a\| < \delta \Rightarrow f(a) \geq R \quad \text{für alle $a \in A$ mit $a \neq x$}.
  \]
- Wir schreiben $\lim_{a \to x, a \in A} f(x) = -\infty$, falls es für alle $R > 0$ ein $\delta > 0$ gibt, so dass
- \[
-  \|x-a\| < \delta \Rightarrow \|f(a)\| \leq -R \quad \text{für alle $a \in A$ mit $a \neq x$}.
- \]
+ Analog definieren wir $\lim_{a \to x, a \in A} f(a) = -\infty.$
 \end{defi}
 
 
 \begin{defi}
- Es sei $f \colon X \to \R$ eine Abbildung mit Definitionsbereits $X \subseteq \R$. Für $y \in \R$ sagen wir, dass $\lim_{x \to \infty} f(x) = y$, falls
+ Es sei $f \colon X \to \R^m$ eine Abbildung mit Definitionsbereits $X \subseteq \R$. Für $y \in \R^m$ sagen wir, dass $\lim_{x \to \infty} f(x) = y$, falls
  \begin{enumerate}
   \item
    es gibt $r_0 \in \R$, so dass $f(x)$ für alle $x \geq r_0$ definiert ist, und
   \item
-   für alle $\varepsilon > 0$ gibt es $r \geq r_0$, so dass $|f(x) - y| < \varepsilon$ für alle $x \geq r$.
+   für alle $\varepsilon > 0$ gibt es $r \geq r_0$, so dass $\|f(x) - y\| < \varepsilon$ für alle $x \geq r$.
  \end{enumerate}
- Wir sagen, dass $\lim_{x \to -\infty} f(x) = y$, falls
+ Analog definiert man die Schreibweise $\lim_{x \to -\infty} f(x) = y$.
+\end{defi}
+
+
+\begin{defi}
+ Es sei $X \subseteq \R$ und $f \colon X \to \R$. Wir schreiben, dass $\lim_{x \to \infty} f(x) = \infty$, falls
  \begin{enumerate}
   \item
-   es gibt $r_0 \in \R$, so dass $f(x)$ für alle $x \leq r_0$ definiert ist, und
+   es gibt $r_0 \in \R$, so dass $f(x)$ für alle $x \geq r_0$ definiert ist, und
   \item
-   für alle $\varepsilon > 0$ gibt es $r \leq r_0$, so dass $|f(x) - y| < \varepsilon$ für alle $x \leq r$.
+   für alle $R > 0$ ein $r > r_0$, so dass $f(x) > R$ für alle $x \geq r$.
  \end{enumerate}
+ Analog definiert man die Ausdrücke $\lim_{x \to \infty} f(x) = -\infty$, $\lim_{x \to -\infty} f(x) = \infty$ und $\lim_{x \to -\infty} f(x) = -\infty$. 
 \end{defi}
 
 
