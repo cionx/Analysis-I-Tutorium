@@ -427,15 +427,54 @@ Der beidseitige Grenzwert lässt sich auch als Kombination des links- und rechts
 \begin{lem}
  Es sei $A \subseteq \R$ und $f \colon A \to \R$. Für $x \in \R$ und $y \in \R$ sind äquivalent:
  \begin{enumerate}
-  \item
+  \item\label{enum: beidseitiger Grenzwert}
    Der beidseitige Grenzwert $\lim_{a \to x} f(a)$ existiert und $\lim_{a \to x} f(a) = y$.
-  \item
-   Die Grenzwerte $\lim_{a \uparrow x} f(a)$ und $\lim_{a \downarrow x} f(a)$ existieren und es ist
+  \item\label{enum: beide Grenzwerte}
+   Die beiden Grenzwerte $\lim_{a \uparrow x} f(a)$ und $\lim_{a \downarrow x} f(a)$ existieren und es ist
    \[
-    \lim_{a \uparrow x} f(a) = y = \lim_{a \downarrow x} f(a).
+    \lim_{a \uparrow x} f(a) = \lim_{a \downarrow x} f(a).
    \]
  \end{enumerate}
 \end{lem}
+\begin{proof}
+ (\ref{enum: beidseitiger Grenzwert} $\Rightarrow$ \ref{enum: beide Grenzwerte}) Da $\lim_{a \to x} f(a)$ existiert, gibt es ein $r > 0$, so dass $f$ auf $(x-r,x) \cup (x,x+r)$ definiert ist und $\lim_{a \to x, a \in (x-r,x) \cup (x,x+r)} f(a)$ existiert. Dann ist $f$ auch auf $(x-r,x)$ und auf $(x,x+r)$ definiert, und nach Lemma \ref{lem: Grenzwerte auf Teilmengen} gilt
+ \[
+  \lim_{a \uparrow x} f(a)
+  = \lim_{a \to x, a \in (x-r,x)} f(a)
+  = \lim_{a \to x, a \in (x-r,x) \cup (x,x+r)} f(a)
+  = \lim_{a \to x} f(a).
+ \]
+ Analog ergibt sich, dass auch $\lim_{a \downarrow} f(a)$ existiert und
+ \[
+  \lim_{a \downarrow x} f(a) = \lim_{a \to x} f(a)
+ \]
+ 
+ (\ref{enum: beide Grenzwerte} $\Rightarrow$ \ref{enum: beidseitiger Grenzwert}) Da die beiden Grenzwerte $\lim_{a \uparrow x} f(a)$ und $\lim_{a \downarrow x} f(a)$ existieren gibt es $r_-, r_+ > 0$, so dass $f$ auf $(x-r-,x)$ und $(x,x+r_+)$ definiert ist. Für $r \coloneqq \min\{r_-, r_+\}$ ist also $f$ auf $(x-r,x) \cup (x,x+r)$ definiert. Wir schreiben
+ \[
+  y \coloneqq \lim_{a \uparrow x} f(a) = \lim_{a \downarrow x} f(a).
+ \]
+ Wir wollen zeigen, dass auch $\lim_{a \to x} f(a) = y$. Hierfür sei $\varepsilon > 0$ beliebig aber fest. Da $\lim_{a \uparrow x} f(a) = y$ gibt es ein $\delta_- > 0$, so dass
+ \[
+  \|x-a\| < \delta_- \Rightarrow \|y-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in (x-r,x)$},
+ \]
+ und da $\lim_{a \downarrow x} f(a) = y$ gibt es ein $\delta_+ > 0$, so dass
+ \[
+  \|x-a\| < \delta_+ \Rightarrow \|y-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in (x,x+r)$}.
+ \]
+ Für $\delta \coloneqq \min\{\delta_-, \delta_+\}$ ist daher
+ \[
+  \|x-a\| < \delta \Rightarrow \|y-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in (x-r,x) \cup (x,x+r)$}.
+ \]
+ Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $\lim_{a \to x} f(a) = y$.
+\end{proof}
+
+
+
+Aus unserer Untersuchung allgemeiner Funktionsgrenzwerte ergibt sich für die Sonderfälle von links-, rechts- und beidseitigen Grenzwert die Verträglichkeit mit den üblichen Rechenregeln.
+
 
 \begin{bsp}
  \begin{itemize}
@@ -545,6 +584,108 @@ Der beidseitige Grenzwert lässt sich auch als Kombination des links- und rechts
 \end{bsp}
 
 
+\begin{question}
+ Zeigen Sie, dass für eine monoton steigende Funktion $f \colon \R \to \R$ an jeder Stelle $x \in \R$ sowohl der linksseitige als auch der rechtsseitige Genzwert existiert, und dass
+ \[
+  \lim_{y \uparrow x} f(y) = \sup\{f(y) \mid y < x\}
+  \quad
+  \text{und}
+  \quad
+  \lim_{y \downarrow x} f(y) = \inf\{f(y) \mid y > x\}.
+ \]
+ Wie sieht es für eine monoton fallende Funktion aus?
+\end{question}
+\begin{solution}
+ Es sei $f$ monoton steigend und $x \in \R$. Wir wollen zeigen, dass $a \coloneqq \sup_{y < x} f(y)$ die Eigenschaften des linksseitigen Limes erfüllt. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Nach der $\varepsilon$-Charakterisierung des Supremums gibt es ein $y_0 < x$ mit $a-\varepsilon < f(y_0)$. Aus der Monotonie von $f$ folgt, dass
+ \[
+  a-\varepsilon < f(y_0) \leq f(y) \leq \sup_{y' < x} f(y') = a \quad \text{für alle $y_0 \leq y < x$}.
+ \]
+ Für $\delta \coloneqq x-y_0 > 0$ ist also $|f(y)-a| < \varepsilon$ für alle $y \in (x-\delta, x)$. Wegen der Beliebigkeit von $\varepsilon>0$ zeigt dies, dass $\lim_{y \uparrow x} f(y) = a$.
+ 
+ Analog zeigt man, dass $\lim_{y \downarrow x} f(y) = \inf_{x < y} f(x)$. Für monoton fallende Funktionen zeigt man analog, dass obere und untere Grenzwerte an jeder Stelle existieren, und dass für alle $x \in \R$
+ \[
+  \lim_{y \uparrow x} f(y) = \inf_{y < x} f(y)
+  \quad
+  \text{und}
+  \quad
+  \lim_{y \downarrow x} f(y) = \sup_{y > x} f(y).
+ \]
+\end{solution}
+
+
+
+
+
+\section{Grenzwerte und Stetigkeit}
+
+
+\begin{question}\label{qst: Unabhängigkeit von Umgebung}
+ Es $f \colon A \to \R^m$ mit Definitionsbereich $A \subseteq \R^n$ auf einer Umgebung von $x \in \R^n$ definiert. Zeigen Sie, dass die folgenden beiden Bedingungen äquivalent sind:
+ \begin{enumerate}
+  \item
+   Der Grenzwert $\lim_{a \to x, a \in V} f(a)$ existiert für eine Umgebung $V \subseteq \R^n$ von $x$ mit $V \subseteq a$.
+  \item
+   Der Grenzwert $\lim_{a \to x, a \in U} f(a)$ existiert für jede Umgebung $U \subseteq \R^n$ von $x$ mit $U \subseteq A$.
+ \end{enumerate}
+ (Nach Annahme existiert eine solche Umgebung, die zweite Aussage ist daher nicht leer.)
+ Zeigen sie ferner, dass der Grenzwert $\lim_{a \to x, a \in U} f(a)$ unabhängig von der Wahl der Umgebung $U$ von $x$ mit $U \subseteq A$ ist.
+\end{question}
+\begin{proof}
+ 
+\end{proof}
+
+
+\begin{defi}
+ Es sei $f \colon A \to \R^m$ mit Definitionsbereich $A \subseteq \R^n$. Ist $f$ auf einer Umgebung von $x \in \R^n$ von $A$ definiert, so schreiben wir
+ \[
+  \lim_{a \to x} f(a)
+  \quad
+  \text{für}
+  \quad
+  \lim_{a \to x, a \in V} f(a)
+ \]
+ und nennen dies den \emph{Grenzwert von $f$ an $x$}.
+\end{defi}
+
+
+Die Wohldefiniertheit, also Unabhängigkeit von $V$, folgt aus Übung \ref{qst: Unabhängigkeit von Umgebung}.
+
+
+% Verträglichkeit der Notationen
+
+
+\begin{prop}
+ Es sei $f \colon A \to \R^m$ mit Definitionsbereich $A \subseteq \R^n$, die auf einer Umgebung von $x$ definiert ist. Dann ist $f$ genau dann stetig an $x$, wenn $\lim_{a \to x} f(a) = f(x)$.
+\end{prop}
+\begin{proof}
+ Angenommen $f$ ist stetig an $x$. Es sei $V \subseteq \R^n$ eine Umgebung von $x$ mit $V \subseteq A$. Wir wollen zeigen, dass $\lim_{a \to x, a \in V} f(a) = f(x)$. Hierfür sei $\varepsilon > 0$ beliebig aber fest. Da $f$ stetig an $x$ ist gibt es $\delta > 0$, so dass
+ \[
+  \|x-a\| < \delta_1 \Rightarrow \|f(x)-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in A$}.
+ \]
+ Daher ist insbesondere
+ \[
+  \|x-a\| < \delta \Rightarrow \|f(x)-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in V$ mit $a \neq x$}.
+ \]
+ Wegen der Beliebigkeit von $\varepsilon > 0$ folgt, dass $\lim_{a \to x, a \in V} f(a) = f(x)$.
+ 
+ Angenommen, es ist $\lim_{x \to a} f(a) = f(x)$. Wir wollen zeigen, dass $f$ stetig an $x$ ist. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Es sei $V \subseteq \R^n$ eine Umgebung von $x$ mit $V \subseteq A$. Da $V$ eine Umgebung von $x$ ist, gibt es ein $\delta_1 > 0$ mit $B_{\delta_1}(x) \subseteq V$. Da $\lim_{a \to x} f(a) = f(x)$ ist $\lim_{a \to x, a \in V} f(a) = f(x)$, es gibt daher ein $\delta_2 > 0$ mit
+ \[
+  \|x-a\| < \delta_2 \Rightarrow \|f(x)-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in A$ mit $a \neq x$};
+ \]
+ offenbar können wir hier auch $a = x$ zulassen. Für $\delta \colon \min\{\delta_1, \delta_2\}$ haben wir nun $B_\delta(x) \subseteq B_{\delta_1}(x) \subseteq V$ und $\|x-a\| < \delta_2$ für alle $a \in B_\delta(x)$, und somit
+ \[
+  \|x-a\| < \delta \Rightarrow \|f(x)-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in B_\delta(x)$.}
+ \]
+ Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies die Stetigkeit von $f$ an $x$.
+\end{proof}
+
+
+
+
 
 
 
@@ -561,6 +702,36 @@ Sie wie bei Folgen kann man auch bei Funktionen uneigentliche Grenzwerte definie
 \end{defi}
 
 
+\begin{bsp}
+ \begin{itemize}
+  \item
+   Es ist
+   \[
+    \lim_{x \uparrow 0} \frac{1}{x} = -\infty
+    \quad
+    \text{und}
+    \quad
+    \lim_{x \downarrow 0} \frac{1}{x} = \infty.
+   \]
+   Der Grenzwert $\lim_{x \to 0} 1/x$ exstiert nicht (auch nicht uneigentlich).
+  \item
+   $0$ ist ein Häufungspunkt von $\R^n \setminus \{0\}$ und wir haben
+   \[
+    \lim_{x \to 0, x \neq 0} \frac{1}{\|x\|} = \infty.
+   \]
+  \item
+   Es ist
+   \[
+    \lim_{x \downarrow 0} \frac{1}{\exp(x) - 1} = \infty
+    \quad
+    \text{und}
+    \quad
+    \lim_{x \uparrow 0} \frac{1}{\exp(x) - 1} = -\infty.
+   \]
+ \end{itemize}
+\end{bsp}
+
+
 \begin{defi}
  Es sei $f \colon X \to \R^m$ eine Abbildung mit Definitionsbereits $X \subseteq \R$. Für $y \in \R^m$ sagen wir, dass $\lim_{x \to \infty} f(x) = y$, falls
  \begin{enumerate}
@@ -571,6 +742,26 @@ Sie wie bei Folgen kann man auch bei Funktionen uneigentliche Grenzwerte definie
  \end{enumerate}
  Analog definiert man die Schreibweise $\lim_{x \to -\infty} f(x) = y$.
 \end{defi}
+
+
+\begin{bsp}
+ \begin{itemize}
+  \item
+   Es ist
+   \[
+    \lim_{x \to -\infty} \exp(x) = 0.
+   \]
+  \item
+   Es ist
+   \[
+    \lim_{x \to \infty} \frac{1}{x} = 0
+    \quad
+    \text{und}
+    \quad
+    \lim_{x \to -\infty} \frac{1}{x} = 0.
+   \]
+ \end{itemize}
+\end{bsp}
 
 
 \begin{defi}
@@ -584,6 +775,39 @@ Sie wie bei Folgen kann man auch bei Funktionen uneigentliche Grenzwerte definie
  Analog definiert man die Ausdrücke $\lim_{x \to \infty} f(x) = -\infty$, $\lim_{x \to -\infty} f(x) = \infty$ und $\lim_{x \to -\infty} f(x) = -\infty$. 
 \end{defi}
 
+
+\begin{bsp}
+ \begin{itemize}
+  \item
+   Es ist
+   \[
+    \lim_{x \to \infty} x^2 = \infty
+    \quad
+    \text{und}
+    \quad
+    \lim_{x \to -\infty} x^2 = \infty.
+   \]
+  \item
+   Es ist
+   \[
+    \lim_{x \to \infty} \exp(x) = \infty.
+   \]
+ \end{itemize}
+\end{bsp}
+
+
+Auch für uneigentliche Grenzwerte gelten (intuitive) Rechenregeln, von denen wir hier einige angeben wollen:
+\begin{enumerate}
+ \item
+  Für $y \in \R^m$ ist genau dann $\lim_{x \to \infty} f(x) = y$, wenn $\lim_{x \downarrow} f(1/x) = y$. Die Aussage gilt auch für $y \in \{-\infty, \infty\}$.
+ \item
+  Wenn $\lim_{x \to a, a \in A} f(x) = \infty$ oder $\lim_{x \to a, a \in A} f(x) = -\infty$, dann ist
+  \[
+   \lim_{x \to a, a \in A} 1/f(x) = 0.
+  \]
+ \item
+  Ist $\lim_{x \to a, a \in A} f(x) = \infty$, so ist $\lim_{x \to a, a \in A} -f(x) = -\infty$. Analoges gilt für $\lim_{x \to \infty} f(x)$ und $\lim_{x \to -\infty} f(x)$.
+\end{enumerate}
 
 
 
