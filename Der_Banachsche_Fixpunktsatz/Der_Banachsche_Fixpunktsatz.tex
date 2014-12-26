@@ -15,11 +15,11 @@
 \maketitle
 
 
-Wir wollen hier (als Übung für den Leser) den Banachschen Fixpunktsatz für $\R^n$ formulieren und beweisen.
+Wir wollen hier den Banachschen Fixpunktsatz für $\R^n$ formulieren und beweisen.
 
 
 \begin{defi}
- Eine Abbildung $f \colon \R^n \to \R^m$ heißt \emph{Kontraktion}, falls es eine Konstante $0 < L < 1$ gibt, so dass
+ Eine Abbildung $f \colon \R^n \to \R^n$ heißt \emph{Kontraktion}, falls es eine Konstante $0 < L < 1$ gibt, so dass
  \[
   \|f(x)-f(y)\| \leq L\|x-y\| \quad \text{für alle $x,y \in \R^n$}.
  \]
@@ -27,31 +27,51 @@ Wir wollen hier (als Übung für den Leser) den Banachschen Fixpunktsatz für $\
 
 
 \begin{question}
- Bestimmen Sie, welche der folgenden Abbildungen $f, g, h \colon \R \to \R$ eine Kontraktion ist.
- \begin{align*}
-  f&: x \mapsto \frac{x}{4} - \frac{2}{3} \\
-  g&: x \mapsto x^2 \\
-  h&: x \mapsto |x|^{1/2}
- \end{align*}
+ Bestimmen Sie, welche der folgenden Abbildungen eine Kontraktion ist:
+ \begin{enumerate}
+  \item
+   $f_1 \colon \R \to \R, x \mapsto \frac{x}{4} - \frac{2}{3}$
+  \item
+   $f_2 \colon \R \to \R, x \mapsto x^2$
+  \item
+   $f_3 \colon \R \to \R: x \mapsto |x|^{1/2}$
+  \item
+   $f_4 \colon \R^2 \to \R^2, \vect{x\\y} \mapsto \vect{1/2 & -1/3 \\ 1/3 & 1/2} \vect{x\\y}$
+ \end{enumerate}
 \end{question}
 \begin{solution}
- $f$ ist eine Kontraktion, da für alle $x,y \in \R$
- \[
-  |f(x)-f(y) = \left| \frac{x}{4} - \frac{y}{4} \right| = \frac{1}{4}|x-y|
- \]
- mit $1/4 < L$.
- $g$ ist keine Kontraktion, denn
- \[
-  |g(2)-g(1)| = |2^2 - 1^2| = 3 > 1 = |2-1|.
- \]
- $h$ ist keine Kontrakiton. Ansonsten gebe es $0 \leq L < 1$ mit $|h(x)-h(y)| < |x-y|$ für alle $x, y \in \R$. Insbesondere wäre dann für alle $n \geq 1$
- \[
-  \frac{1}{n^{1/2}}
-  = \left|h\left(\frac{1}{n}\right) - h(0)\right|
-  \leq L\left| \frac{1}{n} - 0\right|
-  = \frac{L}{n}
- \]
- und somit $n^{1/2} \leq L$.
+ \begin{enumerate}
+  \item
+   $f_1$ ist eine Kontraktion, da für alle $x,y \in \R$
+   \[
+    |f_1(x)-f_1(y) = \left| \frac{x}{4} - \frac{y}{4} \right| = \frac{1}{4}|x-y|
+   \]
+   mit $1/4 < 1$.
+  \item
+   $f_2$ ist keine Kontraktion, denn
+   \[
+    |f_2(2)-f_2(1)| = |2^2 - 1^2| = 3 > 1 = |2-1|.
+   \]
+  \item
+   $f_3$ ist keine Kontrakiton. Ansonsten gebe es eine Konstante $0 < L < 1$ mit $|f_3(x)-f_3(y)| \leq L|x-y|$ für alle $x, y \in \R$. Insbesondere wäre dann für alle $n \geq 1$
+   \[
+    \frac{1}{n^{1/2}}
+    = \left|f_3\left(\frac{1}{n}\right) - f_3(0)\right|
+    \leq L\left| \frac{1}{n} - 0\right|
+    = \frac{L}{n}
+   \]
+   und somit $n^{1/2} \leq L$, also $n \leq L^2$. Dies gilt offenbar nicht.
+  \item
+   Wir sehen $\R^2 \cong \mathbb{C}$. Die Abbildung $f_4$ entspricht dann der Multiplikation mit der komplexen Zahl
+   \[
+    \xi = \frac{1}{2} + \frac{1}{3} i,
+   \]
+   d.h.\ $f_4(z) = \xi z$ für alle $z \in \mathbb{C}$. Für alle $z \in \mathbb{C}$ ist daher insbesondere
+   \[
+    |f_4(z)| = |\xi z| = |\xi| |z|.
+   \]
+   Da $|\xi| = \sqrt{1/4 + 1/9} < 1$ ergibt sich, dass $f_4$ ein Kontraktion ist (mit Konstante $|\xi|$).
+ \end{enumerate}
 \end{solution}
 
 
@@ -60,21 +80,19 @@ Wir wollen hier (als Übung für den Leser) den Banachschen Fixpunktsatz für $\
  \[
   \|f(x)-f(y)\| \leq L\|x-y\| \quad \text{für alle $x,y \in \R^n$}.
  \]
- Zeigen Sie, dass $f$ stetig ist.
- 
- Man bezeichnet eine solche Abbildung als Lipschitz-stetig (mit Konstante $L$). Folgern Sie, dass Kontraktionen stetig sind.
+ Zeigen Sie, dass $f$ stetig ist. (Man bezeichnet eine solche Abbildung als Lipschitz-stetig (mit Konstante $L$).) Folgern Sie, dass Kontraktionen stetig sind.
 \end{question}
 \begin{solution}
  $f$ erfüllt an jeder Stelle $x \in \R^n$ das $\varepsilon$-$\delta$-Kriterium, denn für beliebiges $\varepsilon > 0$ ergibt sich für $\delta \coloneqq \varepsilon/L$, dass für alle $y \in \R^n$ mit $\|x-y\| < \delta$
  \[
   \|f(x)-f(y)\| \leq L\|x-y\| < L\delta = L \frac{\varepsilon}{L} = \varepsilon.
  \]
- Also ist $f$ stetig. Kontraktionen sind per Definition Lipschitz-stetige Abbildung mit Konstante $L < 1$ und somit stetig.
+ Also ist $f$ stetig. Kontraktionen sind per Definition Lipschitz-stetig mit Konstante $L < 1$ und somit stetig.
 \end{solution}
 
 
 \begin{thrm}[Banachscher Fixpunktsatz]
- Es sei $T \colon \R^m \to \R^m$ eine Kontraktion. Dann besitzt $T$ einen eindeutigen Fixpunkt, d.h. es existiert genau ein $\xi \in \R$ mit $T(\xi) = \xi$. Außerdem gilt für jedes $x \in \R$, dass $\lim_{n \to \infty} T^n(x) = \xi$. (Hier bezeichnet $T^n$ die $n$-fache Hintereinanderschaltung von $T$ mit sich selbst.)
+ Es sei $T \colon \R^m \to \R^m$ eine Kontraktion. Dann besitzt $T$ einen eindeutigen Fixpunkt, d.h.\ es existiert genau ein $\xi \in \R^m$ mit $T(\xi) = \xi$. Außerdem gilt für jedes $x \in \R^m$, dass $\lim_{n \to \infty} T^n(x) = \xi$. (Hier bezeichnet $T^n$ die $n$-fache Komposition von $T$ mit sich selbst.)
 \end{thrm}
 
 
@@ -100,7 +118,7 @@ Der Beweis des Satzes lässt sich in kleinere Zwischenschritte aufteilen:
    \[
     \|\xi-\zeta\| = \|T(\xi)-T(\zeta)\| \leq L\|\xi-\zeta\|.
    \]
-   Da $L \neq 1$ folgt, dass $|\xi-\zeta| = 0$ und somit $\xi = \zeta$.
+   Da $0 < L < 1$ folgt, dass $\|\xi-\zeta\| = 0$ und somit $\xi = \zeta$.
   \item
    Für alle $n \geq 1$ ist
    \[
@@ -110,9 +128,10 @@ Der Beweis des Satzes lässt sich in kleinere Zwischenschritte aufteilen:
    \]
    Für $M \coloneqq \|x_1 - x_0\|$ ergibt sich damit induktiv, dass
    \[
-    \|x_{n+1} - x_n\| \leq L^n \|x_1 - x_0\| = M L^n.
+    \|x_{n+1} - x_n\| \leq L^n \|x_1 - x_0\| = M L^n
+    \quad \text{für alle $n \in \N$}.
    \]
-   für alle $n \in \N$. Für alle $N' \in \N$ und $m, m' \geq N$, wobei o.B.d.A. $m \geq m'$, ist daher
+   Für alle $N' \in \N$ und $m, m' \geq N$, wobei o.B.d.A. $m \geq m'$, ist daher
    \begin{align*}
     \|x_m - x_{m'}\|
     &\leq \|x_m - x_{m-1}\| + \|x_{m-1} - x_{m-2}\| + \dotsb + \|x_{m'+1} - x_{m'}\| \\
@@ -121,9 +140,9 @@ Der Beweis des Satzes lässt sich in kleinere Zwischenschritte aufteilen:
     &\leq M L^{N'} \sum_{k=0}^\infty L^k
     = \frac{M}{1-L} L^{N'}.
    \end{align*}
-   Da $\lim_{N' \to \infty} M/(1-L) L^{N'} = 0$ gibt es für alle $\varepsilon > 0$ ein $N \in \N$ mit $M/(1-L) L^N < \varepsilon$, und damit insbesondere $\|x_m - x_{m'}\| < \varepsilon$ für alle $m, m' \geq N$. Dies zeigt, dass $(x_n)$ eine Cauchy-Folge ist.
+   Da $\lim_{N' \to \infty} ML^{N'}/(1-L) = 0$ gibt es für alle $\varepsilon > 0$ ein $N \in \N$, so dass $ML^N/(1-L)< \varepsilon$, und damit $\|x_m - x_{m'}\| < \varepsilon$ für alle $m, m' \geq N$. Dies zeigt, dass $(x_n)$ eine Cauchy-Folge ist.
   \item
-   $T$ ist eine Kontraktion, und damit insbesondere stetig. Für beliebiges $x \in \R$ erhalten wir unter Verwendung der Folgenstetigkeit für $\xi \coloneqq \lim_{n \to \infty} T^n(x)$, dass
+   $T$ ist eine Kontraktion, und damit insbesondere stetig. Für beliebiges $x \in \R^m$ erhalten wir unter Verwendung der Folgenstetigkeit für $\xi \coloneqq \lim_{n \to \infty} T^n(x)$, dass
    \[
     T(\xi)
     = T\left(\lim_{n \to \infty} T^n(x)\right)

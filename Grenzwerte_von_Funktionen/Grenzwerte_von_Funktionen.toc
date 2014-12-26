@@ -3,5 +3,5 @@
 \contentsline {section}{\numberline {2}Grenzwerte von Funktionen}{2}
 \contentsline {section}{\numberline {3}Links-, rechts- und beidseitige Grenzwerte}{5}
 \contentsline {section}{\numberline {4}Grenzwerte und Stetigkeit}{9}
-\contentsline {section}{\numberline {5}Uneigentliche Grenzwerte}{10}
+\contentsline {section}{\numberline {5}Uneigentliche Grenzwerte}{11}
 \contentsline {section}{\numberline {6}Lösungen der Übungen}{13}

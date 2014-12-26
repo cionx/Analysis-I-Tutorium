@@ -710,6 +710,35 @@ Die Wohldefiniertheit, also Unabhängigkeit von $V$, folgt aus Lemma \ref{lem: U
 \end{proof}
 
 
+\begin{kor}
+ Es sei $f \colon \R \to \R$ monoton steigend. Dann ist $f$ genau dann stetig an der Stelle $x \in \R$, wenn
+ \[
+  \sup_{y < x} f(y) = f(x) = \inf_{y > x} f(y).
+ \]
+ Ist $f$ monoton fallend, so ist $f$ genau dann stetig an $x$, wenn
+ \[
+  \inf_{y < x} f(y) = f(x) = \sup_{y > x} f(y).
+ \]
+\end{kor}
+\begin{proof}
+ $f$ ist genau dann stetig an $x$, wenn $\lim_{y \to x} f(y) = f(x)$. Dies ist äquivalent dazu, dass $\lim_{y \uparrow x} f(y)$ und $\lim_{y \downarrow x} f(y)$ existieren und
+ \begin{equation}\label{eqn: beide Grenzwerte}
+  \lim_{y \uparrow x} f(y) = f(x) = \lim_{y \downarrow x} f(y).
+ \end{equation}
+ Da $f$ monoton steigend ist existieren die Grenzwerte $\lim_{y \uparrow x} f(y)$ und $\lim_{y \downarrow x} f(y)$ und es gilt
+ \[
+  \lim_{y \uparrow x} f(y) = \sup_{y < x} f(y)
+  \quad
+  \text{und}
+  \quad
+  \lim_{y \downarrow x} f(y) = \inf_{y > x} f(y).
+ \]
+ Also übersetzt sich Bedingung \eqref{eqn: beide Grenzwerte} in
+ \[
+  \sup_{y < x} f(y) = f(x) = \inf_{y > x} f(y).
+ \]
+ Die zweite Aussage ergibt sich analog.
+\end{proof}
 
 
 
