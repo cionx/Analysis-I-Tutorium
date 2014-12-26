@@ -619,19 +619,41 @@ Aus unserer Untersuchung allgemeiner Funktionsgrenzwerte ergibt sich für die So
 \section{Grenzwerte und Stetigkeit}
 
 
-\begin{question}\label{qst: Unabhängigkeit von Umgebung}
+\begin{lem}\label{lem: Unabhängigkeit von Umgebung}
  Es $f \colon A \to \R^m$ mit Definitionsbereich $A \subseteq \R^n$ auf einer Umgebung von $x \in \R^n$ definiert. Zeigen Sie, dass die folgenden beiden Bedingungen äquivalent sind:
  \begin{enumerate}
-  \item
-   Der Grenzwert $\lim_{a \to x, a \in V} f(a)$ existiert für eine Umgebung $V \subseteq \R^n$ von $x$ mit $V \subseteq a$.
-  \item
+  \item\label{enum: eine Umgebung}
+   Der Grenzwert $\lim_{a \to x, a \in V} f(a)$ existiert für eine Umgebung $V \subseteq \R^n$ von $x$ mit $V \subseteq A$.
+  \item\label{enum: alle Umgebungen}
    Der Grenzwert $\lim_{a \to x, a \in U} f(a)$ existiert für jede Umgebung $U \subseteq \R^n$ von $x$ mit $U \subseteq A$.
  \end{enumerate}
  (Nach Annahme existiert eine solche Umgebung, die zweite Aussage ist daher nicht leer.)
  Zeigen sie ferner, dass der Grenzwert $\lim_{a \to x, a \in U} f(a)$ unabhängig von der Wahl der Umgebung $U$ von $x$ mit $U \subseteq A$ ist.
-\end{question}
-\begin{proof}
+\end{lem}
+\begin{proof} 
+ (\ref{enum: alle Umgebungen} $\Rightarrow$ \ref{enum: eine Umgebung}) Nach Annahme existiert eine Umgebung $V \subseteq \R^n$ von $x$, so dass $f$ auf $V$ definiert ist, also mit $V \subseteq A$; diese Implikation ist daher klar.
  
+ (\ref{enum: eine Umgebung} $\Rightarrow$ \ref{enum: alle Umgebungen}) Es sei $V$ eine entsprechende Umgebung und $y \coloneqq \lim_{a \to x, a \in V} f(a)$. Es sei $U \subseteq \R^n$ eine beliebige Umgebung von $x$ mit $U \subseteq A$. Wir wollen zeigen, dass $\lim_{a \to x, a \in U} f(a)$ existiert und dass $\lim_{a \to x, a \in V} f(a) = y$.
+ 
+ Es sei hierfür $\varepsilon > 0$ beliebig aber fest. Da $y = \lim_{a \to x, a \in V} f(a)$ gibt es $\delta_1 > 0$, so dass
+ \[
+  \|x-a\| < \delta_1 \Rightarrow \|y-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in A$}.
+ \]
+ Da $V$ eine Umgebung von $x$ ist, gibt es außerdem ein $\delta_2 > 0$ mit $B_{\delta_2}(x) \subseteq V$. Für $\delta' \coloneqq \min\{\delta_1, \delta_2\}$ ist deshalb auch $B_{\delta'}(x) \subseteq V$ mit
+ \[
+  \|y-f(a)\| < \varepsilon \quad \text{für alle $a \in B_{\delta'}(x)$}.
+ \]
+ 
+ Da $U$ eine Umgebung von $x$ ist, gibt es $\delta'' > 0$ mit $B_{\delta''}(x) \subseteq U$. Für $\delta \coloneqq \min\{\delta', \delta''\}$ ist also $B_\delta(x) \subseteq U$ mit
+ \[
+  \|y-f(a)\| < \varepsilon \quad \text{für alle $a \in B_\delta(x)$}.
+ \]
+ Damit erhalten wir, dass
+ \[
+  \|x-a\| < \delta \Rightarrow \|y-f(a)\| < \varepsilon \quad \text{für alle $a \in U$}.
+ \]
+ wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $\lim_{a \to x, a \in U} f(a) = y$.
 \end{proof}
 
 
@@ -648,10 +670,14 @@ Aus unserer Untersuchung allgemeiner Funktionsgrenzwerte ergibt sich für die So
 \end{defi}
 
 
-Die Wohldefiniertheit, also Unabhängigkeit von $V$, folgt aus Übung \ref{qst: Unabhängigkeit von Umgebung}.
+Die Wohldefiniertheit, also Unabhängigkeit von $V$, folgt aus Lemma \ref{lem: Unabhängigkeit von Umgebung}.
 
 
-% Verträglichkeit der Notationen
+\begin{bem}
+ Ist $V \subseteq \R$ eine Umgebung von $x \in \R$, und $f \colon V \to \R^m$, so ist die Notation $\lim_{a \to x} f(a)$ doppelt belegt: Zum einen steht die Notation für $\lim_{a \to x, a \in v} f(a)$. Zum anderen gibt es, da $V$ eine Umgebung von $x$ ist, ein $r > 0$ mit $(x-r,x+r) \subseteq V$; dann steht die Notation auch für $\lim_{a \to x, a \in (x-r,x) \cup (x,x+r)} f(a)$.
+ 
+ Die beiden Definitionen sind in diesem Fall allerdings gleichbedeutend: Per Definition ist der Grenzwertes $\lim_{a \to x, a \in (x-r,x) \cup (x,x+r)} f(a)$ gleichbedeutend zum Grenzwert $\lim_{a \to x, a \in (x-r,x+r)} f(a)$. Dieser Grenzwert ist nach Lemma \ref{lem: Unabhängigkeit von Umgebung} der gleiche wie $\lim_{a \to x, a \in V} f(a)$.
+\end{bem}
 
 
 \begin{prop}
@@ -795,11 +821,32 @@ Sie wie bei Folgen kann man auch bei Funktionen uneigentliche Grenzwerte definie
  \end{itemize}
 \end{bsp}
 
+\begin{bsp}
+ Es seien $a,b \in \R$. Wir wollen den Grenzwert 
+ \[
+  \lim_{x \to \infty} \sqrt{(x-a)(x-b)}-x
+ \]
+ untersuchen. Hierfür bemerken wir zunächst, dass $(x-a)(x-b) \geq 0$ für alle \mbox{$x \geq \max\{a,b\}$}ü; der Ausdruck $\sqrt{(x-a)(x-b)}$ ist also für alle $x \geq \max\{a,b\}$ definiert. Zur Bestimmung des Grenzwerts wollen wir den Ausdruck $\sqrt{(x-a)(x-b)}-x$ zunächst umschreiben; für alle $x > \max\{a,b,0\}$ haben wir
+ \begin{align*}
+  \sqrt{(x-a)(x-b)}-x
+  &= \frac{(\sqrt{(x-a)(x-b)}-x)(\sqrt{(x-a)(x-b)}+x)}{\sqrt{(x-a)(x-b)}+x} \\
+  &= \frac{(x-a)(x-b)-x^2}{\sqrt{(x-a)(x-b)}+x}
+  = \frac{(a+b)x + ab}{\sqrt{x^2+(a+b)x+ab}+x} \\
+  &= \frac{a+b+\frac{ab}{x}}{\sqrt{1+\frac{a+b}{x}+\frac{ab}{x^2}}+1}
+ \end{align*}
+ Daher ist
+ \[
+  \lim_{x \to \infty} \sqrt{(x-a)(x-b)}-x
+  = \lim_{x \to \infty} \frac{a+b+\frac{ab}{x}}{\sqrt{1+\frac{a+b}{x}+\frac{ab}{x^2}}+1}
+  = \frac{a+b}{2}.
+ \]
+\end{bsp}
+
 
 Auch für uneigentliche Grenzwerte gelten (intuitive) Rechenregeln, von denen wir hier einige angeben wollen:
 \begin{enumerate}
  \item
-  Für $y \in \R^m$ ist genau dann $\lim_{x \to \infty} f(x) = y$, wenn $\lim_{x \downarrow} f(1/x) = y$. Die Aussage gilt auch für $y \in \{-\infty, \infty\}$.
+  Für $y \in \R^m$ ist genau dann $\lim_{x \to \infty} f(x) = y$, wenn $\lim_{x \downarrow 0} f(1/x) = y$. Die Aussage gilt für eine reellwertige Funktion auch für $y \in \{-\infty, \infty\}$.
  \item
   Wenn $\lim_{x \to a, a \in A} f(x) = \infty$ oder $\lim_{x \to a, a \in A} f(x) = -\infty$, dann ist
   \[
@@ -808,6 +855,14 @@ Auch für uneigentliche Grenzwerte gelten (intuitive) Rechenregeln, von denen wi
  \item
   Ist $\lim_{x \to a, a \in A} f(x) = \infty$, so ist $\lim_{x \to a, a \in A} -f(x) = -\infty$. Analoges gilt für $\lim_{x \to \infty} f(x)$ und $\lim_{x \to -\infty} f(x)$.
 \end{enumerate}
+Auch uneigentliche Grenzwerte lassen sich durch Folgen ausdrücken.
+\begin{enumerate}
+ \item
+  Ist $A \subseteq \R^n$, $f \colon A \to \R$ und $x \in A$ ein Häufungspunkt von $A$, so ist genau dann $\lim_{a \to x, a \in A} f(a) = \infty$, falls für jede Folge $(a_n)$ auf $A \setminus \{x\}$ mit $a_n \to x$ auch $f(a_n) \to \infty$. Eine analoge Aussage gilt für $\lim_{a \to x, a \in A} f(a) = -\infty$.
+ \item
+  Für $y \in \R^m$ ist genau dann $\lim_{x \to \infty} f(x) = y$, wenn für jede Folge $(x_n)$ auf $\R$ mit $x_n \to \infty$ auch $f(x_n) \to y$. Eine analoge Aussage gilt für $\lim_{x \to -\infty} f(x)$. Ist $f$ eine reellwertige Funktion, soo gilt die Aussage auch für $y \in \{-\infty, \infty\}$.
+\end{enumerate}
+
 
 
 
