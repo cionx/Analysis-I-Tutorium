@@ -2,6 +2,7 @@
 %\documentclass[a4paper,10pt]{scrartcl}
 
 \usepackage{../mystyle}
+\SetupExSheets{solution/print=true}
 
 \title{Grundbegriffe der Analysis I in $\R^n$}
 \author{Jendrik Stelzner}
@@ -26,9 +27,10 @@ Wir gehen davon aus, dass der Leser mit der Vektorraumstruktur des $\R^n$ vertra
 \]
 definiert.
 
-Auf $\R^1 = \R$ stimmt die Norm mit dem Betrag überein. Die Norm unter $\R^2$ entspricht unter der üblichen Identifikation von $\R^2$ mit $\C$ dem Betrag auf $\C$; unsere folgenden Betrachtungen erhalten daher auch den Konvergenz- und den Stetigkeitsbegriff auf $\C$.
+Auf $\R^1 = \R$ stimmt die Norm mit dem Betrag überein. Die Norm auf $\R^2$ entspricht unter der üblichen Identifikation von $\R^2$ mit $\C$ dem Betrag auf $\C$. Unsere Betrachtungen erhalten daher auch den Konvergenz- und den Stetigkeitsbegriff auf $\C$.
 
-Die Norm erfüllt die folgenden Eigenschaften:
+
+Die Norm hat die folgenden Eigenschaften:
 \begin{itemize}
  \item
   Für alle $x \in \R^n$ ist $\|x\| \geq 0$, und es ist genau dann $\|x\| = 0$, wenn $x = 0$.
@@ -49,9 +51,9 @@ Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|
 
 
 \begin{question}
- Zeigen Sie die umgekehrte Dreiecksungleichung
+ Zeigen Sie die \emph{umgekehrte Dreiecksungleichung}
  \[
-  \|x-y\| \leq |\|x\|-\|y\|| \quad \text{für alle $x,y \in \R^n$}.
+  \|x-y\| \geq |\|x\|-\|y\|| \quad \text{für alle $x,y \in \R^n$}.
  \]
 \end{question}
 \begin{solution}
@@ -61,7 +63,7 @@ Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|
  \]
  und damit $\|x\|-\|y\| \leq \|x-y\|$, sowie
  \[
-  \|y\| = \|x+y-x\| \leq \|x\| + \|y-x\| \leq \|x\| + \|x-y\|
+  \|y\| = \|x+y-x\| \leq \|x\| + \|y-x\| = \|x\| + \|x-y\|
  \]
  und damit $\|y\|-\|x\| \leq \|x-y\|$. Es ist
  \[
@@ -78,45 +80,53 @@ Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|
 \begin{question}
  \begin{enumerate}
   \item
-   Zeigen Sie, dass die Wurzelfunktion subadditiv ist, d.h. dass
+   Zeigen Sie, dass die Wurzelfunktion subadditiv ist, d.h.\ dass
    \[
     \sqrt{x+y} \leq \sqrt{x} + \sqrt{y} \quad \text{für alle $x,y \geq 0$}.
    \]
   \item
-   Folgern sie dass für alle $x, y \in \R^n$ mit Koordinaten $x = (x_1, \dotsc, x_n)$ und $y = (y_1, \dotsc, y_n)$ die beiden Ungleichungen
+   Folgern Sie, dass für alle $x = (x_1, \dotsc, x_n) \in \R^n$ die beiden Ungleichungen
+   \begin{gather*}
+    |x_i| \leq \|x\| \quad \text{für alle $1 \leq i \leq n$}
+   \shortintertext{und}
+    \|x\| \leq \sum_{i=1}^n |x_i|
+   \end{gather*}
+   gelten. Folgern Sie außerdem, dass für alle $x, y \in \R^n$ mit Koordinaten $x = (x_1, \dotsc, x_n)$ und $y = (y_1, \dotsc, y_n)$ die beiden Ungleichungen
    \begin{gather*}
     |x_i - y_i| \leq \|x-y\| \quad \text{für alle $1 \leq i \leq n$}
    \shortintertext{und}
     \|x-y\| \leq \sum_{i=1}^n |x_i - y_i|
    \end{gather*}
-   gelten. (Durch die Betrachtung von $y = 0$ erhalten wir insbesondere, dass $|x_i| \leq \|x\|$ für alle $1 \leq i \leq n$ und $\|x\| \leq \sum_{i=1}^n |x_i|$.)
+   gelten.
  \end{enumerate}
 \end{question}
 \begin{solution}
  \begin{enumerate}
   \item
    Für alle $x, y \geq 0$ ist
-   \begin{align*}
+   \begin{align*}a
                    &\, \sqrt{x+y} \leq \sqrt{x}+\sqrt{y} \\
-    \Leftrightarrow&\, x + y \leq (\sqrt{x}+\sqrt{y})^2 = x + y + 2\sqrt{xy} \\
+    \Leftrightarrow&\, x + y \leq (\sqrt{x}+\sqrt{y})^2 = x + 2\sqrt{xy} + y \\
     \Leftrightarrow&\, 0 \leq \sqrt{xy},
    \end{align*}
    was offenbar gilt.
   \item
    Für alle $1 \leq i \leq n$ ist wegen der Monotonie der Wurzel
    \[
-    \|x-y\|
-    = \sqrt{\sum_{j=1}^n (x_j - y_j)^2}
-    \geq \sqrt{(x_i - y_i)^2}
-    = |x_i - y_i|,
+    \|x\|
+    = \sqrt{\sum_{j=1}^n x_j^2}
+    \geq \sqrt{x_i^2}
+    = |x_i|,
    \]
    was die erste Ungleichung zeigt. Die zweite Ungleichung folgt mithilfe der Subadditivität der Wurzel durch
    \[
-    \|x-y\|
-    = \sqrt{\sum_{i=1}^n (x_i-y_i)^2}
-    \leq \sum_{i=1}^n \sqrt{(x_i-y_i)^2}
-    = \sum_{i=1}^n |x_i - y_i|.
+    \|x\|
+    = \sqrt{\sum_{i=1}^n x_i^2}
+    \leq \sum_{i=1}^n \sqrt{x_i^2}
+    = \sum_{i=1}^n |x_i|.
    \]
+   
+   Die Ungleichungen für $\|x-y\|$ ergeben sich sofort aus den beiden bisher gezeigten.
  \end{enumerate}
 \end{solution}
 
@@ -126,8 +136,8 @@ Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|
 \end{defi}
 
 
-\begin{question}
- Für $1 \leq i \leq n$ sei $\pi_i \colon \R^n \to \R, (x_1, \dotsc, x_n) \mapsto x_i$ die Projektion in die $i$-te Koordinate. Zeigen Sie: $X \subseteq \R^n$ ist genau dann beschränkt, wenn $\pi_i(X)$ für alle $1 \leq i \leq n$ beschränkt ist.
+\begin{question}\label{qst: Beschränktheit in Koordinaten}
+ Für $1 \leq i \leq n$ sei $\pi_i \colon \R^n \to \R, (x_1, \dotsc, x_n) \mapsto x_i$ die Projektion in die $i$-te Koordinate. Zeigen Sie, dass $X \subseteq \R^n$ genau dann beschränkt ist, wenn $\pi_i(X)$ für alle $1 \leq i \leq n$ beschränkt ist.
 \end{question}
 \begin{solution}
  Angenommen $X$ ist beschränkt. Dann gibt es ein $C > 0$, so dass $\|x\| \leq C$ für alle $x \in X$. Für jedes $1 \leq i \leq n$ ist daher
@@ -140,7 +150,7 @@ Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|
  \]
  Also ist $\pi_i(X)$ für alle $1 \leq i \leq n$ beschränkt.
  
- Angenommen, die $\pi_i(X)$ sind alle beschränkt. Dann gibt es für jedes $1 \leq i \leq n$ ein $C_i > 0$ mit $\pi_i(x) \subseteq C_i$ für alle $x \in X$. Für $C \coloneqq C_1 + \dotsb + C_n$ ist daher
+ Angenommen $\pi_i(X)$ ist für alle $1 \leq i \leq n$ beschränkt. Dann gibt es für jedes $1 \leq i \leq n$ ein $C_i > 0$ mit $\pi_i(x) \leq C_i$ für alle $x \in X$. Für $C \coloneqq \sum_{i=1}^n C_i > 0$ ist daher
  \[
   \|x\| \leq \sum_{i=1}^n |x_i| \leq \sum_{i=1}^n C_i = C
   \quad \text{für alle $x = (x_1, \dotsc, x_n) \in X$}.
@@ -152,39 +162,38 @@ Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|
 
 
 
-
 \section{Folgen}
 
 
 \begin{defi}
- Es sei $(x_n)_{n \in \N}$ eine Folge auf $\R^m$, also $x_n \in \R^m$ für alle $n \in \N$, und $x \in \R^m$. Wir sagenn, dass $(x_n)$ gegen $x$ konvergiert, falls es für alle $\varepsilon > 0$ ein $N \in \N$ gibt, so dass
+ Es sei $(x_n)_{n \in \N}$ eine Folge auf $\R^m$, also $x_n \in \R^m$ für alle $n \in \N$, und $x \in \R^m$. Wir sagen, dass $(x_n)$ gegen $x$ konvergiert, falls es für alle $\varepsilon > 0$ ein $N \in \N$ gibt, so dass
  \[
-  \| x_n - x \| < \varepsilon \quad \text{für alle $n \geq N$}.
+  \|x - x_n\| < \varepsilon \quad \text{für alle $n \geq N$}.
  \]
- Wir schreiben dann $\lim_{n \to \infty} x_n = x$ oder $x_n \to \infty$ für $n \to \infty$.
+ Wir schreiben dann $\lim_{n \to \infty} x_n = x$ oder $x_n \to x$ für $n \to \infty$.
 \end{defi}
 
 
-Wie schon in $\R$ ergibt sich auch in $\R^n$, dass Grenzwerte eindeutig sind.
+Wie schon auf $\R$ ergibt sich auch auf $\R^n$, dass Grenzwerte eindeutig sind.
 
 
 \begin{lem}
- Es sei $(x_n)$ eine Folge auf $\R^m$. Sind $y, y' \in \R^m$ mit $x_n \to y$ und $x_n \to y'$ für $n \to \infty$, so ist $y = y'$.
+ Es sei $(x_n)$ eine Folge auf $\R^m$. Sind $x, x' \in \R^m$ mit $x_n \to x$ und $x_n \to x'$ für $n \to \infty$, so ist $x = x'$.
 \end{lem}
 \begin{proof}
- Es sei $\varepsilon > 0$ beliebig aber fest. Da $\lim_{n \to \infty} x_n = y$ gibt es ein $N_1 \in \N$ mit $\|y - x_n\| < \varepsilon/2$  für alle $n \geq N_1$. Da $\lim_{n \to \infty} x_n = y'$ gibt es ein $N_2 \in \N$ mit $\|y - x_n\| < \varepsilon/2$  für alle $n \geq N_2$. Für $N \coloneqq \max\{N_1, N_2\}$ ist deshalb für alle $n \geq N$
+ Es sei $\varepsilon > 0$ beliebig aber fest. Da $\lim_{n \to \infty} x_n = x$ gibt es ein $N_1 \in \N$ mit $\|x - x_n\| < \varepsilon/2$  für alle $n \geq N_1$. Da $\lim_{n \to \infty} x_n = x'$ gibt es ein $N_2 \in \N$ mit $\|x' - x_n\| < \varepsilon/2$  für alle $n \geq N_2$. Für $N \coloneqq \max\{N_1, N_2\}$ ist deshalb für alle $n \geq N$
  \begin{align*}
-  \|y-y'\|
-  &= \|y-x_n + x_n-y'\| \\
-  &\leq \|y-x_n\| + \|x_n-y'\|
+  \|x-x'\|
+  &= \|x-x_n + x_n-x'\| \\
+  &\leq \|x-x_n\| + \|x_n-x'\|
   < \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
   = \varepsilon.
  \end{align*}
- Also ist $\|y-y'\| < \varepsilon$ für alle $\varepsilon > 0$. Es muss also $\|y-y'\| = 0$, also $y-y' = 0$ und somit $y = y'$.
+ Also ist $\|x-x'\| < \varepsilon$ für alle $\varepsilon > 0$. Es muss also $\|x-x'\| = 0$, also $x-x' = 0$ und somit $x = x'$.
 \end{proof}
 
 
-Da die Norme auf $\R^1 = \R$ mit dem Betrag übereinstimmt, handelt es sich um eine Erweiterung des Konvergenzbegriffes auf $\R$. Die Konvergenz in $\R^m$ lässt sich auch auf die Konvergenz in $\R$ zurückführen. Eine Folge auf $\R^m$ konvergiert nämlich genau dann, wenn sie in jeder einzelnen Koordinate konvergiert.
+Da die Norm auf $\R^1 = \R$ mit dem Betrag übereinstimmt, handelt es sich um eine Erweiterung des Konvergenzbegriffes auf $\R$. Die Konvergenz auf $\R^m$ lässt sich auch auf die Konvergenz in $\R$ zurückführen. Eine Folge auf $\R^m$ konvergiert nämlich genau dann, wenn sie in jeder Koordinate konvergiert.
 
 
 \begin{lem}\label{lem: convergence in coordinates}
@@ -193,13 +202,13 @@ Da die Norme auf $\R^1 = \R$ mit dem Betrag übereinstimmt, handelt es sich um e
 \begin{proof}
  Ist $x_n \to x$, so ist $\|x_n - x\| \to 0$. Für alle $1 \leq i \leq m$ ist
  \[
-  0 \leq |x^{(i)}_n - x^{(i)}| \leq \|x_n - x\| \quad \text{für alle $n \in \N$}
+  0 \leq \left|x^{(i)}_n - x^{(i)}\right| \leq \|x_n - x\| \quad \text{für alle $n \in \N$}
  \]
  und daher nach dem Sandwich-Lemma $|x^{(i)}_n - x^{(i)}| \to 0$. Also ist $x^{(i)}_n \to x^{(i)}$ für alle $1 \leq i \leq m$.
  
  Ist andererseits $x^{(i)}_n \to x^{(i)}$ für alle $1 \leq i \leq m$, so ist $|x^{(i)}_n - x^{(i)}| \to 0$ für alle $1 \leq i \leq m$. Damit ist auch $\sum_{i=1}^m |x^{(i)}_n - x^{(i)}| \to 0$. Da
  \[
-  0 \leq \|x_n - x\| \leq \sum_{i=1}^m |x^{(i)}_n - x^{(i)}| \quad \text{für alle $n \in \N$}
+  0 \leq \|x_n - x\| \leq \sum_{i=1}^m \left|x^{(i)}_n - x^{(i)}\right| \quad \text{für alle $n \in \N$}
  \]
  ist daher nach dem Sandwich-Lemma auch $\|x_n - x\| \to 0$, also $x_n \to x$.
 \end{proof}
@@ -210,7 +219,7 @@ Da die Norme auf $\R^1 = \R$ mit dem Betrag übereinstimmt, handelt es sich um e
 \end{bem}
 
 
-Viele der Eigenschaften und Rechenregeln, die wir für konvergente Folgen auf $\R$ kenne, lassen sich auf Folgen auf $\R^n$ zu verallgemeinern. So sind Grenzwerte auch im Mehrdimensionalen eindeutig und verträglich mit Addition und Skalarmultiplikation. Im Komplexen ergibt sich auch eine Verträglichkeit mit der Multiplikation und Division, wie wir sie schon aus dem reellen kennen.
+Viele der Eigenschaften und Rechenregeln, die wir für konvergente Folgen auf $\R$ kenne, lassen sich auf Folgen auf $\R^n$ zu verallgemeinern. So sind Grenzwerte auch im Mehrdimensionalen verträglich mit Addition und Skalarmultiplikation. Im Komplexen ergibt sich auch eine Verträglichkeit mit der Multiplikation und Division, wie wir sie schon aus dem Reellen kennen.
 
 
 \begin{question}
@@ -222,7 +231,7 @@ Viele der Eigenschaften und Rechenregeln, die wir für konvergente Folgen auf $\
  \]
 \end{question}
 \begin{solution}
- Es seien $\xi_n = u_n + i v_n$ und $\zeta_n = x_n + i y_n$ für alle $n \in \N$ die Zerlegungen in Real- und Imaginärteile, sowie $\xi = u + i v$ und $\zeta = x + i y$ die Zerlegungen der Grenzwerte in Real- und Imaginärteile. Dass $\xi_n \to \xi$ ist äquivalent dazu, dass $u_n \to u$ und $v_n \to v$, und dass $\zeta_n \to \zeta$ ist äquivalent dazu, dass $x_n \to x$ und $y_n \to y$. Nach Lemma \ref{lem: convergence in coordinates} und den bekannten Rechenregeln für die Grenzwerte reelle Folgen folgt damit, dass
+ Es seien $\xi_n = u_n + i v_n$ und $\zeta_n = x_n + i y_n$ für alle $n \in \N$ die Zerlegungen in Real- und Imaginärteile, sowie $\xi = u + i v$ und $\zeta = x + i y$ die Zerlegungen der Grenzwerte in Real- und Imaginärteile. Dass $\xi_n \to \xi$ ist nach Lemma \ref{lem: convergence in coordinates} äquivalent dazu, dass $u_n \to u$ und $v_n \to v$, und dass $\zeta_n \to \zeta$ ist äquivalent dazu, dass $x_n \to x$ und $y_n \to y$. Nach Lemma \ref{lem: convergence in coordinates} und den bekannten Rechenregeln für die Grenzwerte reelle Folgen folgt damit, dass
  \begin{align*}
   \xi_n \cdot \zeta_n
   &= (u_n + i v_n) \cdot (x_n + i y_n)
@@ -235,11 +244,11 @@ Viele der Eigenschaften und Rechenregeln, die wir für konvergente Folgen auf $\
 \end{solution}
 
 
-Für Folgen auf $\R$ kennen wir bereits den Begriff der Cauchy-Folge, und wissen, dass eine Folge genau dann konvergiert, wenn sie eine Cauchy-Folge ist. Dies lässt sich auf $\R^n$ verallgemeinern:
+Für Folgen auf $\R$ kennen wir bereits den Begriff der Cauchy-Folge, und wissen, dass eine Folge genau dann konvergiert, wenn sie eine Cauchy-Folge ist. Dies lässt sich auf Folgen auf $\R^n$ verallgemeinern:
 
 
 \begin{defi}
- Eine Folge $(x_n)$ auf $\R^m$ heißt \emph{Cauchy}-Folge, falls es für alle $\varepsilon > 0$ ein $N \in \N$ gibt, so dass $\|x_n - x_{n'}\| < \varepsilon$ für alle $n, n' \geq N$.
+ Eine Folge $(x_n)$ auf $\R^m$ heißt \emph{Cauchy-Folge}, falls es für alle $\varepsilon > 0$ ein $N \in \N$ gibt, so dass $\|x_n - x_{n'}\| < \varepsilon$ für alle $n, n' \geq N$.
 \end{defi}
 
 
@@ -257,9 +266,9 @@ Wir haben bereits gesehen, dass eine Folge im Mehrdimensionalen genau dann konve
   \|x_n - x_{n'}\| \leq \sum_{i=1}^m \left| x^{(i)}_n - x^{(i)}_{n'} \right|.
  \end{gather*}
  
- Ist $(x_n)$ eine Cauchy-Folge, so gibt es für alle $\varepsilon > 0$ ein $N \in \N$, so dass $\|x_n - x_{n'}\| < \varepsilon$ für alle $n \geq N$, und somit auch $|x^{(i)}_n - x^{(i)}_{n'}| < \varepsilon$ für alle $n \geq N$ für alle $1 \leq i \leq m$.
+ Ist $(x_n)$ eine Cauchy-Folge, so gibt es für alle $\varepsilon > 0$ ein $N \in \N$, so dass $\|x_n - x_{n'}\| < \varepsilon$ für alle $n, n' \geq N$, und somit auch $|x^{(i)}_n - x^{(i)}_{n'}| < \varepsilon$ für alle $n \geq N$ für alle $1 \leq i \leq m$. Also ist $(x^{(i)}_n)$ für alle $1 \leq i \leq m$ eine Cauchy-Folge.
  
- Es sei andererseits $(x^{(i)}_n)$ für alle $1 \leq i \leq n$ eine Cauchy-Folge. Wir wollen zeigen, dass dann auch $(x_n)$ eine Cauchy-Folge ist. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Für jedes $1 \leq i \leq m$ gibt es, da $(x^{(i)}_n)$ eine Cauchy-Folge ist, ein $N_i \in \N$ mit $|x^{(i)}_n - x^{(i)}_{n'}| < \varepsilon/m$ für alle $1 \leq i \leq m$. Wir setzen $N \coloneqq \max_{1 \leq i \leq m} N_i$. Für alle $n, n' \geq N$ ist dann
+ Es sei andererseits $(x^{(i)}_n)$ für alle $1 \leq i \leq n$ eine Cauchy-Folge. Wir wollen zeigen, dass dann auch $(x_n)$ eine Cauchy-Folge ist. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Für jedes $1 \leq i \leq m$ gibt es, da $(x^{(i)}_n)$ eine Cauchy-Folge ist, ein $N_i \in \N$ mit $|x^{(i)}_n - x^{(i)}_{n'}| < \varepsilon/m$ für alle $n, n' \geq N_i$. Wir setzen $N \coloneqq \max_{1 \leq i \leq m} N_i$. Für alle $n, n' \geq N$ ist dann
  \[
   \|x_n - x_{n'}\|
   \leq \sum_{i=1}^m \left| x^{(i)}_n - x^{(i)}_{n'} \right|
@@ -278,7 +287,7 @@ Wir haben bereits gesehen, dass eine Folge im Mehrdimensionalen genau dann konve
 \end{proof}
 
 
-Wir kennen den Satz von Bolzano-Weierstraß, der besagt, dass jede beschränkt Folge auf $\R$ eine konvergente Teilfolge besitzt. Die naheliegende Verallgemeinerung gilt auch für $\R^n$.
+Wir kennen den Satz von Bolzano-Weierstraß, der besagt, dass jede beschränkte Folge auf $\R$ eine konvergente Teilfolge besitzt. Die naheliegende Verallgemeinerung gilt auch für $\R^n$.
 
 
 \begin{defi}
@@ -290,7 +299,7 @@ Wir kennen den Satz von Bolzano-Weierstraß, der besagt, dass jede beschränkt F
  Jede beschränkte Folge $(x_n)_{n \in \N}$ auf $\R^m$ besitzt eine konvergente Teilfolge.
 \end{prop}
 \begin{proof}
- In Koordinaten sei $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$. Da die Folge $(x_n)$ beschränkt ist, ist die Folge $(x^{(i)}_n)_{n \in \N}$ für alle $1 \leq i \leq m$ beschränkt.
+ In Koordinaten sei $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$. Da die Folge $(x_n)$ beschränkt ist, ist die Folge $(x^{(i)}_n)_{n \in \N}$ für alle $1 \leq i \leq m$ beschränkt. (Siehe Übung \ref{qst: Beschränktheit in Koordinaten}.)
  
  Da die Folge $(x^{(1)}_n)_{n \in \N}$ beschränkt ist, besitzt sie nach dem Satz von Bolzano-Weierstraß auf $\R$ eine konvergente Teilfolge $n_{1,j}$; es sei
  \[
@@ -300,7 +309,7 @@ Wir kennen den Satz von Bolzano-Weierstraß, der besagt, dass jede beschränkt F
  \[
   x^{(2)} \coloneqq \lim_{j \to \infty} x^{(2)}_{n_{2,j}}.
  \]
- Da $x^{(1)}_{n_{1,j}} \to x^{(1)}$ für $j \to \infty$ ist auch $x^{(1)}_{n_{2,j}} \to x^{(1)}$ für $j \to \infty$.
+ Da $x^{(1)}_{n_{1,j}} \to x^{(1)}$ für $j \to \infty$ ist auch $x^{(1)}_{n_{2,j}} \to x^{(1)}$ für $j \to \infty$, da es sich um eine Teilfolge handelt.
  
  Wir erhalten rekursiv Teilfolgen $n_{1,j}$, \dots, $n_{m,j}$ und $x^{(1)}, \dotsc, x^{(m)} \in \R$, so dass für jedes $1 \leq k \leq m$
  \[
@@ -310,13 +319,80 @@ Wir kennen den Satz von Bolzano-Weierstraß, der besagt, dass jede beschränkt F
 \end{proof}
 
 
+Die Vollständigkeit von $\R^n$ lässt sich auch durch den Satz von Bolzano-Weierstraß zeigen.
+
+
+\begin{question}
+ Es sei $(x_n)$ eine Cauchy-Folge auf $\R^m$.
+ \begin{enumerate}
+  \item
+   Zeigen Sie, dass $(x_n)$ beschränkt ist.
+  \item
+   Zeigen Sie, dass $(x_n)$ genau dann konvergiert, wenn $(x_n)$ eine konvergente Teilfolge besitzt.
+  \item
+   Folgern Sie, dass $(x_n)$ konvergiert.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ \begin{enumerate}
+  \item
+   Da $(x_n)$ eine Cauchy-Folge ist, gibt es ein $N \in \N$ mit
+   \[
+    \|x_n - x_{n'}\| < 1 \quad \text{für alle $n, n' \geq N$}.
+   \]
+   Insbesondere ist daher $\|x_n - x_N\| < 1$ für alle $n \geq N$. Daher ist
+   \[
+    \|x_n\|
+    \leq \|x_N\| + \|x_n - x_N\|
+    < \|x_N\| + 1
+    \quad \text{für alle $n \geq N$}.
+   \]
+   Für
+   \[
+    C \coloneqq \max \{\|x_0\|, \|x_1\|, \dotsc, \|x_{N-1}\|, \|x_N\| + 1\}
+   \]
+   ist deshalb $\|x_n\| \leq C$ für alle $n \in \N$.
+  \item
+   Konvergiert $(x_n)$, so ist auch jede Teilfolge von $(x_n)$ konvergent (mit gleichen Grenzwert).
+   
+   Sei andererseits $n_j$ eine Teilfolge, so dass $(x_{n_j})_{j \in \N}$ konvergiert. Wir schreiben $x \coloneqq \lim_{j \to \infty} x_{n_j}$. Wir wollen zeigen, dass bereits $x_n \to x$. Es sei hierfür $\varepsilon > 0$. Da $(x_n)$ eine Cauchy-Folge ist, gibt es ein $N \in \N$ mit
+   \begin{equation}
+    \|x_n - x_{n'}\| < \frac{\varepsilon}{2} \quad \text{für alle $n, n' \geq N$}.
+   \end{equation}
+   Da $x_{n_j} \to x$ für $j \to \infty$ gibt es ein $J \in \N$ mit
+   \[
+    \|x - x_{n_j}\| < \frac{\varepsilon}{2} \quad \text{für alle $j \geq J$},
+   \]
+   wobei wir o.B.d.A.\ davon ausgehen können, dass $J \geq N$. Insbesondere ist $\|x - x_{n_J}\| < \varepsilon/2$.
+   
+   Da $J \geq N$ ist
+   \[
+    \|x_J - x_n\| < \frac{\varepsilon}{2} \quad \text{für alle $n \geq N$}.
+   \]
+   Damit erhalten wir, dass
+   \[
+    \|x - x_n\|
+    \leq \|x - x_J\| + \|x_J - x_n\|
+    < \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
+    = \varepsilon
+    \quad \text{für alle $n \geq N$}.
+   \]
+   Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $x_n \to x$.
+  \item
+   Da die Folge $(x_n)$ beschränkt ist, besitzt sie nach dem Satz von Bolzano-Weierstraß eine konvergente Teilfolge, und ist somit konvergent.
+ \end{enumerate}
+\end{solution}
+
+
+
+
 
 
 
 \section{Stetigkeit}
 
 
-Nachdem wir nun den Begriff der Folgenkonvergenz ins Mehrdimensionale verallgemeinert haben, wollen wir uns jetzt dem Begriff der Stetigkeit zuwenden.
+Nachdem wir nun den Begriff der Folgenkonvergenz ins Mehrdimensionale verallgemeinert haben, wollen wir uns jetzt der Stetigkeit zuwenden.
 
 
 \begin{defi}
@@ -327,7 +403,7 @@ Nachdem wir nun den Begriff der Folgenkonvergenz ins Mehrdimensionale verallgeme
 \end{defi}
 
 
-Da die Norm auf $\R^1 = \R$ mit dem Betrag übereinstimmt ist dieser Stetigkeitsbegriff eine Verallgemeinerung der $\varepsilon$-$\delta$-Stetigkeit auf $\R$. Für den Fall $\R^2 \cong \C$ erhalten wir so auch einen Stetigkeitsbegriff für Abbildungen $\C \to \R^n$.
+Da die Norm auf $\R^1 = \R$ mit dem Betrag übereinstimmt ist dieser Stetigkeitsbegriff eine Verallgemeinerung der $\varepsilon$-$\delta$-Stetigkeit auf $\R$. Für den Fall $\R^2 \cong \C$ erhalten wir so auch einen Stetigkeitsbegriff für Abbildungen $\R^n \to \C$ und Abbildungen $\C \to \R^n$.
 
 
 \begin{question}
@@ -342,7 +418,7 @@ Da die Norm auf $\R^1 = \R$ mit dem Betrag übereinstimmt ist dieser Stetigkeits
  \[
   \|x-y\| \geq |\|x\|-\|y\||.
  \]
- Für $\delta \coloneqq \varepsilon$ ist daher $\|x-y\| < \varepsilon$ für alle $y \in \R^n$ mit $\|x-y\| < \delta$. Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $f$ an $x$ stetig ist, und aus der Beliebigkeit von $x \in \R^n$ folgt, dass $x$ stetig ist.
+ Für $\delta \coloneqq \varepsilon$ ist daher $\|x-y\| < \varepsilon$ für alle $y \in \R^n$ mit $\|x-y\| < \delta$. Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $f$ an $x$ stetig ist, und aus der Beliebigkeit von $x \in \R^n$ folgt, dass $f$ stetig ist.
 \end{solution}
 
 
@@ -387,7 +463,7 @@ Wir haben bereits gesehen, dass sich Stetigkeit auf $\R$ auch durch Folgenstetig
 
 
 \begin{lem}
- Es sei $X \subseteq \R^n$, $f \colon X \to \R^m$ und $x \in X$. Dann sind äquivalent:
+ Es sei $X \subseteq \R^m$, $f \colon X \to \R^k$ und $x \in X$. Dann sind äquivalent:
  \begin{enumerate}
   \item
    $f$ ist stetig an $x$.
@@ -399,24 +475,28 @@ Wir haben bereits gesehen, dass sich Stetigkeit auf $\R$ auch durch Folgenstetig
  \end{enumerate}
 \end{lem}
 \begin{proof}
- Angenommen $f$ ist stetig an $x$. Es sei $(x_n)$ eine Folge auf $X$ mit $x_n \to x$. Wir müssen zeigen, dass $f(x_n) \to f(x)$. Es sei $\varepsilon > 0$ beliebig aber fest. Da $f$ stetig an $x$ ist, gibt es ein $\delta > 0$, so dass
+ Angenommen $f$ ist stetig an $x$. Es sei $(x_n)$ eine Folge auf $X$ mit $x_n \to x$. Wir wollen zeigen, dass $f(x_n) \to f(x)$. Hierfür sei $\varepsilon > 0$ beliebig aber fest. Da $f$ stetig an $x$ ist, gibt es ein $\delta > 0$, so dass
  \[
-  |f(x) - f(y)| < \varepsilon \quad \text{für alle $y \in X$ mit $|x-y| < \delta$}.
+  \|x-y\| < \delta \Rightarrow \|f(x) - f(y)\| < \varepsilon \quad \text{für alle $y \in X$}.
  \]
- Da $x_n \to x$ gibt es ein $N \in \N$ mit $|x - x_n| < \delta$ für alle $n \geq N$. Wir erhalten damit, dass $|f(x) - f(x_n)| < \varepsilon$ für alle $n \geq N$. Aus der Beliebigkeit von $\varepsilon > 0$ folgt damit, dass $f(x_n) \to f(x)$.
+ Da $x_n \to x$ gibt es ein $N \in \N$ mit $\|x - x_n\| < \delta$ für alle $n \geq N$. Wir erhalten damit, dass $\|f(x) - f(x_n)\| < \varepsilon$ für alle $n \geq N$. Aus der Beliebigkeit von $\varepsilon > 0$ folgt damit, dass $f(x_n) \to f(x)$.
  
- Angenommen $f$ ist nicht stetig an $x$. Dann gibt es ein $\varepsilon > 0$, so dass es für alle $\delta > 0$ ein $y \in X$ gibt, so dass zwar $|x-y| < \delta$, aber $|f(x)-f(y)| \geq \varepsilon$. Insbesondere gibt es daher für alle $n \geq 1$ ein $x_n \in X$ mit $|x - x_n| < 1/n$ und $|f(x) - f(y)| \geq \varepsilon$. Es ist dann $(x_n)$ eine Folge auf $X$ mit $x_n \to x$, aber $(f(x_n))$ konvergiert nicht gegen $f(x)$, da $|f(x) - f(x_n)| \geq \varepsilon$ für alle $n \in \N$.
+ Angenommen $f$ ist nicht stetig an $x$. Dann gibt es ein $\varepsilon > 0$, so dass es für alle $\delta > 0$ ein $y \in X$ gibt, so dass zwar $\|x-y\| < \delta$, aber $\|f(x)-f(y)\| \geq \varepsilon$. Insbesondere gibt es daher für alle $n \geq 1$ ein $x_n \in X$ mit $\|x - x_n\| < 1/n$ und $\|f(x) - f(y)\| \geq \varepsilon$. Es ist dann $(x_n)$ eine Folge auf $X$ mit $x_n \to x$, aber $(f(x_n))$ konvergiert nicht gegen $f(x)$, da $\|f(x) - f(x_n)\| \geq \varepsilon$ für alle $n \in \N$.
 \end{proof}
 
 
-Auch im Mehrdimensionalen bezeichnet man diese beiden Konvergenzbegriffe als \emph{$\varepsilon$-$\delta$-Stetigkeit} und \emph{Folgenstetigkeit}.
+Auch im Mehrdimensionalen bezeichnet man diese beiden Stetigkeitsbegriffe als \emph{$\varepsilon$-$\delta$-Stetigkeit} und \emph{Folgenstetigkeit}.
 
 
 \begin{question}
- Zeigen Sie erneut die Stetigkeit der Projektionen $\pi_i \colon \R^m \to \R, (x_1, \dotsc, x_m) \to x_i$, indem Sie zeigen, dass sie folgenstetig sind.
+ Zeigen Sie erneut die Stetigkeit der Projektionen
+ \[
+  \pi_i \colon \R^m \to \R, (x_1, \dotsc, x_m) \to x_i
+ \]
+ indem Sie zeigen, dass sie folgenstetig sind.
 \end{question}
 \begin{solution}
- Für den Beweis fixieren ein beliebiges $1 \leq i \leq m$. Es sei $x \in \R^n$ beliebig aber fest. Wir wollen zeigen, dass $\pi_i$ an $x$ folgenstetig ist. Sei hierfür $(x_n)$ eine Folge auf $\R^n$ mit $x_n \to x$; in Koordinaten sei $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$ und $x = (x_1, \dotsc, x_m)$. Dass $x_n \to x$ bedeutet insbesondere, das $x^{(i)}_n \to x^{(i)}$. Es ist also
+ Für den Beweis fixieren ein beliebiges $1 \leq i \leq m$. Es sei $x \in \R^n$ beliebig aber fest. Wir wollen zeigen, dass $\pi_i$ an $x$ folgenstetig ist. Sei hierfür $(x_n)$ eine Folge auf $\R^m$ mit $x_n \to x$; in Koordinaten sei $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$ und $x = (x_1, \dotsc, x_m)$. Dass $x_n \to x$ bedeutet insbesondere, dass $x^{(i)}_n \to x^{(i)}$. Es ist also
  \[
   \pi_i(x_n) = x^{(i)}_n \to x.
  \]
@@ -425,14 +505,14 @@ Auch im Mehrdimensionalen bezeichnet man diese beiden Konvergenzbegriffe als \em
 
 
 \begin{question}
- Untersuchen Sie ob sich die Abbildung
+ Untersuchen Sie, ob sich die Abbildung
  \[
   f \colon \R^2 \setminus \{0\} \to \R, (x,y) \mapsto \frac{xy}{x^2 + y^2}
  \]
  stetig auf $\R^2$ fortsetzen lässt, d.h. ob es eine stetige Funktion $\hat{f} \colon \R^2 \to \R$ gibt, so dass $\hat{f}|_{\R^2 \setminus \{0\}} = f$.
 \end{question}
 \begin{solution}
- Angenommen, $f$ ließe sich zu einer stetigen Funktion $\hat{f} \colon \R^2 \to \R$ fortsetzen. Wir betrachten die beiden Folgen $(x_n)$ und $(y_n)$ auf $\R^2$ mit
+ Angenommen, $f$ ließe sich zu einer stetigen Funktion $\hat{f} \colon \R^2 \to \R$ fortsetzen. Wir betrachten die beiden Folgen $(x_n)_{n \geq 1}$ und $(y_n)_{n \geq 1}$ auf $\R^2 \setminus \{0\}$ mit
  \[
   x_n = \left( \frac{1}{n}, 0 \right)
   \quad
@@ -442,7 +522,7 @@ Auch im Mehrdimensionalen bezeichnet man diese beiden Konvergenzbegriffe als \em
   \quad
   \text{für alle $n \geq 1$}.
  \]
- Da $1/n \to 0$ ist $x_n \to (0,0)$ und $y_n \to (0,0)$ nach Lemma \ref{lem: convergence in coordinates}. Da $\hat{f}$ stetig ist konvergieren auch die Folgen $(\hat{f}(x_n))$ und $(\hat{f}(y_n))$ und es gilt
+ Da $1/n \to 0$ ist $x_n \to (0,0)$ und $y_n \to (0,0)$ nach Lemma \ref{lem: convergence in coordinates}. Da $\hat{f}$ stetig ist konvergieren auch die Folgen $(\hat{f}(x_n))$ und $(\hat{f}(y_n))$, und es gilt
  \[
   \lim_{n \to \infty} \hat{f}(x_n) = \hat{f}(0,0) = \lim_{n \to \infty} \hat{f}(y_n).
  \]
@@ -466,7 +546,7 @@ Auch im Mehrdimensionalen bezeichnet man diese beiden Konvergenzbegriffe als \em
 \end{solution}
 
 
-Wir haben bereits gesehen, dass sich Konvergenz in $\R^n$ durch Konvergenz in den einzelnen Koordinaten beschreiben lässt. Eine analoge Aussage gilt auch für die Stetigkeit: Eine Funktion ist genau dann stetig, wenn sie in jeder Koordinate stetig ist.
+Wir haben bereits gesehen, dass sich Folgenkonvergenz auf $\R^n$ durch Konvergenz in den einzelnen Koordinaten beschreiben lässt. Eine analoge Aussage gilt auch für die Stetigkeit: Eine Funktion ist genau dann stetig, wenn sie in jeder Koordinate stetig ist.
 
 
 \begin{lem}
@@ -477,7 +557,7 @@ Wir haben bereits gesehen, dass sich Konvergenz in $\R^n$ durch Konvergenz in de
  Dann ist $f$ genau dann stetig an der Stelle $x \in X$, falls $f_i$ für alle $1 \leq i \leq k$ stetig an der Stelle $x$ ist.
 \end{lem}
 \begin{proof}
- Wir wollen zeigen, dass die $f$ genau dann folgenstetig an $x$ ist, wenn alle $f_i$ alle folgenstetig an $x$ sind. Es sei $(x_n)$ eine Folge auf $X$ mit $x_n \to x$. Dass $f(x_n) \to f(x)$ bedeutet in Koordinaten, dass
+ Wir wollen zeigen, dass $f$ genau dann folgenstetig an $x$ ist, wenn alle $f_i$ folgenstetig an $x$ sind. Hierfür sei $(x_n)$ eine Folge auf $X$ mit $x_n \to x$. Dass $f(x_n) \to f(x)$ bedeutet in Koordinaten, dass
  \[
   (f_1(x_n), \dotsc, f_k(x_n)) \to (f_1(x), \dots, f_k(x)).
  \]
@@ -489,6 +569,7 @@ Wir haben bereits gesehen, dass sich Konvergenz in $\R^n$ durch Konvergenz in de
 
 
 \section{Umgebungen und offene Mengen}
+Wir haben bereits kurz die Begriffe Umgebungen und offene Mengen auf $\R$ angesprochen. Auch diese Begriffe wollen wir auf $\R^n$ verallgemeinern. Wir wollen auch zeigen, wie sich Folgenkonvergenz und Stetigkeit durch Umgebungen und offene Mengen charakterisieren lassen.
 
 
 \subsection{Definition und grundlegende Eigenschaften}
@@ -513,7 +594,6 @@ Wir haben bereits gesehen, dass sich Konvergenz in $\R^n$ durch Konvergenz in de
 \end{bem}
 
 
-
 Mithilfe von $\varepsilon$-Bällen lassen sich die Begriffe einer Umgebung und einer offenen Menge auf das Mehrdimensionale verallgemeinern.
 
 
@@ -522,18 +602,37 @@ Mithilfe von $\varepsilon$-Bällen lassen sich die Begriffe einer Umgebung und e
 \end{defi}
 
 
-\begin{question}\label{qst: Eigenschaften von Umgebungen}
- Es sei $x \in \R^n$. Zeigen Sie:
+\begin{bsp}
+ \begin{enumerate}
+  \item
+   Das Intervall $(-1,1)$ ist eine Umgebung von $0$, denn für jedes $\varepsilon > 0$ mit $\varepsilon < 1$ ist
+   \[
+    B_\varepsilon(0) = (-\varepsilon, \varepsilon) \subseteq (-1,1).
+   \]
+   (Wie wir in Kürze sehen können, ist $(-1,1)$ für jedes $x \in (-1,1)$ eine Umgebung.)
+  \item
+   Das Intervall $[-1,1]$ ist ebenfalls eine Umgebung von $0$. Es ist jedoch keine Umgebung von $-1$ oder $1$.
+  \item
+   Die nicht-negativen reellen Zahlen $[0,\infty)$ sind für jedes $x > 0$ eine Umgebung, nicht jedoch von $0$ selbst.
+ \end{enumerate}
+\end{bsp}
+
+
+Die Umgebungen eines Punktes $x$ erfüllen gewissen Verträglichkeiten bzgl.\ passender Mengenoperationen und -relationen.
+
+
+\begin{lem}\label{lem: Eigenschaften von Umgebungen}
+ Es sei $x \in \R^n$.
  \begin{enumerate}
   \item
    $\R^n$ ist eine Umgebung von $x$.
   \item
-   Ist $V \subseteq \R^n$ eine Umgebung von $x$ und $W \subseteq \R^n$ eine beliebige Teilmenge mit $V \subseteq W$, so ist auch $W$ eine Umgebung auf $W$.
+   Ist $V \subseteq \R^n$ eine Umgebung von $x$ und $W \subseteq \R^n$ eine beliebige Teilmenge mit $V \subseteq W$, so ist auch $W$ eine Umgebung von $x$.
   \item
    Sind $V_1, \dotsc, V_s \subseteq \R^n$ Umgebungen von $x$, so ist auch $V_1 \cap \dotsb \cap V_s$ eine Umgebung von $x$.
  \end{enumerate}
-\end{question}
-\begin{solution}
+\end{lem}
+\begin{proof}
  \begin{enumerate}
   \item
    Für beliebige $\varepsilon > 0$ ist $B_\varepsilon(x) \subseteq \R^n$, also ist $\R^n$ eine Umgebung von $x$.
@@ -545,9 +644,9 @@ Mithilfe von $\varepsilon$-Bällen lassen sich die Begriffe einer Umgebung und e
     B_\varepsilon(x) \subseteq B_{\varepsilon_i}(x) \subseteq V_i
     \quad \text{für alle $1 \leq i \leq s$}.
    \]
-   Also ist auch $B_\varepsilon(x) \subseteq V_1 \cap \dotsb \cup V_s$. Also ist $V_1 \cap \dotsb \cap V_s$ eine Umgebung von $x$.
+   Also ist auch $B_\varepsilon(x) \subseteq V_1 \cap \dotsb \cap V_s$. Daher ist $V_1 \cap \dotsb \cap V_s$ eine Umgebung von $x$.
  \end{enumerate}
-\end{solution}
+\end{proof}
 
 
 \begin{bem}
@@ -558,13 +657,12 @@ Mithilfe von $\varepsilon$-Bällen lassen sich die Begriffe einer Umgebung und e
   \item
    $\emptyset \notin \mc{F}$,
   \item
-   für alle $S_1, \dotsc, S_n \in \mc{F}$ ist auch $S_1 \cap \dotsb \cap S_n \in \mc{F}$, und
+   ist $S \in \mc{F}$, so ist für alle $T \subseteq X$ mit $S \subseteq T$ auch $T \in \mc{F}$, und
   \item
-   ist $S \in \mc{F}$, so ist für alle $T \subseteq X$ mit $S \subseteq T$ auch $T \in \mc{F}$.
+   für alle $S_1, \dotsc, S_n \in \mc{F}$ ist auch $S_1 \cap \dotsb \cap S_n \in \mc{F}$.
  \end{enumerate}
- Übung \ref{qst: Eigenschaften von Umgebungen} zeigt, dass die Umgebungen eines Punktes $x \in \R^n$ einen Filter bilden.
+ Lemma \ref{lem: Eigenschaften von Umgebungen} zeigt, dass die Umgebungen eines Punktes $x \in \R^n$ einen Filter bilden.
 \end{bem}
-
 
 
 \begin{defi}
@@ -572,11 +670,10 @@ Mithilfe von $\varepsilon$-Bällen lassen sich die Begriffe einer Umgebung und e
 \end{defi}
 
 
-\begin{question}
- Zeigen Sie, dass offene $\varepsilon$-Bälle offen sind, d.h. dass $B_\varepsilon(x)$ für alle $x \in \R^n$ und $\varepsilon > 0$ offen ist.
-\end{question}
-\begin{solution}
- Es sei $x \in X$ und $\varepsilon > 0$. Um zu zeigen, dass $B_\varepsilon(x)$ offen ist, müssen wir zeigen, dass es für jedes $y \in B_\varepsilon(x)$ ein $\delta > 0$ gibt, so dass $B_\delta(y) \subseteq B_\varepsilon(x)$. Sei hierfür $y \in B_\varepsilon(x)$ beliebig aber fest. Wir setzen
+\begin{bsp}
+ Wir wollen zeigen, dass offene $\varepsilon$-Bälle offen sind, d.h. dass $B_\varepsilon(x)$ für alle $x \in \R^n$ und $\varepsilon > 0$ offen ist.
+ 
+ Es sei hierfür $x \in X$ und $\varepsilon > 0$. Um zu zeigen, dass $B_\varepsilon(x)$ offen ist, müssen wir zeigen, dass es für jedes $y \in B_\varepsilon(x)$ ein $\delta > 0$ gibt, so dass $B_\delta(y) \subseteq B_\varepsilon(x)$. Sei hierfür $y \in B_\varepsilon(x)$ beliebig aber fest. Wir setzen
  \[
   \delta \coloneqq \varepsilon - |x-y|.
  \]
@@ -603,17 +700,43 @@ Mithilfe von $\varepsilon$-Bällen lassen sich die Begriffe einer Umgebung und e
   \end{tikzpicture}
  \end{center}
  Aus der Beliebigkeit von $y \in B_\varepsilon(x)$ folgt, dass $B_\varepsilon(x)$ offen ist.
-\end{solution}
+\end{bsp}
 
 
-\begin{question}
- Zeigen Sie, dass $V \subseteq \R^n$ genau dann eine Umgebung von $x \in \R^n$ ist, falls es eine offene Menge $U \subseteq \R^n$ mit $x \in U$ und $U \subseteq V$ gibt.
-\end{question}
-\begin{solution}
- Angenommen, $V$ ist eine Umgebung von $x$. Dann gibt es ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq V$. Dann ist $B_\varepsilon(x)$ eine offene Menge mit $x \in B_\varepsilon(x)$ und $B_\varepsilon(x) \subseteq V$.
- 
- Angenommen, es gibt eine offene Menge $U \subseteq \R^n$ mit $x \in U$ und $U \subseteq V$. Da $U$ offen ist, gibt es ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq U$. Da $U \subseteq V$ ist damit auch $B_\varepsilon(x) \subseteq V$, also ist $V$ eine Umgebung von $x$.
-\end{solution}
+\begin{bsp}
+ \begin{enumerate}
+  \item
+   Offene Intervalle sind offen.
+  \item
+   Die Teilmenge $\Q \subseteq \R^n$ ist nicht offen: Für $x \in \Q$ und $\varepsilon > 0$ gibt es immer eine irrationale Zahl $y \in (x-\varepsilon, x+\varepsilon)$, weshalb $B_\varepsilon(x) \subsetneq \Q$. Also enthält $\Q$ um keine Zahl $x \in \Q$ einen $\varepsilon$-Ball. (In gewisser Weise ist $\Q$ maximal nicht-offen, da es um keinen seiner Punkte einen $\varepsilon$-Ball enthält.)
+  \item
+   Wir wollen zeigen, dass die Teilmenge
+   \[
+    U \coloneqq \{x \in \R^n \mid \|x\| > 1\}
+   \]
+   offen ist. Hierfür sei $x \in U$, also $\|x\| > 1$. Wir setzen
+   \[
+    \varepsilon \coloneqq \|x\|-1.
+   \]
+   Da $\|x\| > 1$ ist $\varepsilon > 0$. Wir behaupten, dass $B_\varepsilon(x) \subseteq U$. Dies ergibt sich daraus, dass für alle $y \in B_\varepsilon(x)$
+   \begin{align*}
+    \|y\|
+    &= \|x - (x - y)\|
+    \geq |\|x\| - \|x-y\||
+    \geq \|x\| - \|y-x\| \\
+    &> \|x\| - \varepsilon 
+    = \|x\| - (\|x\| - 1)
+    = 1,
+   \end{align*}
+   und somit $y \in U$. Also ist $B_\varepsilon(x) \subseteq U$. Wegen der Beliebigkeit von $x \in U$ folgt, dass $U$ offen ist.
+  \item
+   Die Teilmenge
+   \[
+    X \coloneqq \R \setminus \left\{ \frac{1}{n} \,\middle|\, n \in \N, n \geq 1 \right\}
+   \]
+   ist nicht offen, da sie keinen $\varepsilon$-Ball um $0$ enthält: Für jedes $\varepsilon > 0$ gibt es ein $n \in \N$, $n \geq 1$ mit $0 < 1/n < \varepsilon$, und somit $B_\varepsilon(x) \subsetneq X$.
+ \end{enumerate}
+\end{bsp}
 
 
 \begin{question}
@@ -624,7 +747,7 @@ Mithilfe von $\varepsilon$-Bällen lassen sich die Begriffe einer Umgebung und e
  \[
   (a,b) = B_{\frac{b-a}{2}}\left(\frac{a+b}{2}\right)
  \]
- ist das offen Intervall $(a,b)$ offen.
+ ist das offene Intervall $(a,b)$ offen.
  
  Um zu zeigen, dass das abgeschlossen Intervall $[a,b]$ nicht offen ist, betrachten wir den Punkt $a \in [a,b]$. Für jedes $\varepsilon > 0$ ist
  \[
@@ -634,37 +757,15 @@ Mithilfe von $\varepsilon$-Bällen lassen sich die Begriffe einer Umgebung und e
   \quad
   a - \frac{\varepsilon}{2} \notin [a,b],
  \]
- und deshalb $B_\varepsilon(x) \nsubseteq [a,b]$. Also enthält $[a,b]$ keinen $\varepsilon$-Ball um $a$ und ist daher nicht offen.
+ und deshalb $B_\varepsilon(x) \nsubseteq [a,b]$. Also enthält $[a,b]$ keinen $\varepsilon$-Ball um $a$ und ist daher nicht offen. (Analog ergibt sich, dass $[a,b]$ auch keinen $\varepsilon$-Ball um $b$ enthält. Für jedes Punkt $x \in (a,b)$ hingegen enthält $[a,b]$ einen $\varepsilon$-Ball um $x$.)
 \end{solution}
 
 
-\begin{question}
- Zeigen Sie, dass die Teilmenge
- \[
-  U \coloneqq \{x \in \R^n \mid \|x\| > 1\}
- \]
- offen ist.
-\end{question}
-\begin{proof}
- Es sei $x \in U$, also $\|x\| > 1$. Wir setzen
- \[
-  \varepsilon \coloneqq \|x\|-1.
- \]
- Da $\|x\| > 1$ ist $\varepsilon > 0$. Wir behaupten, dass $B_\varepsilon(x) \subseteq U$. Dies ergibt sich daraus, dass für alle $y \in B_\varepsilon(x)$
- \[
-  \|y\|
-  = \|x - (x - y)\|
-  \geq |\|x\| - \|x-y\||
-  \geq \|x\| - \|y-x\|
-  > \|x\| - (\|x\|-1)
-  = 1,
- \]
- und somit $y \in U$.
-\end{proof}
+Analog zu den Eigenschaften von Umgebungen bzgl.\ Mengenrelationen und -operationen (Lemma \ref{lem: Eigenschaften von Umgebungen}) gibt es auch entsprechende Eigenschaften für offene Mengen.
 
 
-\begin{question}
- Zeigen Sie die folgenden Eigenschaften offener Mengen:
+\begin{lem}
+ Offene Mengen erfüllen die folgenden Eigenschaften:
  \begin{enumerate}
   \item
    Die Teilmengen $\emptyset$ und $\R^n$ sind offen.
@@ -675,8 +776,8 @@ Mithilfe von $\varepsilon$-Bällen lassen sich die Begriffe einer Umgebung und e
   \item
    Für eine Kollektion $\{U_i \mid i \in I\}$ offener Mengen $U_i \subseteq \R^n$ ist auch die Vereinigung $\bigcup_{i \in I} U_i$ offen.
  \end{enumerate}
-\end{question}
-\begin{solution}
+\end{lem}
+\begin{proof}
  \begin{enumerate}
   \item
    Da die leere Menge keine Element enthält ist die Bedingung, dass es für alle $x \in \emptyset$ ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq \emptyset$ gibt, trivialerweise erfüllt. Dass $\R^n$ offen ist, ist ebenfalls klar, da $B_\varepsilon(x) \subseteq \R^n$ für alle $\varepsilon > 0$.
@@ -704,8 +805,25 @@ Mithilfe von $\varepsilon$-Bällen lassen sich die Begriffe einer Umgebung und e
     B_\varepsilon(x) \subseteq U_j \subseteq \bigcup_{i \in I} U_i.
    \]
    Aus der Beliebigkeit von $x \in \bigcup_{i \in I} U_i$ folgt, dass $\bigcup_{i \in I} U_i$ offen ist.
+  \qedhere
  \end{enumerate}
+\end{proof}
+
+
+Für die Definition von Umgebungen und offenen Mengen haben wir die Existenz von $\varepsilon$-Bällen verwendet. Es erscheint daher naheliegend, Umgebungen durch offene Mengen und offene Mengen durch Umgebungen ausdrücken zu wollen.
+
+
+\begin{question}
+ Zeigen Sie, dass $V \subseteq \R^n$ genau dann eine Umgebung von $x \in \R^n$ ist, falls es eine offene Menge $U \subseteq \R^n$ gibt, so dass $x \in U$ und $U \subseteq V$.
+\end{question}
+\begin{solution}
+ Ist $V$ ist eine Umgebung von $x$, so gibt es ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq V$. Dann ist $B_\varepsilon(x)$ eine offene Menge mit $x \in B_\varepsilon(x)$ und $B_\varepsilon(x) \subseteq V$.
+ 
+ Angenommen, es gibt eine offene Menge $U \subseteq \R^n$ mit $x \in U$ und $U \subseteq V$. Da $U$ offen ist, gibt es ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq U$. Da $U \subseteq V$ ist damit auch $B_\varepsilon(x) \subseteq V$, also ist $V$ eine Umgebung von $x$.
 \end{solution}
+
+
+So wie sich Umgebungen durch offene Mengen charakterisieren lassen, kann man offene Mengen auch durch Umgebungen charakterisieren.
 
 
 \begin{lem}
