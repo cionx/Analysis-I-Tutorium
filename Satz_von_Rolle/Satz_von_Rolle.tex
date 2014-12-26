@@ -14,7 +14,8 @@
 \begin{document}
 \maketitle
 
-Wir wollen hier den Satz von Rolle angeben und beweisen. Als Vorbereitung hierdrauf wollen wir das Verhalten von differenzierbaren Funktionen an Extremstellen betrachten.
+
+Wir wollen hier den Satz von Rolle angeben und beweisen. Als Vorbereitung hierfür wollen wir das Verhalten von differenzierbaren Funktionen an Extremstellen untersuchen.
 
 
 \section{Extremstellen}
@@ -29,18 +30,18 @@ Wir wollen hier den Satz von Rolle angeben und beweisen. Als Vorbereitung hierdr
  \[
   f(x) \leq f(y) \quad \text{für alle $y \in V \cap X$}.
  \]
- Ist $f$ lokal maximal oder lokal minimal an $x$, so heißt $f$ \emph{lokal extremal an $x$}; dann heißt $x$ eine \emph{lokale Extremstelle von $f$}.
+ Ist $f$ lokal maximal oder lokal minimal an $x$, so heißt $f$ \emph{lokal extremal an $x$}; $x$ ist dann eine \emph{lokale Extremstelle von $f$}.
 \end{defi}
 
 
-Im Eindimensionalen differenzierbare Funktionen lässt sich mithilfe der Ableitung eine notwendige Bedingungen für das Vorhandensein einer lokalen Extremstelle angeben.
+Im Eindimensionalen lässt sich für differenzierbare Funktionen mithilfe der Ableitung eine notwendige Bedingungen für das Vorhandensein einer lokalen Extremstelle angeben.
 
 
 \begin{lem}
- Es sei $V \subseteq \R$ eine Umgebung von $x$ und $f \colon V \to \R$ lokal extremal an $x$. Dann ist $f'(x) = 0$.
+ Es sei $V \subseteq \R$ eine Umgebung von $x \in \R$ und $f \colon V \to \R$ lokal extremal an $x$. Dann ist $f'(x) = 0$.
 \end{lem}
 \begin{proof}
- Wir zeigen, dass $f$ nicht extremal an $x$ ist, wenn $f'(x) \neq 0$. Wir beschränken uns dabei auf den Fall $f'(x) > 0$, der Fall $f'(x) < 0$ verläuft analog.
+ Wir zeigen, dass $f$ nicht lokal extremal an $x$ ist, wenn $f'(x) \neq 0$. Wir beschränken uns dabei auf den Fall $f'(x) > 0$, der Fall $f'(x) < 0$ verläuft analog.
  
  Da $f'(x) > 0$ ist
  \[
@@ -75,19 +76,28 @@ Im Eindimensionalen differenzierbare Funktionen lässt sich mithilfe der Ableitu
 Wir können nun den Satz von Rolle beweisen. (Wir benötigen auch noch, dass abgeschlossene Intervalle $[a,b]$ kompakt sind --- siehe hierzu die entsprechende Übersicht zu kompakten Teilmengen von $\R^n$.)
 
 
-\begin{thrm}[Rolle]
- Es seien $a,b \in \R$ mit $a < b$. Die Funktion $f \colon [a,b] \to \R$ sei stetig und auf $(a,b)$ differenzierbar. Es sei $f(a) = f(b)$. Dann gibt es ein $\xi \in (a,b)$ mit $f'(\xi) = 0$. 
+\begin{thrm}[Satz von Rolle]
+ Es seien $a,b \in \R$ mit $a < b$. Es sei $f \colon [a,b] \to \R$, so dass
+ \begin{enumerate}
+  \item
+   $f$ ist stetig auf $[a,b]$,
+  \item
+   $f$ ist differenzierbar auf $(a,b)$, und
+  \item
+   $f(a) = f(b)$.
+ \end{enumerate}
+ Dann gibt es ein $\xi \in (a,b)$ mit $f'(\xi) = 0$. 
 \end{thrm}
 \begin{proof}
  Wir können o.B.d.A. davon ausgehen, dass $f(a) = f(b) = 0$.  Ist $f$ konstant, also $f = 0$, so ist die Aussage klar. Ansonsten gibt es ein $c \in [a,b]$ mit $f(c) \neq 0$; daher ist
  \[
   \sup_{x \in [a,b]} f(x) > 0 \quad \text{oder} \quad \inf_{x \in [a,b]} f(x) < 0.
  \]
- Da $[a,b]$ kompakt ist werden beide Werte angenommen; es gibt also $\xi \in [a,b]$, so dass
+ Da $[a,b]$ kompakt und $f$ stetig ist, werden beide Werte angenommen; es gibt also $\xi \in [a,b]$, so dass
  \[
   f(\xi) = \max_{x \in [a,b]} f(x) > 0 \quad \text{oder} \quad f(\xi) = \min_{x \in [a,b]} f(x) < 0.
  \]
- Wir erhalten in beiden Fällen, dass $\xi$ eine Extremstelle von $f$ ist und dass $\xi \notin \{a,b\}$. Da $\xi \in (a,b)$ eine Extremstelle von $f$ ist muss $f'(\xi) = 0$.
+ Wir erhalten in beiden Fällen, dass $\xi$ eine lokale Extremstelle von $f$. Da $f(\xi) \neq 0$ ist außerdem $\xi \notin \{a,b\}$, also $\xi \in (a,b)$ und $f$ somit differenzierbar an $\xi$. Da $\xi$ eine lokale Extremstelle von $f$ ist, haben wir $f'(\xi) = 0$.
 \end{proof}
 
 
