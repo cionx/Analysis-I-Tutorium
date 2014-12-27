@@ -246,7 +246,7 @@ Ein weiterer Kompaktheitsbegriff ist \emph{Überdeckungskompaktheit}. Dieser ist
 
 
 \section{Äquivalenz der Kompaktheitsbegriffe}
-Wie wir nun sehen werden, sind Folgenkompaktheit und Überdeckungskompaktheit äquivalent, und führen damit zu einem vereinigten Kompaktheitsbegriff. Diese beiden Charakterisierungen kompakter Mengen (über Folgenkompaktheit und Überdeckungskompaktheit) erlauben es uns dann, kompakte Mengen in verschiedenen Settings zu benutzen, ohne größere Übersetzungsschmerzen zwischen den Settings erleiden zu müssen.
+Wie wir nun sehen werden, sind Folgenkompaktheit und Überdeckungskompaktheit äquivalent, und führen damit zum gleichen Kompaktheitsbegriff. Diese beiden Charakterisierungen kompakter Mengen (über Folgenkompaktheit und Überdeckungskompaktheit) erlauben es uns dann, kompakte Mengen in verschiedenen Settings zu benutzen, ohne größere Übersetzungsschmerzen zwischen den Settings erleiden zu müssen.
 
 
 \begin{prop}
@@ -256,10 +256,10 @@ Wie wir nun sehen werden, sind Folgenkompaktheit und Überdeckungskompaktheit ä
  (Überdeckungskompaktheit $\Rightarrow$ Folgenkompaktheit) Angenommen $K$ ist überdeckungskompakt, aber nicht folgenkompakt. Dann gibt es eine Folge $(x_n)$ auf $K$, die keine auf $K$ konvergente Teilfolge besitzt.
  
  \begin{beh}
-  Für jedes $x \in K$ gibt es ein $\varepsilon_x > 0$, so dass $\|x - x_n\| \geq \varepsilon$ für fast alle $n \in \N$.
+  Für jedes $x \in K$ gibt es ein $\varepsilon_x > 0$, so dass $\|x - x_n\| \geq \varepsilon_x$ für fast alle $n \in \N$.
  \end{beh}
  \begin{proof}[Beweis der Behauptung]
-  Ansonsten gibt es ein $x \in K$, so dass es für jedes $\varepsilon > 0$ unendlich viele $n \in N$ mit $\|x - x_n\| < \varepsilon$ gibt. Insbesondere gibt es dann ein $n_1 \in \N$ mit $\|x - x_{n_1}\| < 1$. Dann gibt es auch ein $n_2 \in \N$ mit $n_2 > n_1$ und $\|x - x_{n_2}\| < 1/2$. Rekursiv ergibt sich, dass es für alle $j \geq 1$ ein $n_j \in \N$ gibt, so dass $n_j > n_{j-1}$ und $\|x - x_{n_j}\| < 1/j$. Es ist dann $n_j$ eine Teilfolge mit $x_{n_j} \to x$. Dies steht im Widerspruch zur Annahme, dass $(x_n)$ keine auf $K$ konvergente Teilfolge besitzt.
+  Ansonsten gibt es ein $x \in K$, so dass es für jedes $\varepsilon > 0$ unendlich viele $n \in N$ mit $\|x - x_n\| < \varepsilon$ gibt. Insbesondere gibt es dann ein $n_1 \in \N$ mit $\|x - x_{n_1}\| < 1$. Dann gibt es auch ein $n_2 \in \N$ mit $n_2 > n_1$ und $\|x - x_{n_2}\| < 1/2$. Rekursiv ergibt sich, dass es für alle $j \geq 1$ ein $n_j \in \N$ gibt, so dass $n_j > n_{j-1}$ und $\|x - x_{n_j}\| < 1/j$. Es ist dann $n_j$ eine Teilfolge mit $x_{n_j} \to x$ für $j \to \infty$. Dies steht im Widerspruch zur Annahme, dass $(x_n)$ keine auf $K$ konvergente Teilfolge besitzt.
  \end{proof}
  
  Die $\varepsilon$-Bälle $\{B_{\varepsilon_x}(x) \mid x \in K\}$ bilden offenbar eine offene Überdeckung von $K$. Da $K$ überdeckungskompakt ist, besitzt diese offene Überdeckung eine endliche Teilüberdeckung. Es gibt also $x_1, \dotsc, x_s \in K$, so dass
@@ -268,38 +268,74 @@ Wie wir nun sehen werden, sind Folgenkompaktheit und Überdeckungskompaktheit ä
  \end{equation}
  Da jeder der $\varepsilon$-Bälle $B_{\varepsilon_x}(x)$ nur endlich viele Folgeglieder enthält, enthält auch $K$ wegen \eqref{eqn: K endlich überdeckt} nur endlich viele Folgeglieder, was offenbar nicht seien kann. Das zeigt, dass aus Überdeckungskompaktheit Folgenkompaktheit folgt.
  
- (Überdeckungskompaktheit $\Rightarrow$ Folgenkompaktheit) Entscheident für diese Implikation ist die folgende Eigenschaften überdeckungskompakter Mengen:
+ (Folgenkompaktheit $\Rightarrow$ Überdeckungskompakt) Wir beginnen diese Implikation mit der folgenden Beobachtung über folgenkompakte Mengen:
  
  \begin{beh}
-  Es sei $(x_n)$ eine Folge auf $K$. Dann gibt es für jedes $\varepsilon > 0$ eine Teilfolge $n_j$, so dass $\|x_{n_j} - x_{n_{j'}}\| < \varepsilon$ für alle $j, j' \in \N$.
+  $K$ ist \emph{total beschränkt}, d.h.\ für jedes $\varepsilon > 0$ lässt sich $K$ mit endlichen vielen $\varepsilon$-Bällen überdecken.
  \end{beh}
  \begin{proof}[Beweis der Behauptung]
-  Die $(\varepsilon/2)$-Bälle $\{B_{\varepsilon/2}(y) \mid y \in K\}$ bilden offenbar eine offene Überdeckung von $K$. Wegen der Überdeckungskompaktheit von $K$ besitzt diese offene Überdeckung eine endliche Teilüberdeckung. Es gibt daher $y_1, \dotsc, y_s \in K$ mit
-  \[
-   K \subseteq B_{\varepsilon/2}(y_1) \cup \dotsb \cup B_{\varepsilon/2}(y_s).
-  \]
-  Es muss dann einer dieser $(\varepsilon/2)$-Bälle unendlich viele Folgeglieder enthalten; wir können o.B.d.A.\ davon ausgehen, dass $x_n \in B_{\varepsilon/2}(y_1)$ für unendlich viele $n \in \N$. Es gibt daher eine Teilfolge $n_j$ mit $x_{n_j} \in B_{\varepsilon/2}(y_1)$ für alle $j \in \N$. Inbesondere ist daher für alle $j, j' \in \N$
-  \[
-   \|x_{n_j} - x_{n_{j'}}\|
-   \leq \|x_{n_j} - y_1\| + \|x_{n_{j'}} - y_1\|
-   < \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
-   = \varepsilon.
-   \qedhere
-  \]
+  Angenommen $K$ ist nicht total beschränkt. Dann gibt es ein $\varepsilon > 0$, so dass sich $K$ nicht mit endlich vielen $\varepsilon$-Bällen überdecken lässt. Wir können dann eine Folge $(x_n)$ auf $K$ konstruieren, die keine konvergente Teilfolge besitzt:
+  
+  Wir beginnen mit einem beliebigen Startpunkt $x_0 \in K$. Da $K$ sich nicht mit endlich vielen $\varepsilon$-Bällen überdecken lässt, ist $K \nsubseteq B_\varepsilon(x_0)$. Es gibt daher ein $x_1 \in K$ mit $x_1 \notin B_\varepsilon(x)$, also $\|x_1 - x_0\| \geq \varepsilon$. Da $K$ sich nicht mit endlich vielen $\varepsilon$-Bällen überdecken lässt, ist auch $K \nsubseteq B_\varepsilon(x_0) \cup B_\varepsilon(x_1)$, es gibt also $x_2 \in K$ mit $x_2 \notin B_\varepsilon(x_0) \cup B_\varepsilon(x_1)$ und somit $\|x_2 - x_i\| \geq \varepsilon$ für $i = 1, 2$. Dieses Prinzip können wir nun fortführen: Haben wir schon $x_0, \dotsc, x_n$ definiert, so gibt es immer noch ein $x_{n+1} \in K$ mit $x_{n+1} \notin \bigcup_{i=0}^n B_\varepsilon(x_i)$, also $\|x_{n+1} - x_i\| \geq \varepsilon$ für alle $1 \leq i \leq n$.
+  
+  Wir erhalten somit eine Folge $(x_n)$ auf $K$, so dass $\|x_n - x_{n'}\| \geq \varepsilon$ für alle $n, n' \in \N$. Inbesondere ist keine Teilfolge von $(x_n)$ eine Cauchy-Folge. Also hat $(x_n)$ keine konvergente Teilfolge.
  \end{proof}
  
- Nach der Behauptung gibt es eine Teilfolge $n_{1,j}$, so dass $\|x_{n_{1,j}}-x_{n_{1,j'}}\| < 1$ für alle $j, j' \in \N$. Nach der Behauptung besitzt die Folge $(x_{n_{1,j}})_{j \in \N}$ eine Teilfolge $n_{2,j}$, so dass $\|x_{n_{2,j}} - x_{n_{2,j'}}\| < 1/2$ für alle $j, j' \in \N$. Rekursives Weiterführen ergibt für jedes $k \geq 2$ eine Teilfolge $n_{k,j}$ von $(x_{n_{k-1,j}})_{j \in \N}$, so dass
- \[
-  \|x_{n_{k,j}} - x_{n_{k,j'}}\| < 1/k \quad \text{für alle $j, j' \in \N$}.
- \]
  
- Wir wollen diese Folgen nun zu der gewünschten Cauchy-Folge zusammenfassen; hierfür benutzen wir einen Standardtrick, den der \emph{Diagonalfolge}: Wir definieren die gewünschte Teilfolge $n_j$ durch $n_j \coloneqq n_{j,j}$ für alle $j \geq 1$, d.h.\ wir nehmen das erste Glied aus der Teilfolge $(x_{n_{1,j}})$, das zweite Glied aus der Folge $(x_{n_{2,j}})$, das dritte Glied aus der Folge $(x_{n_{3,j}})$, usw. Für die so erhaltene Teilfolge $n_j$ ist
- \[
-  \| x_{n_j} - x_{n_{j'}} \| < 1/J \quad \text{für alle $J \in \N$, $J \geq 1$ und $j, j' \geq J$}.
- \]
- Also ist $(x_{n_j})_{j \in \N}$ eine Cauchy-Folge, und somit konvergent. Da $K$ überdeckungskompakt ist, ist $K$ auch abgeschlossen, und deshalb $\lim_{j \to \infty} x_{n_j} \in K$.
+ Es sei nun $\{U_i\}_{i \in I}$ eine offene Überdeckung von $K$. Wir nennen ein Teilmenge $A \subseteq K$ \emph{überdeckbar}, falls $A$ eine endliche Teilüberdeckung von $\{U_i\}_{i \in I}$ besitzt. Offenbar gilt für überdeckbare Mengen $A_1, \dotsc, A_s \subseteq A$, dass auch $A_1 \cup \dotsb \cup A_s$ überdeckbar ist. Wir wollen zeigen, dass schon $K$ überdeckbar ist. Hierfür nehmen wir an, dass $K$ nicht überdeckbar sei.
  
- Das zeigt, dass jede Folge auf $K$ eine auf $K$ konvergente Teilfolge besitzt, also dass $K$ folgenkompakt ist.
+ Da $K$ total beschränkt ist, gibt es $y^{(1)}_1, \dotsc, y^{(1)}_{s_1} \in K$ mit
+ \[
+  K \subseteq B_1\left(y^{(1)}_1\right) \cup \dotsb \cup B_1\left(y^{(1)}_{s_1}\right),
+ \]
+ und damit
+ \[
+  K = \left(K \cap B_1\left(y^{(1)}_1\right)\right) \cup \dotsb \cup \left(K \cap B_1\left(y^{(1)}_{s_1}\right)\right).
+ \]
+ Da $K$ nicht überdeckbar ist, muss bereits $K \cap B_1(y^{(1)}_i)$ für ein $1 \leq i_1 \leq s_1$ nicht überdeckbar sein. Wir setzen $x_1 \coloneqq y_{i_1}$.
+ 
+ Da $K$ total beschränkt ist, gibt es nun $y^{(2)}_1, \dotsc, y^{(2)}_{s_2} \in K$ mit
+ \[
+  K \subseteq B_{1/2}\left(y^{(2)}_1\right) \cup \dotsb \cup B_{1/2}\left(y^{(2)}_{s_2}\right),
+ \]
+ und somit
+ \[
+  K \cap B_1(x_1)
+  = \left(K \cap B_1(x_1) \cap B_{1/2}\left(y^{(2)}_1\right)\right) \cup \dotsb \cup \left(K \cap B_1(x_1) \cap B_{1/2}\left(y^{(2)}_{s_2}\right)\right).
+ \]
+ Da $K \cap B_1(x_1)$ nicht überdeckbar ist, gibt es ein $1 \leq i_2 \leq s_2$, sodass bereits $K \cap B_1(x_1) \cap B_{1/2}(y^{(2)}_i)$ nicht überdeckbar ist. Wir setzen $x_2 \coloneqq y^{(2)}_{i_2}$.
+ 
+ Rekursiv erhalten wir so eine Folge $(x_n)_{n \geq 1}$ auf $K$, so dass
+ \[
+  K \cap B_1(x_1) \cap \dotsb \cap B_{1/n}(x_n)
+  \quad \text{für alle $n \geq 1$ nicht überdeckbar ist}.
+ \]
+ Da $K$ folgenkompakt ist, besitzt die Folge $(x_n)$ eine auf $K$ konvergente Teilfolge $n_j$. Wir setzen $x^* \coloneqq \lim_{j \to \infty} x_{n_j} \in K$. Da $\{U_i\}_{i \in I}$ eine Überdeckung von $K$ ist gibt es ein $i_* \in I$ mit $x^* \in U_{i_*}$. Da $U_{i_*}$ offen ist, gibt es ein $\varepsilon > 0$ mit $B_{\varepsilon}(x^*) \subseteq U_{i_*}$. Es sei $J \in \N$, $J \geq 1$ mit
+ \[
+  1/{n_J} < \frac{\varepsilon}{2}
+  \quad
+  \text{und}
+  \quad
+  x_{n_J} \in B_\frac{\varepsilon}{2}(x^*).
+ \]
+ (Ein solches $J$ existiert, da $1/{n_j} \to 0$ und $x_{n_j} \to x^*$ für $j \to \infty$). Es ist dann $B_{1/n_J}(x_{n_J}) \subseteq B_{\varepsilon}(x^*)$, denn für alle $x \in B_{1/n_J}(x_{n_J})$ ist
+ \[
+  \|x - x^*\|
+  \leq \|x - x_{n_J}\| + \|x_{n_J} - x^*\|
+  < 1/n_J + \frac{\varepsilon}{2}
+  < \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
+  = \varepsilon.
+ \]
+ Damit ist dann auch
+ \[
+  K \cap B_1(x_1) \cap \dotsb \cap B_{n_J}(x_{n_J})
+  \subseteq B_{n_J}(x_{n_J})
+  \subseteq B_{\varepsilon}(x^*)
+  \subseteq U_{i_*},
+ \]
+ was im Widerspruch dazu steht, dass $K \cap B_1(x_1) \cap \dotsb \cap B_{n_J}(x_{n_J})$ nicht überdeckbar ist.
+  
+ Dieser Widerspruch zeigt, dass bereits $K$ überdeckbar ist. Aus der Beliebigkeit der offenen Überdeckung $\{U_i\}_{i \in I}$ von $K$ folgt, dass $K$ überdeckungskompakt ist.
 \end{proof}
 
 

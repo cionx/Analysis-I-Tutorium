@@ -131,9 +131,15 @@ Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|
 \end{solution}
 
 
+Diese Ungleichungen werden wir wiederholt verwenden, um das Verhalten auf $\R^n$ auf das Verhalten in den einzelnen Koordinaten zurückzuführen.
+
+
 \begin{defi}
  Eine Teilmenge $X \subseteq \R^n$ heißt \emph{beschränkt}, falls es ein $C > 0$ gibt, so dass $\|x\| \leq C$ für alle $x \in X$.
 \end{defi}
+
+
+Als eine erste Anwendung unserer Ungleichungen wollen wir die Beschränktheit in $\R^n$ auf die Beschränktheit in $\R$ zurückführen:
 
 
 \begin{question}\label{qst: Beschränktheit in Koordinaten}
@@ -156,6 +162,40 @@ Insbesondere ist daher $\|-x\| = \|x\|$ für alle $x \in \R^n$ und $\|x-y\| = \|
   \quad \text{für alle $x = (x_1, \dotsc, x_n) \in X$}.
  \]
  Also ist $X$ beschränkt.
+\end{solution}
+
+
+\begin{question}
+ Es sei $X \subseteq \R^n$. Dann sind äquivalent:
+ \begin{enumerate}
+  \item\label{enum: beschränkt um 0}
+   $X$ ist beschränkt.
+  \item\label{enum: beschränkt um einen Punkt}
+   Es gibt ein $y \in \R^n$ und $C > 0$ mit $\|y-x\| \leq C$ für alle $x \in X$.
+  \item\label{enum: beschränkt um jeden Punkt}
+   Für jedes $z \in \R^n$ gibt es ein $C_z > 0$ mit $\|z-x\| \leq C_z$ für alle $x \in X$.
+ \end{enumerate}
+\end{question}
+\begin{solution}
+ (\ref{enum: beschränkt um 0} $\Rightarrow$ \ref{enum: beschränkt um einen Punkt}) Da $X$ beschränkt ist gibt es ein $C > 0$ mit
+ \[
+  \|0 - x\| \leq \|x\| \leq C
+  \quad \text{für alle $x \in X$}.
+ \]
+ Die Aussage gilt also für $y = 0$.
+ 
+ (\ref{enum: beschränkt um einen Punkt} $\Rightarrow$ \ref{enum: beschränkt um jeden Punkt}) Für alle $z \in \R^n$ setzen wir $C_z \coloneqq \|z-y\| + C$. Es ist dann
+ \[
+  \|z-x\| \leq \|z-y\| + \|y-x\| \leq \|z-y\| + C = C_z
+  \quad 
+  \text{für alle $x \in X$}.
+ \]
+ 
+ (\ref{enum: beschränkt um jeden Punkt} $\Rightarrow$ \ref{enum: beschränkt um 0}) Nach Annahme gibt es $C_0 > 0$ mit
+ \[
+  \|x\| = \|0-x\| \leq C_0
+  \quad \text{für alle $x \in X$}.
+ \]
 \end{solution}
 
 
