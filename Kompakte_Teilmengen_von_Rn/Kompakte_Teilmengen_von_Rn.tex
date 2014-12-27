@@ -10,6 +10,12 @@
 \begin{document}
 \maketitle
 
+
+\begin{abstract}
+ Wir wollen hier eine kurzen Überblick über den Kompaktheitsbegriff auf $\R^n$ geben. Dabei gibt es zwei Ansätze: Folgenkompaktheit und Überdeckungskompaktheit. Wir werden beide Begriffe vorstellen und dann ihre Äquivalenz zeigen. Anschließend wenden wir uns dem Satz von Heine-Borel zu, der erklärt, wie kompakte Teilmengen von $\R^n$ aussehen. Zum Schluß zeigen wir noch verschiedene Eigenschaften kompakter Teilmenengen von $\R^n$. Um zu zeigen, wie sich diese Eigenschaften aus den unterschiedlichen Charakterisierungen der Kompaktheit ergeben, geben wir dabei jeweils mehrere Beweise an.
+\end{abstract}
+
+
 \tableofcontents
 
 
@@ -23,7 +29,7 @@ Zur Motivation des Kompaktheitbegriffes wollen wir zunächst die folgende wichti
 
 
 \begin{lem}\label{lem: stetig auf Intervall}
- Es seien $a,b \in \R$ mit $a < b$ und $f \colon [a,b] \to \R$ stetig. Dann ist die Abbildung $f$ beschränkt und nimmt auf $[a,b]$ ihr Maximum und Minimum an, d.h. es gibt $x_{\text{max}}, x_{\text{min}} \in [a,b]$ mit
+ Es seien $a,b \in \R$ mit $a < b$ und $f \colon [a,b] \to \R$ stetig. Dann ist die Funktion $f$ beschränkt und nimmt auf $[a,b]$ ihr Maximum und Minimum an, d.h. es gibt $x_{\text{max}}, x_{\text{min}} \in [a,b]$ mit
  \[
   f(x_{\text{max}}) = \sup_{y \in [a,b]} f(y)
   \quad
@@ -34,38 +40,45 @@ Zur Motivation des Kompaktheitbegriffes wollen wir zunächst die folgende wichti
 \end{lem}
 
 
-Für offene Intervalle oder halboffene Intervalle gilt diese Aussage nicht. Man betrachte etwa die Abbildung $(0,1] \to \R, x \mapsto 1/x$, oder gar $(0,1] \to \R, x \mapsto \sin(1/x)/x$.
+Für offene Intervalle oder halboffene Intervalle gilt diese Aussage nicht. Man betrachte etwa die Abbildungen
+\begin{gather*}
+ (0,1] \to \R, x \mapsto \frac{1}{x}
+\shortintertext{und}
+ (0,1] \to \R, x \mapsto \frac{\sin \frac{1}{x}}{x}.
+\end{gather*}
 
 
-Herzstück des Beweises ist die Beobachtung, dass auf $[a,b]$ jede Folge eine konvergente Teilfolge besitzt.
+Herzstück des Beweises von Lemma \ref{lem: stetig auf Intervall} ist die Beobachtung, dass auf $[a,b]$ jede Folge eine konvergente Teilfolge besitzt.
 
 
 \begin{lem}\label{lem: Intervall ist kompakt}
- Es seien $a,b \in \R$ mit $a < b$ und $(x_n)_{n \in \N}$ eine Folge auf $[a,b]$. Dann besitzt $(x_n)$ eine konvergente Teilfolge $(x_{n_j})_{j \in \N}$, und für den Grenzwert $x \coloneqq \lim_{j \to \infty} x_{n_j}$ gilt $x \in [a,b]$.
+ Es seien $a,b \in \R$ mit $a < b$ und $(x_n)_{n \in \N}$ eine Folge auf $[a,b]$. Dann besitzt $(x_n)$ eine konvergente Teilfolge $n_j$ und für den Grenzwert gilt $\lim_{j \to \infty} x_{n_j} \in [a,b]$.
 \end{lem}
 \begin{proof}
- Da $a \leq x_n \leq b$ für alle $n \in \N$ ist die Folge $(x_n)$ beschränkt und besitzt daher nach Bolzano-Weierstraß eine konvergente Teilfolge $(x_{n_j})_{j \in \N}$. Da das abgeschlossene Intervall $[a,b]$ abgeschlossen ist, ist auch $x \coloneqq \lim_{j \to \infty} x_{n_j}$.
+ Da $a \leq x_n \leq b$ für alle $n \in \N$ ist die Folge $(x_n)$ beschränkt und besitzt daher nach Bolzano-Weierstraß eine konvergente Teilfolge $n_j$. Da das abgeschlossene Intervall $[a,b]$ abgeschlossen ist, ist auch $\lim_{j \to \infty} x_{n_j} \in [a,b]$.
 \end{proof}
 
 
 \begin{proof}[Beweis von Lemma \ref{lem: stetig auf Intervall}]
- Wir zeigen zunächst, dass $f$ beschränkt ist: Angenommen, $f$ wäre nach oben unbeschränkt. Dann gibt es für alle $n \in \N$ ein $x_n \in [a,b]$ mit $f(x_n) \geq n$. Nach Lemma \ref{lem: Intervall ist kompakt} besitzt die Folge $(x_n)$ eine konvergente Folge $(x_{n_j})_{j \in \N}$. Da $f$ stetig ist, konvergiert auch die Folge $(f(x_{n_j}))_{j \in \N}$. Für alle $j \in \N$ ist aber $f(x_{n_j}) \geq n_j$, die Folge $f(x_{n_j})$ konvergiert also nicht. Dieser Widerspruch zeigt dass $f$ nach oben unbeschränkt seien muss. Analog ergibt sich, dass $f$ auch nach unten beschränkt ist. Also ist $f$ beschränkt.
+ Wir zeigen zunächst, dass $f$ beschränkt ist: Angenommen, $f$ wäre nach oben unbeschränkt. Dann gibt es für alle $n \in \N$ ein $x_n \in [a,b]$ mit $f(x_n) \geq n$. Nach Lemma \ref{lem: Intervall ist kompakt} besitzt die Folge $(x_n)$ eine konvergente Teilfolge $n_j$. Da $(x_{n_j})_{j \in \N}$ konvergiert folgt aus der Stetigkeit von $f$, dass auch die Folge $(f(x_{n_j}))_{j \in \N}$ konvergiert. Für alle $j \in \N$ ist aber $f(x_{n_j}) \geq n_j$, die Folge $f(x_{n_j})$ konvergiert also nicht. Dieser Widerspruch zeigt, dass $f$ nach oben unbeschränkt seien muss. Analog ergibt sich, dass $f$ auch nach unten beschränkt ist. Also ist $f$ beschränkt.
  
- Es sei
+ Wir zeigen nun, dass $f$ sein Maximum annimmt. Hierfür sei
  \[
   M \coloneqq \sup_{y \in [a,b]} f(y).
  \]
  Da $f$ nach oben beschränkt ist, ist $M < \infty$. Nach der $\varepsilon$-Charakterisierung des Supremums gibt es für alle $n \geq 1$ ein $x_n \in [a,b]$ mit
  \[
-  M \geq f(x_n) \geq M - \frac{1}{n}.
+  M \geq f(x_n) > M - \frac{1}{n}.
  \]
- Nach Lemma \ref{lem: Intervall ist kompakt} besitzt die Folge $(x_n)$ eine konvergente Teilfolge $(x_{n_j})_{j \in \N}$. Es sei $x \coloneq \lim_{j \to \infty} x_{n_j}$. Da $f$ stetig ist, konvergiert auch die Folge $(f(x_{n_j}))$ und es gilt
+ Nach Lemma \ref{lem: Intervall ist kompakt} besitzt die Folge $(x_n)$ eine konvergente Teilfolge $n_j$. Wir schreiben $x \coloneqq \lim_{j \to \infty} x_{n_j}$. Da $f$ stetig ist, konvergiert auch die Folge $(f(x_{n_j}))$ und es gilt
  \[
-  \lim_{j \to \infty} f(x_{n_j}) = f(x).
+  \lim_{j \to \infty} f(x_{n_j})
+  = f\left( \lim_{j \to \infty} x_{n_j} \right)
+  = f(x).
  \]
  Andererseits gilt für alle $j \in \N$
  \[
-  M \geq f(x_{n_j}) \geq M - \frac{1}{n_j}.
+  M \geq f(x_{n_j}) > M - \frac{1}{n_j}.
  \]
  Also muss nach dem Sandwich-Lemma auch
  \[
@@ -81,7 +94,7 @@ Herzstück des Beweises ist die Beobachtung, dass auf $[a,b]$ jede Folge eine ko
 \section{Folgenkompaktheit}
 
 
-Zum Beweis von Lemma \ref{lem: stetig auf Intervall} haben wir Folgenstetigkeit und Lemma \ref{lem: Intervall ist kompakt} benötigt. Diese Beobachtung legt nahe, dass sich Lemma \ref{lem: stetig auf Intervall} auf beliebige Teilmengen $K \subseteq \R^n$ verallgemeinern lässt, für die eine zu Lemma \ref{lem: Intervall ist kompakt} analoge Aussage gilt.
+Zum Beweis von Lemma \ref{lem: stetig auf Intervall} haben wir haben wir das Zusammenspiel aus Folgenstetigkeit und Lemma \ref{lem: Intervall ist kompakt} benötigt. Das legt nahe, dass sich Lemma \ref{lem: stetig auf Intervall} auf beliebige Teilmengen $K \subseteq \R^n$ verallgemeinern lässt, für die eine zu Lemma \ref{lem: Intervall ist kompakt} analoge Aussage gilt.
 
 
 \begin{defi}
@@ -90,22 +103,27 @@ Zum Beweis von Lemma \ref{lem: stetig auf Intervall} haben wir Folgenstetigkeit 
 
 
 \begin{bsp}
- Die Folge $(1/n)_{n \geq 1}$ konvergiert auf $[0,1]$, nicht aber auch $(0,1)$.
+ \begin{itemize}
+  \item
+   Die Folge $(1/n)_{n \geq 1}$ konvergiert auf $[0,1]$, nicht aber auch $(0,1)$.
+  \item
+   Ist $A \subseteq \R^m$ abgeschlossen und $(x_n)$ eine Folge auf $A$, die auf $\R^m$ konvergiert, so konvergiert $(x_n)$ auch schon auf $A$.
+ \end{itemize}
 \end{bsp}
 
 
 \begin{defi}
- Eine Teilmenge $K \subseteq \R^n$ heißt \emph{kompakt}, falls jede Folge $(x_n)$ auf $K$ eine auf $K$ konvergente Teilfolge besitzt.
+ Eine Teilmenge $K \subseteq \R^n$ heißt \emph{folgenkompakt}, falls jede Folge $(x_n)$ auf $K$ eine auf $K$ konvergente Teilfolge besitzt.
 \end{defi}
 
 
 \begin{bsp}
- Lemma \ref{lem: Intervall ist kompakt} zeigt, dass ein abgeschlossenes Intervall $[a,b]$ mit $a < b$ kompakt ist. Offene Intervalle hingegen sind niemals kompakt: Sind $a,b \in \R$ mit $a < b$, so ist $(a + (b-a)/n)_{n \geq 2}$ eine Folge auf $(a,b)$, die keine auf $(a,b)$ konvergente Teilfolge besitzt.
+ Lemma \ref{lem: Intervall ist kompakt} zeigt, dass ein abgeschlossenes Intervall $[a,b]$ mit $a < b$ folgenkompakt ist. Das offene Intervall $(a,b)$ hingegen ist nicht folgenkompakt, denn $(a + (b-a)/n)_{n \geq 2}$ eine Folge auf $(a,b)$, die keine auf $(a,b)$ konvergente Teilfolge besitzt.
 \end{bsp}
 
 
 \begin{prop}
- Es sei $K \subseteq \R^n$ kompakt und $f \colon K \to \R$ stetig. Dann ist die Abbildung $f$ auf $K$ beschränkt und nimmt auf $K$ ihr Maximum und ihr Minimum an, d.h. es gibt $x_{\text{min}}, x_{\text{max}} \in K$ mit
+ Es sei $K \subseteq \R^n$ folgenkompakt und $f \colon K \to \R$ stetig. Dann ist $f$ auf $K$ beschränkt und nimmt auf $K$ sein Maximum und Minimum an, d.h.\ es gibt $x_{\text{min}}, x_{\text{max}} \in K$ mit
  \[
   f(x_{\text{max}}) = \sup_{y \in K} f(y)
   \quad
@@ -119,7 +137,7 @@ Zum Beweis von Lemma \ref{lem: stetig auf Intervall} haben wir Folgenstetigkeit 
 \end{proof}
 
 
-Da sich stetige Funktionen auf kompakten Mengen gutartig verhalten, sind kompakte Mengen von großer Bedeutung für die Analysis.
+Da sich stetige Funktionen auf folgenkompakten Mengen gutartig verhalten, sind folgenkompakte Mengen von großer Bedeutung für die Analysis.
 
 
 
@@ -128,13 +146,13 @@ Da sich stetige Funktionen auf kompakten Mengen gutartig verhalten, sind kompakt
 \section{Überdeckungskompaktheit}
 
 
-Um zu verstehen, welche Teilmengen von $\R^n$ folgenkompakt sind, wollen wir einen weiteren Kompaktheitsbegriff einführen: Die Überdeckungskompaktheit. Wie sich herausstellt, sind Überdeckungskompaktheit und Folgenkompaktheit für Teilmengen von $\R^n$ äquivalent.
+Ein weiterer Kompaktheitsbegriff ist \emph{Überdeckungskompaktheit}. Dieser ist nützlich, da er sich gut in die Sprache der Umgebungen und offenen Mengen einfügt. Wie sich herausstellen wird, sind Überdeckungskompaktheit und Folgenkompaktheit für Teilmengen von $\R^n$ äquivalent.
 
 
 \begin{defi}
  Es sei $\{U_i\}_{i \in I}$ eine Kollektion von Teilmengen $U_i \subseteq \R^n$ und $X \subseteq \R^n$.
  
- Die Kollektion $\{U_i\}_{i \in I}$ heißt \emph{Überdeckung von $X$}, falls $X \subseteq \bigcup_{i \in I} U_i$. Sie heißt \emph{endlich}, bzw.\ \emph{abzählbar}, falls $I$ endlich, bzw.\ abzählbar ist.
+ Die Kollektion $\{U_i\}_{i \in I}$ heißt \emph{Überdeckung von $X$}, falls $X \subseteq \bigcup_{i \in I} U_i$. Diese Überdeckung heißt dann \emph{endlich}, bzw.\ \emph{abzählbar}, falls $I$ endlich, bzw.\ abzählbar ist.
  
  Eine \emph{Teilüberdeckung} ist dann eine Teilkollektion $\{U_j\}_{j \in J}$, also $J \subseteq I$, so dass bereits $\{U_j\}_{j \in J}$ eine Überdeckung von $X$ ist.
  
@@ -150,19 +168,19 @@ Um zu verstehen, welche Teilmengen von $\R^n$ folgenkompakt sind, wollen wir ein
 \begin{bsp}
  \begin{itemize}
   \item
-   Die Kollektion $\{B_n(0) \mid n \in \N, n \geq 1\}$ bildet eine abzählbare, offene Überdeckung von $\R^n$.
+   Die Kollektion $\{B_k(0) \mid k \in \N, k \geq 1\}$ bildet eine abzählbare, offene Überdeckung von $\R^n$.
   \item
    Die offenen Intervalle $\{(a,b) \mid a,b \in \R, a < b\}$ bilden eine offene Überdeckung von $\R$.
   \item
-   Allgemein bilden die $\varepsilon$-Bälle $\{B_\varepsilon(x) \mid x \in \R^n, \varepsilon > 0\}$ eine offene Überdeckung von $\R^n$.
+   Allgemeiner bilden die $\varepsilon$-Bälle $\{B_\varepsilon(x) \mid x \in \R^n, \varepsilon > 0\}$ eine offene Überdeckung von $\R^n$.
   \item
    Die Würfel $\{[-K,K]^n \mid K \in \N, K \geq 1\}$ bilden eine abzählbar Überdeckung von $\R^n$, die nicht offen ist.
   \item
-   Die $\varepsilon$-Bälle mit rationalen Radius um Mittelpunkte mit rationalen Koeffizienten $\{B_q(x) \mid x \in \Q^n, q \in \Q, q > 0\}$ bilden eine offene Überdeckung von $\R^n$.
+   Die $\varepsilon$-Bälle mit rationalen Radius um Mittelpunkte mit rationalen Koeffizienten $\{B_q(x) \mid x \in \Q^n, q \in \Q^+\}$ bilden eine abzählbare offene Überdeckung von $\R^n$.
   \item
-   Die Intervalle $\{(n,n+1) \mid n \in \Z\}$ bilden eine offene Überdeckung von $\R \setminus \Z = \bigcup_{n \in \N} (n,n+1)$, aber nicht von $\R$.
+   Die Intervalle $\{(k,k+1) \mid k \in \Z\}$ bilden eine abzählbare, offene Überdeckung von $\R \setminus \Z = \bigcup_{k \in \N} (k,k+1)$; sie sind aber keine Überdeckung von $\R$.
   \item
-   Die offenen Intervalle $\{ (-1/n, 1+1/n) \mid n \in \N, n \geq 1\}$ bilden eine offene Überdeckung des abgeschlossenen Einheitsintervalls $[0,1]$; diese Überdeckung besitzt eine endliche (sogar einelementige) Teilüberdeckung.
+   Die offenen Intervalle $\{ (-1/k, 1+1/k) \mid k \in \N, k \geq 1\}$ bilden eine offene Überdeckung des abgeschlossenen Einheitsintervalls $[0,1]$; diese Überdeckung besitzt eine endliche (sogar einelementige) Teilüberdeckung.
  \end{itemize}
 \end{bsp}
 
@@ -172,7 +190,19 @@ Um zu verstehen, welche Teilmengen von $\R^n$ folgenkompakt sind, wollen wir ein
 \end{defi}
 
 
-\begin{lem}
+\begin{bsp}
+ \begin{itemize}
+  \item
+   Endliche Mengen sind überdeckungskompakt: Ist $M \subseteq \R^n$ endlich mit Punkten $M = \{m_1, \dotsc, m_s\}$ und $\{U_i\}_{i \in I}$ eine offene Überdeckung von $M$, so gibt es für jedes $1 \leq j \leq s$ ein $i_j \in I$ mit $m_j \in U_{i_j}$. Dann ist $\{U_{i_j}\}_{j=1,\dotsc,s}$ eine endliche Teilüberdeckung von $M$.
+  \item
+   $\R^n$ ist nicht überdeckungskompakt, denn $\{B_k(0) \mid k \in \N, k \geq 1\}$ ist eine offen Überdeckung von $\R^n$, die keine endliche Teilüberdeckung besitzt.
+  \item
+   Das offene Einheitsintervall $(0,1)$ ist nicht überdeckungskompakt, denn $\{(1/k, 1-1/k) \mid k \in \N, k \geq 3\}$ ist eine offene Überdeckung von $(0,1)$, die keine offene Teilüberdeckung besitzt.
+ \end{itemize}
+\end{bsp}
+
+
+\begin{lem}\label{lem: Überdeckungskompakt abgeschlossen und beschränkt}
  Es sei $K \subseteq \R^n$ überdeckungskompakt. Dann gilt:
  \begin{enumerate}
   \item
@@ -184,9 +214,9 @@ Um zu verstehen, welche Teilmengen von $\R^n$ folgenkompakt sind, wollen wir ein
 \begin{proof}
  \begin{enumerate}
   \item
-   Wir zeigen, dass $K$ abgeschlossen ist, indem wir zeigen, dass $K^c$ offen ist. Es sei hierfür $x \in K^c$ beliebig aber fest. Wir wollen zeigen, dass es ein $\varepsilon > 0$ gibt, so dass $B_\varepsilon(x) \subseteq K$. Für jedes $y \in K$ ist $x \neq y$ (da $x \notin K$), also $\varepsilon_y \coloneqq \|x-y\|/2 > 0$. Für jedes $y \in K$ sind dann $B_{\varepsilon_y}(x)$ und $B_{\varepsilon_y}(y)$ disjunkt.
+   Wir zeigen, dass $K$ abgeschlossen ist, indem wir zeigen, dass $K^c$ offen ist. Es sei hierfür $x \in K^c$ beliebig aber fest. Wir wollen zeigen, dass es ein $\varepsilon > 0$ gibt, so dass $B_\varepsilon(x) \subseteq K^c$. Für jedes $y \in K$ ist $x \neq y$ (da $x \notin K$), also $\varepsilon_y \coloneqq \|x-y\|/2 > 0$. Für jedes $y \in K$ sind dann $B_{\varepsilon_y}(x)$ und $B_{\varepsilon_y}(y)$ disjunkt.
    
-   (Wir würden nun gerne die Bälle $B_{\varepsilon_y}(x)$ schneiden, um eine, hoffentlich offene, Menge zu erhalten, die $x$ enthält, aber disjunkt zu $K$ ist. Das Problem ist, dass der möglicherweise unendliche Schnitt $\bigcap_{y \in K} B_{\varepsilon_y}(x)$ nicht mehr notwendigerweise offen ist. Mithilfe der Überdeckungskompaktheit können wir diesen unendlichen Schnitt aber durch einen endlichen ersetzen:)
+   (Wir würden nun gerne die Bälle $B_{\varepsilon_y}(x)$ schneiden, um eine, hoffentlich offene, Menge zu erhalten, die $x$ enthält, aber disjunkt zu $K$ ist. Das Problem ist, dass der möglicherweise unendliche Schnitt $\bigcap_{y \in K} B_{\varepsilon_y}(x)$ nicht mehr notwendigerweise offen ist. Mithilfe der Überdeckungskompaktheit können wir diesen unendlichen Schnitt aber durch einen endlichen ersetzen.)
    
    Die $\varepsilon$-Bälle $\{B_{\varepsilon_y}(y) \mid y \in K\}$ bilden eine offene Überdeckung von $K$. Da $K$ überdeckungskompakt ist, besitzt diese Überdeckung eine endliche Teilüberdeckung; es gibt also $y_1, \dotsc, y_s \in K$ mit
    \begin{equation}\label{eqn: K endliche Überdeckung}
@@ -195,14 +225,18 @@ Um zu verstehen, welche Teilmengen von $\R^n$ folgenkompakt sind, wollen wir ein
    Wir setzen $\varepsilon \coloneqq \min_{i=1,\dotsc,s} \varepsilon_{y_s} > 0$. Da $B_{\varepsilon_y}(x)$ und $B_{\varepsilon_y}(y)$ für alle $y \in K$ disjunkt sind, folgt aus \eqref{eqn: K endliche Überdeckung}, dass auch $B_\varepsilon(x)$ und $K$ disjunkt sind; es ist nämlich
    \begin{align*}
     B_\varepsilon(x) \cap K
-    &\subseteq B_\varepsilon(x) \cap \bigcup_{i=1}^s B_{\varepsilon_{y_i}}(y_i)
-    = \bigcup_{i=1}^s (B_\varepsilon(x) \cap B_{\varepsilon_{y_i}}(y_i)) \\
-    &\subseteq \bigcup_{i=1}^s \underbrace{(B_{\varepsilon_{y_i}}(x) \cap B_{\varepsilon_{y_i}(y_i)})}_{= \emptyset}
-    = \emptyset.
+    &\subseteq B_\varepsilon(x) \cap \bigcup_{i=1}^s B_{\varepsilon_{y_i}}(y_i) \\
+    &= \bigcup_{i=1}^s (B_\varepsilon(x) \cap B_{\varepsilon_{y_i}}(y_i)) \\
+    &\subseteq \bigcup_{i=1}^s \underbrace{(B_{\varepsilon_{y_i}}(x) \cap B_{\varepsilon_{y_i}(y_i)})}_{= \emptyset} \\
+    &= \emptyset.
    \end{align*}
    Es ist also $B_\varepsilon(x) \subseteq K^c$. Aus der Beliebigkeit von $x \in K^c$ folgt, dass $K^c$ offen ist, und somit $K$ abgeschlossen.
   \item
-   Die offenen Bälle $\{B_r(0) \mid r > 0\}$ bilden eine offene Überdeckung von $\R^n$, und damit insbesondere auch von $K$. Da $K$ überdeckungskompakt ist, besitzt diese Überdeckung eine endliche Teilüberdeckung. Es gibt also Radien $r_1, \dotsc, r_M > 0$ mit $K \subseteq B_{r_1}(0) \cup \dotsb \cup B_{r_M}(0)$. Für den Radius $R = \max_{i=1,\dotsc,M} r_i$ so ist $B_{r_i}(0) \subseteq B_R(0)$ für alle $1 \leq i \leq s$, und somit auch $K \subseteq B_R(0)$. Also ist $K$ beschränkt.
+   Die offenen Bälle $\{B_r(0) \mid r > 0\}$ bilden eine offene Überdeckung von $\R^n$, und damit insbesondere auch von $K$. Da $K$ überdeckungskompakt ist, besitzt diese Überdeckung eine endliche Teilüberdeckung. Es gibt also Radien $r_1, \dotsc, r_s > 0$ mit $K \subseteq B_{r_1}(0) \cup \dotsb \cup B_{r_s}(0)$. Für den größten dieser Radien $R = \max_{i=1,\dotsc,s} r_i$ ist $B_{r_i}(0) \subseteq B_R(0)$ für alle $1 \leq i \leq s$, und somit auch
+   \[
+    K \subseteq B_{r_1}(0) \cup \dotsb \cup B_{r_s}(0) \subseteq B_R(0).
+   \]
+   Also ist $K$ beschränkt.
   \qedhere
  \end{enumerate}
 \end{proof}
@@ -212,6 +246,7 @@ Um zu verstehen, welche Teilmengen von $\R^n$ folgenkompakt sind, wollen wir ein
 
 
 \section{Äquivalenz der Kompaktheitsbegriffe}
+Wie wir nun sehen werden, sind Folgenkompaktheit und Überdeckungskompaktheit äquivalent, und führen damit zu einem vereinigten Kompaktheitsbegriff. Diese beiden Charakterisierungen kompakter Mengen (über Folgenkompaktheit und Überdeckungskompaktheit) erlauben es uns dann, kompakte Mengen in verschiedenen Settings zu benutzen, ohne größere Übersetzungsschmerzen zwischen den Settings erleiden zu müssen.
 
 
 \begin{prop}
@@ -268,8 +303,7 @@ Um zu verstehen, welche Teilmengen von $\R^n$ folgenkompakt sind, wollen wir ein
 \end{proof}
 
 
-Wegen der Äquivalenz von Folgen- und Überdeckungskompaktheit in $\R^n$ spricht man auch nur von Kompaktheit; eine Teilmenge $K \subseteq \R^n$ heißt also \emph{kompakt}, falls sie folgenkompakt, bzw.\ überdeckungskompakt ist.
-
+Wegen der Äquivalenz von Folgen- und Überdeckungskompaktheit in $\R^n$ spricht man auch nur von Kompaktheit: Eine Teilmenge $K \subseteq \R^n$ heißt also \emph{kompakt}, falls sie folgenkompakt, bzw.\ überdeckungskompakt ist. Kompakte Mengen sind von großer Nützlichkeit in der Mathematik.
 
 
 
