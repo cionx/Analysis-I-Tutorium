@@ -2,7 +2,7 @@
 %\documentclass[a4paper,10pt]{scrartcl}
 
 \usepackage{../mystyle}
-\SetupExSheets{solution/print=true}
+%\SetupExSheets{solution/print=true} %Zur Ausgabe der Lösungen direkt nach den Fragen
 
 \title{Grundbegriffe der Analysis I in $\R^n$}
 \author{Jendrik Stelzner}
@@ -645,6 +645,7 @@ Die Umgebungen eines Punktes $x$ erfüllen gewissen Verträglichkeiten bzgl.\ pa
     \quad \text{für alle $1 \leq i \leq s$}.
    \]
    Also ist auch $B_\varepsilon(x) \subseteq V_1 \cap \dotsb \cap V_s$. Daher ist $V_1 \cap \dotsb \cap V_s$ eine Umgebung von $x$.
+  \qedhere
  \end{enumerate}
 \end{proof}
 
@@ -735,8 +736,19 @@ Die Umgebungen eines Punktes $x$ erfüllen gewissen Verträglichkeiten bzgl.\ pa
     X \coloneqq \R \setminus \left\{ \frac{1}{n} \,\middle|\, n \in \N, n \geq 1 \right\}
    \]
    ist nicht offen, da sie keinen $\varepsilon$-Ball um $0$ enthält: Für jedes $\varepsilon > 0$ gibt es ein $n \in \N$, $n \geq 1$ mit $0 < 1/n < \varepsilon$, und somit $B_\varepsilon(x) \subsetneq X$.
+  \item
+   Das offene Quadrat $(0,1)^2 \subseteq \R^2$ ist offen.
+  \item
+   Die obere Halbebene
+   \[
+    \mathbb{H} \coloneqq \{(x,y) \in \R^2 \mid y > 0\}
+   \]
+   ist offen.
  \end{enumerate}
 \end{bsp}
+
+
+Vorstellungsmäßig ist eine Menge $U \subseteq \R^n$ offen, wenn sie keine „Randpunkte“ enthält. Diese Vorstellung lässt sich auch mathematisch präzise formulieren (und erweist sich dann als richtig), darauf werden wir allerdings nicht eigehen.
 
 
 \begin{question}
@@ -764,15 +776,13 @@ Die Umgebungen eines Punktes $x$ erfüllen gewissen Verträglichkeiten bzgl.\ pa
 Analog zu den Eigenschaften von Umgebungen bzgl.\ Mengenrelationen und -operationen (Lemma \ref{lem: Eigenschaften von Umgebungen}) gibt es auch entsprechende Eigenschaften für offene Mengen.
 
 
-\begin{lem}
+\begin{lem}\label{lem: Eigenschaften von offenen Mengen}
  Offene Mengen erfüllen die folgenden Eigenschaften:
  \begin{enumerate}
   \item
    Die Teilmengen $\emptyset$ und $\R^n$ sind offen.
   \item
    Sind $U_1, \dotsc, U_s \subseteq \R^n$ offen, so ist auch der Schnitt $U_1 \cap \dotsb \cap U_s$ offen. Endliche Schnitte offener Mengen sind also offen.
-  \item
-   Gilt die Aussage auch für unendliche Schnitte?
   \item
    Für eine Kollektion $\{U_i \mid i \in I\}$ offener Mengen $U_i \subseteq \R^n$ ist auch die Vereinigung $\bigcup_{i \in I} U_i$ offen.
  \end{enumerate}
@@ -790,16 +800,6 @@ Analog zu den Eigenschaften von Umgebungen bzgl.\ Mengenrelationen und -operatio
    \]
    und somit $B_\varepsilon(x) \subseteq U_1 \cap \dotsb \cap U_s$. Aus der Beliebigkeit von $x \in U_1 \cap \dotsb \cap U_s$ folgt, dass $U_1 \cap \dotsb \cap U_s$ offen ist.
   \item
-   Für unendliche Schnitte gilt die Aussage nicht. Man betrachte etwa die offenen Intervalle
-   \[
-    U_n \coloneqq (-1-1/n, 1+1/n)  \quad \text{für alle $n \in \N$, $n \geq 1$}.
-   \]
-   Wir wissen bereits, dass die $U_n$ alle offen sind. Wir wissen aber auch, dass
-   \[
-    \bigcap_{n=1}^\infty U_n = [-1,1]
-   \]
-   nicht offen ist.
-  \item
    Es sei $x \in \bigcup_{i \in I} U_i$. Dann gibt es ein $j \in I$ mit $x \in U_j$. Da $U_j$ offen ist, gibt es ein $\varepsilon > 0$, so dass $B_\varepsilon(x) \subseteq U_j$. Es ist dann auch
    \[
     B_\varepsilon(x) \subseteq U_j \subseteq \bigcup_{i \in I} U_i.
@@ -810,7 +810,18 @@ Analog zu den Eigenschaften von Umgebungen bzgl.\ Mengenrelationen und -operatio
 \end{proof}
 
 
-Für die Definition von Umgebungen und offenen Mengen haben wir die Existenz von $\varepsilon$-Bällen verwendet. Es erscheint daher naheliegend, Umgebungen durch offene Mengen und offene Mengen durch Umgebungen ausdrücken zu wollen.
+An dieser Stelle eine Warnung: Unendliche Schnitte offener Mengen sind nicht notwendigerweise offen. Man betrachte etwa die offenen Intervalle
+\[
+ U_n \coloneqq (-1-1/n, 1+1/n)  \quad \text{für alle $n \in \N$, $n \geq 1$}.
+\]
+Wir wissen bereits, dass die $U_n$ alle offen sind. Wir wissen aber auch, dass
+\[
+ \bigcap_{n=1}^\infty U_n = [-1,1]
+\]
+nicht offen ist.
+
+
+Für die Definition von Umgebungen und offenen Mengen haben wir die Existenz von $\varepsilon$-Bällen verwendet. Es erscheint daher naheliegend, Umgebungen durch offene Mengen und offene Mengen durch Umgebungen auszudrücken.
 
 
 \begin{question}
@@ -827,19 +838,28 @@ So wie sich Umgebungen durch offene Mengen charakterisieren lassen, kann man off
 
 
 \begin{lem}
- Eine Teilmenge $U \subseteq \R^n$ ist genau dann offen, wenn $U$ eine Umgebung für jedes $x \in U$ ist.
+ Eine Teilmenge $U \subseteq \R^n$ ist genau dann offen, wenn $U$ für jedes $x \in U$ eine Umgebung ist.
 \end{lem}
 \begin{proof}
- Wenn $U$ offen ist, gibt es für jedes $x \in U$ ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq U$, so dass $U$ eine Umgebung von $x$ ist. Also ist $U$ für jedes $x \in U$ eine Umgebung.
- 
- Angenommen, $U$ ist für jedes $x \in U$ eine Umgebung. Dann gibt es für alle $x \in U$ ein $\varepsilon_x > 0$ mit $B_{\varepsilon_x}(x) \subseteq U$. Dann ist
- \[
-  U = \bigcup_{x \in U} \{x\} \subseteq \bigcup_{x \in U} B_{\varepsilon_x}(x) \subseteq U,
- \]
- also $U = \bigcup_{x \in U} B_{\varepsilon_x}(x)$. Da $\varepsilon$-Bälle offen sind, ist $U$ als Vereinigung offener Mengen offen.
- 
- Der zweite Teil lässt sich auch per Widerspruch beweisen: Ist $U$ nicht offen, so gibt es ein $x \in U$, so dass $U$ keine Umgebung von $x$ ist. Dann gibt es kein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq U$. Dann ist $U$ auch keine Umgebung von $x$. Also ist $U$ nicht für jedes $x \in U$ eine Umgebung.
+ $U$ ist genau dann eine Umgebung von $x \in U$, falls es ein $\varepsilon > 0$ gibt, so dass $B_\varepsilon(x) \subseteq U$. Dass $U$ für jedes $x \in U$ eine Umgebung ist, ist also äquivalent dazu, dass es für jedes $x \in U$ ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq U$ gibt. Dies bedeutet gerade, dass $U$ offen ist.
 \end{proof}
+
+
+\begin{question}
+ Zeigen Sie, dass eine Teilmenge $U \subseteq \R^n$ genau dann offen ist, wenn sie die Vereinigung von $\varepsilon$-Bällen ist.
+\end{question}
+\begin{solution}
+ Da $\varepsilon$-Bälle offen sind, und die Vereinigung offener Mengen ebenfalls wieder offen ist, sind Vereinigungen von $\varepsilon$-Bällen offen.
+ 
+ Sei andererseits $U$ offen. Dann gibt es für jedes $x \in U$ ein $\varepsilon_x > 0$ mit $B_{\varepsilon_x}(x) \subseteq U$. Da
+ \[
+  U
+  = \bigcup_{x \in U} \{x\}
+  \subseteq \bigcup_{x \in U} B_{\varepsilon_x}(x)
+  \subseteq U
+ \]
+ ist bereits $U = \bigcup_{x \in U} B_{\varepsilon_x}(x)$. Also ist $U$ die Vereinigung von $\varepsilon$-Bällen.
+\end{solution}
 
 
 \subsection{Charakterisierung von Folgenkonvergenz}
@@ -849,7 +869,7 @@ Per Definition ist für alle $x, y \in \R^n$ und $\varepsilon > 0$
 \[
  \|x-y\| < \varepsilon \Leftrightarrow y \in B_\varepsilon(x).
 \]
-Wir können daher die Definition der Folgenkonvergenz auch durch $\varepsilon$-Bälle angeben: Ist $(x_n)$ eine Folge auf $\R^m$ und $x \in \R$, so ist
+Wir können daher die Definition der Folgenkonvergenz durch $\varepsilon$-Bälle umschreiben: Ist $(x_n)$ eine Folge auf $\R^m$ und $x \in \R^m$, so ist
 \begin{align*}
                  &\, \text{$(x_n)$ konvergiert mit $x_n \to x$ für $n \to \infty$   } \\
  \Leftrightarrow &\, \text{für alle $\varepsilon > 0$ gibt es $N \in \N$ mit $\|x - x_n\| < \varepsilon$ für alle $n \geq N$} \\
@@ -859,7 +879,7 @@ Wir können daher die Definition der Folgenkonvergenz auch durch $\varepsilon$-B
 
 
 \begin{bem}
- Wir sagen, dass eine Eigenschaft für \emph{fast alle} $n \in \N$ gilt, wenn sie nur für endlich viele $n$ nicht gilt. Dass eine Eigenschaft nicht für fast alle $n \in \N$ gilt ist äquivalent dazu, dass sie für unendlich viele $n \in \N$ nicht gilt.
+ Wir sagen, dass eine Eigenschaft \emph{für fast alle $n \in \N$} gilt, wenn sie nur für endlich viele $n$ nicht gilt. Eine Eigenschaft gilt nicht für fast alle $n \in \N$, genau dann wenn sie für unendlich viele $n \in \N$ nicht gilt.
 \end{bem}
 
 
@@ -881,25 +901,28 @@ Aus der obigen Formulierung kann man durch Verwendung des Umgebungsbegriffes auc
  Angenommen $(x_n)$ konvergiert nicht gegen $x$. Dann gibt es ein $\varepsilon > 0$, so dass $x_n \notin B_\varepsilon(x)$ für unendlich viele $n \in \N$. $B_\varepsilon(x)$ ist aber eine Umgebung von $x$.
 \end{proof}
 
+\begin{bem}
+ Diese Charakterisierung der Folgenkonvergenz ist erlaubt es häufig, Aussagen über konvergente Folgen auf abstraktere Weise zu zeigen als mit $\varepsilon$-Gehacke. Außerdem ermöglichst sie es, die Idee von Folgenkonvergenz auf abstraktere Settings zu verallgemeinern, in denen man zwar keinen Begriff von $\varepsilon$-Bällen mehr hat, aber noch von Umgebungen.
+\end{bem}
+
 
 \subsection{Charakterisierung von Stetigkeit}
 
 
-Auch der Begriff der Stetigkeit lässt sich durch die Begriffe der $\varepsilon$-Bälle formulieren: Ist $X \subseteq \R^n$ und $f \colon X \to \R^m$, so ist für $x \in X$
+Auch die Definition der Stetigkeit lässt sich durch $\varepsilon$-Bälle umschreiben: Für eine Abbildung $f \colon X \to \R^m$ mit Definitionsbereich $X \subseteq \R^n$ und $x \in X$ ist
 \begin{align*}
-                & \text{$f$ ist stetig an $x$} \\
- \Leftrightarrow& \forall \varepsilon > 0 \exists \delta > 0 \forall y \in X : \|x-y\| < \delta \Rightarrow \|f(x)-f(y)\| < \varepsilon \\
- \Leftrightarrow& \text{für jedes $\varepsilon > 0$ gibt es ein $\delta > 0$ mit $f(B_\delta(x) \cap X) \subseteq B_\varepsilon(f(x))$} \\
- \Leftrightarrow& \text{für jedes $\varepsilon > 0$ gibt es ein $\delta > 0$ mit $B_\delta(x) \cap X \subseteq f^{-1}(B_\varepsilon(f(x)))$}.
+                &\, \text{$f$ ist stetig an $x$} \\
+ \Leftrightarrow&\, \forall \varepsilon > 0 \exists \delta > 0 \forall y \in X : \|x-y\| < \delta \Rightarrow \|f(x)-f(y)\| < \varepsilon \\
+ \Leftrightarrow&\, \text{für jedes $\varepsilon > 0$ gibt es ein $\delta > 0$ mit $f(B_\delta(x) \cap X) \subseteq B_\varepsilon(f(x))$} \\
+ \Leftrightarrow&\, \text{für jedes $\varepsilon > 0$ gibt es ein $\delta > 0$ mit $B_\delta(x) \cap X \subseteq f^{-1}(B_\varepsilon(f(x)))$}.
 \end{align*}
-
 
 
 \begin{question}
  Es sei $X \subseteq \R^n$ und $f \colon X \to \R^m$. Ein Punkt $x \in X$ heißt \emph{isolierter Punkt}, falls es ein $\varepsilon > 0$ gibt, so dass $B_\varepsilon(x) \cap X = \{x\}$. Zeigen Sie, dass $f$ an allen isolierten Punkten stetig ist.
 \end{question}
 \begin{solution}
- Es sei $x \in X$ ein isolierter Punkt. Dann gibt es ein $\delta > 0$ mit $B_\varepsilon(x) \cap X = \{x\}$. Für beliebige $\varepsilon > 0$ ist deshalb
+ Es sei $x \in X$ ein isolierter Punkt. Dann gibt es ein $\delta > 0$ mit $B_\delta(x) \cap X = \{x\}$. Für beliebige $\varepsilon > 0$ ist deshalb
  \[
   f(B_\delta(x)) = f(\{x\}) = \{f(x)\} \subseteq B_\varepsilon(f(x)),
  \]
@@ -907,8 +930,7 @@ Auch der Begriff der Stetigkeit lässt sich durch die Begriffe der $\varepsilon$
 \end{solution}
 
 
-
-Auch hier lässen sich $\varepsilon$ und $\delta$ durch Verwendung von Umgebungen und offenen Mengen umgehen: Lokal lässt sich Stetigkeit durch Umgebungen charakterisieren und global durch offene Mengen.
+Auch hier lassen sich $\varepsilon$ und $\delta$ durch Verwendung von Umgebungen und offenen Mengen umgehen: Lokal lässt sich Stetigkeit durch Umgebungen charakterisieren und global durch offene Mengen.
 
 
 \begin{lem}
@@ -938,6 +960,11 @@ Auch hier lässen sich $\varepsilon$ und $\delta$ durch Verwendung von Umgebunge
    \end{enumerate}
  \end{enumerate}
 \end{lem}
+
+
+Vorstellungsmäßig bedeutet Stetigkeit an einem einzelnen Punkt, dass Urbilder von Umgebungen wieder Umgebungen sind; Stetigkeit auf dem ganzen Definitionsbereich bedeutet, dass Urbilder offener Mengen offen sind. Das Schneiden mit $X$ ergibt sich nur als technisches Detail (das leider den Beweis verhässlicht.)
+
+
 \begin{proof}
  \begin{enumerate}
   \item
@@ -945,25 +972,49 @@ Auch hier lässen sich $\varepsilon$ und $\delta$ durch Verwendung von Umgebunge
    \[
     B_\delta(x) \cap X \subseteq f^{-1}(B_\varepsilon(f(x))) \subseteq f^{-1}(W).
    \]
-   
-   (\ref{enum: stetig an x Umgebungen} $\Rightarrow$ \ref{enum: stetig an x epsilon delta}) Es sei $\varepsilon > 0$ beliebig aber fest. Da $B_\varepsilon(f(x))$ eine Umgebung von $f(x)$ ist, gibt es eine Umgebung $V \subseteq \R^n$ von $x$ mit $f^{-1}(B_\varepsilon(f(x))) = V \cap X$, also $f(V \cap X) \subseteq B_\varepsilon(x)$. Da $V$ eine Umgebung von $x$ ist, gibt es ein $\delta > 0$ mit $B_\delta(x) \subseteq V$. Da
+   Die Menge
    \[
-    f(B_\delta(x)) \subseteq f(V) \subseteq B_\varepsilon(f(x))
+    V \coloneqq B_\delta(x) \cup f^{-1}(W)
+   \]
+   ist daher eine Umgebung von $x$ mit
+   \begin{align*}
+    f^{-1}(W)
+    &= f^{-1}(W) \cap X \\
+    &\subseteq \left( B_\delta(x) \cup f^{-1}(W) \right) \cap X \\
+    &= (B_\delta(x) \cap X) \cup (f^{-1}(W) \cap X) \\
+    &\subseteq f^{-1}(W) \cup f^{-1}(W) \\
+    &= f^{-1}(W),
+   \end{align*}
+   und somit
+   \[
+    f^{-1}(W) = (B_\delta(x) \cup f^{-1}(W)) \cap X = V \cap X.
+   \]
+   
+   (\ref{enum: stetig an x Umgebungen} $\Rightarrow$ \ref{enum: stetig an x epsilon delta}) Es sei $\varepsilon > 0$ beliebig aber fest. Da $B_\varepsilon(f(x))$ eine Umgebung von $f(x)$ ist gibt es eine Umgebung $V \subseteq \R^n$ von $x$ mit $f^{-1}(B_\varepsilon(f(x))) = V \cap X$, also $f(V \cap X) \subseteq B_\varepsilon(x)$. Da $V$ eine Umgebung von $x$ ist, gibt es ein $\delta > 0$ mit $B_\delta(x) \subseteq V$. Da
+   \[
+    f(B_\delta(x) \cap X) \subseteq f(V \cap X) \subseteq B_\varepsilon(f(x))
    \]
    ist damit
    \[
-    \|f(x)-f(y)\| < \varepsilon \quad \text{für alle $y \in Y$ mit $\|x-y\| < \delta$}.
+    \|x-y\| < \delta \Rightarrow \|f(x)-f(y)\| < \varepsilon \quad \text{für alle $y \in X$}.
    \]
   \item
    Zum Beweis dieser Äquivalenz werden wir die gerade gezeigte Äquivalenz verwenden.
    
-   (\ref{enum: stetig epsilon delta} $\Rightarrow$ \ref{enum: stetig offene Mengen}) Es sei $W \subseteq \R^m$ eine offene Menge. Da $f$ stetig ist, ist $f$ an jeder Stelle $x \in X$ stetig. Für jedes $x \in f^{-1}(W) \subseteq X$ ist $W$ eine Umgebung von $f(x)$. Also gibt es nach dem ersten Teil des Lemmas für jedes $x \in f^{-1}(W)$ eine Umgebung $V_x$ von $x$ mit $f^{-1}(W) = V_x \cap X$. Für jedes $x$ ist $V_x$ eine Umgebung von $x$, es gibt also ein $\varepsilon_x > 0$ mit $B_{\varepsilon_x}(x) \subseteq V_x$. Wir betrachten die offene Menge $U \coloneqq \bigcup_{x \in X} B_{\varepsilon_x}(x)$. Es ist
+   (\ref{enum: stetig epsilon delta} $\Rightarrow$ \ref{enum: stetig offene Mengen}) Es sei $W \subseteq \R^m$ eine offene Menge. Da $f$ stetig ist, ist $f$ an jeder Stelle $x \in X$ stetig. Da $W$ offen ist, ist $W$ für jedes $y \in W$ eine Umgebung von $y$; also ist $W$ für jedes $x \in f^{-1}(W) \subseteq X$ eine Umgebung von $f(x)$.
+   
+   Nach dem ersten Teil des Lemmas gibt es für jedes $x \in f^{-1}(W)$ eine Umgebung $V_x$ von $x$ mit $f^{-1}(W) = V_x \cap X$. Da $V_x$ eine Umgebung von $x$ ist, gibt es für alle $x \in f^{-1}(W)$ ein $\varepsilon_x > 0$ mit $B_{\varepsilon_x}(x) \subseteq V_x$. Wir betrachten die offene Menge
+   \[
+    U \coloneqq \bigcup_{x \in f^{-1}(W)} B_{\varepsilon_x}(x).
+   \]
+   Es ist
    \begin{align*}
     f^{-1}(W)
-    &= \bigcup_{x \in f^{-1}(W)} \{x\}
-    \subseteq \bigcup_{x \in f^{-1}(W)} B_{\varepsilon_x}(x) \cap X \\
-    &\subseteq \bigcup_{x \in f^{-1}(W)} \underbrace{V_x \cap X}_{= f^{-1}(W)}
-    = f^{-1}(W),
+    &= \bigcup_{x \in f^{-1}(W)} \{x\} \\
+    &\subseteq \bigcup_{x \in f^{-1}(W)} B_{\varepsilon_x}(x) \cap X \\
+    &\subseteq \bigcup_{x \in f^{-1}(W)} V_x \cap X \\
+    &= \bigcup_{x \in f^{-1}(W)} f^{-1}(W)
+     = f^{-1}(W),
    \end{align*}
    und damit bereits
    \[
@@ -972,44 +1023,50 @@ Auch hier lässen sich $\varepsilon$ und $\delta$ durch Verwendung von Umgebunge
     =  U \cap X.
    \]
    
-   (\ref{enum: stetig offene Mengen} $\Rightarrow$ \ref{enum: stetig epsilon delta}) Es sei $x \in X$. Es sei $W$ eine Umgebung von $f(x)$. Da $W$ eine Umgebung von $f(x)$ ist, gibt es ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq W$. Nach Annahme gibt es eine offene Menge $U \subseteq \R^n$ mit $f^{-1}(B_\varepsilon(x)) = U \cap X$. Da $x \in f^{-1}(B_\varepsilon(x))$ muss $x \in U$. Also ist $U$ eine Umgebung von $x$ (denn $U$ ist offen). Wir setzen
+   (\ref{enum: stetig offene Mengen} $\Rightarrow$ \ref{enum: stetig epsilon delta}) Es sei $x \in X$. Es sei $W$ eine Umgebung von $f(x)$. Wir wollen zeigen, dass es eine Umgebung $V$ von $x$ gibt, so dass $f^{-1}(W) = V \cap X$.
+   
+   Da $W$ eine Umgebung von $f(x)$ ist, gibt es ein $\varepsilon > 0$ mit $B_\varepsilon(f(x)) \subseteq W$. Da $B_\varepsilon(f(x))$ offen ist gibt es nach Annahme eine offene Menge $U \subseteq \R^n$ mit $f^{-1}(B_\varepsilon(f(x))) = U \cap X$. Da $x \in f^{-1}(B_\varepsilon(f(x)))$ muss $x \in U$. Da $U$ offen ist, ist $U$ insbesondere eine Umgebung von $x$. Wir setzen
    \[
     V \coloneqq f^{-1}(W) \cup U.
    \]
    Da $U$ eine Umgebung von $x$ ist, und $U \subseteq V$, ist auch $V$ eine Umgebung von $x$. Für diese Umgebung $V$ von $x$ gilt
    \begin{align*}
     V \cap X
-    &= (f^{-1}(W) \cup U) \cap X
-    = (f^{-1}(W) \cap X) \cup (U \cap X) \\
-    &= f^{-1}(W) \cup f^{-1}(B_\varepsilon(x))
-    = f^{-1}(W).
+    &= (f^{-1}(W) \cup U) \cap X \\
+    &= (f^{-1}(W) \cap X) \cup (U \cap X) \\
+    &= f^{-1}(W) \cup f^{-1}(B_\varepsilon(f(x))) \\
+    &\subseteq f^{-1}(W) \cup f^{-1}(W) \\
+    &= f^{-1}(W).
    \end{align*}
-   Das zeigt nach dem ersten Teil des Lemmas, dass $f$ stetig an $x$ ist.
+   Das zeigt nach dem ersten Teil des Lemmas, dass $f$ stetig an $x$ ist. Wegen der Beliebigkeit von $x \in X$ zeigt dies, dass $f$ stetig ist.
   \qedhere
  \end{enumerate}
 \end{proof}
 
 
 \begin{bem}
- Wir erhalten insbesondere, dass eine Abbildung $f \colon \R^n \to \R^m$ genau dann stetig ist, wenn für jede offene Menge $U \subseteq \R^m$ auch ihr Urbild $f^{-1}(U) \subseteq \R^n$ offen ist.
+ Wir erhalten insbesondere, dass eine Abbildung $f \colon \R^n \to \R^m$ genau dann stetig in $x \in \R^n$ ist, wenn für jede Umgebung $W \subseteq \R^m$ von $f(x)$ ihr Urbild $f^{-1}(W) \subseteq \R^n$ eine Umgebung von $x$ ist; wir erhalten ferner, dass $f$ genau dann stetig auf ganz $\R^n$ ist, wenn für jede offene Menge $U \subseteq \R^m$ auch ihr Urbild $f^{-1}(U) \subseteq \R^n$ offen ist.
 \end{bem}
 
 
-Die Charakterisierung von Stetigkeit durch Umgebungen und offene Mengen mag zunächst sehr kompliziert und unpraktisch erscheinen; ihn der Praxis ist erspart sie jedoch viel Rechenarbeit. Eine häufige Anwendung dieser Charakterisierung besteht etwa darin, dass man die Offenheit einer Teilmenge $U \subseteq \R^n$ zeigt, indem man eine stetige Funktion $f \colon \R^n \to \R^m$ und eine offene Menge $V \subseteq \R^m$ konstuiert, so dass $U = f^{-1}(V)$; dies kann zu kurzen und eleganten Beweisen führen.
+Die Charakterisierung von Stetigkeit durch Umgebungen und offene Mengen mag zunächst sehr kompliziert und unpraktisch erscheinen; ihn der Praxis erspart sie jedoch häufig Rechenarbeit: Statt mit einer Vielzahl von $\varepsilon$ und $\delta$ zu arbeiten und sich mit Indizes herumzuschlagen übersetzt man das Problem in die Sprache der Umgebungen und offenen Mengen und argumentiert dann damit, wie sich stetige Funktionen auf diese auswirken.
+
+
+Eine häufige Anwendung dieser Charakterisierung besteht etwa darin, dass man die Offenheit einer Teilmenge $U \subseteq \R^n$ zeigt, indem man eine stetige Funktion $f \colon \R^n \to \R^m$ und eine offene Menge $V \subseteq \R^m$ konstuiert, so dass $U = f^{-1}(V)$; dies kann zu kurzen und eleganten Beweisen führen.
 
 
 \begin{bsp}
  \begin{itemize}
   \item
-   Wir wollen zeigen, dass die Menge
+   Wir wollen erneut zeigen, dass die Menge
    \[
     U \coloneqq \{x \in \R^n \mid \|x\| > 1\}
    \]
-   offen ist. Hierfür betrachten wir die Abbildung
+   offen ist. Hierfür betrachten wir die Norm
    \[
     f \colon \R^n \to \R, x \mapsto \|x\|.
    \]
-   Wir wissen bereits, dass $f$ stetig ist. Da die Menge $(1,\infty) \subseteq \R$ offen ist, ist auch $U = f^{-1}((0,\infty))$ offen.
+   Wir wissen bereits, dass $f$ stetig ist. Da die Menge $(1,\infty) \subseteq \R$ offen ist, ist auch $U = f^{-1}((1,\infty))$ offen.
   \item
    Die Offenheit von $\varepsilon$-Bällen ergibt sich dadurch, dass für jedes $x \in \R^n$ die Abbildung
    \[
@@ -1031,13 +1088,17 @@ Die Charakterisierung von Stetigkeit durch Umgebungen und offene Mengen mag zun�
  Für alle $(x,y) \in \R^2$ ist
  \[
   x + 3y + 2 > y^2 - 6x^3
-  \Leftrightarrow 6x^3 + x - y^2 + 3y > 2.
+  \Leftrightarrow 6x^3 + x - y^2 + 3y > -2.
  \]
  Da die Projektionen $\R^2 \to \R, (x_1, x_2) \mapsto x_i$ für $i=1,2$ stetig sind, ist nach den üblichen Rechenregel für stetige Funktionen auch
  \[
   f \colon \R^2 \to \R, (x,y) \mapsto 6x^3 + x - y^2 + 3y
  \]
- stetig. Da $(2,\infty) \subseteq \R$ offen ist, ergibt sich, dass auch $U = f^{-1}((2,\infty))$ offen ist.
+ stetig, da
+ \[
+  f = 6 \pi_1^3 + \pi_1 - \pi_2^2 + 3 \pi_2.
+ \]
+ Da $(-2,\infty) \subseteq \R$ offen ist, ergibt sich, dass auch $U = f^{-1}((-2,\infty))$ offen ist.
 \end{proof}
 
 
@@ -1059,17 +1120,11 @@ Die Charakterisierung von Stetigkeit durch Umgebungen und offene Mengen mag zun�
 \section{Abgeschlossene Mengen}
 
 
+Zuletzt wollen wir noch auf den Begriff einer abgeschlossenen Menge eingehen; wie der Name bereits vermuten lässt gibt es einen engen Zusammehang zwischen offenen und abgeschlossenen Mengen.
+
+
 \begin{defi}
  Eine Teilmenge $A \subseteq \R^n$ heißt \emph{abgeschlossen}, falls ihr Komplement $A^c \subseteq \R^n$ offen ist.
-\end{defi}
-
-
-\begin{defi}
- Für $x \in \R^n$ und $\varepsilon > 0$ ist
- \[
-  \overline{B}_\varepsilon(x) \coloneqq \{y \in \R^n \mid \|x-y\| \leq \varepsilon \}
- \]
- der \emph{abgeschlossene $\varepsilon$-Ball um $x$}.
 \end{defi}
 
 
@@ -1078,13 +1133,17 @@ Die Charakterisierung von Stetigkeit durch Umgebungen und offene Mengen mag zun�
   \item
    Für alle $a,b \in \R$ mit $a < b$ ist das abgeschlossene Intervall $[a,b]$ abgeschlossen, denn $[a,b]^c = (-\infty,a) \cup (b, \infty)$ ist offen.
   \item
-   Abgeschlossene $\varepsilon$-Bälle sind abgeschlossen, denn für $x \in \R^n$ und $\varepsilon > 0$ ist
+   Für alle $x \in \R^n$ und $\varepsilon > 0$ ist der \emph{abgeschlossene $\varepsilon$-Ball}
+   \[
+    \overline{B}_\varepsilon(x) \coloneqq \{y \in \R^n \mid \|x-y\| \leq \varepsilon\}
+   \]
+   abgeschlossen, denn
    \[
     \overline{B}_\varepsilon(x)^c = \{y \in \R^n \mid \|x-y\| > \varepsilon\}
    \]
-   offen.
+   ist offen.
   \item
-   Punkte sind abgeschlossen, d.h.\ für alle $x \in \R^n$ ist die einpunktige Menge $A \{x\} \subseteq \R^n$ abgeschlossen: Es ist $\{x\}^c = \R^n \setminus \{x\}$. Für $y \in \R^n \setminus \{x\}$ ist $y \neq x$ und somit $\varepsilon \coloneqq \|x-y\| > 0$. Da $x \notin B_\varepsilon(y)$ ist $B_\varepsilon(y) \subseteq A^\{x\}$. Das zeigt, dass $A \setminus \{x\}$ offen ist, also $\{x\}$ abgeschlossen.
+   Punkte sind abgeschlossen, d.h.\ für alle $x \in \R^n$ ist die einpunktige Menge $\{x\} \subseteq \R^n$ abgeschlossen: Es ist $\{x\}^c = \R^n \setminus \{x\}$. Für $y \in \R^n \setminus \{x\}$ ist $y \neq x$ und somit $\varepsilon \coloneqq \|x-y\| > 0$. Da $x \notin B_\varepsilon(y)$ ist $B_\varepsilon(y) \subseteq \R^n \setminus \{x\}$. Das zeigt, dass $\R^n \setminus \{x\}$ offen ist, also $\{x\}$ abgeschlossen.
   \item
    Das offene Intervall $(0,1) \subseteq \R$ ist nicht abgeschlossen, denn
    \[
@@ -1092,16 +1151,22 @@ Die Charakterisierung von Stetigkeit durch Umgebungen und offene Mengen mag zun�
    \]
    ist nicht offen (die Menge enthält keine $\varepsilon$-Bälle um $0$ oder $1$).
   \item
-   Es lässt sich zeigen, dass die einzigen Teilmengen $X \subseteq \R^n$, die sowohl offen als auch abgeschlossen sind, $\emptyset$ und $\R^n$ sind.
+   Da $\emptyset$ und $\R^n$ offen sind, die beide Mengen auch abgeschlossen. Es lässt sich zeigen, dass dies die einzigen Teilmengen von $\R^n$ sind, die sowohl offen als auch abgeschlossen sind.
  \end{itemize}
 \end{bsp}
 
 
-Man beachte, dass nicht jede Teilmenge $X \subseteq \R^n$ offen oder abgeschlossen ist. $[0,1) \subseteq \R$ etwa ist nicht offen (die Menge enthält keinen $\varepsilon$-Ball um $0$) aber auch nicht abgeschlossen, da
+Offene Mengen kann man sich als die Mengen vorstellen, die keine Randpunkte enthalten. Dual dazu kann man sich abgeschlossene Mengen als jene Mengen vorstellen, die alle ihre Randpunkte enthalten. Diese Aussage werden wir durch Lemma \ref{lem: Folgenabgeschlossenheit} präzisieren.
+
+
+Man beachte, dass nicht jede Teilmenge $X \subseteq \R^n$ offen oder abgeschlossen ist. $[0,1) \subseteq \R$ etwa ist nicht offen (da die Menge keinen $\varepsilon$-Ball um $0$ enthält) aber auch nicht abgeschlossen, da
 \[
  [0,1)^c = (-\infty,0) \cup [1,\infty)
 \]
-nicht offen ist (denn die Menge enthält keinen $\varepsilon$-Ball um $1$).
+nicht offen ist (da die Menge keinen $\varepsilon$-Ball um $1$ enthält).
+
+
+So wie sich abgeschlossen Mengen in gewisser Weise dual zu offenen Mengen verhalten, ergeben sich dual zu Lemma \ref{lem: Eigenschaften von offenen Mengen} auch entsprechende Aussagen über abgeschlossene Mengen:
 
 
 \begin{question}
@@ -1110,9 +1175,9 @@ nicht offen ist (denn die Menge enthält keinen $\varepsilon$-Ball um $1$).
   \item
    $\emptyset, \R^n \subseteq \R^n$ sind abgeschlossen.
   \item
-   Sind $A_1, \dotsc, A_s \subseteq \R^n$ abgeschlossen, so ist auch $A_1 \cup \dotsb \cup A_s$ abgeschlossen.
+   Für abgeschlossene Mengen $A_1, \dotsc, A_s \subseteq \R^n$ ist auch $A_1 \cup \dotsb \cup A_s$ abgeschlossen. Endliche Vereinigungen abgeschlossener Mengen sind also abgeschlossen.
   \item
-   Ist $\{A_i\}_{i \in I}$ eine Kollektion von abgeschlossenen Teilmengen $A_i \subseteq \R^n$, so ist auch der Schnitt $\bigcap_{i \in I} A_i \subseteq \R^n$ abgeschlossen.
+   Ist $\{A_i\}_{i \in I}$ eine Kollektion von abgeschlossenen Teilmengen $A_i \subseteq \R^n$, so ist auch der Schnitt $\bigcap_{i \in I} A_i \subseteq \R^n$ abgeschlossen. Beliebige Schnitter abgeschlossener Mengen sind also abgeschlossen.
  \end{enumerate}
 \end{question}
 \begin{solution}
@@ -1120,12 +1185,12 @@ nicht offen ist (denn die Menge enthält keinen $\varepsilon$-Ball um $1$).
   \item
    Da $\emptyset^c = \R^n$ offen ist, ist $\emptyset$ abgeschlossen, und da $(\R^n)^c = \emptyset$ offen ist, ist auch $\R^n$ abgeschlossen.
   \item
-   Da $A_1$, \dots, $A_s$ abgeschlossen sind, sind $A_1^c$, \dots, $A_s^c$ offen. Also ist auch $A_1^c \cup \dotsb \cup A_s^c$ offen. Da
+   Da $A_1$, \dots, $A_s$ abgeschlossen sind, sind $A_1^c$, \dots, $A_s^c$ offen. Also ist auch $A_1^c \cap \dotsb \cap A_s^c$ offen. Da
    \[
-    A_1^c \cup \dotsb \cup A_s^c
-    = (A_1 \cap \dotsb \cap A_s)^c
+    A_1^c \cap \dotsb \cap A_s^c
+    = (A_1 \cup \dotsb \cup A_s)^c
    \]
-   ist deshalb $A_1 \cap \dotsb \cap A_s$ abgeschlossen.
+   ist deshalb $A_1 \cup \dotsb \cup A_s$ abgeschlossen.
   \item
    Da die $A_i$ abgeschlossen sind, ist $A_i^c$ für alle $i \in I$ offen. Also ist auch
    \[
@@ -1135,6 +1200,22 @@ nicht offen ist (denn die Menge enthält keinen $\varepsilon$-Ball um $1$).
    offen, und somit $\bigcap_{i \in I} A_i$ abgeschlossen.
  \end{enumerate}
 \end{solution}
+
+
+\begin{bem}
+ Da unendliche Schnitte offener Mengen nicht mehr offen seien müssen, sind auch unendliche Vereinigung abgeschlossener Mengen nicht notwendigerweise abgeschlossen. So sind etwa die abgeschlossen Intervalle $A_n$ mit
+ \[
+  A_n \coloneqq \left[ \frac{1}{n}, 3-\frac{1}{n} \right]
+  \quad \text{für alle $n \in \N$, $n \geq 1$}
+ \]
+ abgeschlossen, aber
+ \[
+  \bigcup_{n=1}^\infty A_n
+  = \bigcup_{n=1}^\infty \left[ \frac{1}{n}, 3-\frac{1}{n} \right]
+  = (0, 3)
+ \]
+ ist nicht abgeschlossen.
+\end{bem}
 
 
 \begin{question}
@@ -1156,11 +1237,11 @@ nicht offen ist (denn die Menge enthält keinen $\varepsilon$-Ball um $1$).
 \end{solution}
 
 
-Wie wir bereits gesehen haben, ist eine Abbildung $f \colon \R^n \to \R^m$ genau dann offen, wenn für jede offene Menge $U \subseteq \R^m$ auch das Urbild $f^{-1}(U) \subseteq \R^n$ offen ist. Wir können diese Stetigkeit nun auch über Abgeschlossen Mengen charakterisieren:
+Wie wir bereits gesehen haben, ist eine Abbildung $f \colon \R^n \to \R^m$ genau dann offen, wenn für jede offene Menge $U \subseteq \R^m$ auch das Urbild $f^{-1}(U) \subseteq \R^n$ offen ist. Analog können wir Stetigkeit auch durch abgeschlossene Mengen charakterisieren.
 
 
 \begin{lem}
- Es sei $X \subseteq \R^n$ und $f \colon \R^m$. Dann ist $f$ genau dann stetig, falls es für jede abgeschlossene Teilmenge $C \subseteq \R^m$ eine abgeschlossen Teilmenge $A \subseteq \R^n$ gibt, so dass $f^{-1}(C) = A \cap X$.
+ Es sei $X \subseteq \R^n$ und $f \colon X \to \R^m$. Dann ist $f$ genau dann stetig, falls es für jede abgeschlossene Teilmenge $C \subseteq \R^m$ eine abgeschlossen Teilmenge $A \subseteq \R^n$ gibt, so dass $f^{-1}(C) = A \cap X$.
  
  Insbesondere ist eine Abbildung $f \colon \R^n \to \R^m$ genau dann stetig, wenn die Urbilder abgeschlossener Mengen ebenfalls abgeschlossen sind.
 \end{lem}
@@ -1175,11 +1256,11 @@ Wie wir bereits gesehen haben, ist eine Abbildung $f \colon \R^n \to \R^m$ genau
  \]
  Da $U$ offen ist, ist $U^c$ abgeschlossen.
  
- Es sei andererseits $U \subseteq \R^m$ offen. Dann ist $U^c$ abgeschlossen, es gibt also nach Annahe eine abgeschlossene Teilmenge $A \subseteq \R^n$ mit $f^{-1}(U^c) = A \cap X$. Analog zur vorherigen Rechnung ergibt sich, dass
+ Es sei andererseits $U \subseteq \R^m$ offen. Dann ist $U^c$ abgeschlossen, es gibt also nach Annahme eine abgeschlossene Teilmenge $A \subseteq \R^n$ mit $f^{-1}(U^c) = A \cap X$. Analog zur vorherigen Rechnung ergibt sich, dass
  \[
   f^{-1}(U) = A^c \cap X;
  \]
- da $A$ abgeschlossen ist, ist $A^c$ offen, also ist $f$ stetig an $x$.
+ da $A$ abgeschlossen ist, ist $A^c$ offen, also ist $f$ stetig.
 \end{proof}
 
 
@@ -1199,11 +1280,11 @@ Diese Charakterisierung stetiger Abbildungen erlaubt es uns mit wenig Arbeit die
    \]
    ist stetig, $\{1\} \in \R$ ist abgeschlossen und $S^n = f^{-1}(\{1\})$.
   \item
-   Der $n$-dimensionale Einheitswürfel $[0,1]^n \subseteq \R^n$ ist abgeschlossen: Für $1 \leq i \leq n$ definieren wir
+   Der $n$-dimensionale Einheitswürfel $[0,1]^n \subseteq \R^n$ ist abgeschlossen: Für alle $1 \leq i \leq n$ definieren wir
    \[
     A_i \coloneqq \{(x_1, \dotsc, x_n) \in \R^n \mid 0 \leq x_i \leq 1\}.
    \]
-   Es ist klar, dass $[0,1]^n = A_1 \cap \dotsb \cap A_n$. Da (beliebige) Schnitte abgeschlossener Mengen wieder abgeschlossen sind, genügt es zu zeigen, dass die $A_i$ abgeschlossen sind. Dies ergibt sich daraus, dass die kanonischen Projektionen $\pi_i \colon \R^n \to \R$ stetig sind, das Einheitsintervall $[0,1] \subseteq \R$ abgeschlossen und $A_i = \pi_i^{-1}([0,1])$ für alle $1 \leq i \leq n$.
+   Es ist klar, dass $[0,1]^n = A_1 \cap \dotsb \cap A_n$. Da (beliebige) Schnitte abgeschlossener Mengen wieder abgeschlossen sind, genügt es zu zeigen, dass die $A_i$ abgeschlossen sind. Dies ergibt sich daraus, dass die kanonischen Projektionen $\pi_i \colon \R^n \to \R$ stetig sind, das Einheitsintervall $[0,1] \subseteq \R$ abgeschlossen ist und $A_i = \pi_i^{-1}([0,1])$ für alle $1 \leq i \leq n$.
  \end{itemize}
 \end{bsp}
 
@@ -1220,38 +1301,37 @@ Diese Charakterisierung stetiger Abbildungen erlaubt es uns mit wenig Arbeit die
  \[
   f \colon \R^3 \to \R, (x,y,z) \mapsto \sqrt{x^2 + y^2}
  \]
- ist stetig, das $f = \|\pi_1^2 + \pi_2^2\|$. Da $\{1\} \subseteq \R$ abgeschlossen ist, ist also auch $Z = f^{-1}(\{1\})$ abgeschlossen.
+ ist stetig, da $f = \sqrt{\pi_1^2 + \pi_2^2}$. Da $\{1\} \subseteq \R$ abgeschlossen ist, ist also auch der Zylinder $Z = f^{-1}(\{1\})$ abgeschlossen.
 \end{solution}
 
 
+Eine wichtige Eigenschaft abgeschlossener Mengen besteht darin, dass sie unter Grenzwerten von Folgen abgeschlossen sind.
 
-Eine wichtige Eigeschaft von abgeschlossenen Mengen besteht darin, dass sie unter Grenzwerten von Folgen abgeschlossen sind.
 
-
-\begin{lem}
- Es sei $A \subseteq \R^n$. Dann sind äquivalent:
+\begin{lem}\label{lem: Folgenabgeschlossenheit}
+ Es sei $A \subseteq \R^m$. Dann sind äquivalent:
  \begin{enumerate}
-  \item
+  \item\label{enum: topologisch abgeschlossen}
    $A$ ist abgeschlossen.
-  \item
-   Für jede Folge $(a_n)$ auf $A$, die in $\R^n$ konvergiert, ist auch $\lim_{n \to \infty} a_n \in A$.
+  \item\label{enum: folgenabgeschlossen}
+   Für jede Folge $(a_n)$ auf $A$, die auf $\R^m$ konvergiert, ist auch $\lim_{n \to \infty} a_n \in A$.
  \end{enumerate}
 \end{lem}
 \begin{proof}
- Angenommen $A$ ist abgeschlossen. Es sei $(x_n)$ eine konvergente Folge auf $\R^n$ mit $x_n \to x$ aber $x \notin A$. Da $x \notin A$ ist $x \in A^c$, und da $A$ abgeschlossen ist, ist $A^c$ offen. Es gibt also ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq A^c$. Da $x_n \to x$ ist $x_n \in B_\varepsilon(x)$ für fast alle $n \in \N$. Also ist $x_n \in A^c$ für fast alle $n \in \N$, bzw.\ äquivalent $x_n \in A$ für nur endlich viele $n \in \N$. Insbesondere kann $(x_n)$ keine Folge auf $A$ sein.
+ (\ref{enum: topologisch abgeschlossen} $\Rightarrow$ \ref{enum: folgenabgeschlossen}) Angenommen $A$ ist abgeschlossen. Es sei $(x_n)$ eine konvergente Folge auf $\R^m$ mit $x_n \to x$ aber $x \notin A$. Da $x \notin A$ ist $x \in A^c$, und da $A$ abgeschlossen ist, ist $A^c$ offen. Es gibt also ein $\varepsilon > 0$ mit $B_\varepsilon(x) \subseteq A^c$. Da $x_n \to x$ ist $x_n \in B_\varepsilon(x)$ für fast alle $n \in \N$. Also ist $x_n \in A^c$ für fast alle $n \in \N$, bzw.\ äquivalent $x_n \in A$ für nur endlich viele $n \in \N$. Insbesondere kann $(x_n)$ keine Folge auf $A$ sein.
  
- Angenommen $A$ ist nicht abgeschlossen. Dann ist $A^c$ nicht offen. Es gibt also ein $x \in A^c$, so dass $B_\varepsilon(x) \nsubseteq A^c$ für alle $\varepsilon > 0$, bzw. äquivalent $B_\varepsilon(x) \cap A \neq \emptyset$ für alle $\varepsilon > 0$. Insbesondere gibt es daher für alle $n \geq 1$ ein $a_n \in A$ mit $\|x-a_n\| < 1/n$. Dann ist per Konstruktion $a_n \to x$, aber da $x \in A^c$ ist $x \notin A$.
+ (\ref{enum: folgenabgeschlossen} $\Rightarrow$ \ref{enum: topologisch abgeschlossen}) Angenommen $A$ ist nicht abgeschlossen. Dann ist $A^c$ nicht offen. Es gibt also ein $x \in A^c$, so dass $B_\varepsilon(x) \nsubseteq A^c$ für alle $\varepsilon > 0$, bzw. äquivalent $B_\varepsilon(x) \cap A \neq \emptyset$ für alle $\varepsilon > 0$. Insbesondere gibt es daher für alle $n \geq 1$ ein $a_n \in A$ mit $\|x-a_n\| < 1/n$. Dann ist per Konstruktion $a_n \to x$, aber da $x \in A^c$ ist $x \notin A$.
 \end{proof}
 
 
 \begin{bsp}
  \begin{itemize}
   \item
-   Wir betrachten noch einmal die $n$-dimensionale Sphäre
+   Wir betrachten noch einmal die $m$-dimensionale Sphäre
    \[
-    S^n = \{x \in \R^{n+1} \mid \|x\| = 1\}.
+    S^m = \{x \in \R^{m+1} \mid \|x\| = 1\}.
    \]
-   Ist $(x_n)$ eine Folge auf $S^n$, die gegen ein $x \in \R^{n+1}$ konvergiert, so ist $\|x_n\| = 1$ für alle $n \in \N$. Wegen der Stetigkeit der Norm $\|\cdot\|$ ist dann auch
+   Ist $(x_n)$ eine Folge auf $S^m$, die gegen ein $x \in \R^{m+1}$ konvergiert, so ist $\|x_n\| = 1$ für alle $n \in \N$. Wegen der Stetigkeit der Norm $\|\cdot\|$ ist dann auch
    \[
     \|x\|
     = \|\lim_{n \to \infty} x_n\|
@@ -1259,11 +1339,11 @@ Eine wichtige Eigeschaft von abgeschlossenen Mengen besteht darin, dass sie unte
     = \lim_{n \to \infty} 1
     = 1,
    \]
-   also $x \in S^n$. Also ergibt sich auch durch diese Charakterisierung der Abgeschlossenheit, dass $S^n$ abgeschlossen ist.
+   also $x \in S^m$. Also ergibt sich auch durch diese Charakterisierung der Abgeschlossenheit, dass $S^m$ abgeschlossen ist.
   \item
-   Allgmeiner ergibt sich so auch die Aussage, dass Urbilder abgeschlossener Mengen abgeschlossen sind: Es sei $f \colon \R^n \to \R^m$ stetig und $A \subseteq \R^m$ abgeschlossen. Für jede Folge $(x_n)$ auf $f^{-1}(A)$ ist dann $f(x_n) \in A$ für alle $n \in \N$. Konvergiert $(x_n)$ gegen ein $x \in \R^n$, so konvergiert $f(x_n)$ wegen der Stetigkeit von $f$ gegen $f(x)$. Da $A$ abgeschlossen ist muss auch $f(x) \in A$. Damit ist dann auch $x \in f^{-1}(A)$.
+   Allgmeiner ergibt sich so auch die Aussage, dass Urbilder abgeschlossener Mengen unter stetigen Funktionen wieder abgeschlossen sind: Es sei $f \colon \R^m \to \R^k$ stetig und $A \subseteq \R^k$ abgeschlossen. Für jede Folge $(x_n)$ auf $f^{-1}(A)$ ist dann $f(x_n) \in A$ für alle $n \in \N$. Konvergiert $(x_n)$ gegen ein $x \in \R^m$, so konvergiert $f(x_n)$ wegen der Stetigkeit von $f$ gegen $f(x)$. Da $A$ abgeschlossen ist muss auch $f(x) \in A$. Damit ist dann auch $x \in f^{-1}(A)$.
   \item
-   Auch die Abgeschlossenheit des Einheitswürfels $[0,1]^m \subseteq \R^m$ ergibt sich durch die Abgeschlossenheit unter Grenzwerten: Es sei $(x_n)$ eine Folge auf $[0,1]^m$, die gegen ein $x \in \R^m$ konvergiert. In Koordinaten sei $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$ und $x = (x^{(1)}, \dotsc, x^{(m)})$. Da $x_n \to x$ ist $x^{(i)}_n \to x^{(i)}$ für alle $1 \leq i \leq m$. Da $0 \leq x^{(i)}_n \leq 1$ für alle $n \in \N$ ist auch $0 \leq x^{(i)} \leq 1$ für alle $0 \leq i \leq m$. Also ist auch $x \in [0,1]^m$.
+   Auch die Abgeschlossenheit des Einheitswürfels $[0,1]^m \subseteq \R^m$ ergibt sich durch die Abgeschlossenheit unter Grenzwerten von Folgen: Es sei $(x_n)$ eine Folge auf $[0,1]^m$, die gegen ein $x \in \R^m$ konvergiert. In Koordinaten sei $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$ und $x = (x^{(1)}, \dotsc, x^{(m)})$. Da $x_n \to x$ ist $x^{(i)}_n \to x^{(i)}$ für alle $1 \leq i \leq m$. Da $0 \leq x^{(i)}_n \leq 1$ für alle $n \in \N$ ist auch $0 \leq x^{(i)} \leq 1$ für alle $0 \leq i \leq m$. Also ist auch $x \in [0,1]^m$.
  \end{itemize}
 \end{bsp}
 
@@ -1275,18 +1355,20 @@ Das letzte Beispiel lässt sich Verallgemeinern:
  Es seien $A_1, \dotsc, A_m \subseteq \R$ abgeschlossen. Zeigen Sie, dass $A_1 \times \dotsb \times A_m \subseteq \R^m$ abgeschlossen ist.
 \end{question}
 \begin{solution}
- Es sei $(x_n)$ eine Folge auf $A_1 \times A_m$ die gegen $x \in \R^m$ konvergiert. In Koordinaten gelte $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$ sowie $x = (x^{(1)}, \dotsc, x^{(m)})$. Da $x_n \to x$ ist $x^{(i)}_n \to x^{(i)}$ für alle $1 \leq i \leq m$. Für alle $1 \leq i \leq m$ ist $x^{(i)}_n \in A_i$ für alle $n \in \N$, und da $A_i$ abgeschlossen ist damit auch $x^{(i)} \in A_i$. Es ist also $x \in A_1 \times \dotsb \times A_m$.
+ Es sei $(x_n)$ eine Folge auf $A_1 \times \dotsb \times A_m$ die gegen $x \in \R^m$ konvergiert. In Koordinaten gelte $x_n = (x^{(1)}_n, \dotsc, x^{(m)}_n)$ für alle $n \in \N$ sowie $x = (x^{(1)}, \dotsc, x^{(m)})$. Da $x_n \to x$ ist $x^{(i)}_n \to x^{(i)}$ für alle $1 \leq i \leq m$. Für alle $1 \leq i \leq m$ ist $x^{(i)}_n \in A_i$ für alle $n \in \N$, und da $A_i$ abgeschlossen ist damit auch $x^{(i)} \in A_i$. Es ist also $x \in A_1 \times \dotsb \times A_m$.
 \end{solution}
 
 
 \begin{question}
- Es sei $f \colon \R \to \R$ eine stetige Funktion. Zeigen Sie, dass der Grahp
+ Es sei $f \colon \R \to \R$ eine stetige Funktion. Zeigen Sie, dass der Graph
  \[
   G \coloneqq \{(x,f(x)) \mid x \in \R\}
  \]
  abgeschlossen ist.
 \end{question}
 \begin{solution}
+ Wir geben zwei Beweise an: Zuerst einen durch Folgenstetigkeit und dann einen durch Urbilder abgeschlossener Mengen.
+ 
  Es sei $(y_n)$ eine Folge auf $G$ mit $y_n \to y$ für $y \in \R^2$. Wir wollen zeigen, dass $y \in G$. In Koordinaten sei $y_n = (y^{(1)}_n, y^{(2)}_n)$ für alle $n \in \N$ und $y = (y^{(1)}, y^{(2)})$. Da $(y_n)$ eine Folge auf $G$ ist, ist $y^{(2)}_n = f(y^{(1)}_n)$ für alle $n \in \N$. Schreiben wir $x_n \coloneqq y^{(1)}_n$, so ist also $y_n = (x_n, f(x_n))$ für alle $n \in \N$.
  
  Da $y_n \to y$ ist $x_n \to y^{(1)}$ und $f(x_n) \to y^{(2)}$. Da $f$ stetig ist, folgt aus $x_n \to y^{(1)}$, dass $f(x_n) \to f(y^{(1)})$. Aus der Eindeutigkeit von Grenzwerten folgt damit, dass
@@ -1294,6 +1376,12 @@ Das letzte Beispiel lässt sich Verallgemeinern:
   y^{(2)} = \lim_{n \to \infty} f(x_n) = f\left(y^{(1)}\right).
  \]
  Also ist $y = (y^{(1)}, y^{(2)}) = (y^{(1)}, f(y^{(1)}))$ und somit auch $y \in G$. Das zeigt, dass $G$ abgeschlossen ist.
+ 
+ Alternativ bemerken wir, dass die Abbildung
+ \[
+  g \colon \R^2 \to \R, (x,y) \mapsto f(x)-y
+ \]
+ stetig ist, da $g = (f \circ \pi_1) - \pi_2$, und $G = g^{-1}(\{0\})$ für die abgeschlossene Menge $\{0\} \subseteq \R$.
 \end{solution}
 
 

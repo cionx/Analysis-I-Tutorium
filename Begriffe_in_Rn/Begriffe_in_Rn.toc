@@ -1,10 +1,10 @@
 \select@language {ngerman}
 \contentsline {section}{\numberline {1}Vorbereitung}{1}
-\contentsline {section}{\numberline {2}Folgen}{4}
-\contentsline {section}{\numberline {3}Stetigkeit}{8}
-\contentsline {section}{\numberline {4}Umgebungen und offene Mengen}{11}
-\contentsline {subsection}{\numberline {4.1}Definition und grundlegende Eigenschaften}{11}
-\contentsline {subsection}{\numberline {4.2}Charakterisierung von Folgenkonvergenz}{16}
-\contentsline {subsection}{\numberline {4.3}Charakterisierung von Stetigkeit}{16}
-\contentsline {section}{\numberline {5}Abgeschlossene Mengen}{19}
-\contentsline {section}{\numberline {6}Lösungen}{24}
+\contentsline {section}{\numberline {2}Folgen}{2}
+\contentsline {section}{\numberline {3}Stetigkeit}{5}
+\contentsline {section}{\numberline {4}Umgebungen und offene Mengen}{7}
+\contentsline {subsection}{\numberline {4.1}Definition und grundlegende Eigenschaften}{7}
+\contentsline {subsection}{\numberline {4.2}Charakterisierung von Folgenkonvergenz}{11}
+\contentsline {subsection}{\numberline {4.3}Charakterisierung von Stetigkeit}{12}
+\contentsline {section}{\numberline {5}Abgeschlossene Mengen}{16}
+\contentsline {section}{\numberline {6}Lösungen}{20}
