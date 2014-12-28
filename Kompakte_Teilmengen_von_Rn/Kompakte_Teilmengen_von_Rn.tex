@@ -232,7 +232,7 @@ Ein weiterer Kompaktheitsbegriff ist \emph{Überdeckungskompaktheit}. Dieser ist
    \end{align*}
    Es ist also $B_\varepsilon(x) \subseteq K^c$. Aus der Beliebigkeit von $x \in K^c$ folgt, dass $K^c$ offen ist, und somit $K$ abgeschlossen.
   \item
-   Die offenen Bälle $\{B_r(0) \mid r > 0\}$ bilden eine offene Überdeckung von $\R^n$, und damit insbesondere auch von $K$. Da $K$ überdeckungskompakt ist, besitzt diese Überdeckung eine endliche Teilüberdeckung. Es gibt also Radien $r_1, \dotsc, r_s > 0$ mit $K \subseteq B_{r_1}(0) \cup \dotsb \cup B_{r_s}(0)$. Für den größten dieser Radien $R = \max_{i=1,\dotsc,s} r_i$ ist $B_{r_i}(0) \subseteq B_R(0)$ für alle $1 \leq i \leq s$, und somit auch
+   Die offenen Bälle $\{B_r(0) \mid r > 0\}$ bilden eine offene Überdeckung von $\R^n$, und damit insbesondere auch von $K$. Da $K$ überdeckungskompakt ist, besitzt diese offene Überdeckung eine endliche Teilüberdeckung. Es gibt also Radien $r_1, \dotsc, r_s > 0$ mit $K \subseteq B_{r_1}(0) \cup \dotsb \cup B_{r_s}(0)$. Für den größten dieser Radien $R = \max_{i=1,\dotsc,s} r_i$ ist $B_{r_i}(0) \subseteq B_R(0)$ für alle $1 \leq i \leq s$, und somit auch
    \[
     K \subseteq B_{r_1}(0) \cup \dotsb \cup B_{r_s}(0) \subseteq B_R(0).
    \]
@@ -246,7 +246,7 @@ Ein weiterer Kompaktheitsbegriff ist \emph{Überdeckungskompaktheit}. Dieser ist
 
 
 \section{Äquivalenz der Kompaktheitsbegriffe}
-Wie wir nun sehen werden, sind Folgenkompaktheit und Überdeckungskompaktheit äquivalent, und führen damit zum gleichen Kompaktheitsbegriff. Diese beiden Charakterisierungen kompakter Mengen (über Folgenkompaktheit und Überdeckungskompaktheit) erlauben es uns dann, kompakte Mengen in verschiedenen Settings zu benutzen, ohne größere Übersetzungsschmerzen zwischen den Settings erleiden zu müssen.
+Wie wir nun sehen werden, sind Folgenkompaktheit und Überdeckungskompaktheit äquivalent, und führen daher zum gleichen Kompaktheitsbegriff. Diese beiden Charakterisierungen kompakter Mengen (über Folgenkompaktheit und Überdeckungskompaktheit) erlauben es uns dann, kompakte Mengen in verschiedenen Settings zu benutzen, ohne größere Übersetzungsschmerzen zwischen den Settings erleiden zu müssen.
 
 
 \begin{prop}
@@ -259,26 +259,26 @@ Wie wir nun sehen werden, sind Folgenkompaktheit und Überdeckungskompaktheit ä
   Für jedes $x \in K$ gibt es ein $\varepsilon_x > 0$, so dass $\|x - x_n\| \geq \varepsilon_x$ für fast alle $n \in \N$.
  \end{beh}
  \begin{proof}[Beweis der Behauptung]
-  Ansonsten gibt es ein $x \in K$, so dass es für jedes $\varepsilon > 0$ unendlich viele $n \in N$ mit $\|x - x_n\| < \varepsilon$ gibt. Insbesondere gibt es dann ein $n_1 \in \N$ mit $\|x - x_{n_1}\| < 1$. Dann gibt es auch ein $n_2 \in \N$ mit $n_2 > n_1$ und $\|x - x_{n_2}\| < 1/2$. Rekursiv ergibt sich, dass es für alle $j \geq 1$ ein $n_j \in \N$ gibt, so dass $n_j > n_{j-1}$ und $\|x - x_{n_j}\| < 1/j$. Es ist dann $n_j$ eine Teilfolge mit $x_{n_j} \to x$ für $j \to \infty$. Dies steht im Widerspruch zur Annahme, dass $(x_n)$ keine auf $K$ konvergente Teilfolge besitzt.
+  Ansonsten gibt es ein $x \in K$, so dass es für jedes $\varepsilon > 0$ unendlich viele $n \in \N$ mit $\|x - x_n\| < \varepsilon$ gibt. Insbesondere gibt es dann ein $n_1 \in \N$ mit $\|x - x_{n_1}\| < 1$. Dann gibt es auch ein $n_2 \in \N$ mit $n_2 > n_1$ und $\|x - x_{n_2}\| < 1/2$. Rekursiv ergibt sich, dass es für alle $j \geq 1$ ein $n_j \in \N$ gibt, so dass $n_j > n_{j-1}$ und $\|x - x_{n_j}\| < 1/j$. Es ist dann $n_j$ eine Teilfolge mit $x_{n_j} \to x$ für $j \to \infty$. Dies steht im Widerspruch zur Annahme, dass $(x_n)$ keine auf $K$ konvergente Teilfolge besitzt.
  \end{proof}
  
  Die $\varepsilon$-Bälle $\{B_{\varepsilon_x}(x) \mid x \in K\}$ bilden offenbar eine offene Überdeckung von $K$. Da $K$ überdeckungskompakt ist, besitzt diese offene Überdeckung eine endliche Teilüberdeckung. Es gibt also $x_1, \dotsc, x_s \in K$, so dass
- \begin{equation}\label{eqn: K endlich überdeckt}
+ \begin{equation}
   K \subseteq B_{\varepsilon_{x_1}}(x_1) \cup \dotsb \cup B_{\varepsilon_{x_s}}(x_s).
  \end{equation}
- Da jeder der $\varepsilon$-Bälle $B_{\varepsilon_x}(x)$ nur endlich viele Folgeglieder enthält, enthält auch $K$ wegen \eqref{eqn: K endlich überdeckt} nur endlich viele Folgeglieder, was offenbar nicht seien kann. Das zeigt, dass aus Überdeckungskompaktheit Folgenkompaktheit folgt.
+ Da jeder der $\varepsilon$-Bälle $B_{\varepsilon_x}(x)$ nur endlich viele Folgeglieder enthält, enthält damit auch $K$ nur endlich viele Folgeglieder; das kann offenbar nicht sein.
  
- (Folgenkompaktheit $\Rightarrow$ Überdeckungskompakt) Wir beginnen diese Implikation mit der folgenden Beobachtung über folgenkompakte Mengen:
+ (Folgenkompaktheit $\Rightarrow$ Überdeckungskompakt) Wir beginnen den Beweis dieser Implikation mit der folgenden Eigenschaft folgenkompakte Mengen:
  
  \begin{beh}
-  $K$ ist \emph{total beschränkt}, d.h.\ für jedes $\varepsilon > 0$ lässt sich $K$ mit endlichen vielen $\varepsilon$-Bällen überdecken.
+  $K$ ist \emph{total beschränkt}, d.h.\ für jedes $\varepsilon > 0$ lässt sich $K$ mit endlich vielen $\varepsilon$-Bällen überdecken.
  \end{beh}
  \begin{proof}[Beweis der Behauptung]
   Angenommen $K$ ist nicht total beschränkt. Dann gibt es ein $\varepsilon > 0$, so dass sich $K$ nicht mit endlich vielen $\varepsilon$-Bällen überdecken lässt. Wir können dann eine Folge $(x_n)$ auf $K$ konstruieren, die keine konvergente Teilfolge besitzt:
   
-  Wir beginnen mit einem beliebigen Startpunkt $x_0 \in K$. Da $K$ sich nicht mit endlich vielen $\varepsilon$-Bällen überdecken lässt, ist $K \nsubseteq B_\varepsilon(x_0)$. Es gibt daher ein $x_1 \in K$ mit $x_1 \notin B_\varepsilon(x)$, also $\|x_1 - x_0\| \geq \varepsilon$. Da $K$ sich nicht mit endlich vielen $\varepsilon$-Bällen überdecken lässt, ist auch $K \nsubseteq B_\varepsilon(x_0) \cup B_\varepsilon(x_1)$, es gibt also $x_2 \in K$ mit $x_2 \notin B_\varepsilon(x_0) \cup B_\varepsilon(x_1)$ und somit $\|x_2 - x_i\| \geq \varepsilon$ für $i = 1, 2$. Dieses Prinzip können wir nun fortführen: Haben wir schon $x_0, \dotsc, x_n$ definiert, so gibt es immer noch ein $x_{n+1} \in K$ mit $x_{n+1} \notin \bigcup_{i=0}^n B_\varepsilon(x_i)$, also $\|x_{n+1} - x_i\| \geq \varepsilon$ für alle $1 \leq i \leq n$.
+  Wir beginnen mit einem beliebigen Startpunkt $x_0 \in K$. Da $K$ sich nicht mit endlich vielen $\varepsilon$-Bällen überdecken lässt, ist $K \nsubseteq B_\varepsilon(x_0)$. Es gibt daher ein $x_1 \in K$ mit $x_1 \notin B_\varepsilon(x)$, also $\|x_1 - x_0\| \geq \varepsilon$. Da $K$ sich nicht mit endlich vielen $\varepsilon$-Bällen überdecken lässt, ist auch $K \nsubseteq B_\varepsilon(x_0) \cup B_\varepsilon(x_1)$, es gibt also $x_2 \in K$ mit $x_2 \notin B_\varepsilon(x_0) \cup B_\varepsilon(x_1)$ und somit $\|x_2 - x_i\| \geq \varepsilon$ für $i = 0, 1$. Dieses Prinzip können wir weiterführen: Haben wir schon $x_0, \dotsc, x_n$ definiert, so gibt es immer noch ein $x_{n+1} \in K$ mit $x_{n+1} \notin \bigcup_{i=0}^n B_\varepsilon(x_i)$, also $\|x_{n+1} - x_i\| \geq \varepsilon$ für alle $0 \leq i \leq n$.
   
-  Wir erhalten somit eine Folge $(x_n)$ auf $K$, so dass $\|x_n - x_{n'}\| \geq \varepsilon$ für alle $n, n' \in \N$. Inbesondere ist keine Teilfolge von $(x_n)$ eine Cauchy-Folge. Also hat $(x_n)$ keine konvergente Teilfolge.
+  Wir erhalten somit eine Folge $(x_n)$ auf $K$, so dass $\|x_n - x_{n'}\| \geq \varepsilon$ für alle $n, n' \in \N$. Inbesondere ist keine Teilfolge von $(x_n)$ eine Cauchy-Folge, und somit auch keine Teilfolge konvergent.
  \end{proof}
  
  
@@ -292,17 +292,17 @@ Wie wir nun sehen werden, sind Folgenkompaktheit und Überdeckungskompaktheit ä
  \[
   K = \left(K \cap B_1\left(y^{(1)}_1\right)\right) \cup \dotsb \cup \left(K \cap B_1\left(y^{(1)}_{s_1}\right)\right).
  \]
- Da $K$ nicht überdeckbar ist, muss bereits $K \cap B_1(y^{(1)}_i)$ für ein $1 \leq i_1 \leq s_1$ nicht überdeckbar sein. Wir setzen $x_1 \coloneqq y_{i_1}$.
+ Da $K$ nicht überdeckbar ist, muss bereits $K \cap B_1(y^{(1)}_i)$ für ein $1 \leq i_1 \leq s_1$ nicht überdeckbar sein (denn sonst wäre $K$ als endliche Vereinigung überdeckbarer Mengen ebenfalls überdeckbar). Wir setzen $x_1 \coloneqq y_{i_1}$.
  
- Da $K$ total beschränkt ist, gibt es nun $y^{(2)}_1, \dotsc, y^{(2)}_{s_2} \in K$ mit
+ Da $K$ total beschränkt ist, gibt es auch $y^{(2)}_1, \dotsc, y^{(2)}_{s_2} \in K$ mit
  \[
   K \subseteq B_{1/2}\left(y^{(2)}_1\right) \cup \dotsb \cup B_{1/2}\left(y^{(2)}_{s_2}\right),
  \]
  und somit
- \[
-  K \cap B_1(x_1)
-  = \left(K \cap B_1(x_1) \cap B_{1/2}\left(y^{(2)}_1\right)\right) \cup \dotsb \cup \left(K \cap B_1(x_1) \cap B_{1/2}\left(y^{(2)}_{s_2}\right)\right).
- \]
+ \begin{align*}
+   &\,K \cap B_1(x_1) \\
+  =&\, \left(K \cap B_1(x_1) \cap B_{1/2}\left(y^{(2)}_1\right)\right) \cup \dotsb \cup \left(K \cap B_1(x_1) \cap B_{1/2}\left(y^{(2)}_{s_2}\right)\right).
+ \end{align*}
  Da $K \cap B_1(x_1)$ nicht überdeckbar ist, gibt es ein $1 \leq i_2 \leq s_2$, sodass bereits $K \cap B_1(x_1) \cap B_{1/2}(y^{(2)}_i)$ nicht überdeckbar ist. Wir setzen $x_2 \coloneqq y^{(2)}_{i_2}$.
  
  Rekursiv erhalten wir so eine Folge $(x_n)_{n \geq 1}$ auf $K$, so dass
@@ -339,22 +339,23 @@ Wie wir nun sehen werden, sind Folgenkompaktheit und Überdeckungskompaktheit ä
 \end{proof}
 
 
-Wegen der Äquivalenz von Folgen- und Überdeckungskompaktheit in $\R^n$ spricht man auch nur von Kompaktheit: Eine Teilmenge $K \subseteq \R^n$ heißt also \emph{kompakt}, falls sie folgenkompakt, bzw.\ überdeckungskompakt ist. Kompakte Mengen sind von großer Nützlichkeit in der Mathematik.
+Wegen dieser Äquivalenz von Folgen- und Überdeckungskompaktheit spricht man auch nur von Kompaktheit: Eine Teilmenge $K \subseteq \R^n$ heißt also \emph{kompakt}, falls sie folgenkompakt, bzw.\ überdeckungskompakt ist. Kompakte Mengen sind von großer Nützlichkeit in der Mathematik.
+
 
 
 
 
 \section{Der Satz von Heine-Borel}
-Der Satz von Heine-Borel beantwortet die Frage, wie kompakte Teilmengen von $\R^n$ aussehen.
+Der Satz von Heine-Borel beantwortet die Frage, wie kompakte Teilmengen von $\R^n$ aussehen. Die nötigen Vorbereitungen zum Beweis des Satzes haben wir bereits hinter uns gebracht.
 
 
 \begin{thrm}[Satz von Heine-Borel]
  Eine Teilmenge $K \subseteq \R^n$ ist genau dann kompakt, wenn $K$ abgeschlossen und beschränkt ist.
 \end{thrm}
 \begin{proof}
- Wir haben bereits gesehen, dass jede (überdeckungs)kompakte Teilmenge sowohl abgeschlossen als auch beschränkt ist.
+ Wir wir in Lemma \ref{lem: Überdeckungskompakt abgeschlossen und beschränkt} bereits gesehen haben, sind (über\-deck\-ungs)kom\-pak\-te Teilmengen von $\R^n$ sowohl abgeschlossen als auch beschränkt.
  
- Es sei andererseits $K$ abgeschlossen und beschränkt. Wir wollen zeigen, dass $K$ (folgen)kompakt ist. Es sei hierfür $(x_n)_{n \in \N}$ eine Folge auf $K$. Da $K$ beschränkt ist, besitzt $K$ nach dem Satz von Bolzano-Weierstraß eine konvergente Teilfolge $(x_{n_j})_{j \in \N}$. Da $(x_{n_j})$ eine Folge auf $K$ ist, und $K$ abgeschlossen ist, ist auch $\lim_{j \to \infty} x_{n_j} \in K$. Also ist $K$ (folgen)kompakt.
+ Es sei andererseits $K$ abgeschlossen und beschränkt. Wir wollen zeigen, dass $K$ (folgen)kompakt ist. Es sei hierfür $(x_n)_{n \in \N}$ eine Folge auf $K$. Da $K$ beschränkt ist, besitzt $K$ nach dem Satz von Bolzano-Weierstraß eine konvergente Teilfolge $n_j$. Da $(x_{n_j})$ eine Folge auf $K$ ist, und $K$ abgeschlossen ist, ist auch $\lim_{j \to \infty} x_{n_j} \in K$. Also ist $K$ (folgen)kompakt.
 \end{proof}
 
 
@@ -366,9 +367,17 @@ Der Satz von Heine-Borel ist sehr nützlich, um Teilmengen von $\R^n$ auf Kompak
   \item
    Die $n$-dimensionale Sphäre $S^n = \{x \in \R^{n+1} \mid \|x\| = 1\}$ ist offenbar beschränkt, und wir wissen bereits, dass sie auch abgeschlossen ist. Also ist $S^n$ kompakt.
   \item
-   Wir wissen bereits, dass der Einheitswürfel $[0,1]^n \subseteq \R^n$ abgeschlossen ist. Er ist auch beschränkt, denn für alle $x = (x_1, \dotsc, x_n) \in [0,1]^n$ ist $\|x\| \leq \sum_{i=1}^n |x_i| \leq n$. Also ist der Einheitswürfel kompakt.
+   Wir wissen bereits, dass der Einheitswürfel $[0,1]^n \subseteq \R^n$ abgeschlossen ist. Er ist auch beschränkt, denn für alle $x = (x_1, \dotsc, x_n) \in [0,1]^n$ ist $\|x\| \leq \sum_{i=1}^n |x_i| \leq n$, bzw.\ sogar
+   \[
+    \|x\|
+    = \sqrt{x_1^2 + \dotsb + x_n^2}
+    \leq \sqrt{n}.
+   \]
+   Also ist der Einheitswürfel kompakt.
   \item
-   Das offen Intervall $(0,1)$ ist zwar beschränkt, aber nicht abgeschlossen, und somit auch nicht kompakt.
+   Für alle $a,b \in \R$ mit $a < b$ ist das abgeschlossene Intervall $[a,b]$ abgeschlossen und beschränkt, und somit kompakt.
+  \item
+   Das offene Intervall $(0,1)$ ist zwar beschränkt, aber nicht abgeschlossen, und somit auch nicht kompakt.
   \item
    Der unendliche Zylinder $S^1 \times \R \subseteq \R^3$ ist zwar abgeschlossen, aber nicht beschränkt, und somit ebenfalls nicht kompakt.
   \item
@@ -390,13 +399,28 @@ Der Satz von Heine-Borel ist sehr nützlich, um Teilmengen von $\R^n$ auf Kompak
 Wir wollen hier noch weitere Eigenschaften kompakter Mengen angeben und beweisen. Dabei geben wir jeweils mehrere Beweise an, um den Leser mit den verschiedenen Charakterisierungen kompakter Mengen vertraut zu machen.
 
 
+Wie wir bereits in Lemma \ref{lem: Überdeckungskompakt abgeschlossen und beschränkt} gesehen haben, sind (überdeckungs)kompakte Teilmengen $K \subseteq \R^n$ abgeschlossen und beschränkt; nach dem Satz von Heine-Borel ist dies gerade die charakterisierende Eigenschaft kompakter Mengen. Der Vollständigkeit halber wollen wir diese beiden Eigenschaften kompakter Mengen auch noch einmal durch Folgenkompaktheit beweisen.
+
+
+\begin{proof}
+ Es sei $K \subseteq \R^m$ (folgen)kompakt.
+ 
+ Um zu zeigen, dass $K$ abgeschlossen ist, werden wir zeigen, dass $K$ unter Grenzwerten von Folgen abgeschlossen ist. Hierfür sei $(x_n)$ eine Folge auf $K$, die auf $\R^m$ konvergiert. Für den Grenzwert $x \coloneqq \lim_{n \to \infty} x_n$ wollen wir zeigen, dass $x \in K$. Da $K$ (folgen)kompakt ist besitzt $(x_n)$ eine auf $K$ konvergente Teilfolge $n_j$. Für $x^* \coloneqq \lim_{j \to \infty} x_{n_j}$ ist also $x^* \in K$. Da $x_n \to x$ für $n \to \infty$ ist aber auch $x_{n_j} \to x$ für $j \to \infty$. Also ist
+ \[
+  x = \lim_{j \to \infty} x_{n_j} = x^* \in K.
+ \]
+ 
+ Die Beschränktheit von $K$ zeigen wir per Widerspruch. Wäre $K$ nicht beschränkt, so gebe es für alle $n \in \N$ ein $x_n \in K$ mit $\|x_n\| \geq n$. Da $K$ (folgen)kompakt ist, hat die Folge $(x_n)$ eine auf $K$ konvergente Teilfolge $n_j$. Da die Folge $(x_{n_j})$ konvergiert, folgt aus der Stetigkeit der Norm, dass auch die Folge der Normen $(\|x_{n_j}\|)$ konvergiert. Da $\|x_{n_j}\| \geq n_j$ für alle $j \in \N$ konvergiert die Folge der Normen aber nicht.
+\end{proof}
+
+
 \begin{lem}
  Endliche Vereinigungen kompakter Mengen sind kompakt, d.h.\ sind $K_1, \dotsc, K_r \subseteq \R^n$ kompakt, so ist auch $K_1 \cup \dotsb \cup K_r$ kompakt.
 \end{lem}
 \begin{proof}
  Wir setzen $K \coloneqq K_1 \cup \dotsb \cup K_r$. Wir wollen drei Beweise für diese Aussage geben.
  
- \emph{(Überdeckungskompaktheit)} Es sei $\{U_i\}_{i \in I}$ eine offen Überdeckung von $K$. Dass ist $\{U_i\}_{i \in I}$ auch eine offene Überdeckung von $K_j$ für alle $1 \leq j \leq r$. Da die $K_j$ (überdeckungs)kompakt sind, besitzt diese offene Überdeckung für jedes $1 \leq j \leq r$ eine endliche Teilüberdeckung von $K_j$, also $i_{j,1}, \dotsc, i_{j,s_j} \in I$ mit
+ \emph{(Überdeckungskompaktheit)} Es sei $\{U_i\}_{i \in I}$ eine offen Überdeckung von $K$. Dann ist $\{U_i\}_{i \in I}$ auch eine offene Überdeckung von $K_j$ für alle $1 \leq j \leq r$. Da die $K_j$ (überdeckungs)kompakt sind, besitzt diese offene Überdeckung für jedes $1 \leq j \leq r$ eine endliche Teilüberdeckung von $K_j$, es gibt also $i_{j,1}, \dotsc, i_{j,s_j} \in I$ mit
  \[
   K_j \subseteq U_{i_{j,1}} \cup \dotsb \cup U_{i_{j,s_j}}.
  \]
@@ -406,11 +430,11 @@ Wir wollen hier noch weitere Eigenschaften kompakter Mengen angeben und beweisen
   = \bigcup_{j=1}^r K_j
   \subseteq \bigcup_{j=1}^r \bigcup_{\ell=1}^{s_j} U_{i_{j,\ell}},
  \]
- also eine endliche Teilüberdeckung von $K$. Dass zeigt, dass jede offene Überdeckung von $K$ eine endliche Teilüberdeckung besitzt, also dass $K$ (über\-deck\-ungs)kom\-pakt ist.
+ also eine endliche Teilüberdeckung von $K$. Das zeigt, dass jede offene Überdeckung von $K$ eine endliche Teilüberdeckung besitzt, also dass $K$ (über\-deck\-ungs)kom\-pakt ist.
  
- \emph{(Folgenkompaktheit)} Es sei $(x_n)$ eine Folge auf $K$. Eine der Mengen $K_i$ muss unendlich viele Folgeglieder enthalten (denn sonst würde $K$ nur endlich viele Folgeglieder enthalten), d.h. es gibt ein $1 \leq \ell \leq r$, so dass $x_n \in K_\ell$ für unendlich viele $n \in \N$. Wir können o.B.d.A.\ davon ausgehen, dass $\ell = 1$, also $x_n \in K_1$ für unendlich viele $n \in \N$. Es gibt also eine Teilfolge $(\tilde{n}_j)_{j \in \N}$ mit $x_{\tilde{n}_j} \in K_1$ für alle $j \in \N$. Da $K_1$ (folgen)kompakt ist, besitzt dies Folge $(x_{\tilde{n}_j})_{j \in \N}$ eine auf $K_1$ konvergente Teilfolge $n_j$. Da $\lim_{j \to \infty} x_{n_j} \in K_1 \subseteq K$ ist dies eine Teilfolge von $(x_n)$ die auf $K$ konvergiert. Dass zeigt, dass jede Folge auf $K$ eine auf $K$ konvergente Teilfolge besitzt, dass also $K$ (folgen)kompakt ist.
+ \emph{(Folgenkompaktheit)} Es sei $(x_n)$ eine Folge auf $K$. Eine der Mengen $K_j$ muss unendlich viele Folgeglieder enthalten (denn sonst würde $K$ nur endlich viele Folgeglieder enthalten), d.h. es gibt ein $1 \leq j \leq r$, so dass $x_n \in K_j$ für unendlich viele $n \in \N$. Wir können o.B.d.A.\ davon ausgehen, dass $j = 1$, also $x_n \in K_1$ für unendlich viele $n \in \N$. Es gibt also eine Teilfolge $\tilde{n}_j$ mit $x_{\tilde{n}_j} \in K_1$ für alle $j \in \N$. Da $K_1$ (folgen)kompakt ist, besitzt die Folge $(x_{\tilde{n}_j})_{j \in \N}$ eine auf $K_1$ konvergente Teilfolge $n_j$. Da $\lim_{j \to \infty} x_{n_j} \in K_1 \subseteq K$ ist dies eine Teilfolge von $(x_n)$, die auf $K$ konvergiert. Dass zeigt, dass jede Folge auf $K$ eine auf $K$ konvergente Teilfolge besitzt, dass also $K$ (folgen)kompakt ist.
  
- \emph{(Heine-Borel)} Da die $K_i$ kompakt sind, sind die $K_i$ beschränkt. Es gibt es daher für jedes $1 \leq j \leq r$ ein $C_i > 0$ mit $\|x\| \leq C_i$ für alle $x \in K_i$. Für $C \coloneqq \max_{j=1,\dotsc,r} C_j$ ist deshalb $\|x\| \leq C$ für alle $x \in K$. Also ist $K$ beschränkt. Da die $K_i$ kompakt sind, sind sie auch abgeschlossen; da endliche Vereinigungen abgeschlossener Mengen wieder abgeschlossen sind, ist daher auch $K$ abgeschlossen. Da $K$ abgeschlossen und beschränkt ist, ist $K$ kompakt.
+ \emph{(Heine-Borel)} Da die $K_j$ kompakt sind, sind die $K_j$ beschränkt. Es gibt daher für alle $1 \leq j \leq r$ ein $C_j > 0$ mit $\|x\| \leq C_j$ für alle $x \in K_j$. Für $C \coloneqq \max_{j=1,\dotsc,r} C_j$ ist deshalb $\|x\| \leq C$ für alle $x \in K$. Also ist $K$ beschränkt. Da die $K_j$ kompakt sind, sind sie auch abgeschlossen; da endliche Vereinigungen abgeschlossener Mengen wieder abgeschlossen sind, ist daher auch $K$ abgeschlossen. Da $K$ abgeschlossen und beschränkt ist, ist $K$ kompakt.
 \end{proof}
 
 
@@ -419,33 +443,33 @@ Wir wollen hier noch weitere Eigenschaften kompakter Mengen angeben und beweisen
 \end{bem}
 
 
-Wie wir bereits gesehen haben, sind nicht alle abgeschlossenen Mengen kompakt. Es gilt jedoch, dass abgeschlossener Teilmengen kompakter Mengen selber kompakt ist.
+Wie wir bereits gesehen haben, sind nicht alle abgeschlossenen Mengen kompakt. Es gilt jedoch, dass abgeschlossener Teilmengen kompakter Mengen ebenfalls kompakt ist.
 
 
 \begin{lem}\label{lem: abgeschlossen Teilmengen von kompakten Mengen}
- Ist $K \subseteq \R^m$ kompakt und $C \subseteq \R^m$ abgeschlossen mit $C \subseteq K$, so ist auch $C$ kompakt.
+ Ist $K \subseteq \R^n$ kompakt und $C \subseteq \R^n$ abgeschlossen mit $C \subseteq K$, so ist auch $C$ kompakt.
 \end{lem}
 \begin{proof}
  Wir wollen drei Beweise für das Lemma geben.
  
- \emph{(Folgenkompaktheit)} Es sei $(x_n)$ eine Folge auf $C$. Dann ist $(x_n)$ auch eine Folge auf $K$. Da $K$ (folgen)kompakt ist besitzt $(x_n)$ eine auf $K$ konvergente Teilfolge $(n_j)_{j \in \N}$. Da $C$ abgeschlossen ist, ist schon $\lim_{j \to \infty} x_{n_j} \in C$, also $(x_{n_j})_{j \in \N}$ schon auf $C$ konvergent. Das zeigt, dass jede Folge auf $C$ eine auf $C$ konvergente Teilfolge besitzt. Also ist $C$ (folgen)kompakt.
+ \emph{(Folgenkompaktheit)} Es sei $(x_n)$ eine Folge auf $C$. Dann ist $(x_n)$ auch eine Folge auf $K$. Da $K$ (folgen)kompakt ist besitzt $(x_n)$ eine auf $K$ konvergente Teilfolge $n_j$. Da $C$ abgeschlossen ist, ist schon $\lim_{j \to \infty} x_{n_j} \in C$, also $(x_{n_j})_{j \in \N}$ schon auf $C$ konvergent. Das zeigt, dass jede Folge auf $C$ eine auf $C$ konvergente Teilfolge besitzt. Also ist $C$ (folgen)kompakt.
  
- \emph{(Überdeckungskompaktheit)} Es sei $\{U_i\}_{i \in I}$ eine offene Überdeckung von $C$. Da $C$ abgeschlossen ist, ist $C^c$ offen. Da $\{U_i\}_{i \in I}$ eine offene Überdeckung von $C$ ist, is $\{U_i\}_{i \in I} \cup \{C^c\}$ ist eine offen Überdeckung von $K$ (sogar eine offene Überdeckung von $\R^m$). Da $K$ (überdeckungs)kompakt ist besitzt diese offene Überdeckung eine endliche Teilüberdeckung; es gibt also $i_1, \dotsc, i_s \in I$, so dass
+ \emph{(Überdeckungskompaktheit)} Es sei $\{U_i\}_{i \in I}$ eine offene Überdeckung von $C$. Da $C$ abgeschlossen ist, ist $C^c$ offen. Da $\{U_i\}_{i \in I}$ eine offene Überdeckung von $C$ ist, is $\{U_i\}_{i \in I} \cup \{C^c\}$ ist eine offen Überdeckung von $K$ (sogar eine offene Überdeckung von $\R^n$). Da $K$ (überdeckungs)kompakt ist besitzt diese offene Überdeckung eine endliche Teilüberdeckung; es gibt also $i_1, \dotsc, i_s \in I$, so dass
  \[
   K \subseteq U_{i_1} \cup \dotsb \cup U_{i_s} \cup C^c.
  \]
- Dann ist auch
+ Da $C$ und $C^c$ disjunkt sind, ist damit
  \[
   C \subseteq U_{i_1} \cup \dotsb \cup U_{i_s}.
  \]
- Das zeigt, dass jede offen Überdeckung von $C$ eine endliche Teilüberdeckung besitzt. Also ist $C$ (überdeckungs)kompakt.
+ Das zeigt, dass jede offene Überdeckung von $C$ eine endliche Teilüberdeckung besitzt. Also ist $C$ (überdeckungs)kompakt.
  
  \emph{(Heine-Borel)} Da $K$ kompakt ist, ist $K$ beschränkt. Da $C \subseteq K$ ist daher auch $C$ beschränkt. Da $C$ abgeschlossen und beschränkt ist, ist $K$ kompakt.
 \end{proof}
 
 
 \begin{kor}
- Ist $\{K_i\}_{i \in i}$ eine nichtleere Kollektion kompakter Teilmengen $K_i \subseteq \R^n$, so ist auch $\bigcap_{i \in I} K_i$ kompakt.
+ Ist $\{K_i\}_{i \in i}$ eine nichtleere Kollektion von kompakten Teilmengen $K_i \subseteq \R^n$, so ist auch $\bigcap_{i \in I} K_i$ kompakt.
 \end{kor}
 \begin{proof}
  Da die $K_i$ kompakt sind, sind sie auch abgeschlossen. Also ist auch $\bigcap_{i \in I} K_i$ abgeschlossen. Da außerdem $\bigcap_{i \in I} K_i \subseteq K_j$ für beliebiges $j \in I$ ist $\bigcap_{i \in I} K_i$ nach Lemma \ref{lem: abgeschlossen Teilmengen von kompakten Mengen} kompakt. (Hierfür benötigen wir, dass ein $j \in I$ existiert.)
@@ -459,9 +483,9 @@ Eine weitere wichtige Aussage ist, dass stetige Funktionen Kompaktheit erhalten.
  Es sei $f \colon K \to \R^m$ stetig mit $K \subseteq \R^n$ kompakt. Dann ist auch das Bild $f(K) \subseteq \R^m$ kompakt.
 \end{lem}
 \begin{proof}
- Wir wollen zwei Beweise angeben für das Lemma angeben.
+ Wir wollen zwei Beweise für dieses Lemma angeben.
  
- \emph{(Überdeckungskompaktheit)} Sei $\{U_i\}_{i \in I}$ eine offene Überdeckung von $f(K)$. Da $f$ stetig ist, gibt es für alle $i \in I$ eine offene Menge $V_i \subseteq \R^n$ mit
+ \emph{(Überdeckungskompaktheit)} Es sei $\{U_i\}_{i \in I}$ eine offene Überdeckung des Bildes $f(K)$. Da $f$ stetig ist, gibt es für alle $i \in I$ eine offene Menge $V_i \subseteq \R^n$ mit
  \[
   f^{-1}(U_i) = V_i \cap K,
   \quad
@@ -471,9 +495,9 @@ Eine weitere wichtige Aussage ist, dass stetige Funktionen Kompaktheit erhalten.
  \]
  Die offenen Mengen $\{V_i\}_{i \in I}$ bilden offenbar eine offene Überdeckung von $K$. Da $K$ (überdeckungs)kompakt ist besitzt diese offene Überdeckung eine endliche Teilüberdeckung, es gibt also $i_1, \dotsc, i_s \in I$ mit
  \[
-  K \subseteq V_{i_1} \cup \dotsb \cup V_{i_s};
+  K \subseteq V_{i_1} \cup \dotsb \cup V_{i_s}.
  \]
- es gilt damit
+ Es gilt damit
  \[
   K
   = (V_{i_1} \cup \dotsb \cup V_{i_s}) \cap K
@@ -486,9 +510,9 @@ Eine weitere wichtige Aussage ist, dass stetige Funktionen Kompaktheit erhalten.
   &= f(V_{i_1} \cap K) \cup \dotsb \cup f(V_{i_s} \cap K)
   \subseteq U_{i_1} \cup \dotsb \cup U_{i_s}.
  \end{align*}
- Also besitzt die offene Überdeckung $\{U_i\}_{i \in I}$ von $K$ eine endliche Teilüberdeckung. Aus der Beliebigkeit der offenen Überdeckung folgt, dass $f(K)$ (überdeckungs)kompakt ist.
+ Also besitzt die offene Überdeckung $\{U_i\}_{i \in I}$ von $f(K)$ eine endliche Teilüberdeckung. Aus der Beliebigkeit der offenen Überdeckung folgt, dass $f(K)$ (überdeckungs)kompakt ist.
  
- \emph{(Folgenkompaktheit)} Es sei $(y_n)$ eine Folge auf $f(K)$. Für jedes $n \in \N$ gibt es dann ein $x_n \in K$ mit $f(x_n) = y_n$. Da $K$ (folgen)kompakt ist besitzt die Folge $(x_n)$ eine auf $K$ konvergente Teilfolge $(n_j)_{j \in \N}$. Es sei $x \coloneqq \lim_{j \to \infty} x_{n_j} \in K$. Aus der Stetigkeit von $f$ folgt, dass auch die Folge $(f(x_{n_j}))_{j \in \N} = (y_{n_j})_{j \in \N}$ konvergiert und
+ \emph{(Folgenkompaktheit)} Es sei $(y_n)$ eine Folge auf $f(K)$. Für jedes $n \in \N$ gibt es ein $x_n \in K$ mit $f(x_n) = y_n$. Da $K$ (folgen)kompakt ist besitzt die Folge $(x_n)$ eine auf $K$ konvergente Teilfolge $n_j$. Es sei $x \coloneqq \lim_{j \to \infty} x_{n_j} \in K$. Aus der Stetigkeit von $f$ folgt, dass auch die Folge $(f(x_{n_j}))_{j \in \N} = (y_{n_j})_{j \in \N}$ konvergiert und
  \[
   f(x)
   = f\left( \lim_{j \to \infty} x_{n_j} \right)
@@ -499,12 +523,15 @@ Eine weitere wichtige Aussage ist, dass stetige Funktionen Kompaktheit erhalten.
 \end{proof}
 
 
+Bilder kompakter Mengen (unter stetigen Abbildungen) sind also kompakt.
+
+
 \begin{bem}
- Die Umkehrung der Aussage gilt im Allgemeinen nicht, d.h.\ die Urbilder kompakter Mengen und stetigen Abbildungen sind nicht unbedingt selber wieder kompakt: Die Abbildung
+ Die Umkehrung der Aussage gilt im Allgemeinen nicht, d.h.\ die Urbilder kompakter Mengen unter stetigen Abbildungen sind nicht zwangsweise kompakt. So ist etwa die Abbildung
  \[
   f \colon \R \to \R, x \mapsto \frac{x}{1+|x|}
  \]
- ist stetig, und es ist
+ stetig, und es gilt
  \[
   |f(x)|
   = \left| \frac{x}{1+|x|} \right|
@@ -513,7 +540,7 @@ Eine weitere wichtige Aussage ist, dass stetige Funktionen Kompaktheit erhalten.
   \quad
   \text{für alle $x \in \R$},
  \]
- also $f(\R) \subseteq (0,1)$. Für die kompakte Menge $[0,1] \subseteq \R$ ist deshalb $f^{-1}([0,1]) = \R$ nicht kompakt.
+ also $f(\R) \subseteq (-1,1)$. Für die kompakte Teilmenge $[-1,1] \subseteq \R$ ist deshalb das Urbild $f^{-1}([-1,1]) = \R$ nicht kompakt.
 \end{bem}
 
 
