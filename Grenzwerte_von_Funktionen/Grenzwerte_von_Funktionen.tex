@@ -570,16 +570,16 @@ Der beidseitige Grenzwert lässt sich auch als Kombination des links- und rechts
   \item\label{enum: beide Grenzwerte}
    Die beiden Grenzwerte $\lim_{a \uparrow x} f(a)$ und $\lim_{a \downarrow x} f(a)$ existieren und es ist
    \[
-    \lim_{a \uparrow x} f(a) = \lim_{a \downarrow x} f(a).
+    \lim_{a \uparrow x} f(a) = y = \lim_{a \downarrow x} f(a).
    \]
  \end{enumerate}
 \end{lem}
 \begin{proof}
- (\ref{enum: beidseitiger Grenzwert} $\Rightarrow$ \ref{enum: beide Grenzwerte}) Da $\lim_{a \to x} f(a)$ existiert, gibt es ein $r > 0$, so dass $f$ auf $(x-r,x) \cup (x,x+r)$ definiert ist und $\lim_{a \to x, a \in (x-r,x) \cup (x,x+r)} f(a)$ existiert. Dann ist $f$ auch auf $(x-r,x)$ und auf $(x,x+r)$ definiert, und nach Lemma \ref{lem: Grenzwerte auf Teilmengen} gilt
+ (\ref{enum: beidseitiger Grenzwert} $\Rightarrow$ \ref{enum: beide Grenzwerte}) Da $\lim_{a \to x} f(a)$ existiert, gibt es ein $r > 0$, so dass $f$ auf $(x-r,x) \cup (x,x+r)$ definiert ist und $\lim_{a \to x, a \in (x-r,x) \cup (x,x+r)} f(a)$ existiert. Dann ist $f$ auf $(x-r,x)$ und auf $(x,x+r)$ definiert, und nach Lemma \ref{lem: Grenzwerte auf Teilmengen} gilt
  \[
   \lim_{a \uparrow x} f(a)
-  = \lim_{a \to x, a \in (x-r,x)} f(a)
-  = \lim_{a \to x, a \in (x-r,x) \cup (x,x+r)} f(a)
+  = \lim_{\substack{a \to x \\ a \in (x-r,x)}} f(a)
+  = \lim_{\substack{a \to x \\ a \in (x-r,x) \cup (x,x+r)}} f(a)
   = \lim_{a \to x} f(a).
  \]
  Analog ergibt sich, dass auch $\lim_{a \downarrow} f(a)$ existiert und
@@ -587,19 +587,15 @@ Der beidseitige Grenzwert lässt sich auch als Kombination des links- und rechts
   \lim_{a \downarrow x} f(a) = \lim_{a \to x} f(a)
  \]
  
- (\ref{enum: beide Grenzwerte} $\Rightarrow$ \ref{enum: beidseitiger Grenzwert}) Da die beiden Grenzwerte $\lim_{a \uparrow x} f(a)$ und $\lim_{a \downarrow x} f(a)$ existieren gibt es $r_-, r_+ > 0$, so dass $f$ auf $(x-r-,x)$ und $(x,x+r_+)$ definiert ist. Für $r \coloneqq \min\{r_-, r_+\}$ ist also $f$ auf $(x-r,x) \cup (x,x+r)$ definiert. Wir schreiben
- \[
-  y \coloneqq \lim_{a \uparrow x} f(a) = \lim_{a \downarrow x} f(a).
- \]
- Wir wollen zeigen, dass auch $\lim_{a \to x} f(a) = y$. Hierfür sei $\varepsilon > 0$ beliebig aber fest. Da $\lim_{a \uparrow x} f(a) = y$ gibt es ein $\delta_- > 0$, so dass
+ (\ref{enum: beide Grenzwerte} $\Rightarrow$ \ref{enum: beidseitiger Grenzwert}) Da die beiden Grenzwerte $\lim_{a \uparrow x} f(a)$ und $\lim_{a \downarrow x} f(a)$ existieren gibt es $r_-, r_+ > 0$, so dass $f$ auf $(x-r_-,x)$ und auf $(x,x+r_+)$ definiert ist. Also ist $f$ für \mbox{$r \coloneqq \min\{r_-, r_+\}$} auf $(x-r,x) \cup (x,x+r)$ definiert. Wir wollen zeigen, dass der Grenzwert $\lim_{a \to x} f(a)$ existiert und $\lim_{a \to x} f(a) = y$. Hierfür sei $\varepsilon > 0$ beliebig aber fest. Da $\lim_{a \uparrow x} f(a) = y$ gibt es ein $\delta_- > 0$, so dass
  \[
   \|x-a\| < \delta_- \Rightarrow \|y-f(a)\| < \varepsilon
-  \quad \text{für alle $a \in (x-r,x)$},
+  \quad \text{für alle $a \in (x-r_-,x)$},
  \]
  und da $\lim_{a \downarrow x} f(a) = y$ gibt es ein $\delta_+ > 0$, so dass
  \[
   \|x-a\| < \delta_+ \Rightarrow \|y-f(a)\| < \varepsilon
-  \quad \text{für alle $a \in (x,x+r)$}.
+  \quad \text{für alle $a \in (x,x+r_+)$}.
  \]
  Für $\delta \coloneqq \min\{\delta_-, \delta_+\}$ ist daher
  \[
@@ -934,6 +930,8 @@ Auch uneigentliche Grenzwerte lassen sich durch Folgen ausdrücken.
  \item
   Für $y \in \R^m$ ist genau dann $\lim_{x \to \infty} f(x) = y$, wenn für jede Folge $(x_n)$ auf $\R$ mit $x_n \to \infty$ auch $f(x_n) \to y$. Eine analoge Aussage gilt für $\lim_{x \to -\infty} f(x)$. Ist $f$ eine reellwertige Funktion, soo gilt die Aussage auch für $y \in \{-\infty, \infty\}$.
 \end{enumerate}
+
+%TODO: Uneigentliche beidseitege Grenzwerte durch links- und rechtsseitigen Grenzwert
 
 
 
