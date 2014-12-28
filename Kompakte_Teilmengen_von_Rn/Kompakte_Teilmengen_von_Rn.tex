@@ -198,6 +198,28 @@ Ein weiterer Kompaktheitsbegriff ist \emph{Überdeckungskompaktheit}. Dieser ist
    $\R^n$ ist nicht überdeckungskompakt, denn $\{B_k(0) \mid k \in \N, k \geq 1\}$ ist eine offen Überdeckung von $\R^n$, die keine endliche Teilüberdeckung besitzt.
   \item
    Das offene Einheitsintervall $(0,1)$ ist nicht überdeckungskompakt, denn $\{(1/k, 1-1/k) \mid k \in \N, k \geq 3\}$ ist eine offene Überdeckung von $(0,1)$, die keine offene Teilüberdeckung besitzt.
+  \item
+   Die Menge $A \coloneqq \{1/n \mid n \in \N, n \geq 1\}$ ist nicht kompakt, denn
+   \[
+    \left\{ \left( \frac{1}{n}, 2 \right) \mid n \in \N, n \geq 1 \right\}
+   \]
+   ist eine offene Überdeckung von $A$, die keine endliche Teilüberdeckung enthält.
+  \item
+   Die Menge $A = \{0, 1, 1/2, 1/3, 1/4, \dotsc\}$ hingegen ist überdeckungskompakt: Es sei $\{U_i\}_{i \in I}$ eine offene Überdeckung von $A$. Dann gibt es insbesondere ein $i_0 \in I$ mit $0 \in U_{i_0}$. Da $U_{i_0}$ offen ist, gibt es ein $\varepsilon > 0$ mit $B_\varepsilon(0) \subseteq U_{i_0}$. Da $1/n \to 0$ gibt es ein $N \in \N$, $N \geq 1$ mit
+   \[
+    \frac{1}{n} \in B_\varepsilon(0) \subseteq U_{i_0} \quad \text{für alle $n \geq N$}.
+   \]
+   Da die endliche Menge $\{1, 1/2, \dotsc, 1/N\}$ überdeckungskompakt ist, gibt es für diese eine endliche Teilüberdeckung, also $i_1, \dotsc, i_s \in I$ mit
+   \[
+    \left\{ 1, \frac{1}{2}, \frac{1}{3}, \dotsc, \frac{1}{N} \right\} \subseteq U_{i_1} \cup \dotsb \cup U_{i_s}.
+   \]
+   Insgesamt ist damit $A \subseteq \bigcup_{j=0}^s U_{i_s}$.
+  \item
+   Nach dem gleichen Prinzip lässt sich allgemein zeigen, dass für eine konvergente Folge $(x_n)$ auf $\R^m$ die Menge
+   \[
+    \left\{\lim_{n \to \infty} x_n\right\} \cup \{x_n \mid n \in \N\}
+   \]
+   überdeckungskompakt ist.
  \end{itemize}
 \end{bsp}
 

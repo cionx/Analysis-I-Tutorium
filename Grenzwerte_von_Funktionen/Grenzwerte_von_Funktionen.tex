@@ -2,6 +2,7 @@
 %\documentclass[a4paper,10pt]{scrartcl}
 
 \usepackage{../mystyle}
+\SetupExSheets{solution/print=true} %Zur Ausgabe der Lösungen direkt nach den Fragen
 
 \setromanfont[Mapping=tex-text]{Linux Libertine O}
 % \setsansfont[Mapping=tex-text]{DejaVu Sans}
@@ -23,11 +24,11 @@
 \section{Häufungspunkte}
 
 
-Es sei $A \subseteq \R^n$ und $f \colon A \to \R^m$. Wir wollen untersuchen, wie sich $f$ an einer Stelle $x \in \R^n$ verhält, bzw.\ verhalten sollte. Um das Verhalten von $f$ an $x$ zu untersuchen, brauchen wir, dass $f$ „in der Nähe“ von $x$ definiert ist. Hierfür brauchen wir, dass $x$ „nahe“ an $A$ ist. Dies motiviert die folgende Definition:
+Es sei $A \subseteq \R^n$ und $f \colon A \to \R^m$ (nicht notwendigerweise stetig). Wir wollen untersuchen, wie sich $f$ an einer Stelle $x \in \R^n$ verhält, bzw.\ verhalten sollte. Um das Verhalten von $f$ an $x$ zu untersuchen, brauchen wir, dass $f$ „in der Nähe“ von $x$ definiert ist. Hierfür brauchen wir, dass $x$ „nahe“ an $A$ ist. Dies motiviert die folgende Definition:
 
 
 \begin{defi}
- Es sei $A \subseteq \R^n$. Ein Punkt $x \in \R^n$ heißt \emph{Häufungspunkt von $A$}, falls es für alle $\varepsilon > 0$ ein $a \in A$ mit $\|x-a\| < \varepsilon$ und $x \neq a$ gibt.
+ Es sei $A \subseteq \R^n$. Ein Punkt $x \in \R^n$ heißt \emph{Häufungspunkt von $A$}, falls es für alle $\varepsilon > 0$ ein $a \in A$ mit $\|x-a\| < \varepsilon$ und $x \neq a$ gibt (also $0 < \|x-a\| < \varepsilon$).
  
  Wir bezeichnen die Menge aller Häufungspunkte von $A$ mit $A'$.
 \end{defi}
@@ -36,9 +37,11 @@ Es sei $A \subseteq \R^n$ und $f \colon A \to \R^m$. Wir wollen untersuchen, wie
 \begin{question}
  Es sei $x \in \R^n$. Der \emph{punktierte offene $\varepsilon$-Ball um $x$} ist die Menge
  \[
-  \dot{B}_\varepsilon(x) \coloneqq B_\varepsilon(x) \setminus \{x\} = \{y \in \R^n \mid 0 < \|y\| < \varepsilon\}.
+  \dot{B}_\varepsilon(x)
+  \coloneqq B_\varepsilon(x) \setminus \{x\}
+  = \{y \in \R^n \mid 0 < \|x-y\| < \varepsilon\}.
  \]
- Eine \emph{punktierte Umgebung von $x$} ist eine Menge $U \setminus \{x\}$, wobei $U \subseteq \R^n$ eine Umgebung von $x$ ist.
+ Für eine Umgebung $V$ von $x$ ist $\dot{V} \coloneqq V \setminus \{x\}$ die entsprechende \emph{punktierte Umgebung von $x$}
  
  Es sei $A \subseteq \R^n$ und $x \in \R^n$. Zeigen Sie, dass die folgenden Bedingungen äquivalent sind:
  \begin{enumerate}
@@ -47,7 +50,7 @@ Es sei $A \subseteq \R^n$ und $f \colon A \to \R^m$. Wir wollen untersuchen, wie
   \item\label{enum: punktierte Bälle}
    Für jedes $\varepsilon > 0$ gibt es ein $a \in A$ mit $a \in \dot{B}_\varepsilon(x)$.
   \item\label{enum: punktierte Umgebungen}
-   Für jede punktierte Umgebung $V$ von $x$ gibt es ein $a \in A$ mit $a \in V$.
+   Für jede punktierte Umgebung $\dot{V}$ von $x$ gibt es ein $a \in A$ mit $a \in \dot{V}$.
  \end{enumerate}
 \end{question}
 \begin{solution}
@@ -67,7 +70,7 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
   \item
    Der Punkt $x = 2$ ist \emph{kein} Häufungspunkt der Menge $A \coloneqq [0,1] \cup \{2\} \subseteq \R$, denn das einzige $a \in A$ mit $|x-a| < 1/2$ ist $a = 2$.
   \item
-   Ist $U \subseteq \R^n$ offen, so ist jeder Punkt $x \in U$ ein Häufungspunkt von $U$: Da $U$ offen ist, gibt es ein $\delta > 0$ mit $B_\delta(x) \subseteq U$. Für jedes $\varepsilon > 0$ gibt es für $\omega \coloneqq \min\{\varepsilon,\delta\}$ daher ein
+   Ist $U \subseteq \R^n$ offen, so ist jeder Punkt $x \in U$ ein Häufungspunkt von $U$: Da $U$ offen ist gibt es ein $\delta > 0$ mit $B_\delta(x) \subseteq U$. Für jedes $\varepsilon > 0$ gibt es für $\omega \coloneqq \min\{\varepsilon,\delta\}$ daher ein
    \[
     y \in B_\omega(x) \subseteq B_\delta(x) \subseteq U \quad \text{mit $y \neq x$},
    \]
@@ -94,15 +97,15 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
 \begin{solution}
  Es sei $x \in \R^n$. Ist $x \notin M$, so ergibt sich für
  \[
-  \varepsilon \coloneqq \frac{1}{2} \min_{m \in M} \|x-m\| > 0,
+  \varepsilon \coloneqq \min_{m \in M} \|x-m\| > 0,
  \]
  dass es kein $m \in M$ mit $\|x-m\| < \varepsilon$ gibt. Also ist $x$ dann kein Häufungspunkt von $M$. Ist $x \in M$, so ergibt sich für
  \[
   \varepsilon
   \coloneqq
   \begin{cases}
-   \frac{1}{2} \min_{m \in M, m \neq x} \|x-m\| & \text{falls $|M| \geq 2$} \\
-                                               1 & \text{falls $M = \{x\}$},
+   \min_{m \in M, m \neq x} \|x-m\| & \text{falls $|M| \geq 2$}, \\
+                                  1 & \text{falls $M = \{x\}$},
   \end{cases}
  \]
  dass $x$ das einzige $m \in M$ mit $\|x-m\| < \varepsilon$ ist. Also ist $x$ auch dann kein Häufungspunkt von $M$.
@@ -115,7 +118,7 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
 \begin{solution}
  Es sei $x \in \R$. Ist $x \notin \Z$, so gibt es für
  \[
-  \varepsilon \coloneq \frac{1}{2} \min\{ \lceil x \rceil - x, x - \lfloor x \rfloor \}
+  \varepsilon \coloneqq \min\{ \lceil x \rceil - x, x - \lfloor x \rfloor \}
  \]
  kein $n \in \Z$ mit $\|x-n\| < \varepsilon$. Also ist $x$ dann kein Häufungspunkt von $\Z$. Ist andererseits $x \in \Z$, so gibt es außer $x$ kein $n \in \Z$ mit $\|x-n\| < 1/2$, weshalb $x$ auch dann kein Häufungspunkt von $\Z$ ist.
  
@@ -135,11 +138,11 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
 \begin{solution}
  \begin{enumerate}
   \item
-   Es sei $x \in A'$. Für jedes $\varepsilon > 0$ gibt es daher ein $a \in A$ mit $\|x-a\| < \varepsilon$ und $a \neq x$. Da $a \in A \subseteq B$ folgt, dass es für jedes $\varepsilon > 0$ ein $b \in B$ mit $\|x-b\| < \varepsilon$ und $b \neq x$ gibt. Also ist $x$ ein Häufungspunkt von $B$, also $b \in B'$. Aus der Beliebigkeit von $a \in A'$ folgt, dass $A' \subseteq B'$.
+   Es sei $x \in A'$. Für jedes $\varepsilon > 0$ gibt es dann ein $a \in A$ mit $\|x-a\| < \varepsilon$ und $a \neq x$. Da $a \in A \subseteq B$ folgt, dass es für jedes $\varepsilon > 0$ ein $b \in B$ mit $\|x-b\| < \varepsilon$ und $b \neq x$ gibt. Also ist $x$ ein Häufungspunkt von $B$, also $x \in B'$. Aus der Beliebigkeit von $x \in A'$ folgt, dass $A' \subseteq B'$.
   \item
    Da $A \subseteq A \cup B$ ist $A' \subseteq (A \cup B)'$, und da $B \subseteq A \cup B$ ist $B' \subseteq (A \cup B)'$. Also ist auch $A' \cup B' \subseteq (A \cup B)'$.
    
-   Angenommen, es ist $x \notin A' \cup B'$. Dann gibt es $\varepsilon_A, \varepsilon_B > 0$, so dass es kein $a \in A$ mit $\|x-a\| < \varepsilon$ und $x \neq a$ gibt, und auch kein $b \in B$ mit $\|x-b\| < \varepsilon$ und $x \neq b$. Für $\varepsilon \coloneqq \min\{\varepsilon_A, \varepsilon_B\}$ gibt es daher kein $y \in A \cup B$ mit $\|x-y\| < \varepsilon$ und $y \neq x$. Also ist dann $x \notin (A \cup B)'$. Das zeigt, dass auch $(A \cup B)' \subseteq A' \cup B'$.
+   Angenommen, es ist $x \notin A' \cup B'$. Dann gibt es $\varepsilon_A, \varepsilon_B > 0$, so dass es kein $a \in A$ mit $\|x-a\| < \varepsilon_A$ und $a \neq x$ gibt, und auch kein $b \in B$ mit $\|x-b\| < \varepsilon_B$ und $b \neq x$. Für $\varepsilon \coloneqq \min\{\varepsilon_A, \varepsilon_B\}$ gibt es daher kein $c \in A \cup B$ mit $\|x-c\| < \varepsilon$ und $c \neq x$. Also ist dann $x \notin (A \cup B)'$. Das zeigt, dass auch $(A \cup B)' \subseteq A' \cup B'$.
   \qedhere
  \end{enumerate}
 \end{solution}
@@ -156,7 +159,11 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
   \]
  \end{beh}
  \begin{proof}[Beweis der Behauptung]
-  Für $x < a$  ist $a - x > 0$, es gibt aber kein $y \in [a,b]$ mit $\|x-y\| < a-x$; also ist dann $x \notin [a,b]'$ Analog ergibt sich, dass auch $x \notin [a,b]'$ für $x > b$. Also ist $[a,b]' \subseteq [a,b]$.
+  Für $x < a$  ist $a-x > 0$. Für alle $y \in [a,b]$ ist wegen $y \geq a$ aber
+  \[
+   \|x-y\| = y-x \geq a-x,
+  \]
+  es gibt also kein $y \in [a,b]$ mit $\|x-y\| < a-x$. Daher ist $x \notin [a,b]'$.  Analog ergibt sich, dass auch $x \notin [a,b]'$ für $x > b$. Also ist $[a,b]' \subseteq [a,b]$.
   
   Dass $a,b \in [a,b]'$ ergibt sich durch die Folgen $(x_n)$ auf $(a,b]$ und $(y_n)$ auf $[a,b)$ mit
   \[
@@ -193,12 +200,46 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
  \]
  falls es für jedes $\varepsilon > 0$ ein $\delta > 0$ gibt, so dass
  \[
-  \|x-a\| < \delta \Rightarrow \|f(x)-f(a)\| < \varepsilon
+  \|x-a\| < \delta \Rightarrow \|y-f(a)\| < \varepsilon
   \quad
   \text{für alle $a \in A$ mit $a \neq x$}.
  \]
- Wir nennen $y$ dann den \emph{Grenzwert von $f$ an $x$ über $A$}.
+ Wir nennen $y$ dann den \emph{Grenzwert von $f$ an $x$ über $A$}. Wir schreiben auch $f(a) \to y$ für $a \to x$ über $a \in A$
 \end{defi}
+
+
+%TODO: Bemerkungen zu a != x
+
+
+Grenzwerte von Funktionen sind eindeutig:
+
+
+\begin{lem}
+ Es sei $A \subseteq \R^n$, $f \colon A \to \R^m$ und $x \in \R^n$ ein Häufungspunkt von $A$. Sind $y, y' \in \R^m$, so dass $f(a) \to y$ und $f(a) \to y'$ für $a \to x$ über $a \in A$, so ist $y = y'$.
+\end{lem}
+\begin{proof}
+ Es sei $\varepsilon > 0$ beliebig aber fest. Da $f(a) \to y$ für $a \to x$ über $a \in A$ gibt es ein $\delta_1 > 0$ mit
+ \[
+  \|x-a\| < \delta_1 \Rightarrow \|y-f(a)\| < \frac{\varepsilon}{2}
+  \quad \text{für alle $a \in A$ mit $a \neq x$}.
+ \]
+ Da $f(a) \to y'$ für $a \to x$ über $a \in A$ gibt es auch ein $\delta_2 > 0$, so dass
+ \[
+  \|x-a\| < \delta_2 \Rightarrow \|y'-f(a)\| < \frac{\varepsilon}{2}
+  \quad \text{für alle $a \in A$ mit $a \neq x$}.
+ \]
+ Da $x$ eine Häufungspunkt von $A$ ist, gibt es für $\delta \coloneqq \min \{\delta_1, \delta_2\} > 0$ ein $a \in A$ mit $\|x-a\| < \delta$ und $a \neq x$. Deshalb ist
+ \[
+  \|y-y'\|
+  \leq \|y-f(a)\| + \|y'-f(a)\|
+  < \frac{\varepsilon}{2} + \frac{\varepsilon}{2}
+  = \varepsilon.
+ \]
+ Da $\|y-y'\| < \varepsilon$ für alle $\varepsilon > 0$ ist bereits $\|y-y'\| = 0$, also $y = y'$
+\end{proof}
+
+
+%TODO: Bemerkung zu Häufungspunkt, da sonst keine Eindeutigkeit
 
 
 \begin{bsp}
@@ -265,23 +306,23 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
 \begin{proof}
  (\ref{enum: Grenzwert mit epsilon delta} $\Rightarrow$ \ref{enum: Grenzwert mit Folgen}) Es sei $(a_n)$ eine Folge auf $A \setminus \{x\}$ mit $a_n \to x$. Wir wollen zeigen, dass $f(a_n) \to y$. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Da $\lim_{a \to x, a \in A} f(a) = y$ gibt es ein $\delta > 0$, so dass
  \[
-  \|x-a\| < \delta \Rightarrow \|f(x)-f(a)\| < \varepsilon
+  \|x-a\| < \delta \Rightarrow \|y-f(a)\| < \varepsilon
   \quad \text{für alle $a \in A$ mit $a \neq x$}.
  \]
- Da $a_n \to x$ gibt es ein $N \in \N$ mit $\|x - a_n\| < \delta$ für alle $n \geq N$. Da $a_n \neq x$ ist deshalb $\|f(x)-f(a_n)\| < \varepsilon$ für alle $n \geq N$.
+ Da $a_n \to x$ gibt es ein $N \in \N$ mit $\|x - a_n\| < \delta$ für alle $n \geq N$. Da $a_n \neq x$ ist deshalb $\|y-f(a_n)\| < \varepsilon$ für alle $n \geq N$.
  
- (\ref{enum: Grenzwert mit Folgen} $\Rightarrow$ \ref{enum: Grenzwert mit epsilon delta}) Angenommen es ist nicht $\lim_{a \to x, a \in A} f(a) = y$. Dann gibt es ein $\varepsilon > 0$, so dass es für alle $\delta > 0$ ein $a \in A$ gibt, so dass zwar $x \neq a$ und $\|x-a\| < \delta$, aber $\|y-f(a)\| \geq \varepsilon$. Insbesondere gibt es deshalb für alle $n \geq 1$ ein $a_n \in A \setminus \{x\}$ mit $\|x-a_n\| < 1/n$ aber $\|y-f(a_n)\| \geq \varepsilon$. Dann ist $(a_n)$ eine Folge auf $A \setminus \{x\}$ mit $a_n \to x$, aber nicht $f(a_n) \rightarrow y$.
+ (\ref{enum: Grenzwert mit Folgen} $\Rightarrow$ \ref{enum: Grenzwert mit epsilon delta}) Angenommen, es ist nicht $\lim_{a \to x, a \in A} f(a) = y$. Dann gibt es ein $\varepsilon > 0$, so dass es für alle $\delta > 0$ ein $a \in A$ gibt, so dass zwar $a \neq x$ und $\|x-a\| < \delta$, aber $\|y-f(a)\| \geq \varepsilon$. Insbesondere gibt es deshalb für alle $n \geq 1$ ein $a_n \in A \setminus \{x\}$ mit $\|x-a_n\| < 1/n$ aber $\|y-f(a_n)\| \geq \varepsilon$. Dann ist $(a_n)$ eine Folge auf $A \setminus \{x\}$ mit $a_n \to x$, aber es gilt nicht $f(a_n) \rightarrow y$.
 \end{proof}
 
 
-Aus dieser Beschreibung von Funktionsgrenzwerten durch  Folgen ergeben sich direkt zwei einfache Konsequenzen: Zum einen sehen wir, dass sich Funktionsgrenzwerte auch koordinatenweise beschreiben lassen.
+Aus dieser Beschreibung von Funktionsgrenzwerten durch Folgen ergeben sich direkt zwei einfache Konsequenzen: Zum einen sehen wir, dass sich Funktionsgrenzwerte auch koordinatenweise beschreiben lassen.
 
 
 \begin{lem}
- Es sei $f \colon A \to \R^m$ mit $A \subseteq \R^n$ und $x \in \R^n$ ein Häufungspunkt von $A$. In Koordinaten sei $f = (f_1, \dotsc, f_m)$. Für $y = (y_1, \dotsc, y_m) \in \R^m$ ist genau dann $\lim_{a \to x, a \in A} f(a) = y$, falls $\lim_{a \to x, a \in A} f_i(a) = y_i$ für alle $1 \leq i \leq m$.
+ Es sei $f \colon A \to \R^m$ mit Definitionsbereich $A \subseteq \R^n$ und $x \in \R^n$ ein Häufungspunkt von $A$. In Koordinaten sei $f = (f_1, \dotsc, f_m)$. Für $y = (y_1, \dotsc, y_m) \in \R^m$ ist genau dann $\lim_{a \to x, a \in A} f(a) = y$, falls $\lim_{a \to x, a \in A} f_i(a) = y_i$ für alle $1 \leq i \leq m$.
 \end{lem}
 \begin{proof}
- Das $\lim_{a \to x, a \in A} f(a) = y$ ist äquivalent dazu, dass für jede Folge $(a_n)$ auf $A \setminus \{x\}$ mit $a_n \to x$ auch $f(a_n) \to y$. Dies ist äquivalent dazu, dass für jede Folge $(a_n)$ auf $A \setminus \{x\}$ auch $f_i(a_n) \to y_i$ für alle $1 \leq i \leq m$. Dies bedeutet wiederum, dass $\lim_{a \to x, a \in A} f_i(a) = y_i$ für alle $1 \leq i \leq n$.
+ Dass $\lim_{a \to x, a \in A} f(a) = y$ ist äquivalent dazu, dass für jede Folge $(a_n)$ auf $A \setminus \{x\}$ mit $a_n \to x$ auch $f(a_n) \to y$. Dies ist äquivalent dazu, dass für jede Folge $(a_n)$ auf $A \setminus \{x\}$ auch $f_i(a_n) \to y_i$ für alle $1 \leq i \leq m$. Dies bedeutet wiederum, dass $\lim_{a \to x, a \in A} f_i(a) = y_i$ für alle $1 \leq i \leq n$.
 \end{proof}
 
 
@@ -291,8 +332,6 @@ Ein weiteres Ergebnis ist, dass Funktionsgrenzwerte mit den üblichen Rechenrege
 \begin{prop}
  Es seien $A \subseteq \R^n$, $f, f_1, f_2 \colon A \to \R^m$, $\lambda \in \R$ und $x \in \R^n$ ein Häufungspunkt von $A$.
  \begin{enumerate}
-  \item
-   Der Grenzwert $\lim_{a \to x, a \in A} f(a)$ ist eindeutig (wenn er existiert).
   \item
    Existieren die Grenzwerte $\lim_{a \to x, a \in A} f_1(a)$ und $\lim_{a \to x, a \in A} f_2(a)$, so existiert auch der Grenzwert $\lim_{x \to a, a \in A} (f_1 + f_2)(a)$ und es gilt
    \[
@@ -325,17 +364,17 @@ Ein weiteres Ergebnis ist, dass Funktionsgrenzwerte mit den üblichen Rechenrege
     = \frac{\lim_{a \to x, a \in A} f_1(a)}{\lim_{a \to x, a \in A} f_2(a)}
    \]
  \end{enumerate}
- (Sehen wir $\R^2 \cong \C$, so ergibt sich auch eine Verträglichkeit mit der Multiplikation und Division im Komplexen; hierdrauf wollen wir jetzt aber nicht weiter eingehen.)
+ (Sehen wir $\R^2 \cong \C$, so ergibt sich auch eine Verträglichkeit mit der Multiplikation und Division im Komplexen; hierdrauf gehen wir hier aber nicht weiter ein.)
 \end{prop}
 
 
-Wie wir bereits gesehen haben, können für eine Funktion $f \colon X \to \R^m$ mit Definitionsbereich $X \subseteq \R^n$ für Teilmengen $A, B \subseteq X$ mit gemeinsamen Häufungspunkt $x \in \R^n$ die beiden Grenzwerte $\lim_{a \to x, a \in A} f(a)$ und $\lim_{b \to x, b \in B} f(b)$ existieren, aber dennoch
+Wie wir bereits gesehen haben, können für eine Funktion $f \colon X \to \R^m$ mit Definitionsbereich $X \subseteq \R^n$ und Teilmengen $A, B \subseteq X$ mit gemeinsamen Häufungspunkt $x \in \R^n$ die beiden Grenzwerte $\lim_{a \to x, a \in A} f(a)$ und $\lim_{b \to x, b \in B} f(b)$ existieren, aber dennoch
 \[
  \lim_{\substack{a \to x \\ a \in A}} f(a)
  \neq
  \lim_{\substack{b \to x \\ b \in B}} f(b).
 \]
-Es kann auch passieren, dass einer der beiden Grenzwerte existiert, der andere jedoch nicht. Es gibt also im Allgemeinen keinen Zusammehang zwischen dem Grenzwert von $f$ über $A$ und dem Grenzwert über $B$. Unter bestimmten Umständen lassen sich die entsprechenden Grenzwerte aber vergleichen:
+Es kann auch passieren, dass einer der beiden Grenzwerte existiert, der andere jedoch nicht. Es gibt also im Allgemeinen keinen Zusammehang zwischen dem Grenzwert von $f$ über $A$ und dem Grenzwert über $B$. Unter bestimmten Umständen lassen sich die beiden Grenzwerte aber vergleichen:
 
 
 \begin{lem}\label{lem: Grenzwerte auf Teilmengen}
@@ -373,6 +412,98 @@ Es kann auch passieren, dass einer der beiden Grenzwerte existiert, der andere j
   = \lim_{\substack{b \to x \\ b \in B}} f(b).
   \qedhere
  \]
+\end{proof}
+
+
+
+
+
+\section{Grenzwerte und Stetigkeit}
+Die Definition von Funktionsgrenzwerten erinnert stark an das $\varepsilon$-$\delta$-Kriterium für die Stetigkeit einer Funktion. Diese Ähnlichkeit legt die Vermutung nahe, dass sich die Stetigkeit einer Funktion durch die Betrachtung von passenden Funktionsgrenzwerten untersuchen lässt.
+
+
+\begin{lem}\label{lem: Unabhängigkeit von Umgebung}
+ Es sei $f \colon A \to \R^m$ mit Definitionsbereich $A \subseteq \R^n$. $f$ sei auf einer Umgebung von $x \in \R^n$ definiert, d.h.\ es gebe eine Umgebung $V$ von $x$ mit $V \subseteq A$. Dann sind die folgenden beiden Bedingungen äquivalent:
+ \begin{enumerate}
+  \item\label{enum: eine Umgebung}
+   Der Grenzwert $\lim_{a \to x, a \in V} f(a)$ existiert für eine Umgebung $V \subseteq \R^n$ von $x$ mit $V \subseteq A$.
+  \item\label{enum: alle Umgebungen}
+   Der Grenzwert $\lim_{a \to x, a \in U} f(a)$ existiert für jede Umgebung $U \subseteq \R^n$ von $x$ mit $U \subseteq A$.
+ \end{enumerate}
+ Der Grenzwert $\lim_{a \to x, a \in U} f(a)$ ist dabei unabhängig von der Wahl der Umgebung $U$ von $x$ mit $U \subseteq A$.
+\end{lem}
+\begin{proof} 
+ (\ref{enum: alle Umgebungen} $\Rightarrow$ \ref{enum: eine Umgebung}) Nach Annahme existiert eine Umgebung $V \subseteq \R^n$ von $x$, so dass $f$ auf $V$ definiert ist, also mit $V \subseteq A$; diese Implikation ist daher klar.
+ 
+ (\ref{enum: eine Umgebung} $\Rightarrow$ \ref{enum: alle Umgebungen}) Es sei $V$ eine entsprechende Umgebung von $x$ und $y \coloneqq \lim_{a \to x, a \in V} f(a)$. Es sei $U \subseteq \R^n$ eine beliebige Umgebung von $x$ mit $U \subseteq A$. Wir wollen zeigen, dass $\lim_{a \to x, a \in U} f(a)$ existiert und $\lim_{a \to x, a \in U} f(a) = y$.
+ 
+ Es sei hierfür $\varepsilon > 0$ beliebig aber fest. Da $y = \lim_{a \to x, a \in V} f(a)$ gibt es $\delta_1 > 0$, so dass
+ \[
+  \|x-a\| < \delta_1 \Rightarrow \|y-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in A$ mit $a \neq x$}.
+ \]
+ Da $V$ eine Umgebung von $x$ ist, gibt es außerdem ein $\delta_2 > 0$ mit $B_{\delta_2}(x) \subseteq V$. Für $\delta' \coloneqq \min\{\delta_1, \delta_2\}$ ist deshalb $B_{\delta'}(x) \subseteq V$ und
+ \[
+  \|y-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in B_{\delta'}(x)$ mit $a \neq x$}.
+ \]
+ 
+ Da auch $U$ eine Umgebung von $x$ ist, gibt es ein $\delta'' > 0$ mit $B_{\delta''}(x) \subseteq U$. Für $\delta \coloneqq \min\{\delta', \delta''\}$ ist also $B_\delta(x) \subseteq U$ mit
+ \[
+  \|y-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in B_\delta(x)$ mit $a \neq x$}.
+ \]
+ Damit erhalten wir, dass
+ \[
+  \|x-a\| < \delta \Rightarrow \|y-f(a)\| < \varepsilon \quad \text{für alle $a \in U$ mit $a \neq x$}.
+ \]
+ Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $\lim_{a \to x, a \in U} f(a) = y$.
+\end{proof}
+
+
+\begin{defi}
+ Es sei $f \colon A \to \R^m$ mit Definitionsbereich $A \subseteq \R^n$. Ist $f$ auf einer Umgebung $V$ von $x \in \R^n$ definiert, also $V \subseteq A$, so schreiben wir
+ \[
+  \lim_{a \to x} f(a)
+  \quad
+  \text{für}
+  \quad
+  \lim_{\substack{a \to x \\ a \in V}} f(a)
+ \]
+ und nennen dies den \emph{Grenzwert von $f$ an $x$}.
+\end{defi}
+
+
+Die Wohldefiniertheit, also Unabhängigkeit von $V$, folgt aus Lemma \ref{lem: Unabhängigkeit von Umgebung}.
+
+
+\begin{prop}\label{prop: Stetigkeit durch Funktionsgrenzwerte}
+ Es sei $f \colon A \to \R^m$ mit Definitionsbereich $A \subseteq \R^n$ auf einer Umgebung von $x$ definiert. Dann ist $f$ genau dann stetig an $x$, wenn \mbox{$\lim_{a \to x} f(a) = f(x)$}.
+\end{prop}
+\begin{proof}
+ Angenommen $f$ ist stetig an $x$. Es sei $V \subseteq \R^n$ eine Umgebung von $x$ mit $V \subseteq A$. Wir wollen zeigen, dass $\lim_{a \to x, a \in V} f(a) = f(x)$. Hierfür sei $\varepsilon > 0$ beliebig aber fest. Da $f$ stetig an $x$ ist gibt es $\delta > 0$, so dass
+ \[
+  \|x-a\| < \delta \Rightarrow \|f(x)-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in A$}.
+ \]
+ Daher ist insbesondere
+ \[
+  \|x-a\| < \delta \Rightarrow \|f(x)-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in V$ mit $a \neq x$}.
+ \]
+ Wegen der Beliebigkeit von $\varepsilon > 0$ folgt, dass $\lim_{a \to x, a \in V} f(a) = f(x)$.
+ 
+ Angenommen, es ist $\lim_{x \to a} f(a) = f(x)$. Wir wollen zeigen, dass $f$ stetig an $x$ ist. Hierfür sei $\varepsilon > 0$ beliebig aber fest. Es sei $V \subseteq \R^n$ eine Umgebung von $x$ mit $V \subseteq A$. Da $V$ eine Umgebung von $x$ ist, gibt es ein $\delta_1 > 0$ mit $B_{\delta_1}(x) \subseteq V$. Da $\lim_{a \to x} f(a) = f(x)$ ist $\lim_{a \to x, a \in V} f(a) = f(x)$, es gibt daher ein $\delta_2 > 0$ mit
+ \[
+  \|x-a\| < \delta_2 \Rightarrow \|f(x)-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in V$ mit $a \neq x$},
+ \]
+ und wir können offenbar auch $a = x$ zulassen. Für $\delta \coloneqq \min\{\delta_1, \delta_2\}$ haben wir nun $B_\delta(x) \subseteq B_{\delta_1}(x) \subseteq V$ und $\|x-a\| < \delta \leq \delta_2$ für alle $a \in B_\delta(x)$, und somit
+ \[
+  \|x-a\| < \delta \Rightarrow \|f(x)-f(a)\| < \varepsilon
+  \quad \text{für alle $a \in A$.}
+ \]
+ Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies die Stetigkeit von $f$ an $x$.
 \end{proof}
 
 
@@ -421,11 +552,18 @@ Wir wollen uns nun einem Sonderfall von Funktionsgrenzwerten zuwenden.
 Die Wohldefiniertheit der jeweiligen Ausdrücke, also die Unabhängigkeit von $r$, ergibt sich aus Korollar \ref{kor: gemeinsamer Häufungspunkt mit gemeinsamen Grenzwert}.
 
 
+\begin{bem}
+ Ist $V \subseteq \R$ eine Umgebung von $x \in \R$, und $f \colon V \to \R^m$, so ist die Notation $\lim_{a \to x} f(a)$ doppelt belegt: Zum einen steht die Notation für $\lim_{a \to x, a \in V} f(a)$. Zum anderen gibt es, da $V$ eine Umgebung von $x$ ist, ein $r > 0$ mit $(x-r,x+r) \subseteq V$; dann steht die Notation auch für $\lim_{a \to x, a \in (x-r,x) \cup (x,x+r)} f(a)$.
+ 
+ Die beiden Definitionen sind in diesem Fall allerdings gleichbedeutend: Per Definition ist der Grenzwertes $\lim_{a \to x, a \in (x-r,x) \cup (x,x+r)} f(a)$ gleichbedeutend zum Grenzwert $\lim_{a \to x, a \in (x-r,x+r)} f(a)$. Dieser Grenzwert ist nach Lemma \ref{lem: Unabhängigkeit von Umgebung} der gleiche wie $\lim_{a \to x, a \in V} f(a)$.
+\end{bem}
+
+
 Der beidseitige Grenzwert lässt sich auch als Kombination des links- und rechtsseitigen Grenzwertes definieren:
 
 
 \begin{lem}
- Es sei $A \subseteq \R$ und $f \colon A \to \R$. Für $x \in \R$ und $y \in \R$ sind äquivalent:
+ Es sei $A \subseteq \R$ und $f \colon A \to \R^m$. Für $x \in \R$ und $y \in \R^m$ sind äquivalent:
  \begin{enumerate}
   \item\label{enum: beidseitiger Grenzwert}
    Der beidseitige Grenzwert $\lim_{a \to x} f(a)$ existiert und $\lim_{a \to x} f(a) = y$.
@@ -470,7 +608,6 @@ Der beidseitige Grenzwert lässt sich auch als Kombination des links- und rechts
  \]
  Aus der Beliebigkeit von $\varepsilon > 0$ folgt, dass $\lim_{a \to x} f(a) = y$.
 \end{proof}
-
 
 
 Aus unserer Untersuchung allgemeiner Funktionsgrenzwerte ergibt sich für die Sonderfälle von links-, rechts- und beidseitigen Grenzwert die Verträglichkeit mit den üblichen Rechenregeln.
@@ -613,101 +750,7 @@ Aus unserer Untersuchung allgemeiner Funktionsgrenzwerte ergibt sich für die So
 \end{solution}
 
 
-
-
-
-\section{Grenzwerte und Stetigkeit}
-
-
-\begin{lem}\label{lem: Unabhängigkeit von Umgebung}
- Es $f \colon A \to \R^m$ mit Definitionsbereich $A \subseteq \R^n$ auf einer Umgebung von $x \in \R^n$ definiert. Zeigen Sie, dass die folgenden beiden Bedingungen äquivalent sind:
- \begin{enumerate}
-  \item\label{enum: eine Umgebung}
-   Der Grenzwert $\lim_{a \to x, a \in V} f(a)$ existiert für eine Umgebung $V \subseteq \R^n$ von $x$ mit $V \subseteq A$.
-  \item\label{enum: alle Umgebungen}
-   Der Grenzwert $\lim_{a \to x, a \in U} f(a)$ existiert für jede Umgebung $U \subseteq \R^n$ von $x$ mit $U \subseteq A$.
- \end{enumerate}
- (Nach Annahme existiert eine solche Umgebung, die zweite Aussage ist daher nicht leer.)
- Zeigen sie ferner, dass der Grenzwert $\lim_{a \to x, a \in U} f(a)$ unabhängig von der Wahl der Umgebung $U$ von $x$ mit $U \subseteq A$ ist.
-\end{lem}
-\begin{proof} 
- (\ref{enum: alle Umgebungen} $\Rightarrow$ \ref{enum: eine Umgebung}) Nach Annahme existiert eine Umgebung $V \subseteq \R^n$ von $x$, so dass $f$ auf $V$ definiert ist, also mit $V \subseteq A$; diese Implikation ist daher klar.
- 
- (\ref{enum: eine Umgebung} $\Rightarrow$ \ref{enum: alle Umgebungen}) Es sei $V$ eine entsprechende Umgebung und $y \coloneqq \lim_{a \to x, a \in V} f(a)$. Es sei $U \subseteq \R^n$ eine beliebige Umgebung von $x$ mit $U \subseteq A$. Wir wollen zeigen, dass $\lim_{a \to x, a \in U} f(a)$ existiert und dass $\lim_{a \to x, a \in V} f(a) = y$.
- 
- Es sei hierfür $\varepsilon > 0$ beliebig aber fest. Da $y = \lim_{a \to x, a \in V} f(a)$ gibt es $\delta_1 > 0$, so dass
- \[
-  \|x-a\| < \delta_1 \Rightarrow \|y-f(a)\| < \varepsilon
-  \quad \text{für alle $a \in A$}.
- \]
- Da $V$ eine Umgebung von $x$ ist, gibt es außerdem ein $\delta_2 > 0$ mit $B_{\delta_2}(x) \subseteq V$. Für $\delta' \coloneqq \min\{\delta_1, \delta_2\}$ ist deshalb auch $B_{\delta'}(x) \subseteq V$ mit
- \[
-  \|y-f(a)\| < \varepsilon \quad \text{für alle $a \in B_{\delta'}(x)$}.
- \]
- 
- Da $U$ eine Umgebung von $x$ ist, gibt es $\delta'' > 0$ mit $B_{\delta''}(x) \subseteq U$. Für $\delta \coloneqq \min\{\delta', \delta''\}$ ist also $B_\delta(x) \subseteq U$ mit
- \[
-  \|y-f(a)\| < \varepsilon \quad \text{für alle $a \in B_\delta(x)$}.
- \]
- Damit erhalten wir, dass
- \[
-  \|x-a\| < \delta \Rightarrow \|y-f(a)\| < \varepsilon \quad \text{für alle $a \in U$}.
- \]
- wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $\lim_{a \to x, a \in U} f(a) = y$.
-\end{proof}
-
-
-\begin{defi}
- Es sei $f \colon A \to \R^m$ mit Definitionsbereich $A \subseteq \R^n$. Ist $f$ auf einer Umgebung von $x \in \R^n$ von $A$ definiert, so schreiben wir
- \[
-  \lim_{a \to x} f(a)
-  \quad
-  \text{für}
-  \quad
-  \lim_{a \to x, a \in V} f(a)
- \]
- und nennen dies den \emph{Grenzwert von $f$ an $x$}.
-\end{defi}
-
-
-Die Wohldefiniertheit, also Unabhängigkeit von $V$, folgt aus Lemma \ref{lem: Unabhängigkeit von Umgebung}.
-
-
-\begin{bem}
- Ist $V \subseteq \R$ eine Umgebung von $x \in \R$, und $f \colon V \to \R^m$, so ist die Notation $\lim_{a \to x} f(a)$ doppelt belegt: Zum einen steht die Notation für $\lim_{a \to x, a \in v} f(a)$. Zum anderen gibt es, da $V$ eine Umgebung von $x$ ist, ein $r > 0$ mit $(x-r,x+r) \subseteq V$; dann steht die Notation auch für $\lim_{a \to x, a \in (x-r,x) \cup (x,x+r)} f(a)$.
- 
- Die beiden Definitionen sind in diesem Fall allerdings gleichbedeutend: Per Definition ist der Grenzwertes $\lim_{a \to x, a \in (x-r,x) \cup (x,x+r)} f(a)$ gleichbedeutend zum Grenzwert $\lim_{a \to x, a \in (x-r,x+r)} f(a)$. Dieser Grenzwert ist nach Lemma \ref{lem: Unabhängigkeit von Umgebung} der gleiche wie $\lim_{a \to x, a \in V} f(a)$.
-\end{bem}
-
-
-\begin{prop}
- Es sei $f \colon A \to \R^m$ mit Definitionsbereich $A \subseteq \R^n$, die auf einer Umgebung von $x$ definiert ist. Dann ist $f$ genau dann stetig an $x$, wenn $\lim_{a \to x} f(a) = f(x)$.
-\end{prop}
-\begin{proof}
- Angenommen $f$ ist stetig an $x$. Es sei $V \subseteq \R^n$ eine Umgebung von $x$ mit $V \subseteq A$. Wir wollen zeigen, dass $\lim_{a \to x, a \in V} f(a) = f(x)$. Hierfür sei $\varepsilon > 0$ beliebig aber fest. Da $f$ stetig an $x$ ist gibt es $\delta > 0$, so dass
- \[
-  \|x-a\| < \delta_1 \Rightarrow \|f(x)-f(a)\| < \varepsilon
-  \quad \text{für alle $a \in A$}.
- \]
- Daher ist insbesondere
- \[
-  \|x-a\| < \delta \Rightarrow \|f(x)-f(a)\| < \varepsilon
-  \quad \text{für alle $a \in V$ mit $a \neq x$}.
- \]
- Wegen der Beliebigkeit von $\varepsilon > 0$ folgt, dass $\lim_{a \to x, a \in V} f(a) = f(x)$.
- 
- Angenommen, es ist $\lim_{x \to a} f(a) = f(x)$. Wir wollen zeigen, dass $f$ stetig an $x$ ist. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Es sei $V \subseteq \R^n$ eine Umgebung von $x$ mit $V \subseteq A$. Da $V$ eine Umgebung von $x$ ist, gibt es ein $\delta_1 > 0$ mit $B_{\delta_1}(x) \subseteq V$. Da $\lim_{a \to x} f(a) = f(x)$ ist $\lim_{a \to x, a \in V} f(a) = f(x)$, es gibt daher ein $\delta_2 > 0$ mit
- \[
-  \|x-a\| < \delta_2 \Rightarrow \|f(x)-f(a)\| < \varepsilon
-  \quad \text{für alle $a \in A$ mit $a \neq x$};
- \]
- offenbar können wir hier auch $a = x$ zulassen. Für $\delta \colon \min\{\delta_1, \delta_2\}$ haben wir nun $B_\delta(x) \subseteq B_{\delta_1}(x) \subseteq V$ und $\|x-a\| < \delta_2$ für alle $a \in B_\delta(x)$, und somit
- \[
-  \|x-a\| < \delta \Rightarrow \|f(x)-f(a)\| < \varepsilon
-  \quad \text{für alle $a \in B_\delta(x)$.}
- \]
- Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies die Stetigkeit von $f$ an $x$.
-\end{proof}
+Zusammen mit Proposition \ref{prop: Stetigkeit durch Funktionsgrenzwerte} ergibt sich damit die aus der Vorlesung bekannte Charakterisierung der Stetigkeit einer monotonen Funktion:
 
 
 \begin{kor}

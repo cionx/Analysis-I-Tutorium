@@ -2,6 +2,6 @@
 \contentsline {section}{\numberline {1}Stetige Funktionen auf abgeschlossenen Intervallen}{1}
 \contentsline {section}{\numberline {2}Folgenkompaktheit}{3}
 \contentsline {section}{\numberline {3}Überdeckungskompaktheit}{3}
-\contentsline {section}{\numberline {4}Äquivalenz der Kompaktheitsbegriffe}{5}
-\contentsline {section}{\numberline {5}Der Satz von Heine-Borel}{7}
+\contentsline {section}{\numberline {4}Äquivalenz der Kompaktheitsbegriffe}{6}
+\contentsline {section}{\numberline {5}Der Satz von Heine-Borel}{8}
 \contentsline {section}{\numberline {6}Weitere Eigenschaften kompakter Mengen}{9}
