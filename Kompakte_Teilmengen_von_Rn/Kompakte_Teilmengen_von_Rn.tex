@@ -388,7 +388,17 @@ Der Satz von Heine-Borel ist sehr nützlich, um Teilmengen von $\R^n$ auf Kompak
    zwar abgeschlossen, aber nicht beschränkt, und somit auch nicht kompakt.
   \item
    Offene $\varepsilon$-Bälle sind zwar beschränkt, aber nicht abgeschlossen, und somit ebenfalls nicht kompakt.
-  \end{itemize}
+  \item
+   Die obere Halbebene
+   \[
+    \mathbb{H} \coloneqq \{(x,y) \in \R^2 \mid y > 0\}
+   \]
+   ist weder abgeschlossen noch beschränkt und somit nicht kompakt. Die abgeschlossene obere Halbebene
+   \[
+    \overline{\mathbb{H}} \coloneqq \{(x,y) \in \R^2 \mid y \geq 0\}
+   \]
+   ist zwar abgeschlossen, aber nicht beschränkt, und somit nicht kompakt.
+ \end{itemize}
 \end{bsp}
 
 
@@ -542,6 +552,27 @@ Bilder kompakter Mengen (unter stetigen Abbildungen) sind also kompakt.
  \]
  also $f(\R) \subseteq (-1,1)$. Für die kompakte Teilmenge $[-1,1] \subseteq \R$ ist deshalb das Urbild $f^{-1}([-1,1]) = \R$ nicht kompakt.
 \end{bem}
+
+
+Wir wissen bereits, dass stetige, reellwertige Funktionen auf kompakten Mengen beschränkt sind. Man kann sich überlegen, dass die kompakte Teilmengen von $\R^n$ dadurch bereits charakterisiert sind.
+
+
+\begin{lem}
+ Es sei $K \subseteq \R^m$, so dass jede stetige Funktion $K \to \R$ beschränkt ist. Dann ist $K$ kompakt.
+\end{lem}
+\begin{proof}
+ Wir zeigen, dass $K$ abgeschlossen und beschränkt ist.
+ 
+ Angenommen $K$ wäre nicht abgeschlossen. Dann gebe es eine Folge $(x_n)$ auf $K$, die gegen ein $x \in \R^m$ mit $x \notin K$ konvergiert. Dann ist die Abbildung
+ \[
+  f \colon K \to \R, y \mapsto \frac{1}{\|x-y\|}
+ \]
+ wohldefiniert und stetig. Da $x_n \to x$ ist allerdings $f(x_n) = 1/\|x-x_n\| \to \infty$, also $f$ auf $K$ unbeschränkt. Das widerspricht den Annahmen an $K$. Also ist $K$ abgeschlossen unter Grenzwerten von Folgen und somit abgeschlossen.
+ 
+ Dass $K$ beschränkt ist, ergibt sich direkt daraus, dass die Norm $\|\cdot\|$ stetig ist, und somit auf $K$ beschränkt.
+\end{proof}
+
+
 
 
 
