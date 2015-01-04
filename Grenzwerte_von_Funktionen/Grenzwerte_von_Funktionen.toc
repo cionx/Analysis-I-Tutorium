@@ -1,7 +1,7 @@
 \select@language {ngerman}
 \contentsline {section}{\numberline {1}Häufungspunkte}{1}
-\contentsline {section}{\numberline {2}Grenzwerte von Funktionen}{4}
-\contentsline {section}{\numberline {3}Grenzwerte und Stetigkeit}{7}
-\contentsline {section}{\numberline {4}Links-, rechts- und beidseitige Grenzwerte}{9}
-\contentsline {section}{\numberline {5}Uneigentliche Grenzwerte}{13}
-\contentsline {section}{\numberline {6}Lösungen}{16}
+\contentsline {section}{\numberline {2}Grenzwerte von Funktionen}{2}
+\contentsline {section}{\numberline {3}Grenzwerte und Stetigkeit}{6}
+\contentsline {section}{\numberline {4}Links-, rechts- und beidseitige Grenzwerte}{7}
+\contentsline {section}{\numberline {5}Uneigentliche Grenzwerte}{12}
+\contentsline {section}{\numberline {6}Lösungen}{15}
