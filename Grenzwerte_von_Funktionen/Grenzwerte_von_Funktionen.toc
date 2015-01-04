@@ -4,4 +4,4 @@
 \contentsline {section}{\numberline {3}Grenzwerte und Stetigkeit}{7}
 \contentsline {section}{\numberline {4}Links-, rechts- und beidseitige Grenzwerte}{9}
 \contentsline {section}{\numberline {5}Uneigentliche Grenzwerte}{13}
-\contentsline {section}{\numberline {6}Lösungen der Übungen}{16}
+\contentsline {section}{\numberline {6}Lösungen}{16}

@@ -208,7 +208,7 @@ Vorstellungsmäßig ist $x \in \R^n$ ein Häufungspunkt von $A \subseteq \R^n$, 
 \end{defi}
 
 
-%TODO: Bemerkungen zu a != x
+Die Bedingung $a \neq x$ sorgt dafür, dass nur das Verhalten von $f$ in der Nähe von $x$ von Bedeutung ist, unabhängig von $f(x)$ selbst. So können wir untersuchen, wie sich $f$ an $x$ verhalten \emph{sollte}.
 
 
 Grenzwerte von Funktionen sind eindeutig:
@@ -239,7 +239,7 @@ Grenzwerte von Funktionen sind eindeutig:
 \end{proof}
 
 
-%TODO: Bemerkung zu Häufungspunkt, da sonst keine Eindeutigkeit
+Für diese Eindeutigkeit ist es entscheidet, dass $x$ ein Häufungspunkt von $A$ ist; daher definieren wir Funktionsgrenzwerte nur für diesen Fall.
 
 
 \begin{bsp}
@@ -293,7 +293,7 @@ Grenzwerte von Funktionen sind eindeutig:
 \end{bsp}
 
 
-\begin{lem}
+\begin{lem}\label{lem: Funktionsgrenzwerte durch Folgen}
  Es sei $A \subseteq \R^m$, $f \colon A \to \R^k$ und $x \in \R^m$ ein Häufungspunkt von $A$. Für $y \in \R^k$ sind äquivalent:
  \begin{enumerate}
   \item\label{enum: Grenzwert mit epsilon delta}
@@ -553,6 +553,24 @@ Die Wohldefiniertheit der jeweiligen Ausdrücke, also die Unabhängigkeit von $r
 
 
 \begin{bem}
+ Explizit bedeutet die Definition folgendes: Ist $f \colon A \to \R^n$ mit Definitionsbereits $A \subseteq \R$, so ist für $x \in \R$ und $y \in \R^n$ genau dann $\lim_{a \uparrow x} f(a) = y$, falls
+ \begin{enumerate}
+  \item
+   es gibt ein $r > 0$, so dass $f$ auf $(x-r,x)$ definiert ist, und
+  \item
+   für alle $\varepsilon > 0$ gibt es ein $\delta > 0$, so dass
+   \[
+   \|y - f(a)\| < \varepsilon
+   \quad
+   \text{für alle $a \in A$ mit $a \in (x-\delta,x)$}.
+   \]
+ \end{enumerate}
+ Analoges gilt auch für $\lim_{y \downarrow x} f(y)$ und $\lim_{y \to x} f(y)$.
+\end{bem}
+
+
+
+\begin{bem}
  Ist $V \subseteq \R$ eine Umgebung von $x \in \R$, und $f \colon V \to \R^m$, so ist die Notation $\lim_{a \to x} f(a)$ doppelt belegt: Zum einen steht die Notation für $\lim_{a \to x, a \in V} f(a)$. Zum anderen gibt es, da $V$ eine Umgebung von $x$ ist, ein $r > 0$ mit $(x-r,x+r) \subseteq V$; dann steht die Notation auch für $\lim_{a \to x, a \in (x-r,x) \cup (x,x+r)} f(a)$.
  
  Die beiden Definitionen sind in diesem Fall allerdings gleichbedeutend: Per Definition ist der Grenzwertes $\lim_{a \to x, a \in (x-r,x) \cup (x,x+r)} f(a)$ gleichbedeutend zum Grenzwert $\lim_{a \to x, a \in (x-r,x+r)} f(a)$. Dieser Grenzwert ist nach Lemma \ref{lem: Unabhängigkeit von Umgebung} der gleiche wie $\lim_{a \to x, a \in V} f(a)$.
@@ -606,7 +624,7 @@ Der beidseitige Grenzwert lässt sich auch als Kombination des links- und rechts
 \end{proof}
 
 
-Aus unserer Untersuchung allgemeiner Funktionsgrenzwerte ergibt sich für die Sonderfälle von links-, rechts- und beidseitigen Grenzwert die Verträglichkeit mit den üblichen Rechenregeln.
+Aus unserer bisherigen, allgemeinen Untersuchung von Funktionsgrenzwerten ergibt sich für die Sonderfälle von links-, rechts- und beidseitigen Grenzwerten ohne weitere Arbeit die Verträglichkeit mit den üblichen Rechenoperationen. Aus Lemma \ref{lem: Funktionsgrenzwerte durch Folgen} ergibt sich außerdem, dass sich links-, rechts- und beidseitige Grenzwerte durch Folgen beschreiben lassen.
 
 
 \begin{bsp}
@@ -619,8 +637,10 @@ Aus unserer Untersuchung allgemeiner Funktionsgrenzwerte ergibt sich für die So
     \text{und}
     \quad
     b_n \coloneqq \frac{1}{\frac{3\pi}{2} + n \cdot 2\pi}
+    \quad
+    \text{für alle $n \in \N$}
    \]
-   konvergieren gegen $0$, aber
+   konvergieren gegen $0$, aber die beiden Grenzwerte
    \begin{gather*}
     \lim_{n \to \infty} \sin \frac{1}{a_n}
     = \lim_{n \to \infty} 1
@@ -628,19 +648,23 @@ Aus unserer Untersuchung allgemeiner Funktionsgrenzwerte ergibt sich für die So
    \shortintertext{und}
     \lim_{n \to \infty} \sin \frac{1}{b_n}
     = \lim_{n \to \infty} -1
-    = -1.
+    = -1
    \end{gather*}
+   unterscheiden sich.
   \item
    Es ist $\lim_{x \to 0} x \sin(1/x) = 0$: Wir wissen bereits, dass die Abbildung
    \[
-    f \colon \R \to \R,
+    f \colon \R \to \R
+    \quad
+    \text{mit}
+    \quad
     f(x) \coloneqq
     \begin{cases}
-     \sin \frac{1}{x} & \text{für $x \neq 0$}, \\
-                    0 & \text{für $x = 0$},
+     x \sin \frac{1}{x} & \text{für $x \neq 0$}, \\
+                      0 & \text{für $x = 0$},
     \end{cases}
    \]
-   stetig ist. (Stetigkeit an $x \neq 0$ ist klar, und an $x = 0$ ergibt die Stetigkeit aus dem $\varepsilon$-$\delta$-Kriterium.) Daher ist
+   stetig ist. (Stetigkeit an $x \neq 0$ ist klar, und an $x = 0$ ergibt die Stetigkeit aus dem $\varepsilon$-$\delta$-Kriterium.) Daher ist nach Proposition \ref{prop: Stetigkeit durch Funktionsgrenzwerte}
    \[
     \lim_{x \to 0} x \sin \frac{1}{x}
     = \lim_{x \to 0} f(x)
@@ -652,7 +676,7 @@ Aus unserer Untersuchung allgemeiner Funktionsgrenzwerte ergibt sich für die So
    \[
     \lim_{x \to 1} \frac{x^p-1}{x^q-1} = \frac{p}{q}.
    \]
-   Das Problem besteht darin, dass $1^q-1 = 1^p-1 = 0$. Dieses Problem beseitigen wir dadurch, dass wir aus den Polynomen $x^p-1$ und $x^q-1$ den Linearfaktor $x-1$ ausklammern. Wir erhalten so, dass für alle $x \neq 1$
+   Das Problem besteht darin, dass $1^q-1 = 1^p-1 = 0$. Dieses Problem beseitigen wir dadurch, dass wir aus den Polynomen $x^p-1$ und $x^q-1$ den Linearfaktor $x-1$ ausklammern (dies ist möglich, da $1$ ein Nullstelle der beiden Polynome ist). Wir erhalten so, dass für alle $x \notin \{-1,1\}$
    \[
     \frac{x^p-1}{x^q-1}
     = \frac{(x-1)\sum_{k=0}^{p-1} x^k}{(x-1)\sum_{k=0}^{q-1} x^k}
@@ -666,19 +690,24 @@ Aus unserer Untersuchung allgemeiner Funktionsgrenzwerte ergibt sich für die So
     = \frac{p}{q}.
    \]
   \item
-   Wir wollen untersuchen, wie sich die Grenzwert von $x \sqrt{1 + 4/x^2}$ an $x = 0$ verhält --- von unten, oben und beidseitig. Hierfür bemerken wir, dass für alle $x \neq 0$
+   Wir wollen untersuchen, wie sich die Grenzwert von $x \sqrt{1 + 4/x^2}$ an $x = 0$ verhalten --- von links, rechts und beidseitig. Hierfür bemerken wir, dass für alle $x \neq 0$
+   \[
+    x = \sgn(x) |x| = \sgn(x) \sqrt{x^2}
+   \]
+   und somit
    \begin{align*}
     x \sqrt{1 + \frac{4}{x^2}}
-    &= \sgn(x) |x| \sqrt{1 + \frac{4}{x^2}} \\
-    &= \sgn(x) \sqrt{x^2} \sqrt{1 + \frac{4}{x^2}}
+    &= \sgn(x) \sqrt{x^2} \sqrt{1 + \frac{4}{x^2}} \\
+    &= \sgn(x) \sqrt{x^2 \left(1 +\frac{4}{x^2}\right)}
     = \sgn(x) \sqrt{x^2 + 4}.
    \end{align*}
-   Daher ist
+   Daher ist nach den üblichen Stetigkeitsargumenten (Proposition \ref{prop: Stetigkeit durch Funktionsgrenzwerte})
    \begin{align*}
     \lim_{x \uparrow 0} x \sqrt{1 + \frac{4}{x^2}}
     &= \lim_{x \uparrow 0} \sgn(x) \sqrt{x^2 + 4}
     = \lim_{x \uparrow 0} -1 \cdot \sqrt{x^2 + 4} \\
     &= -\lim_{x \uparrow 0} \sqrt{x^2 + 4}
+    = - \sqrt{0^2 + 4}
     = -2.
    \end{align*}
    Analog ergibt sich, dass
@@ -686,7 +715,7 @@ Aus unserer Untersuchung allgemeiner Funktionsgrenzwerte ergibt sich für die So
     \lim_{x \downarrow 0} x \sqrt{1 + \frac{4}{x^2}}
     = 2.
    \]
-   Damit kennen wir das Verhalten von Grenzwert von oben und von unten. Der beidseitige Grenzwert existiert nicht, da oberer und unterer Grenzwert verschieden sind.
+   Damit kennen wir das Verhalten von links- und rechtsseitigen Grenzwert. Der beidseitige Grenzwert existiert nicht, da links- und rechtsseitiger Grenzwert verschieden sind.
   \item
    Wir wollen den Grenzwert
    \[
@@ -717,64 +746,70 @@ Aus unserer Untersuchung allgemeiner Funktionsgrenzwerte ergibt sich für die So
 \end{bsp}
 
 
-\begin{question}
- Zeigen Sie, dass für eine monoton steigende Funktion $f \colon \R \to \R$ an jeder Stelle $x \in \R$ sowohl der linksseitige als auch der rechtsseitige Genzwert existiert, und dass
+\begin{bsp}
+ Ist $f \colon \R \to \R$ monoton steigend, so existiert an jeder Stelle $x \in \R$ sowohl der links- als auch der rechtsseitige Genzwert, und es ist
  \[
-  \lim_{y \uparrow x} f(y) = \sup\{f(y) \mid y < x\}
+  \lim_{a \uparrow x} f(a) = \sup_{a < x} f(a)
   \quad
   \text{und}
   \quad
-  \lim_{y \downarrow x} f(y) = \inf\{f(y) \mid y > x\}.
+  \lim_{a \downarrow x} f(a) = \inf_{a > x} f(a)
  \]
- Wie sieht es für eine monoton fallende Funktion aus?
-\end{question}
-\begin{solution}
- Es sei $f$ monoton steigend und $x \in \R$. Wir wollen zeigen, dass $a \coloneqq \sup_{y < x} f(y)$ die Eigenschaften des linksseitigen Limes erfüllt. Sei hierfür $\varepsilon > 0$ beliebig aber fest. Nach der $\varepsilon$-Charakterisierung des Supremums gibt es ein $y_0 < x$ mit $a-\varepsilon < f(y_0)$. Aus der Monotonie von $f$ folgt, dass
+
+ Zum Beweis zeigen wir, dass
  \[
-  a-\varepsilon < f(y_0) \leq f(y) \leq \sup_{y' < x} f(y') = a \quad \text{für alle $y_0 \leq y < x$}.
+  y \coloneqq \sup_{a < x} f(a)
  \]
- Für $\delta \coloneqq x-y_0 > 0$ ist also $|f(y)-a| < \varepsilon$ für alle $y \in (x-\delta, x)$. Wegen der Beliebigkeit von $\varepsilon>0$ zeigt dies, dass $\lim_{y \uparrow x} f(y) = a$.
+ die Eigenschaften des linksseitigen Limes erfüllt. Hierfür sei $\varepsilon > 0$ beliebig aber fest. Nach der $\varepsilon$-Charakterisierung des Supremums gibt es ein $a_0 < x$ mit $y-\varepsilon < f(a_0)$. Aus der Monotonie von $f$ folgt, dass
+ \[
+  y-\varepsilon < f(a_0) \leq f(a) \leq \sup_{a' < x} f(a') = y \quad \text{für alle $a_0 \leq a < x$}.
+ \]
+ Für $\delta \coloneqq x-a_0 > 0$ ist also
+ \[
+  \|y - f(a)\| < \varepsilon \quad \text{für alle $a \in (x-\delta, x)$}.
+ \]
+ Wegen der Beliebigkeit von $\varepsilon > 0$ zeigt dies, dass $\lim_{a \uparrow x} f(a) = y$. Analog zeigt man, dass $\lim_{a \downarrow x} f(a) = \inf_{a > x} f(a)$.
  
- Analog zeigt man, dass $\lim_{y \downarrow x} f(y) = \inf_{x < y} f(x)$. Für monoton fallende Funktionen zeigt man analog, dass obere und untere Grenzwerte an jeder Stelle existieren, und dass für alle $x \in \R$
- \[
-  \lim_{y \uparrow x} f(y) = \inf_{y < x} f(y)
+ Ist $f$ monoton fallend, so ergibt sich analog, dass an jeder Stelle $x \in \R$
+  \[
+  \lim_{a \uparrow x} f(a) = \inf_{a < x} f(a)
   \quad
   \text{und}
   \quad
-  \lim_{y \downarrow x} f(y) = \sup_{y > x} f(y).
+  \lim_{a \downarrow x} f(a) = \sup_{a > x} f(a).
  \]
-\end{solution}
+\end{bsp}
 
 
 Zusammen mit Proposition \ref{prop: Stetigkeit durch Funktionsgrenzwerte} ergibt sich damit die aus der Vorlesung bekannte Charakterisierung der Stetigkeit einer monotonen Funktion:
 
 
 \begin{kor}
- Es sei $f \colon \R \to \R$ monoton steigend. Dann ist $f$ genau dann stetig an der Stelle $x \in \R$, wenn
+ Ist $f \colon \R \to \R$ monoton steigend, so ist $f$ genau dann stetig an der Stelle $x \in \R$, wenn
  \[
-  \sup_{y < x} f(y) = f(x) = \inf_{y > x} f(y).
+  \sup_{a < x} f(a) = f(x) = \inf_{a > x} f(a).
  \]
  Ist $f$ monoton fallend, so ist $f$ genau dann stetig an $x$, wenn
  \[
-  \inf_{y < x} f(y) = f(x) = \sup_{y > x} f(y).
+  \inf_{a < x} f(a) = f(x) = \sup_{a > x} f(a).
  \]
 \end{kor}
 \begin{proof}
- $f$ ist genau dann stetig an $x$, wenn $\lim_{y \to x} f(y) = f(x)$. Dies ist äquivalent dazu, dass $\lim_{y \uparrow x} f(y)$ und $\lim_{y \downarrow x} f(y)$ existieren und
+ $f$ ist genau dann stetig an $x$, wenn $\lim_{a \to x} f(a) = f(x)$. Dies ist äquivalent dazu, dass $\lim_{a \uparrow x} f(a)$ und $\lim_{a \downarrow x} f(a)$ existieren und
  \begin{equation}\label{eqn: beide Grenzwerte}
-  \lim_{y \uparrow x} f(y) = f(x) = \lim_{y \downarrow x} f(y).
+  \lim_{a \uparrow x} f(a) = f(x) = \lim_{a \downarrow x} f(a).
  \end{equation}
- Da $f$ monoton steigend ist existieren die Grenzwerte $\lim_{y \uparrow x} f(y)$ und $\lim_{y \downarrow x} f(y)$ und es gilt
+ Ist $f$ monoton steigend, so existieren die Grenzwerte $\lim_{a \uparrow x} f(a)$ und $\lim_{a \downarrow x} f(a)$, und es ist
  \[
-  \lim_{y \uparrow x} f(y) = \sup_{y < x} f(y)
+  \lim_{a \uparrow x} f(a) = \sup_{a < x} f(a)
   \quad
   \text{und}
   \quad
-  \lim_{y \downarrow x} f(y) = \inf_{y > x} f(y).
+  \lim_{a \downarrow x} f(a) = \inf_{a > x} f(a).
  \]
- Also übersetzt sich Bedingung \eqref{eqn: beide Grenzwerte} in
+ Also übersetzt sich Bedingung \eqref{eqn: beide Grenzwerte} dann in
  \[
-  \sup_{y < x} f(y) = f(x) = \inf_{y > x} f(y).
+  \sup_{a < x} f(a) = f(x) = \inf_{a > x} f(a).
  \]
  Die zweite Aussage ergibt sich analog.
 \end{proof}
@@ -784,11 +819,11 @@ Zusammen mit Proposition \ref{prop: Stetigkeit durch Funktionsgrenzwerte} ergibt
 
 
 \section{Uneigentliche Grenzwerte}
-Sie wie bei Folgen kann man auch bei Funktionen uneigentliche Grenzwerte definieren.
+Wie bereits für Folgen lassen sich auch für Funktionen uneigentliche Grenzwerte definieren.
 
 
 \begin{defi}
- Es sei $A \subseteq \R^n$, $f \colon A \to \R$ und $x \in \R^n$ ein Häufungspunkt von $A$. Wir schreiben dass $\lim_{a \to x, a \in A} f(a) = \infty$, falls es für alle $R > 0$ ein $\delta > 0$ gibt, so dass
+ Es sei $A \subseteq \R^n$, $f \colon A \to \R$ und $x \in \R^n$ ein Häufungspunkt von $A$. Wir schreiben $\lim_{a \to x, a \in A} f(a) = \infty$, falls es für alle $R > 0$ ein $\delta > 0$ gibt, so dass
  \[
   \|x-a\| < \delta \Rightarrow f(a) \geq R \quad \text{für alle $a \in A$ mit $a \neq x$}.
  \]
@@ -827,12 +862,12 @@ Sie wie bei Folgen kann man auch bei Funktionen uneigentliche Grenzwerte definie
 
 
 \begin{defi}
- Es sei $f \colon X \to \R^m$ eine Abbildung mit Definitionsbereits $X \subseteq \R$. Für $y \in \R^m$ sagen wir, dass $\lim_{x \to \infty} f(x) = y$, falls
+ Es sei $f \colon X \to \R^n$  mit Definitionsbereich $X \subseteq \R$. Für $y \in \R^n$ sagen wir, dass $\lim_{x \to \infty} f(x) = y$, falls
  \begin{enumerate}
   \item
    es gibt $r_0 \in \R$, so dass $f(x)$ für alle $x \geq r_0$ definiert ist, und
   \item
-   für alle $\varepsilon > 0$ gibt es $r \geq r_0$, so dass $\|f(x) - y\| < \varepsilon$ für alle $x \geq r$.
+   für alle $\varepsilon > 0$ gibt es $r \geq r_0$, so dass $\|y - f(x)\| < \varepsilon$ für alle $x \geq r$.
  \end{enumerate}
  Analog definiert man die Schreibweise $\lim_{x \to -\infty} f(x) = y$.
 \end{defi}
@@ -864,7 +899,7 @@ Sie wie bei Folgen kann man auch bei Funktionen uneigentliche Grenzwerte definie
   \item
    es gibt $r_0 \in \R$, so dass $f(x)$ für alle $x \geq r_0$ definiert ist, und
   \item
-   für alle $R > 0$ ein $r > r_0$, so dass $f(x) > R$ für alle $x \geq r$.
+   für alle $R > 0$ gibt es $r > r_0$, so dass $f(x) \geq R$ für alle $x \geq r$.
  \end{enumerate}
  Analog definiert man die Ausdrücke $\lim_{x \to \infty} f(x) = -\infty$, $\lim_{x \to -\infty} f(x) = \infty$ und $\lim_{x \to -\infty} f(x) = -\infty$. 
 \end{defi}
@@ -879,7 +914,15 @@ Sie wie bei Folgen kann man auch bei Funktionen uneigentliche Grenzwerte definie
     \quad
     \text{und}
     \quad
-    \lim_{x \to -\infty} x^2 = \infty.
+    \lim_{x \to -\infty} x^2 = \infty,
+   \]
+   und es ist
+   \[
+    \lim_{x \to \infty} x^3 = \infty
+    \quad
+    \text{und}
+    \quad
+    \lim_{x \to -\infty} x^3 = -\infty.
    \]
   \item
    Es ist
@@ -894,19 +937,19 @@ Sie wie bei Folgen kann man auch bei Funktionen uneigentliche Grenzwerte definie
  \[
   \lim_{x \to \infty} \sqrt{(x-a)(x-b)}-x
  \]
- untersuchen. Hierfür bemerken wir zunächst, dass $(x-a)(x-b) \geq 0$ für alle \mbox{$x \geq \max\{a,b\}$}ü; der Ausdruck $\sqrt{(x-a)(x-b)}$ ist also für alle $x \geq \max\{a,b\}$ definiert. Zur Bestimmung des Grenzwerts wollen wir den Ausdruck $\sqrt{(x-a)(x-b)}-x$ zunächst umschreiben; für alle $x > \max\{a,b,0\}$ haben wir
+ untersuchen. Hierfür bemerken wir zunächst, dass $(x-a)(x-b) \geq 0$ für alle \mbox{$x \geq \max\{a,b\}$}; der Ausdruck $\sqrt{(x-a)(x-b)}$ ist also für alle $x \geq \max\{a,b\}$ definiert. Zur Bestimmung des Grenzwerts wollen wir den Ausdruck $\sqrt{(x-a)(x-b)}-x$ zunächst umschreiben; für alle $x > \max\{a,b,0\}$ haben wir
  \begin{align*}
   \sqrt{(x-a)(x-b)}-x
   &= \frac{(\sqrt{(x-a)(x-b)}-x)(\sqrt{(x-a)(x-b)}+x)}{\sqrt{(x-a)(x-b)}+x} \\
   &= \frac{(x-a)(x-b)-x^2}{\sqrt{(x-a)(x-b)}+x}
-  = \frac{(a+b)x + ab}{\sqrt{x^2+(a+b)x+ab}+x} \\
-  &= \frac{a+b+\frac{ab}{x}}{\sqrt{1+\frac{a+b}{x}+\frac{ab}{x^2}}+1}
+  = \frac{-(a+b)x + ab}{\sqrt{x^2-(a+b)x+ab}+x} \\
+  &= \frac{-(a+b)+\frac{ab}{x}}{\sqrt{1-\frac{a+b}{x}+\frac{ab}{x^2}}+1}
  \end{align*}
  Daher ist
  \[
   \lim_{x \to \infty} \sqrt{(x-a)(x-b)}-x
-  = \lim_{x \to \infty} \frac{a+b+\frac{ab}{x}}{\sqrt{1+\frac{a+b}{x}+\frac{ab}{x^2}}+1}
-  = \frac{a+b}{2}.
+  = \lim_{x \to \infty} \frac{-(a+b)+\frac{ab}{x}}{\sqrt{1-\frac{a+b}{x}+\frac{ab}{x^2}}+1}
+  = -\frac{a+b}{2}.
  \]
 \end{bsp}
 
@@ -923,15 +966,17 @@ Auch für uneigentliche Grenzwerte gelten (intuitive) Rechenregeln, von denen wi
  \item
   Ist $\lim_{x \to a, a \in A} f(x) = \infty$, so ist $\lim_{x \to a, a \in A} -f(x) = -\infty$. Analoges gilt für $\lim_{x \to \infty} f(x)$ und $\lim_{x \to -\infty} f(x)$.
 \end{enumerate}
-Auch uneigentliche Grenzwerte lassen sich durch Folgen ausdrücken.
-\begin{enumerate}
- \item
-  Ist $A \subseteq \R^n$, $f \colon A \to \R$ und $x \in A$ ein Häufungspunkt von $A$, so ist genau dann $\lim_{a \to x, a \in A} f(a) = \infty$, falls für jede Folge $(a_n)$ auf $A \setminus \{x\}$ mit $a_n \to x$ auch $f(a_n) \to \infty$. Eine analoge Aussage gilt für $\lim_{a \to x, a \in A} f(a) = -\infty$.
- \item
-  Für $y \in \R^m$ ist genau dann $\lim_{x \to \infty} f(x) = y$, wenn für jede Folge $(x_n)$ auf $\R$ mit $x_n \to \infty$ auch $f(x_n) \to y$. Eine analoge Aussage gilt für $\lim_{x \to -\infty} f(x)$. Ist $f$ eine reellwertige Funktion, soo gilt die Aussage auch für $y \in \{-\infty, \infty\}$.
-\end{enumerate}
 
-%TODO: Uneigentliche beidseitege Grenzwerte durch links- und rechtsseitigen Grenzwert
+
+Auch uneigentliche Grenzwerte lassen sich durch Folgen charakterisieren.
+
+
+\begin{enumerate}[resume]
+ \item
+  Ist $A \subseteq \R^m$, $f \colon A \to \R$ und $x \in A$ ein Häufungspunkt von $A$, so ist genau dann $\lim_{a \to x, a \in A} f(a) = \infty$, falls für jede Folge $(a_n)$ auf $A \setminus \{x\}$ mit $a_n \to x$ auch $f(a_n) \to \infty$. Eine analoge Aussage gilt für $\lim_{a \to x, a \in A} f(a) = -\infty$.
+ \item
+  Für $y \in \R^m$ ist genau dann $\lim_{x \to \infty} f(x) = y$, wenn für jede Folge $(x_n)$ auf $\R$ mit $x_n \to \infty$ auch $f(x_n) \to y$. Eine analoge Aussage gilt für $\lim_{x \to -\infty} f(x)$. Ist $f$ eine reellwertige Funktion, so gilt die Aussage auch für $y \in \{-\infty, \infty\}$.
+\end{enumerate}
 
 
 
@@ -944,7 +989,7 @@ Auch uneigentliche Grenzwerte lassen sich durch Folgen ausdrücken.
 \newpage
 
 
-\section{Lösungen der Übungen}
+\section{Lösungen}
 
 
 \printsolutions
